@@ -241,7 +241,10 @@ const GoldCustomized = () => {
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section id="gold-section" className="py-16 lg:py-20 space-y-16 lg:space-y-20">
+      <section
+        id="gold-section"
+        className="py-16 lg:py-20 space-y-16 lg:space-y-20"
+      >
         {/* BRACELETS */}
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <div className="mb-10 lg:mb-12">

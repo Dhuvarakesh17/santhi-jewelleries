@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
   ChevronLeft,
-  Award,
-  ShieldCheck,
-  Sparkles,
-  Users,
   Star,
   TrendingUp,
   Heart,
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import useEmblaCarousel from "embla-carousel-react";
 
 const Magnetic = ({ children }: { children: React.ReactNode }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -59,7 +56,7 @@ const HeroSlider = () => {
       desc: "Sophisticated silhouettes designed for the modern woman. Elevate your everyday style with 22K pure gold.",
     },
     {
-      image: "/images/showcase/gold_3.webp",
+      image: "/images/showcase/gold-jhumka1.webp",
       subtitle: "Antique Style • Divine Brilliance",
       title: "Traditional Gold Jhumkas",
       desc: "Intricate Nagas and Temple jewelry craftsmanship that reflects our rich cultural legacy.",
@@ -228,29 +225,6 @@ const Home = () => {
   const silverCategoryImg = "/images/showcase/silver_anklet_1.webp";
   const diamondCategoryImg = "/images/showcase/diamond_ring_1.webp";
 
-  const whyChooseData = [
-    {
-      icon: <Award size={36} />,
-      title: "Legacy of Trust",
-      desc: "Serving generations with integrity and unmatched purity since 1985.",
-    },
-    {
-      icon: <ShieldCheck size={36} />,
-      title: "BIS Hallmarked",
-      desc: "100% certified gold purity as per international standards for absolute peace of mind.",
-    },
-    {
-      icon: <Sparkles size={36} />,
-      title: "Master Artistry",
-      desc: "Exquisite handcrafted designs by award-winning artisans reflecting our rich heritage.",
-    },
-    {
-      icon: <Users size={36} />,
-      title: "Client First",
-      desc: "Personalized service tailored to your unique celebrations, from weddings to everyday wear.",
-    },
-  ];
-
   const lightweightItems = [
     {
       name: "Heart Gold Haram",
@@ -287,12 +261,88 @@ const Home = () => {
     },
   ];
 
+  const testimonials = [
+    {
+      text: "I had an excellent experience with Anu Jewellers while getting our engagement ring made. The craftsmanship was outstanding, with my name and my fiancee's name, along with my fingerprint, engraved beautifully on the ring.",
+      author: "Ram Aravinth A V",
+    },
+    {
+      text: "Recently had a custom requirement to buy the product. The interaction I had online and was handled by staff named Sandhya. She was very polite and too helpful in understanding the requirements and delivered it. The service I received from Anu Jewellers is beyond expectations.",
+      author: "Seshadri",
+    },
+    {
+      text: "I purchased silver earrings and a silver with gold plated necklace from Sri Anu Jewellers. I was scared to buy online but their response made me comfortable and I received the product next day. I am so happy to see my product exactly as shown.",
+      author: "Rajalakshmi Chandrasekaran",
+    },
+    {
+      text: "I recently made an online purchase from Anu Jewels and I'm thoroughly enjoying my new anklet and toe ring. The online shopping experience was seamless, and customer service was top-notch.",
+      author: "Chithra M",
+    },
+    {
+      text: "Purchased customized gold couple rings and provided a custom design. They delivered exactly what I envisioned, and the output was perfect. My expectations were fully met. Excellent service.",
+      author: "Kishorepandi Nagarajan",
+    },
+  ];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "center",
+    loop: true,
+    dragFree: false,
+    skipSnaps: false,
+    dragThreshold: 22,
+    slidesToScroll: 1,
+    containScroll: "keepSnaps",
+  });
+  const [selectedTestimonial, setSelectedTestimonial] = useState(0);
+
+  const scrollPrevTestimonial = useCallback(() => {
+    emblaApi?.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNextTestimonial = useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
+
+  const scrollToTestimonial = useCallback(
+    (index: number) => {
+      emblaApi?.scrollTo(index);
+    },
+    [emblaApi],
+  );
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const updateSelected = () => {
+      setSelectedTestimonial(emblaApi.selectedScrollSnap());
+    };
+
+    updateSelected();
+    emblaApi.on("select", updateSelected);
+    emblaApi.on("reInit", updateSelected);
+
+    return () => {
+      emblaApi.off("select", updateSelected);
+      emblaApi.off("reInit", updateSelected);
+    };
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoplay = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 15000);
+
+    return () => clearInterval(autoplay);
+  }, [emblaApi]);
+
   return (
     <div className="overflow-hidden font-sans bg-white">
       <HeroSlider />
 
       {/* Signature Collections / Curated Showcase Section */}
-      <section className="py-10 lg:py-12 max-w-[1440px] mx-auto px-4 lg:px-8">
+      <section className="py-8 lg:py-10 max-w-[1440px] mx-auto px-4 lg:px-8">
         <ScrollReveal>
           <div className="mb-8 space-y-3 text-center lg:mb-10">
             <span className="text-maroon text-[10px] font-black tracking-[0.4em] uppercase opacity-70">
@@ -333,52 +383,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section - REIMAGINED */}
-      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] pointer-events-none"></div>
-        <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
-          <ScrollReveal>
-            <div className="mb-12 text-center lg:mb-14">
-              <span className="text-[#5B0E23] font-bold uppercase tracking-[0.5em] text-xs">
-                Uncompromising Standards
-              </span>
-              <h2 className="mt-4 font-serif text-4xl font-bold lg:text-5xl text-[#5B0E23]">
-                Why Choose Santhi Jewellers
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {whyChooseData.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <motion.div
-                  whileHover={{
-                    y: -10,
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-                  }}
-                  className="flex flex-col items-center h-full p-8 text-center transition-all duration-300 border bg-white border-[#5B0E23]/10 rounded-2xl group"
-                >
-                  <div className="mb-8 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500">
-                    {item.icon}
-                  </div>
-                  <h3 className="mb-4 font-serif text-xl font-bold tracking-wider text-[#5B0E23] uppercase">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm font-light leading-relaxed text-stone-600">
-                    {item.desc}
-                  </p>
-                  <div className="w-8 h-[2px] bg-[#D4AF37] mt-8 opacity-50 group-hover:w-16 transition-all duration-500"></div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Mastering the Fine Art of Gold Section */}
-      <section className="py-16 overflow-hidden lg:py-20 bg-stone-50">
+      <section className="py-12 overflow-hidden lg:py-14 bg-stone-50">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="flex flex-col items-center gap-12 lg:flex-row">
+          <div className="flex flex-col items-center gap-10 lg:flex-row">
             <ScrollReveal className="lg:w-1/2">
               <div className="relative p-4 border rounded-[40px] border-stone-500/60 bg-[#f4efed]">
                 <div className="overflow-hidden border rounded-[32px] border-stone-500/60">
@@ -388,10 +396,9 @@ const Home = () => {
                     className="w-full h-[380px] lg:h-[520px] object-cover rounded-[28px] shadow-2xl grayscale-[0.1] hover:grayscale-0 transition-all duration-700 border border-[#5B0E23]/20"
                   />
                 </div>
-                
               </div>
             </ScrollReveal>
-            <div className="space-y-10 lg:w-1/2">
+            <div className="space-y-8 lg:w-1/2">
               <ScrollReveal delay={0.2}>
                 <span className="text-maroon tracking-[0.4em] font-black text-xs uppercase block opacity-70">
                   The Art of Creation
@@ -431,11 +438,71 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
+        <div className="w-full">
+          <div className="section-header">
+            <h2>Testimonials</h2>
+          </div>
+
+          <div className="testimonials-carousel">
+            <div className="testimonials-viewport" ref={emblaRef}>
+              <div className="testimonials-track">
+                {testimonials.map((item, index) => (
+                  <article
+                    key={index}
+                    className={`testimonials-slide ${selectedTestimonial === index ? "is-active" : ""}`}
+                  >
+                    <blockquote className="testimonials-slider__text">
+                      <span className="testimonial-stars">★★★★★</span>
+                      <p>{item.text}</p>
+                      <cite>{item.author}</cite>
+                    </blockquote>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="testimonials-controls">
+              <button
+                type="button"
+                className="testimonials-nav-btn"
+                onClick={scrollPrevTestimonial}
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <div className="testimonials-dots">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`testimonials-dot ${selectedTestimonial === index ? "is-active" : ""}`}
+                    onClick={() => scrollToTestimonial(index)}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className="testimonials-nav-btn"
+                onClick={scrollNextTestimonial}
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Fashionable Trends Section */}
-      <section className="py-16 bg-white lg:py-20">
+      <section className="py-12 bg-white lg:py-14">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <ScrollReveal>
-            <div className="mb-12 space-y-4 text-center lg:mb-14">
+            <div className="mb-8 space-y-4 text-center lg:mb-10">
               <h2 className="font-serif text-4xl font-bold text-gray-900 uppercase lg:text-6xl">
                 Fashionable Trends
               </h2>

@@ -45,6 +45,79 @@ const normalizeCategory = (value: string) => {
   return aliases[normalized] || normalized;
 };
 
+const getFrameVariant = (category: string) => {
+  const normalized = normalizeCategory(category);
+
+  if (normalized === "silver") return "luxury-frame--silver";
+  if (normalized === "diamond" || normalized === "platinum") {
+    return "luxury-frame--diamond";
+  }
+
+  return "luxury-frame--gold";
+};
+
+const getCategoryPalette = (category: string) => {
+  const normalized = normalizeCategory(category);
+
+  if (normalized === "silver") {
+    return {
+      titleColor: "#606772",
+      priceColor: "#8D939B",
+    };
+  }
+
+  if (normalized === "diamond" || normalized === "platinum") {
+    return {
+      titleColor: "#444A5D",
+      priceColor: "#7E86A1",
+    };
+  }
+
+  return {
+    titleColor: "#6E162F",
+    priceColor: "#C9A84C",
+  };
+};
+
+const getTitleColorByCategory = (category: string) => {
+  const normalized = normalizeCategory(category);
+
+  if (normalized === "silver") {
+    return "#C0C0C0"; // Silver
+  }
+
+  if (normalized === "diamond") {
+    return "#7E86A1";
+  }
+
+  if (normalized === "platinum") {
+    return "#E5E4E2"; // Platinum
+  }
+
+  return "#D4AF37"; // Gold
+};
+
+const buildCollectionTitle = (
+  categoryParam?: string,
+  subCategoryParam?: string,
+) => {
+  const category = (categoryParam ?? "").trim();
+  const subCategory = (subCategoryParam ?? "").trim();
+
+  if (!subCategory) {
+    return `${category} Collections`.trim();
+  }
+
+  const normalizedCategory = normalizeCategory(category);
+  const subCategoryWords = subCategory
+    .split(/\s+/)
+    .map((word) => normalizeCategory(word));
+
+  const hasCategoryInSub = subCategoryWords.includes(normalizedCategory);
+
+  return hasCategoryInSub ? subCategory : `${category} ${subCategory}`.trim();
+};
+
 const imagePriorityMatch = (imagePath: string, normalizedType: string) => {
   const normalizedImagePath = normalizeText(imagePath);
 
@@ -66,7 +139,8 @@ const imagePriorityMatch = (imagePath: string, normalizedType: string) => {
 const formatCurrency = (value: number) => `₹ ${value.toLocaleString("en-IN")}`;
 const formatFilterRange = (value: number) =>
   `₹${Math.round(value).toLocaleString("en-IN")}`;
-const parseCurrencyInput = (value: string) => Number(value.replace(/[^0-9]/g, ""));
+const parseCurrencyInput = (value: string) =>
+  Number(value.replace(/[^0-9]/g, ""));
 
 const getPriceBucket = (price: number) => {
   if (price < 50000) return "under-50k";
@@ -319,7 +393,8 @@ const SubCategoryPage = () => {
     openWishlist();
   };
 
-  const titleText = `${type ?? ""} ${sub || "Collections"}`.trim();
+  const titleText = buildCollectionTitle(type, sub);
+  const collectionText = titleText.toLowerCase();
   const rangeSpan = Math.max(maxPrice - minPrice, 1);
   const minThumbPercent = ((priceRange[0] - minPrice) / rangeSpan) * 100;
   const maxThumbPercent = ((priceRange[1] - minPrice) / rangeSpan) * 100;
@@ -342,14 +417,15 @@ const SubCategoryPage = () => {
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-4xl font-bold tracking-widest uppercase lg:text-5xl text-luxury-text"
+            className="font-serif text-4xl font-bold tracking-widest uppercase lg:text-5xl"
+            style={{ color: getTitleColorByCategory(type ?? "gold") }}
           >
             {titleText}
           </motion.h1>
           <div className="h-0.5 w-24 bg-gold mx-auto"></div>
           <p className="font-sans tracking-wide text-gray-500">
             {sub
-              ? `A curated selection of the finest ${type?.toLowerCase()} ${sub?.toLowerCase()} masterpieces.`
+              ? `A curated selection of the finest ${collectionText} masterpieces.`
               : `Explore our prestigious collection of ${type?.toLowerCase()} jewellery.`}
           </p>
         </div>
@@ -411,9 +487,12 @@ const SubCategoryPage = () => {
                 >
                   <div className="space-y-5">
                     <div className="flex items-center justify-between text-sm uppercase tracking-[0.12em] text-stone-500">
-                      <span className="font-semibold tracking-[0.28em]">Range</span>
+                      <span className="font-semibold tracking-[0.28em]">
+                        Range
+                      </span>
                       <span className="font-semibold text-[#1f2430] tracking-normal uppercase">
-                        {formatFilterRange(priceRange[0])} - {formatFilterRange(priceRange[1])}
+                        {formatFilterRange(priceRange[0])} -{" "}
+                        {formatFilterRange(priceRange[1])}
                       </span>
                     </div>
 
@@ -435,7 +514,7 @@ const SubCategoryPage = () => {
                           const nextMin = Number(event.target.value);
                           updatePriceRange(nextMin, priceRange[1]);
                         }}
-                        className="price-range-thumb absolute inset-0 w-full appearance-none bg-transparent"
+                        className="absolute inset-0 w-full bg-transparent appearance-none price-range-thumb"
                       />
                       <input
                         type="range"
@@ -446,7 +525,7 @@ const SubCategoryPage = () => {
                           const nextMax = Number(event.target.value);
                           updatePriceRange(priceRange[0], nextMax);
                         }}
-                        className="price-range-thumb absolute inset-0 w-full appearance-none bg-transparent"
+                        className="absolute inset-0 w-full bg-transparent appearance-none price-range-thumb"
                       />
                     </div>
 
@@ -460,7 +539,9 @@ const SubCategoryPage = () => {
                           inputMode="numeric"
                           value={Math.round(priceRange[0]).toString()}
                           onChange={(event) => {
-                            const nextMin = parseCurrencyInput(event.target.value);
+                            const nextMin = parseCurrencyInput(
+                              event.target.value,
+                            );
                             if (Number.isNaN(nextMin)) return;
                             updatePriceRange(nextMin, priceRange[1]);
                           }}
@@ -476,7 +557,9 @@ const SubCategoryPage = () => {
                           inputMode="numeric"
                           value={Math.round(priceRange[1]).toString()}
                           onChange={(event) => {
-                            const nextMax = parseCurrencyInput(event.target.value);
+                            const nextMax = parseCurrencyInput(
+                              event.target.value,
+                            );
                             if (Number.isNaN(nextMax)) return;
                             updatePriceRange(priceRange[0], nextMax);
                           }}
@@ -558,61 +641,75 @@ const SubCategoryPage = () => {
               {filteredItems.length > 0 ? (
                 <>
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-                    {paginatedItems.map((item, index) => (
-                      <motion.div
-                        key={item.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        whileHover={{ y: -10 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.35, delay: index * 0.02 }}
-                        className="group"
-                      >
-                        <div className="overflow-hidden bg-white aspect-square relative">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src =
-                                "https://via.placeholder.com/400x500?text=Jewellery+Showcase";
-                            }}
-                          />
-                          <button
-                            type="button"
-                            onClick={() => handleWishlistClick(item)}
-                            className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 border border-stone-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#5B0E23] transition-all"
-                            aria-label={
-                              isInWishlist(item.id)
-                                ? "Remove from wishlist"
-                                : "Add to wishlist"
-                            }
+                    {paginatedItems.map((item, index) => {
+                      const palette = getCategoryPalette(item.category);
+
+                      return (
+                        <motion.div
+                          key={item.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          whileHover={{ y: -10 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.35, delay: index * 0.02 }}
+                          className="group"
+                        >
+                          <div
+                            className={`luxury-frame aspect-square relative overflow-hidden ${getFrameVariant(item.category)}`}
                           >
-                            <Heart
-                              size={17}
-                              className={
+                            <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[8px] bg-white">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src =
+                                    "https://via.placeholder.com/400x500?text=Jewellery+Showcase";
+                                }}
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleWishlistClick(item)}
+                              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 border border-stone-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#5B0E23] transition-all"
+                              aria-label={
                                 isInWishlist(item.id)
-                                  ? "text-[#5B0E23] fill-[#5B0E23]"
-                                  : "text-[#5B0E23]"
+                                  ? "Remove from wishlist"
+                                  : "Add to wishlist"
                               }
-                            />
-                          </button>
-                        </div>
-                        <div className="pt-3 space-y-2 text-center">
-                          <h3 className="text-[19px] leading-tight font-serif text-stone-800">
-                            {item.name}
-                          </h3>
-                          <p className="text-[#C57E3E] text-[17px] font-medium">
-                            {formatCurrency(item.price)}
-                          </p>
-                          {!item.inStock && (
-                            <p className="text-[12px] text-red-500 uppercase tracking-wider">
-                              Out of stock
+                            >
+                              <Heart
+                                size={17}
+                                className={
+                                  isInWishlist(item.id)
+                                    ? "text-[#5B0E23] fill-[#5B0E23]"
+                                    : "text-[#5B0E23]"
+                                }
+                              />
+                            </button>
+                          </div>
+                          <div className="pt-3 space-y-2 text-center">
+                            <h3
+                              className="text-[19px] leading-tight font-serif"
+                              style={{ color: palette.titleColor }}
+                            >
+                              {item.name}
+                            </h3>
+                            <p
+                              className="text-[17px] font-medium"
+                              style={{ color: palette.priceColor }}
+                            >
+                              {formatCurrency(item.price)}
                             </p>
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
+                            {!item.inStock && (
+                              <p className="text-[12px] text-red-500 uppercase tracking-wider">
+                                Out of stock
+                              </p>
+                            )}
+                          </div>
+                        </motion.div>
+                      );
+                    })}
                   </div>
 
                   {totalPages > 1 && (

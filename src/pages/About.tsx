@@ -145,7 +145,6 @@ const About = () => {
                     alt="Our Heritage"
                     className="w-full h-[360px] lg:h-[520px] object-cover rounded-[24px] shadow-[0_32px_64px_-16px_rgba(91,14,35,0.2)] relative z-10"
                   />
-                  
                 </motion.div>
               </ZoomReveal>
             </div>
@@ -153,14 +152,14 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3. MISSION & VISION SECTION */}
+      {/* 3. MISSION, VISION & VALUES SECTION */}
       <section className="py-16 lg:py-20 bg-[#fff6ef] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
-        <div className="relative z-10 grid grid-cols-1 gap-8 px-4 mx-auto max-w-7xl lg:px-8 md:grid-cols-2">
+        <div className="relative z-10 grid grid-cols-1 gap-8 px-4 mx-auto max-w-7xl lg:px-8 md:grid-cols-2 lg:grid-cols-3">
           <ZoomReveal>
             <motion.div
               whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30"
+              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full min-h-[470px] lg:min-h-[500px] flex flex-col"
             >
               <div className="w-20 h-20 bg-[#D4AF37]/15 rounded-2xl flex items-center justify-center text-[#5B0E23] mb-10 group-hover:bg-[#D4AF37]/30 transition-all duration-500 shadow-xl">
                 <Target size={40} />
@@ -180,7 +179,7 @@ const About = () => {
           <ZoomReveal delay={0.2}>
             <motion.div
               whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30"
+              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full min-h-[470px] lg:min-h-[500px] flex flex-col"
             >
               <div className="w-20 h-20 bg-[#D4AF37]/15 rounded-2xl flex items-center justify-center text-[#5B0E23] mb-10 group-hover:bg-[#D4AF37]/30 transition-all duration-500 shadow-xl">
                 <Eye size={40} />
@@ -193,6 +192,25 @@ const About = () => {
                 recognized for our unwavering dedication to ethical sourcing,
                 artisan empowerment, and the preservation of heritage Indian
                 craftsmanship.
+              </p>
+            </motion.div>
+          </ZoomReveal>
+
+          <ZoomReveal delay={0.3}>
+            <motion.div
+              whileHover={{ y: -15, scale: 1.02 }}
+              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full min-h-[470px] lg:min-h-[500px] flex flex-col"
+            >
+              <div className="w-20 h-20 bg-[#D4AF37]/15 rounded-2xl flex items-center justify-center text-[#5B0E23] mb-10 group-hover:bg-[#D4AF37]/30 transition-all duration-500 shadow-xl">
+                <Sparkles size={40} />
+              </div>
+              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider text-[#5B0E23] uppercase">
+                Our Values
+              </h3>
+              <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
+                Integrity in every transaction, purity in every ornament, and
+                care in every customer relationship. We stand for trust,
+                craftsmanship, transparency, and timeless design.
               </p>
             </motion.div>
           </ZoomReveal>
@@ -220,7 +238,7 @@ const About = () => {
               },
               {
                 icon: <Sparkles size={40} />,
-                title: "Exquisite Artistry",
+                title: "Fine Artistry",
                 desc: "Every curve and detail is meticulously handcrafted by award-winning artisans.",
               },
               {
