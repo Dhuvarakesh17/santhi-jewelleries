@@ -145,14 +145,7 @@ const About = () => {
                     alt="Our Heritage"
                     className="w-full h-[360px] lg:h-[520px] object-cover rounded-[24px] shadow-[0_32px_64px_-16px_rgba(91,14,35,0.2)] relative z-10"
                   />
-                  <div className="absolute z-20 hidden p-6 bg-white border shadow-xl -bottom-8 -left-8 rounded-2xl border-maroon/5 lg:block">
-                    <p className="font-serif text-3xl font-bold text-maroon">
-                      Purity Guaranteed
-                    </p>
-                    <p className="text-stone-400 text-[10px] tracking-[0.2em] font-bold uppercase mt-1">
-                      Certified Craftsmanship
-                    </p>
-                  </div>
+                  
                 </motion.div>
               </ZoomReveal>
             </div>
@@ -175,7 +168,7 @@ const About = () => {
               <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider text-[#5B0E23] uppercase">
                 Our Mission
               </h3>
-              <p className="text-base lg:text-lg font-light leading-relaxed text-stone-600">
+              <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
                 To bridge the gap between ancient artistry and modern design,
                 ensuring every customer walks away with a piece that is as
                 authentic as it is timeless. We strive for transparency in every
@@ -195,7 +188,7 @@ const About = () => {
               <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider text-[#5B0E23] uppercase">
                 Our Vision
               </h3>
-              <p className="text-base lg:text-lg font-light leading-relaxed text-stone-600">
+              <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
                 To be the global benchmark for luxury handcrafted jewelry,
                 recognized for our unwavering dedication to ethical sourcing,
                 artisan empowerment, and the preservation of heritage Indian
@@ -207,7 +200,7 @@ const About = () => {
       </section>
 
       {/* 4. WHY CHOOSE US SECTION */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section className="py-16 bg-white lg:py-20">
         <div className="px-4 mx-auto text-center max-w-7xl lg:px-8">
           <ZoomReveal>
             <span className="text-maroon font-bold tracking-[0.4em] uppercase text-xs">
@@ -264,7 +257,7 @@ const About = () => {
         <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <ZoomReveal>
-            <div className="text-center mb-12 lg:mb-14">
+            <div className="mb-12 text-center lg:mb-14">
               <span className="text-[#D4AF37] font-bold uppercase tracking-[0.5em] text-xs">
                 Behind The Masterpiece
               </span>
@@ -298,15 +291,15 @@ const About = () => {
       </section>
 
       {/* 6. CTA SECTION */}
-      <section className="relative py-20 lg:py-24 overflow-hidden bg-white">
-        <div className="relative z-10 max-w-4xl px-4 mx-auto space-y-8 lg:space-y-10 text-center">
+      <section className="relative py-20 overflow-hidden bg-white lg:py-24">
+        <div className="relative z-10 max-w-4xl px-4 mx-auto space-y-8 text-center lg:space-y-10">
           <ZoomReveal>
             <h2 className="text-4xl lg:text-6xl font-serif font-bold text-[#5B0E23] leading-tight drop-shadow-sm">
               Begin Your Legacy With Us
             </h2>
           </ZoomReveal>
           <ZoomReveal delay={0.2}>
-            <p className="max-w-2xl mx-auto text-lg lg:text-xl italic font-light leading-relaxed text-stone-500">
+            <p className="max-w-2xl mx-auto text-lg italic font-light leading-relaxed lg:text-xl text-stone-500">
               Step into a world of curated brilliance. Whether it's for a
               wedding or daily luxury, we have the perfect piece waiting for
               you.

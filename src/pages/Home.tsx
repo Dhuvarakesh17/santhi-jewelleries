@@ -388,14 +388,7 @@ const Home = () => {
                     className="w-full h-[380px] lg:h-[520px] object-cover rounded-[28px] shadow-2xl grayscale-[0.1] hover:grayscale-0 transition-all duration-700 border border-[#5B0E23]/20"
                   />
                 </div>
-                <div className="absolute z-20 px-8 py-6 bg-white border rounded-[20px] shadow-xl -bottom-6 left-6 border-stone-300/90">
-                  <p className="font-serif text-5xl font-bold tracking-tight text-[#102341]">
-                    Purity Guaranteed
-                  </p>
-                  <p className="mt-2 text-sm font-bold tracking-[0.25em] uppercase text-stone-400">
-                    Certified Craftsmanship
-                  </p>
-                </div>
+                
               </div>
             </ScrollReveal>
             <div className="space-y-10 lg:w-1/2">
