@@ -103,7 +103,7 @@ const Navbar = () => {
   }, [searchQuery]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-[#5B0E23]/10 font-serif">
+    <header className="bg-white/95 backdrop-blur-md shadow-sm border-b border-[#5B0E23]/10 font-serif">
       <nav className="max-w-[1440px] mx-auto px-4 lg:px-8 py-3 lg:py-4 flex justify-between items-center relative">
         {/* Mobile Menu Button - Left */}
         <button
@@ -134,26 +134,26 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation Links - Desktop Center */}
-        <div className="items-center order-2 hidden space-x-6 lg:flex">
+        <div className="items-center order-2 hidden ml-auto mr-6 gap-4 xl:gap-5 lg:flex">
           {MENU_DATA.map((item) => (
             <div
               key={item.title}
               onMouseEnter={() => handleMouseEnter(item.title)}
               onMouseLeave={handleMouseLeave}
-              className="relative py-4 group"
+              className="relative py-4 group shrink-0"
             >
               <div className="flex items-center">
                 {item.type === "link" ? (
                   <Link
                     to={item.path || "#"}
-                    className="relative text-[13px] font-bold text-[#5B0E23] uppercase tracking-[0.15em] transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#5B0E23] after:transition-all after:duration-300 hover:after:w-full"
+                    className={`relative text-[12px] xl:text-[13px] font-bold text-[#5B0E23] uppercase transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#5B0E23] after:transition-all after:duration-300 hover:after:w-full ${item.title === "Home" ? "tracking-[0.02em]" : "tracking-[0.1em] xl:tracking-[0.13em]"}`}
                   >
                     {item.title}
                   </Link>
                 ) : (
                   <button
                     onClick={() => handleCategoryClick(item.title)}
-                    className={`relative flex items-center text-[13px] font-bold uppercase tracking-[0.15em] text-[#5B0E23] transition-all duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#5B0E23] after:transition-all after:duration-300 ${activeMenu === item.title ? "after:w-full" : "after:w-0 hover:after:w-full"}`}
+                    className={`relative flex items-center text-[12px] xl:text-[13px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.13em] text-[#5B0E23] transition-all duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#5B0E23] after:transition-all after:duration-300 ${activeMenu === item.title ? "after:w-full" : "after:w-0 hover:after:w-full"}`}
                   >
                     {item.title}
                     <ChevronDown
@@ -222,7 +222,7 @@ const Navbar = () => {
         </div>
 
         {/* Utility Icons - Right */}
-        <div className="flex items-center order-3 ml-auto space-x-2 lg:space-x-5">
+        <div className="flex items-center order-3 space-x-2 lg:space-x-5">
           {/* Search Toggle */}
           <div className="relative" ref={searchRef}>
             <button

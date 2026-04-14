@@ -80,7 +80,7 @@ const HeroSlider = () => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative h-[95vh] w-full overflow-hidden bg-stone-900">
+    <section className="relative h-[88vh] min-h-[560px] w-full overflow-hidden bg-stone-900">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -292,20 +292,20 @@ const Home = () => {
       <HeroSlider />
 
       {/* Signature Collections / Curated Showcase Section */}
-      <section className="py-32 max-w-[1440px] mx-auto px-4 lg:px-8">
+      <section className="py-10 lg:py-12 max-w-[1440px] mx-auto px-4 lg:px-8">
         <ScrollReveal>
-          <div className="mb-20 space-y-4 text-center">
+          <div className="mb-8 space-y-3 text-center lg:mb-10">
             <span className="text-maroon text-[10px] font-black tracking-[0.4em] uppercase opacity-70">
               Signature Collections
             </span>
-            <h2 className="font-serif text-4xl font-bold text-gray-900 uppercase lg:text-6xl">
+            <h2 className="font-serif text-3xl font-bold text-gray-900 uppercase lg:text-5xl">
               Curated Showcase
             </h2>
-            <div className="w-24 h-1 mx-auto mt-6 bg-maroon"></div>
+            <div className="w-20 h-1 mx-auto mt-4 bg-maroon"></div>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-3">
           <ScrollReveal delay={0.1}>
             <CategoryCard
               title="Gold"
@@ -334,11 +334,11 @@ const Home = () => {
       </section>
 
       {/* Features Section - REIMAGINED */}
-      <section className="py-32 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
+      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] pointer-events-none"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <ScrollReveal>
-            <div className="mb-24 text-center">
+            <div className="mb-12 text-center lg:mb-14">
               <span className="text-[#5B0E23] font-bold uppercase tracking-[0.5em] text-xs">
                 Uncompromising Standards
               </span>
@@ -356,7 +356,7 @@ const Home = () => {
                     y: -10,
                     boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
                   }}
-                  className="flex flex-col items-center h-full p-10 text-center transition-all duration-300 border bg-white border-[#5B0E23]/10 rounded-2xl group"
+                  className="flex flex-col items-center h-full p-8 text-center transition-all duration-300 border bg-white border-[#5B0E23]/10 rounded-2xl group"
                 >
                   <div className="mb-8 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500">
                     {item.icon}
@@ -376,16 +376,16 @@ const Home = () => {
       </section>
 
       {/* Mastering the Fine Art of Gold Section */}
-      <section className="py-32 overflow-hidden bg-stone-50">
+      <section className="py-16 overflow-hidden lg:py-20 bg-stone-50">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="flex flex-col items-center gap-20 lg:flex-row">
+          <div className="flex flex-col items-center gap-12 lg:flex-row">
             <ScrollReveal className="lg:w-1/2">
               <div className="relative p-4 border rounded-[40px] border-stone-500/60 bg-[#f4efed]">
                 <div className="overflow-hidden border rounded-[32px] border-stone-500/60">
                   <img
                     src={goldPlate}
                     alt="Gold Artistry"
-                    className="w-full h-[650px] object-cover rounded-[28px] shadow-2xl grayscale-[0.1] hover:grayscale-0 transition-all duration-700 border border-[#5B0E23]/20"
+                    className="w-full h-[380px] lg:h-[520px] object-cover rounded-[28px] shadow-2xl grayscale-[0.1] hover:grayscale-0 transition-all duration-700 border border-[#5B0E23]/20"
                   />
                 </div>
                 <div className="absolute z-20 px-8 py-6 bg-white border rounded-[20px] shadow-xl -bottom-6 left-6 border-stone-300/90">
@@ -403,10 +403,10 @@ const Home = () => {
                 <span className="text-maroon tracking-[0.4em] font-black text-xs uppercase block opacity-70">
                   The Art of Creation
                 </span>
-                <h2 className="text-5xl lg:text-7xl font-serif font-bold text-gray-900 leading-[1.1]">
+                <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.1]">
                   Mastering The Fine Art Of Gold
                 </h2>
-                <p className="pl-6 mt-8 text-xl italic font-light leading-relaxed border-l-4 text-stone-500 border-maroon/20">
+                <p className="pl-5 mt-6 text-lg italic font-light leading-relaxed border-l-4 text-stone-500 border-maroon/20">
                   "Every piece at Santhi Jewellers tells a story of meticulous
                   dedication. From the initial hand-drawn sketch to the final
                   laser-precision polish, our master artisans ensure perfection
@@ -414,7 +414,7 @@ const Home = () => {
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <div className="grid grid-cols-2 gap-12 pt-10">
+                <div className="grid grid-cols-2 gap-8 pt-8">
                   <div className="space-y-2">
                     <h4 className="font-serif text-5xl font-bold text-maroon">
                       100%
@@ -439,33 +439,28 @@ const Home = () => {
       </section>
 
       {/* Fashionable Trends Section */}
-      <section className="py-32 bg-white">
+      <section className="py-16 bg-white lg:py-20">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <ScrollReveal>
-            <div className="mb-24 space-y-6 text-center">
-              <TrendingUp className="w-12 h-12 mx-auto text-maroon" />
+            <div className="mb-12 space-y-4 text-center lg:mb-14">
               <h2 className="font-serif text-4xl font-bold text-gray-900 uppercase lg:text-6xl">
                 Fashionable Trends
               </h2>
-              <p className="max-w-2xl mx-auto text-lg font-light text-gray-500">
-                Stay ahead with our most sought-after contemporary pieces that
-                redefine modern luxury.
-              </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3">
             {fashionableItems.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="group relative overflow-hidden rounded-[24px] shadow-lg border border-stone-100">
-                  <div className="h-[550px] overflow-hidden">
+                  <div className="h-[340px] lg:h-[440px] overflow-hidden">
                     <img
                       src={item.img}
                       alt={item.name}
                       className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110 border border-[#5B0E23]/20"
                     />
                   </div>
-                  <div className="absolute inset-0 flex flex-col justify-end p-12 transition-opacity duration-500 opacity-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:opacity-100">
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 transition-opacity duration-500 opacity-0 lg:p-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:opacity-100">
                     <span className="text-[#D4AF37] font-black text-[10px] tracking-[0.4em] mb-4">
                       {item.tag}
                     </span>
@@ -496,7 +491,7 @@ const Home = () => {
 const CategoryCard = ({ title, items, image, link }) => (
   <Link
     to={link}
-    className="group relative block h-[650px] overflow-hidden rounded-[16px] border border-[#5B0E23]/10 shadow-lg hover:shadow-2xl transition-all duration-700"
+    className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[16px] border border-[#5B0E23]/10 shadow-lg hover:shadow-2xl transition-all duration-700"
   >
     <img
       src={image}
@@ -504,11 +499,11 @@ const CategoryCard = ({ title, items, image, link }) => (
       className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110 border border-[#5B0E23]/20"
     />
     <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-t from-white/95 via-white/40 to-white/5 group-hover:from-white group-hover:via-white/60"></div>
-    <div className="absolute left-0 right-0 px-10 text-center bottom-12">
-      <h3 className="text-4xl font-serif font-bold text-[#5B0E23] mb-3 uppercase tracking-wider">
+    <div className="absolute left-0 right-0 px-6 text-center lg:px-8 bottom-7 lg:bottom-10">
+      <h3 className="text-3xl lg:text-4xl font-serif font-bold text-[#5B0E23] mb-2 uppercase tracking-wider">
         {title}
       </h3>
-      <p className="text-stone-500 text-[11px] font-bold tracking-[0.4em] uppercase mb-8 opacity-80">
+      <p className="text-stone-500 text-[10px] font-bold tracking-[0.3em] uppercase mb-4 lg:mb-6 opacity-80">
         {items}
       </p>
       <div className="w-12 h-[2px] bg-maroon mx-auto group-hover:w-full transition-all duration-700"></div>

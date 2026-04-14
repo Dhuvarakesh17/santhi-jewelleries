@@ -148,7 +148,7 @@ const GoldCustomized = () => {
   return (
     <div className="overflow-hidden font-sans bg-white">
       {/* HERO SECTION */}
-      <section className="relative h-[70vh] flex items-center justify-center text-center">
+      <section className="relative h-[62vh] min-h-[460px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/showcase/custom_hero.webp"
@@ -191,11 +191,11 @@ const GoldCustomized = () => {
       </section>
 
       {/* INTRO SECTION */}
-      <section className="max-w-5xl px-4 py-24 mx-auto text-center">
+      <section className="max-w-5xl px-4 py-12 lg:py-14 mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="relative p-10 lg:p-16 border-x border-[#5B0E23]/20"
+          className="relative p-8 lg:p-10 border-x border-[#5B0E23]/20"
         >
           <div className="absolute top-0 px-6 -translate-x-1/2 -translate-y-1/2 bg-white left-1/2">
             <Heart className="w-8 h-8 text-maroon" />
@@ -210,15 +210,15 @@ const GoldCustomized = () => {
       </section>
 
       {/* WHY CHOOSE SECTION */}
-      <section className="py-24 bg-[#faf7f2]">
+      <section className="py-14 lg:py-16 bg-[#faf7f2]">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="mb-16 space-y-4 text-center">
+          <div className="mb-10 lg:mb-12 space-y-3 text-center">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5B0E23]">
               Why Choose Customized Jewelry?
             </h2>
             <div className="h-1 w-24 bg-[#D4AF37] mx-auto"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 lg:gap-7 md:grid-cols-2 lg:grid-cols-4">
             {whyChoose.map((item, i) => (
               <motion.div
                 key={i}
@@ -241,10 +241,10 @@ const GoldCustomized = () => {
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section id="gold-section" className="py-32 space-y-40">
+      <section id="gold-section" className="py-16 lg:py-20 space-y-16 lg:space-y-20">
         {/* BRACELETS */}
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="mb-20">
+          <div className="mb-10 lg:mb-12">
             <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] mb-6">
               Customized Gold Bracelets
             </h2>
@@ -255,13 +255,13 @@ const GoldCustomized = () => {
             </p>
           </div>
 
-          <div className="space-y-20">
+          <div className="space-y-10 lg:space-y-12">
             {/* Name Bracelets Sub-grid */}
             <div>
-              <h3 className="text-xl font-bold tracking-[0.2em] text-maroon uppercase border-b border-stone-100 pb-4 mb-10">
+              <h3 className="text-lg font-bold tracking-[0.15em] text-maroon uppercase border-b border-stone-100 pb-3 mb-6 lg:mb-8">
                 1. Name Bracelets
               </h3>
-              <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {nameBracelets.map((item, i) => (
                   <ProductCard key={i} item={item} />
                 ))}
@@ -270,10 +270,10 @@ const GoldCustomized = () => {
 
             {/* Men & Women Sub-grid */}
             <div>
-              <h3 className="text-xl font-bold tracking-[0.2em] text-maroon uppercase border-b border-stone-100 pb-4 mb-10">
+              <h3 className="text-lg font-bold tracking-[0.15em] text-maroon uppercase border-b border-stone-100 pb-3 mb-6 lg:mb-8">
                 2. Bracelets for Men & Women
               </h3>
-              <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {menWomenBracelets.map((item, i) => (
                   <ProductCard key={i} item={item} />
                 ))}
@@ -284,7 +284,7 @@ const GoldCustomized = () => {
 
         {/* PENDANTS */}
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="flex flex-col justify-between gap-8 mb-16 lg:flex-row lg:items-end">
+          <div className="flex flex-col justify-between gap-6 mb-10 lg:mb-12 lg:flex-row lg:items-end">
             <div className="lg:w-1/2">
               <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] mb-6">
                 Customized Gold Pendants
@@ -296,7 +296,7 @@ const GoldCustomized = () => {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {pendants.map((item, i) => (
               <ProductCard key={i} item={item} />
             ))}
@@ -305,7 +305,7 @@ const GoldCustomized = () => {
 
         {/* RINGS */}
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="flex flex-col justify-between gap-8 mb-16 text-right lg:flex-row lg:items-end lg:text-left">
+          <div className="flex flex-col justify-between gap-6 mb-10 lg:mb-12 text-right lg:flex-row lg:items-end lg:text-left">
             <div className="lg:w-full">
               <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] mb-6">
                 Customized Gold Rings
@@ -316,7 +316,7 @@ const GoldCustomized = () => {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {rings.map((item, i) => (
               <ProductCard key={i} item={item} />
             ))}
@@ -325,10 +325,10 @@ const GoldCustomized = () => {
       </section>
 
       {/* LIGHTWEIGHT SECTION */}
-      <section className="py-32 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
+      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-maroon/10 blur-[100px] rounded-full -mr-48 -mt-48"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="mb-20 space-y-4 text-center">
+          <div className="mb-10 lg:mb-12 space-y-3 text-center">
             <span className="text-sm font-bold tracking-widest uppercase text-[#5B0E23]">
               Everyday Elegance
             </span>
@@ -337,12 +337,12 @@ const GoldCustomized = () => {
             </h2>
             <div className="w-20 h-1 mx-auto mt-6 bg-[#D4AF37]"></div>
           </div>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-3">
             {lightweightItems.map((item, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className="p-8 border group bg-white border-[#5B0E23]/10 rounded-2xl"
+                className="p-6 lg:p-7 border group bg-white border-[#5B0E23]/10 rounded-2xl"
               >
                 <div className="mb-8 overflow-hidden aspect-square rounded-xl">
                   <img
@@ -364,13 +364,13 @@ const GoldCustomized = () => {
       </section>
 
       {/* WHY BUY FROM US */}
-      <section className="px-4 py-32 mx-auto max-w-7xl lg:px-8">
-        <div className="mb-20 text-center">
+      <section className="px-4 py-16 lg:py-20 mx-auto max-w-7xl lg:px-8">
+        <div className="mb-10 lg:mb-12 text-center">
           <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5B0E23] mb-4 uppercase tracking-[0.2em]">
             Why Buy From Us?
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {whyBuyFromUs.map((item, i) => (
             <motion.div
               key={i}
@@ -392,8 +392,8 @@ const GoldCustomized = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-24 bg-[#faf7f2] border-y border-[#5B0E23]/10">
-        <div className="max-w-4xl px-4 mx-auto space-y-10 text-center">
+      <section className="py-16 lg:py-20 bg-[#faf7f2] border-y border-[#5B0E23]/10">
+        <div className="max-w-4xl px-4 mx-auto space-y-7 lg:space-y-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23]">
             Order Your Gold Customized Jewelry Today
           </h2>
@@ -432,7 +432,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => (
     whileHover={{ y: -10 }}
     className="overflow-hidden transition-all duration-500 bg-white border shadow-sm group rounded-2xl border-stone-100 hover:shadow-xl"
   >
-    <div className="aspect-[4/5] overflow-hidden relative">
+    <div className="aspect-[4/4.8] overflow-hidden relative">
       <img
         src={item.img}
         alt={item.name}
@@ -444,7 +444,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => (
         </span>
       </div>
     </div>
-    <div className="p-8">
+    <div className="p-6">
       {item.sub && (
         <span className="text-[10px] text-maroon font-bold tracking-[0.2em] uppercase mb-2 block">
           {item.sub}
