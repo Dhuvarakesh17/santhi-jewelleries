@@ -63,7 +63,10 @@ const imagePriorityMatch = (imagePath: string, normalizedType: string) => {
   return 0;
 };
 
-const formatCurrency = (value: number) => `Rs ${value.toLocaleString("en-IN")}`;
+const formatCurrency = (value: number) => `₹ ${value.toLocaleString("en-IN")}`;
+const formatFilterRange = (value: number) =>
+  `₹${Math.round(value).toLocaleString("en-IN")}`;
+const parseCurrencyInput = (value: string) => Number(value.replace(/[^0-9]/g, ""));
 
 const getPriceBucket = (price: number) => {
   if (price < 50000) return "under-50k";
@@ -317,6 +320,19 @@ const SubCategoryPage = () => {
   };
 
   const titleText = `${type ?? ""} ${sub || "Collections"}`.trim();
+  const rangeSpan = Math.max(maxPrice - minPrice, 1);
+  const minThumbPercent = ((priceRange[0] - minPrice) / rangeSpan) * 100;
+  const maxThumbPercent = ((priceRange[1] - minPrice) / rangeSpan) * 100;
+
+  const updatePriceRange = (nextMin: number, nextMax: number) => {
+    const safeMin = Number.isFinite(nextMin) ? nextMin : minPrice;
+    const safeMax = Number.isFinite(nextMax) ? nextMax : maxPrice;
+
+    setPriceRange([
+      Math.max(minPrice, Math.min(safeMin, safeMax)),
+      Math.min(maxPrice, Math.max(safeMax, safeMin)),
+    ]);
+  };
 
   return (
     <div className="min-h-screen bg-[#fafaf9] pt-16 pb-24 px-4 lg:px-10">
@@ -393,12 +409,23 @@ const SubCategoryPage = () => {
                     setOpenSections((prev) => ({ ...prev, price: !prev.price }))
                   }
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-[30px] text-stone-800">
-                      <span>{formatCurrency(priceRange[0])}</span>
-                      <span>{formatCurrency(priceRange[1])}</span>
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between text-sm uppercase tracking-[0.12em] text-stone-500">
+                      <span className="font-semibold tracking-[0.28em]">Range</span>
+                      <span className="font-semibold text-[#1f2430] tracking-normal uppercase">
+                        {formatFilterRange(priceRange[0])} - {formatFilterRange(priceRange[1])}
+                      </span>
                     </div>
-                    <div className="relative pt-2">
+
+                    <div className="relative h-9">
+                      <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#7b0f2f]/20"></div>
+                      <div
+                        className="absolute top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#70132d]"
+                        style={{
+                          left: `${minThumbPercent}%`,
+                          right: `${100 - maxThumbPercent}%`,
+                        }}
+                      ></div>
                       <input
                         type="range"
                         min={minPrice}
@@ -406,12 +433,9 @@ const SubCategoryPage = () => {
                         value={priceRange[0]}
                         onChange={(event) => {
                           const nextMin = Number(event.target.value);
-                          setPriceRange((prev) => [
-                            Math.min(nextMin, prev[1]),
-                            prev[1],
-                          ]);
+                          updatePriceRange(nextMin, priceRange[1]);
                         }}
-                        className="w-full accent-black"
+                        className="price-range-thumb absolute inset-0 w-full appearance-none bg-transparent"
                       />
                       <input
                         type="range"
@@ -420,13 +444,45 @@ const SubCategoryPage = () => {
                         value={priceRange[1]}
                         onChange={(event) => {
                           const nextMax = Number(event.target.value);
-                          setPriceRange((prev) => [
-                            prev[0],
-                            Math.max(nextMax, prev[0]),
-                          ]);
+                          updatePriceRange(priceRange[0], nextMax);
                         }}
-                        className="w-full accent-black"
+                        className="price-range-thumb absolute inset-0 w-full appearance-none bg-transparent"
                       />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 pt-1">
+                      <div className="space-y-1.5">
+                        <p className="text-[11px] font-semibold tracking-[0.16em] text-stone-400 uppercase">
+                          Min (₹)
+                        </p>
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={Math.round(priceRange[0]).toString()}
+                          onChange={(event) => {
+                            const nextMin = parseCurrencyInput(event.target.value);
+                            if (Number.isNaN(nextMin)) return;
+                            updatePriceRange(nextMin, priceRange[1]);
+                          }}
+                          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-[#70132d]"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <p className="text-[11px] font-semibold tracking-[0.16em] text-stone-400 uppercase">
+                          Max (₹)
+                        </p>
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={Math.round(priceRange[1]).toString()}
+                          onChange={(event) => {
+                            const nextMax = parseCurrencyInput(event.target.value);
+                            if (Number.isNaN(nextMax)) return;
+                            updatePriceRange(priceRange[0], nextMax);
+                          }}
+                          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-[#70132d]"
+                        />
+                      </div>
                     </div>
                   </div>
                 </FilterSection>

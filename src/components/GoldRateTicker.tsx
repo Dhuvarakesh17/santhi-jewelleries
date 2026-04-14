@@ -51,7 +51,7 @@ const GoldRateTicker: React.FC = () => {
                 {item.label}
               </span>
               <span className="text-[14px] lg:text-[16px] font-bold tracking-tight text-[#5B0E23]">
-                Rs {item.value}
+                ₹ {item.value}
               </span>
             </div>
           ))}
