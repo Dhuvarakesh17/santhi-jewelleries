@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Birthstone&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Cinzel+Decorative:wght@400;700;900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -8,7 +8,9 @@
   --color-luxury-accent: #5d0e2e;
   --color-luxury-text: #1a1a1a;
 
-  --font-serif: "Playfair Display", serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-heading: "Cinzel Decorative", serif;
+  --font-script: "Birthstone", cursive;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 }
 
@@ -22,6 +24,97 @@ body {
 
 .gold-gradient {
   background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #b8860b 100%);
+}
+
+.gold-text-animated {
+  background: linear-gradient(
+    to right,
+    #bf953f 0%,
+    #fcf6ba 25%,
+    #b38728 50%,
+    #fbf5b7 75%,
+    #bf953f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+  display: inline-block;
+}
+
+.black-gold-animated {
+  background: linear-gradient(
+    to right,
+    #000000 0%,
+    #d4af37 25%,
+    #1a1a1a 50%,
+    #f3e5ab 75%,
+    #000000 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+  display: inline-block;
+}
+
+.silver-animated {
+  background: linear-gradient(
+    to right,
+    #4a4a4a 0%,
+    #b0b0b0 25%,
+    #666666 50%,
+    #b0b0b0 75%,
+    #4a4a4a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+  display: inline-block;
+}
+
+.diamond-animated {
+  background: linear-gradient(
+    to right,
+    #4a5568 0%,
+    #a0aec0 25%,
+    #2d3748 50%,
+    #a0aec0 75%,
+    #4a5568 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(91, 14, 35, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(91, 14, 35, 0.3);
 }
 
 @keyframes marquee {
@@ -66,11 +159,11 @@ body {
 }
 
 .luxury-frame--silver {
-  border-color: #a8a9ad;
+  border-color: #6d6d6d;
 }
 
 .luxury-frame--silver .luxury-frame__inner {
-  box-shadow: inset 0 0 18px rgba(241, 246, 255, 0.45);
+  box-shadow: inset 0 0 18px rgba(100, 100, 100, 0.2);
 }
 
 .luxury-frame--diamond {
@@ -115,22 +208,27 @@ body {
 }
 
 .testimonials-section {
-  background-color: #fff6ef;
-  color: #690c3b;
-  padding: 56px 0;
+  background-color: #fffaf7;
+  color: #5d0e2e;
+  padding: 80px 0;
 }
 
 .testimonials-section .section-header {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 48px;
 }
 
 .testimonials-section .section-header h2 {
-  font-size: 32px;
-  margin-bottom: 8px;
-  color: #690c3b;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-serif);
+  color: #5d0e2e; /* Maroon */
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
+
+.testimonials-section .section-header span {
+  color: #d4af37; /* Gold */
+}
+
 
 .testimonials-section .testimonial-stars {
   color: #ffd700;
@@ -281,4 +379,33 @@ body {
   .testimonials-controls {
     margin-top: 2px;
   }
+}
+.price-range-thumb {
+  pointer-events: none;
+}
+
+.price-range-thumb::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #5b0e23;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(91, 14, 35, 0.3);
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+}
+
+.price-range-thumb::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #5b0e23;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(91, 14, 35, 0.3);
+  cursor: pointer;
+  z-index: 10;
 }

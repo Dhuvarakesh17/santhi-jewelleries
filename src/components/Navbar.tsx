@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   ChevronDown,
   Menu,
@@ -21,7 +21,14 @@ const Navbar = () => {
 
   const searchRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { wishlist, openWishlist } = useWishlist();
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setActiveMenu(null);
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   // Close search when clicking outside
   useEffect(() => {
@@ -103,7 +110,7 @@ const Navbar = () => {
   }, [searchQuery]);
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-sm border-b border-[#5B0E23]/10 font-serif">
+    <header className="sticky top-0 z-[5000] bg-white/95 backdrop-blur-md shadow-sm border-b border-[#5B0E23]/10 font-serif">
       <nav className="max-w-[1440px] mx-auto px-4 lg:px-8 py-3 lg:py-4 flex justify-between items-center relative">
         {/* Mobile Menu Button - Left */}
         <button
@@ -171,7 +178,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 15 }}
                     transition={{ duration: 0.2 }}
-                    className={`absolute top-full left-0 bg-white shadow-2xl border-t-2 border-[#5B0E23] p-8 z-[100] ${item.type === "megamenu" ? "w-[800px] -left-48" : "min-w-[240px]"}`}
+                    className={`absolute top-full left-0 bg-white shadow-2xl border-t-2 border-[#5B0E23] p-8 z-[5001] ${item.type === "megamenu" ? "w-[800px] -left-48" : "min-w-[240px]"}`}
                   >
                     {item.type === "megamenu" ? (
                       <div className="grid grid-cols-3 gap-12">
@@ -185,6 +192,7 @@ const Navbar = () => {
                                 <li key={sub}>
                                   <Link
                                     to={`/category/${item.title}/${sub}`}
+                                    onClick={() => setActiveMenu(null)}
                                     className="text-[13px] text-stone-500 hover:text-[#5B0E23] transition-colors block"
                                   >
                                     {sub}
@@ -206,6 +214,7 @@ const Navbar = () => {
                                   ? "/gold/customized"
                                   : `/category/${item.title}/${sub}`
                               }
+                              onClick={() => setActiveMenu(null)}
                               className="text-[13px] text-stone-600 hover:text-[#5B0E23] hover:pl-2 transition-all block"
                             >
                               {sub}

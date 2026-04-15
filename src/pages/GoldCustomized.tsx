@@ -86,8 +86,8 @@ const GoldCustomized = () => {
       img: "/images/showcase/custom_men_bracelet.webp",
     },
     {
-      name: "Unity Custom Cuff",
-      img: "/images/showcase/custom_men_bracelet.webp",
+      name: "Unity Star Cuff",
+      img: "/images/showcase/star_gold_bracelet.webp",
     },
   ];
 
@@ -151,11 +151,11 @@ const GoldCustomized = () => {
       <section className="relative h-[62vh] min-h-[460px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/showcase/custom_hero.webp"
-            className="w-full h-full object-cover border border-[#5B0E23]/20"
+            src="/images/showcase/gold_custom_hero_indriya.webp"
+            className="w-full h-full object-cover"
             alt="Gold Customized Jewelry"
           />
-          <div className="absolute inset-0 bg-black/45"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
         <div className="relative z-10 max-w-5xl px-4 text-white">
           <motion.span
@@ -169,76 +169,47 @@ const GoldCustomized = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mb-8 font-serif text-4xl font-bold leading-tight lg:text-7xl"
+            className="mb-8 font-heading text-4xl lg:text-7xl leading-[1.1] text-white drop-shadow-2xl tracking-normal"
           >
-            Gold Customized Jewelry – <br className="hidden lg:block" />{" "}
-            Bracelets, Rings & Pendants
+            <span className="font-script text-5xl lg:text-8xl text-[#D4AF37] lowercase block mb-2">Gold</span>
+            Customized Jewelry – <br className="hidden lg:block" />{" "}
+            <span className="text-3xl lg:text-5xl opacity-90 block mt-4 font-light tracking-wide">Bracelets, Rings & Pendants</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-2xl mx-auto text-lg font-light text-gray-200 lg:text-xl"
-          >
-            Experience the perfect blend of traditional craftsmanship and modern
-            personalization. Every piece is a unique masterpiece crafted
-            exclusively for you.
-          </motion.p>
+          
         </div>
         <div className="absolute hidden -translate-x-1/2 bottom-10 left-1/2 animate-bounce lg:block">
           <div className="w-px h-16 bg-gradient-to-b from-maroon-light to-transparent"></div>
         </div>
       </section>
 
-      {/* INTRO SECTION */}
-      <section className="max-w-5xl px-4 py-12 lg:py-14 mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="relative p-8 lg:p-10 border-x border-[#5B0E23]/20"
-        >
-          <div className="absolute top-0 px-6 -translate-x-1/2 -translate-y-1/2 bg-white left-1/2">
-            <Heart className="w-8 h-8 text-maroon" />
-          </div>
-          <p className="text-xl lg:text-2xl text-[#5B0E23] leading-relaxed font-serif italic">
-            "Customized gold jewelry allows you to transform your most cherished
-            moments into timeless treasures. Our master artisans combine
-            heritage techniques with your personal vision to create jewelry that
-            speaks your unique language of elegance."
-          </p>
-        </motion.div>
-      </section>
+      {/* INTRO SECTION - Calligraphy Design */}
+      <section className="relative py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
+        {/* Soft Background Accents */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-50">
+          <svg className="w-full h-full" viewBox="0 0 1440 400" fill="none">
+            <path d="M-100 350C200 300 400 50 800 150C1200 250 1500 0 1500 0" stroke="#D4AF37" strokeWidth="1.2" />
+            <path d="M-50 400C300 350 500 100 900 200C1300 300 1600 50 1600 50" stroke="#D4AF37" strokeWidth="1.2" />
+          </svg>
+        </div>
 
-      {/* WHY CHOOSE SECTION */}
-      <section className="py-14 lg:py-16 bg-[#faf7f2]">
-        <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <div className="mb-10 lg:mb-12 space-y-3 text-center">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5B0E23]">
-              Why Choose Customized Jewelry?
-            </h2>
-            <div className="h-1 w-24 bg-[#D4AF37] mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 gap-6 lg:gap-7 md:grid-cols-2 lg:grid-cols-4">
-            {whyChoose.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-[#5B0E23]/10 hover:border-[#5B0E23]/50 transition-all duration-300 group"
-              >
-                <div className="w-14 h-14 bg-[#5B0E23]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#5B0E23]/10 transition-colors">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-[#5B0E23] mb-3">
-                  {item.title}
-                </h3>
-                <p className="leading-relaxed text-stone-600">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="max-w-5xl px-4 mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            className="space-y-12"
+          >
+           
+            
+            <p className="text-2xl lg:text-4xl text-stone-600 font-serif leading-[1.6] italic max-w-5xl mx-auto">
+              Our master artisans combine heritage techniques with your personal vision <br className="hidden lg:block" />
+              to create jewelry that speaks your unique <span className="font-script text-5xl lg:text-7xl text-[#D4AF37] lowercase">language</span> of elegance.
+            </p>
+          </motion.div>
         </div>
       </section>
+
+     
 
       {/* PRODUCT CATEGORIES */}
       <section
@@ -248,14 +219,10 @@ const GoldCustomized = () => {
         {/* BRACELETS */}
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <div className="mb-10 lg:mb-12">
-            <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] mb-6">
+            <h2 className="text-4xl lg:text-6xl font-heading font-bold black-gold-animated mb-6 uppercase tracking-wide">
               Customized Gold Bracelets
             </h2>
-            <p className="max-w-3xl text-lg font-light text-stone-600">
-              Make a bold statement with our range of personalized bracelets.
-              Whether it's your name in golden script or a rugged band for men,
-              we craft it to perfection.
-            </p>
+            
           </div>
 
           <div className="space-y-10 lg:space-y-12">
@@ -289,14 +256,9 @@ const GoldCustomized = () => {
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <div className="flex flex-col justify-between gap-6 mb-10 lg:mb-12 lg:flex-row lg:items-end">
             <div className="lg:w-1/2">
-              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] mb-6">
+              <h2 className="text-4xl lg:text-5xl font-serif font-bold black-gold-animated mb-6">
                 Customized Gold Pendants
               </h2>
-              <p className="text-lg font-light text-stone-600">
-                Cherish your memories with our photo pendants and custom
-                engravings. The perfect way to keep your loved ones close to
-                your heart.
-              </p>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -310,13 +272,9 @@ const GoldCustomized = () => {
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <div className="flex flex-col justify-between gap-6 mb-10 lg:mb-12 text-right lg:flex-row lg:items-end lg:text-left">
             <div className="lg:w-full">
-              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] mb-6">
+              <h2 className="text-4xl lg:text-5xl font-serif font-bold black-gold-animated mb-6">
                 Customized Gold Rings
               </h2>
-              <p className="max-w-3xl text-lg font-light text-stone-600">
-                From dream engagement rings to personalized daily bands, we
-                bring your vision to life with exceptional detail and quality.
-              </p>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -332,13 +290,11 @@ const GoldCustomized = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-maroon/10 blur-[100px] rounded-full -mr-48 -mt-48"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <div className="mb-10 lg:mb-12 space-y-3 text-center">
-            <span className="text-sm font-bold tracking-widest uppercase text-[#5B0E23]">
-              Everyday Elegance
-            </span>
-            <h2 className="font-serif text-4xl font-bold lg:text-5xl text-[#5B0E23]">
+           
+            <h2 className="font-serif text-4xl font-bold lg:text-5xl black-gold-animated">
               Lightweight Gold Jewelry
             </h2>
-            <div className="w-20 h-1 mx-auto mt-6 bg-[#D4AF37]"></div>
+           
           </div>
           <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-3">
             {lightweightItems.map((item, i) => (
@@ -369,7 +325,7 @@ const GoldCustomized = () => {
       {/* WHY BUY FROM US */}
       <section className="px-4 py-16 lg:py-20 mx-auto max-w-7xl lg:px-8">
         <div className="mb-10 lg:mb-12 text-center">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5B0E23] mb-4 uppercase tracking-[0.2em]">
+          <h2 className="text-3xl lg:text-4xl font-serif font-bold black-gold-animated mb-4 uppercase tracking-[0.2em]">
             Why Buy From Us?
           </h2>
         </div>
@@ -397,7 +353,7 @@ const GoldCustomized = () => {
       {/* CTA SECTION */}
       <section className="py-16 lg:py-20 bg-[#faf7f2] border-y border-[#5B0E23]/10">
         <div className="max-w-4xl px-4 mx-auto space-y-7 lg:space-y-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23]">
+          <h2 className="text-4xl lg:text-5xl font-heading font-bold black-gold-animated tracking-wide uppercase">
             Order Your Gold Customized Jewelry Today
           </h2>
           <p className="text-lg font-light tracking-wide text-stone-600">
@@ -441,11 +397,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => (
         alt={item.name}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 border border-[#5B0E23]/20"
       />
-      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-6 transition-transform duration-500 translate-y-full bg-gradient-to-t from-black/60 to-transparent group-hover:translate-y-0">
-        <span className="flex items-center gap-2 text-xs font-bold tracking-widest text-white uppercase">
-          View Details <ArrowRight size={14} />
-        </span>
-      </div>
     </div>
     <div className="p-6">
       {item.sub && (

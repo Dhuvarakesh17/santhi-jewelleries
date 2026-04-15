@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ChevronDown, Heart, SlidersHorizontal } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Heart, SlidersHorizontal, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { JEWELLERY_DATA } from "../constants/jewelleryData";
 import { useWishlist } from "../context/WishlistContext";
 
@@ -61,20 +61,20 @@ const getCategoryPalette = (category: string) => {
 
   if (normalized === "silver") {
     return {
-      titleColor: "#606772",
-      priceColor: "#8D939B",
+      titleColor: "#5B0E23",
+      priceColor: "#5c636a",
     };
   }
 
   if (normalized === "diamond" || normalized === "platinum") {
     return {
-      titleColor: "#444A5D",
-      priceColor: "#7E86A1",
+      titleColor: "#5B0E23",
+      priceColor: "#4a5568",
     };
   }
 
   return {
-    titleColor: "#6E162F",
+    titleColor: "#5B0E23",
     priceColor: "#C9A84C",
   };
 };
@@ -83,7 +83,7 @@ const getTitleColorByCategory = (category: string) => {
   const normalized = normalizeCategory(category);
 
   if (normalized === "silver") {
-    return "#C0C0C0"; // Silver
+    return "#5c636a"; // Darker Silver
   }
 
   if (normalized === "diamond") {
@@ -154,23 +154,44 @@ const FilterSection: React.FC<{
   onToggle: () => void;
   children: React.ReactNode;
 }> = ({ title, isOpen, onToggle, children }) => (
-  <div className="pb-5 mb-5 border-b border-stone-200">
+  <div className="pb-6 mb-6 border-b border-stone-100 last:border-0 last:mb-0">
     <button
       onClick={onToggle}
-      className="flex items-center justify-between w-full text-left"
+      className="flex items-center justify-between w-full text-left group"
       type="button"
     >
-      <span className="text-[11px] tracking-[0.35em] font-semibold text-stone-700 uppercase">
+      <span className="text-[11px] tracking-[0.25em] font-bold text-stone-800 uppercase group-hover:text-maroon transition-colors">
         {title}
       </span>
-      <ChevronDown
-        size={18}
-        className={`text-stone-700 transition-transform ${isOpen ? "rotate-180" : ""}`}
-      />
+      <motion.div
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <ChevronDown size={18} className="text-stone-400 group-hover:text-maroon" />
+      </motion.div>
     </button>
-    {isOpen && <div className="pt-4 space-y-3">{children}</div>}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+          className="overflow-hidden"
+        >
+          <div className="pt-5 space-y-4">{children}</div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   </div>
 );
+
+const getAnimationClassByCategory = (category: string) => {
+  const normalized = normalizeCategory(category);
+  if (normalized === "silver") return "silver-animated";
+  if (normalized === "diamond" || normalized === "platinum") return "diamond-animated";
+  return "black-gold-animated";
+};
 
 const SubCategoryPage = () => {
   const { type, sub } = useParams();
@@ -187,6 +208,15 @@ const SubCategoryPage = () => {
     price: true,
     jewelType: true,
   });
+  const [isSortOpen, setIsSortOpen] = useState(false);
+
+  const sortOptions = [
+    { value: "best-selling", label: "Best Selling" },
+    { value: "newest", label: "Latest Arrivals" },
+    { value: "price-low-high", label: "Price: Low to High" },
+    { value: "price-high-low", label: "Price: High to Low" },
+    { value: "name-a-z", label: "Alphabetically, A-Z" },
+  ];
 
   const items = useMemo(() => {
     const normalizedType = normalizeCategory(type || "");
@@ -410,232 +440,305 @@ const SubCategoryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] pt-16 pb-24 px-4 lg:px-10">
+    <div className="min-h-screen bg-[#fafaf9] pt-8 pb-24 px-4 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
-        {/* Title Section */}
-        <div className="mb-12 space-y-4 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-4xl font-bold tracking-widest uppercase lg:text-5xl"
-            style={{ color: getTitleColorByCategory(type ?? "gold") }}
+        <div className="relative mb-16 text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-24 bg-maroon/5 blur-[80px] rounded-full pointer-events-none"></div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="inline-block relative"
           >
-            {titleText}
-          </motion.h1>
-          <div className="h-0.5 w-24 bg-gold mx-auto"></div>
-          <p className="font-sans tracking-wide text-gray-500">
-            {sub
-              ? `A curated selection of the finest ${collectionText} masterpieces.`
-              : `Explore our prestigious collection of ${type?.toLowerCase()} jewellery.`}
-          </p>
+
+            <motion.h1
+              initial={{ letterSpacing: "0.05em", opacity: 0 }}
+              animate={{ letterSpacing: "0.1em", opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className={`relative font-heading text-4xl lg:text-7xl font-bold uppercase inline-block mb-2 tracking-[0.1em] ${getAnimationClassByCategory(type ?? "gold")}`}
+            >
+              {titleText}
+              {/* Shine Effect on Text */}
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-shimmer pointer-events-none"></div>
+            </motion.h1>
+
+            
+            {/* Elegant double underline */}
+            <motion.div 
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1.5, delay: 0.5 }}
+              className="mt-4 flex flex-col items-center gap-0.5"
+            >
+              <div className="h-[2px] w-full bg-maroon max-w-[80px]"></div>
+              <div className="h-[1px] w-full bg-maroon/30 max-w-[120px]"></div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {items.length > 0 ? (
           <div
-            className={`grid grid-cols-1 ${isFilterOpen ? "lg:grid-cols-[320px_minmax(0,1fr)]" : ""} gap-8 lg:gap-10`}
+            className={`grid grid-cols-1 ${isFilterOpen ? "lg:grid-cols-[280px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)]" : ""} gap-8 lg:gap-12 pb-10`}
           >
-            {isFilterOpen && (
-              <aside className="p-6 bg-white border border-stone-200 h-fit lg:sticky lg:top-28">
-                <FilterSection
-                  title="Availability"
-                  isOpen={openSections.availability}
-                  onToggle={() =>
-                    setOpenSections((prev) => ({
-                      ...prev,
-                      availability: !prev.availability,
-                    }))
-                  }
+            <AnimatePresence>
+              {isFilterOpen && (
+                <motion.aside
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="hidden lg:block h-fit sticky top-[120px] bg-[#5B0E23]/[0.04] backdrop-blur-2xl border-2 border-[#5B0E23]/20 shadow-2xl rounded-[32px] overflow-hidden"
                 >
-                  <label className="flex items-center justify-between text-sm cursor-pointer text-stone-600">
-                    <span>In stock ({availabilityCounts.inStock})</span>
-                    <input
-                      type="checkbox"
-                      checked={availability.includes("in-stock")}
-                      onChange={() =>
-                        toggleSelection(
-                          "in-stock",
-                          availability,
-                          setAvailability,
-                        )
+                  <div className="max-h-[calc(100vh-180px)] overflow-y-auto custom-scrollbar p-8">
+                    <FilterSection
+                      title="Availability"
+                      isOpen={openSections.availability}
+                      onToggle={() =>
+                        setOpenSections((prev) => ({
+                          ...prev,
+                          availability: !prev.availability,
+                        }))
                       }
-                      className="accent-[#5B0E23]"
-                    />
-                  </label>
-                  <label className="flex items-center justify-between text-sm cursor-pointer text-stone-600">
-                    <span>Out of stock ({availabilityCounts.outOfStock})</span>
-                    <input
-                      type="checkbox"
-                      checked={availability.includes("out-of-stock")}
-                      onChange={() =>
-                        toggleSelection(
-                          "out-of-stock",
-                          availability,
-                          setAvailability,
-                        )
-                      }
-                      className="accent-[#5B0E23]"
-                    />
-                  </label>
-                </FilterSection>
-
-                <FilterSection
-                  title="Price"
-                  isOpen={openSections.price}
-                  onToggle={() =>
-                    setOpenSections((prev) => ({ ...prev, price: !prev.price }))
-                  }
-                >
-                  <div className="space-y-5">
-                    <div className="flex items-center justify-between text-sm uppercase tracking-[0.12em] text-stone-500">
-                      <span className="font-semibold tracking-[0.28em]">
-                        Range
-                      </span>
-                      <span className="font-semibold text-[#1f2430] tracking-normal uppercase">
-                        {formatFilterRange(priceRange[0])} -{" "}
-                        {formatFilterRange(priceRange[1])}
-                      </span>
-                    </div>
-
-                    <div className="relative h-9">
-                      <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#7b0f2f]/20"></div>
-                      <div
-                        className="absolute top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#70132d]"
-                        style={{
-                          left: `${minThumbPercent}%`,
-                          right: `${100 - maxThumbPercent}%`,
-                        }}
-                      ></div>
-                      <input
-                        type="range"
-                        min={minPrice}
-                        max={maxPrice}
-                        value={priceRange[0]}
-                        onChange={(event) => {
-                          const nextMin = Number(event.target.value);
-                          updatePriceRange(nextMin, priceRange[1]);
-                        }}
-                        className="absolute inset-0 w-full bg-transparent appearance-none price-range-thumb"
-                      />
-                      <input
-                        type="range"
-                        min={minPrice}
-                        max={maxPrice}
-                        value={priceRange[1]}
-                        onChange={(event) => {
-                          const nextMax = Number(event.target.value);
-                          updatePriceRange(priceRange[0], nextMax);
-                        }}
-                        className="absolute inset-0 w-full bg-transparent appearance-none price-range-thumb"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4 pt-1">
-                      <div className="space-y-1.5">
-                        <p className="text-[11px] font-semibold tracking-[0.16em] text-stone-400 uppercase">
-                          Min (₹)
-                        </p>
-                        <input
-                          type="text"
-                          inputMode="numeric"
-                          value={Math.round(priceRange[0]).toString()}
-                          onChange={(event) => {
-                            const nextMin = parseCurrencyInput(
-                              event.target.value,
-                            );
-                            if (Number.isNaN(nextMin)) return;
-                            updatePriceRange(nextMin, priceRange[1]);
-                          }}
-                          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-[#70132d]"
-                        />
-                      </div>
-                      <div className="space-y-1.5">
-                        <p className="text-[11px] font-semibold tracking-[0.16em] text-stone-400 uppercase">
-                          Max (₹)
-                        </p>
-                        <input
-                          type="text"
-                          inputMode="numeric"
-                          value={Math.round(priceRange[1]).toString()}
-                          onChange={(event) => {
-                            const nextMax = parseCurrencyInput(
-                              event.target.value,
-                            );
-                            if (Number.isNaN(nextMax)) return;
-                            updatePriceRange(priceRange[0], nextMax);
-                          }}
-                          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-[#70132d]"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </FilterSection>
-
-                <FilterSection
-                  title="Jewel Type"
-                  isOpen={openSections.jewelType}
-                  onToggle={() =>
-                    setOpenSections((prev) => ({
-                      ...prev,
-                      jewelType: !prev.jewelType,
-                    }))
-                  }
-                >
-                  {availableJewelTypes.map((jewelType) => (
-                    <label
-                      key={jewelType}
-                      className="flex items-center justify-between text-sm cursor-pointer text-stone-600"
                     >
-                      <span>
-                        {jewelType} ({jewelTypeCounts.get(jewelType) || 0})
-                      </span>
-                      <input
-                        type="checkbox"
-                        checked={jewelTypes.includes(jewelType)}
-                        onChange={() =>
-                          toggleSelection(jewelType, jewelTypes, setJewelTypes)
-                        }
-                        className="accent-[#5B0E23]"
-                      />
-                    </label>
-                  ))}
-                </FilterSection>
+                      <label className="flex items-center justify-between text-sm cursor-pointer group">
+                        <span className="text-stone-600 group-hover:text-maroon transition-colors">
+                          In stock ({availabilityCounts.inStock})
+                        </span>
+                        <input
+                          type="checkbox"
+                          checked={availability.includes("in-stock")}
+                          onChange={() =>
+                            toggleSelection(
+                              "in-stock",
+                              availability,
+                              setAvailability,
+                            )
+                          }
+                          className="w-4 h-4 accent-maroon rounded cursor-pointer transition-transform group-hover:scale-110"
+                        />
+                      </label>
+                      <label className="flex items-center justify-between text-sm cursor-pointer group">
+                        <span className="text-stone-600 group-hover:text-maroon transition-colors">
+                          Out of stock ({availabilityCounts.outOfStock})
+                        </span>
+                        <input
+                          type="checkbox"
+                          checked={availability.includes("out-of-stock")}
+                          onChange={() =>
+                            toggleSelection(
+                              "out-of-stock",
+                              availability,
+                              setAvailability,
+                            )
+                          }
+                          className="w-4 h-4 accent-maroon rounded cursor-pointer transition-transform group-hover:scale-110"
+                        />
+                      </label>
+                    </FilterSection>
 
-                <button
-                  onClick={clearFilters}
-                  type="button"
-                  className="w-full border border-[#5B0E23] text-[#5B0E23] font-semibold text-sm py-2 hover:bg-[#5B0E23] hover:text-white transition-colors"
-                >
-                  Clear Filters
-                </button>
-              </aside>
+                    <FilterSection
+                      title="Price"
+                      isOpen={openSections.price}
+                      onToggle={() =>
+                        setOpenSections((prev) => ({
+                          ...prev,
+                          price: !prev.price,
+                        }))
+                      }
+                    >
+                      <div className="space-y-5">
+                        <div className="flex items-center justify-between text-sm uppercase tracking-[0.12em] text-stone-500">
+                          <span className="font-semibold tracking-[0.28em]">
+                            Range
+                          </span>
+                          <span className="font-semibold text-[#1f2430] tracking-normal uppercase">
+                            {formatFilterRange(priceRange[0])} -{" "}
+                            {formatFilterRange(priceRange[1])}
+                          </span>
+                        </div>
+
+                        <div className="relative h-9">
+                          <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#5b0e23]/10"></div>
+                          <div
+                            className="absolute top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-maroon"
+                            style={{
+                              left: `${minThumbPercent}%`,
+                              right: `${100 - maxThumbPercent}%`,
+                            }}
+                          ></div>
+                          <input
+                            type="range"
+                            min={minPrice}
+                            max={maxPrice}
+                            value={priceRange[0]}
+                            onChange={(event) => {
+                              const nextMin = Number(event.target.value);
+                              updatePriceRange(nextMin, priceRange[1]);
+                            }}
+                            className="absolute inset-0 w-full bg-transparent appearance-none price-range-thumb"
+                          />
+                          <input
+                            type="range"
+                            min={minPrice}
+                            max={maxPrice}
+                            value={priceRange[1]}
+                            onChange={(event) => {
+                              const nextMax = Number(event.target.value);
+                              updatePriceRange(priceRange[0], nextMax);
+                            }}
+                            className="absolute inset-0 w-full bg-transparent appearance-none price-range-thumb"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4 pt-1">
+                          <div className="space-y-1.5">
+                            <p className="text-[11px] font-semibold tracking-[0.16em] text-stone-400 uppercase">
+                              Min (₹)
+                            </p>
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              value={Math.round(priceRange[0]).toString()}
+                              onChange={(event) => {
+                                const nextMin = parseCurrencyInput(
+                                  event.target.value,
+                                );
+                                if (Number.isNaN(nextMin)) return;
+                                updatePriceRange(nextMin, priceRange[1]);
+                              }}
+                              className="w-full rounded-lg border border-stone-200 bg-white/50 px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-maroon focus:ring-4 focus:ring-maroon/5"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <p className="text-[11px] font-semibold tracking-[0.16em] text-stone-400 uppercase">
+                              Max (₹)
+                            </p>
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              value={Math.round(priceRange[1]).toString()}
+                              onChange={(event) => {
+                                const nextMax = parseCurrencyInput(
+                                  event.target.value,
+                                );
+                                if (Number.isNaN(nextMax)) return;
+                                updatePriceRange(priceRange[0], nextMax);
+                              }}
+                              className="w-full rounded-lg border border-stone-200 bg-white/50 px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-maroon focus:ring-4 focus:ring-maroon/5"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </FilterSection>
+
+                    <FilterSection
+                      title="Jewel Type"
+                      isOpen={openSections.jewelType}
+                      onToggle={() =>
+                        setOpenSections((prev) => ({
+                          ...prev,
+                          jewelType: !prev.jewelType,
+                        }))
+                      }
+                    >
+                      {availableJewelTypes.map((jewelType) => (
+                        <label
+                          key={jewelType}
+                          className="flex items-center justify-between text-sm cursor-pointer group"
+                        >
+                          <span className="text-stone-600 group-hover:text-maroon transition-colors">
+                            {jewelType} ({jewelTypeCounts.get(jewelType) || 0})
+                          </span>
+                          <input
+                            type="checkbox"
+                            checked={jewelTypes.includes(jewelType)}
+                            onChange={() =>
+                              toggleSelection(
+                                jewelType,
+                                jewelTypes,
+                                setJewelTypes,
+                              )
+                            }
+                            className="w-4 h-4 accent-maroon rounded cursor-pointer transition-transform group-hover:scale-110"
+                          />
+                        </label>
+                      ))}
+                    </FilterSection>
+
+                    <motion.button
+                      whileHover={{ scale: 1.02, backgroundColor: "rgba(91, 14, 35, 0.08)" }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={clearFilters}
+                      type="button"
+                      className="w-full mt-6 text-maroon font-bold text-[10px] tracking-[0.25em] py-4 rounded-xl border border-maroon/20 transition-all uppercase bg-maroon/[0.03] hover:border-maroon/40"
+                    >
+                      Reset Filters
+                    </motion.button>
+                  </div>
+                </motion.aside>
             )}
+            </AnimatePresence>
 
             <section className="space-y-8">
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div className="flex items-center gap-4">
-                  <button
+              <div className="relative z-[10] flex flex-wrap items-center justify-between gap-6 px-4 py-8 border-y border-stone-100/60 bg-white/30 backdrop-blur-sm">
+                <div className="flex flex-wrap items-center gap-4">
+                  <motion.button
+                    whileHover={{ scale: 1.02, backgroundColor: "rgba(91, 14, 35, 0.05)" }}
+                    whileTap={{ scale: 0.98 }}
                     type="button"
                     onClick={() => setIsFilterOpen((prev) => !prev)}
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-stone-300 bg-white text-stone-800 hover:border-[#5B0E23] hover:text-[#5B0E23] transition-colors"
+                    className="group inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-maroon/20 text-maroon font-bold text-[10px] tracking-[0.25em] uppercase transition-all shadow-sm"
                   >
-                    <SlidersHorizontal size={16} />
-                    {isFilterOpen ? "Close Filters" : "Open Filters"}
-                  </button>
-                  <p className="text-lg text-stone-700">
-                    {filteredItems.length} products
-                  </p>
+                    <SlidersHorizontal size={14} strokeWidth={2.5} className="group-hover:rotate-180 transition-transform duration-500" />
+                    {isFilterOpen ? "Hide Filters" : "Show Filters"}
+                  </motion.button>
+                  
+                  <div className="px-6 py-2.5 rounded-full border border-stone-200/60 text-stone-500 font-bold text-[10px] tracking-[0.25em] uppercase bg-stone-50/50">
+                    {filteredItems.length} Products Found
+                  </div>
                 </div>
-                <select
-                  value={sortBy}
-                  onChange={(event) => setSortBy(event.target.value)}
-                  className="border border-[#D9A56A] bg-white px-4 py-2.5 text-stone-800 min-w-[220px] focus:outline-none focus:border-[#5B0E23]"
+                
+                <div 
+                  className="relative min-w-[260px]"
+                  onMouseLeave={() => setIsSortOpen(false)}
                 >
-                  <option value="best-selling">Best selling</option>
-                  <option value="newest">Newest</option>
-                  <option value="price-low-high">Price: Low to High</option>
-                  <option value="price-high-low">Price: High to Low</option>
-                  <option value="name-a-z">Alphabetically, A-Z</option>
-                </select>
+                  <p className="absolute -top-6 left-1 text-[9px] font-bold tracking-[0.3em] text-stone-400 uppercase">Sort By</p>
+                  <button
+                    onClick={() => setIsSortOpen(!isSortOpen)}
+                    className="w-full flex items-center justify-between px-6 py-4 bg-white border border-stone-200 rounded-xl text-[13px] font-bold text-stone-800 transition-all hover:border-maroon/40 hover:shadow-xl hover:shadow-maroon/5 group"
+                  >
+                    <span className="tracking-wide">{sortOptions.find(opt => opt.value === sortBy)?.label}</span>
+                    <ChevronDown size={16} className={`text-maroon transition-transform duration-500 ${isSortOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {isSortOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 5, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 5, scale: 0.98 }}
+                        transition={{ duration: 0.2, ease: "circOut" }}
+                        className="absolute z-[100] top-full right-0 mt-0 w-full bg-transparent pt-1"
+                      >
+                        <div className="bg-white border border-stone-200 rounded-2xl shadow-2xl overflow-hidden py-2">
+                          {sortOptions.map((option) => (
+                            <button
+                              key={option.value}
+                              onClick={() => {
+                                setSortBy(option.value);
+                                setIsSortOpen(false);
+                              }}
+                              className={`w-full text-left px-6 py-3.5 text-[12px] transition-colors hover:bg-maroon/5 ${
+                                sortBy === option.value ? "text-maroon font-bold bg-maroon/[0.03]" : "text-stone-600 font-bold uppercase tracking-wider"
+                              }`}
+                            >
+                              {option.label}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
 
               {filteredItems.length > 0 ? (
@@ -647,21 +750,22 @@ const SubCategoryPage = () => {
                       return (
                         <motion.div
                           key={item.id}
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 30 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          whileHover={{ y: -10 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.35, delay: index * 0.02 }}
+                          transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
                           className="group"
                         >
-                          <div
-                            className={`luxury-frame aspect-square relative overflow-hidden ${getFrameVariant(item.category)}`}
+                          <motion.div 
+                            whileHover={{ y: -8, scale: 1.02 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className={`luxury-frame aspect-square relative overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ${getFrameVariant(item.category)}`}
                           >
-                            <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[8px] bg-white">
+                            <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[12px] bg-white">
                               <img
                                 src={item.image}
                                 alt={item.name}
-                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                                className="object-cover w-full h-full transition-all duration-700 group-hover:scale-110"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src =
                                     "https://via.placeholder.com/400x500?text=Jewellery+Showcase";
@@ -687,7 +791,7 @@ const SubCategoryPage = () => {
                                 }
                               />
                             </button>
-                          </div>
+                          </motion.div>
                           <div className="pt-3 space-y-2 text-center">
                             <h3
                               className="text-[19px] leading-tight font-serif"
@@ -713,46 +817,62 @@ const SubCategoryPage = () => {
                   </div>
 
                   {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-2 pt-4">
+                    <div className="flex items-center justify-center gap-12 pt-12 pb-12 border-t border-stone-100/60 mt-8">
                       <button
                         type="button"
-                        onClick={() =>
-                          setCurrentPage((prev) => Math.max(1, prev - 1))
-                        }
+                        onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                         disabled={currentPage === 1}
-                        className="px-3 py-2 text-sm border border-stone-300 bg-white text-stone-700 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#5B0E23] hover:text-[#5B0E23]"
+                        className="flex items-center gap-3 text-maroon disabled:opacity-20 disabled:cursor-not-allowed group transition-all"
                       >
-                        Prev
+                        <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Previous</span>
                       </button>
 
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                        (page) => (
-                          <button
-                            key={page}
-                            type="button"
-                            onClick={() => setCurrentPage(page)}
-                            className={`w-9 h-9 text-sm border transition-colors ${
-                              currentPage === page
-                                ? "bg-[#5B0E23] text-white border-[#5B0E23]"
-                                : "bg-white text-stone-700 border-stone-300 hover:border-[#5B0E23] hover:text-[#5B0E23]"
-                            }`}
-                          >
-                            {page}
-                          </button>
-                        ),
-                      )}
+                      <div className="flex items-center gap-8">
+                        {(() => {
+                          const windowSize = 3;
+                          const currentBlock = Math.floor((currentPage - 1) / windowSize);
+                          const startPage = currentBlock * windowSize + 1;
+                          const pages = [];
+                          for (let i = 0; i < windowSize; i++) {
+                            const page = startPage + i;
+                            if (page <= totalPages) {
+                              pages.push(
+                                <button
+                                  key={page}
+                                  type="button"
+                                  onClick={() => setCurrentPage(page)}
+                                  className="relative group py-2"
+                                >
+                                  <span className={`font-serif text-xl transition-all duration-300 ${
+                                    currentPage === page 
+                                      ? "text-maroon font-bold scale-110" 
+                                      : "text-stone-400 hover:text-maroon"
+                                  }`}>
+                                    {page}
+                                  </span>
+                                  {currentPage === page && (
+                                    <motion.div 
+                                      layoutId="activePage"
+                                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-maroon rounded-full"
+                                    />
+                                  )}
+                                </button>
+                              );
+                            }
+                          }
+                          return pages;
+                        })()}
+                      </div>
 
                       <button
                         type="button"
-                        onClick={() =>
-                          setCurrentPage((prev) =>
-                            Math.min(totalPages, prev + 1),
-                          )
-                        }
+                        onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                         disabled={currentPage === totalPages}
-                        className="px-3 py-2 text-sm border border-stone-300 bg-white text-stone-700 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#5B0E23] hover:text-[#5B0E23]"
+                        className="flex items-center gap-3 text-maroon disabled:opacity-20 disabled:cursor-not-allowed group transition-all"
                       >
-                        Next
+                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Next</span>
+                        <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   )}
@@ -765,7 +885,7 @@ const SubCategoryPage = () => {
                   <button
                     onClick={clearFilters}
                     type="button"
-                    className="text-[#5B0E23] font-semibold uppercase tracking-[0.2em] hover:underline"
+                    className="text-[#D4AF37] font-bold uppercase tracking-[0.3em] text-[11px] border-b border-[#D4AF37]/30 pb-1 hover:border-[#D4AF37] transition-all"
                   >
                     Reset Filters
                   </button>

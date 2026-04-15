@@ -61,33 +61,28 @@ const About = () => {
     <div className="overflow-hidden font-sans bg-white">
       {/* 1. HERO SECTION */}
       <section className="relative h-[560px] lg:h-[620px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 scale-110">
+        <div className="absolute inset-0 z-0">
           <img
-            src="/images/showcase/custom_hero.webp"
+            src="/images/about_bg_indriya.webp"
             alt="About Santhi Jewellers"
             className="object-cover w-full h-full"
           />
-          <div className="absolute inset-0 bg-black/45"></div>
-          {/* Decorative element */}
-          <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-20 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
-        <div className="relative z-10 w-full px-4 mx-auto text-white max-w-7xl lg:px-8">
+        <div className="relative z-10 w-full px-4 mx-auto text-white text-center max-w-7xl lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="max-w-3xl"
+            className="max-w-4xl mx-auto"
           >
-            <span className="text-[#D4AF37] font-bold tracking-[0.5em] uppercase text-xs lg:text-sm mb-6 block drop-shadow-md">
-              Our Legacy
+            <span className="text-[#D4AF37] font-script text-5xl lg:text-7xl lowercase mb-4 block drop-shadow-md">
+              our legacy
             </span>
-            <h1 className="mb-8 font-serif text-6xl font-bold leading-tight lg:text-8xl drop-shadow-lg">
+            <h1 className="mb-8 font-heading text-5xl lg:text-9xl font-black uppercase tracking-[0.1em] leading-none drop-shadow-2xl">
               About Us
             </h1>
-            <p className="text-xl lg:text-3xl font-light opacity-90 italic border-l-4 border-[#D4AF37] pl-8 leading-relaxed">
-              "Crafting timeless elegance and preserving heritage since 1985."
-            </p>
           </motion.div>
         </div>
       </section>
@@ -101,31 +96,9 @@ const About = () => {
                 <span className="text-maroon font-bold tracking-[0.3em] uppercase text-xs">
                   Generation of Trust
                 </span>
-                <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#5B0E23] leading-tight mt-2">
+                <h2 className="text-4xl lg:text-6xl font-heading font-bold leading-tight mt-2 black-gold-animated tracking-wide uppercase">
                   A Journey of Purity, Passion & Perfection
                 </h2>
-                <div className="h-1.5 w-24 bg-[#D4AF37] mt-6"></div>
-              </ZoomReveal>
-              <ZoomReveal delay={0.2}>
-                <div className="space-y-6 text-base font-light leading-relaxed text-stone-600 lg:text-lg">
-                  <p>
-                    For over three decades, Santhi Jewellers has been a
-                    sanctuary for those who seek more than just jewelry—they
-                    seek art. Since 1985, our commitment to purity and
-                    traditional craftsmanship has remained unwavering.
-                  </p>
-                  <p>
-                    What started as a small family venture has blossomed into a
-                    trusted name, serving generations with integrity. Each piece
-                    in our collection is a testament to our master artisans, who
-                    breathe life into gold and silver using techniques passed
-                    down through centuries.
-                  </p>
-                  <p className="font-serif italic font-medium text-[#5B0E23] text-xl border-l-2 border-maroon/20 pl-5 py-2">
-                    "We don't just sell jewelry; we celebrate the milestones of
-                    your life."
-                  </p>
-                </div>
               </ZoomReveal>
             </div>
             <div className="relative lg:w-1/2">
@@ -153,18 +126,14 @@ const About = () => {
       </section>
 
       {/* 3. MISSION, VISION & VALUES SECTION */}
-      <section className="py-16 lg:py-20 bg-[#fff6ef] relative overflow-hidden">
+      <section className="pt-16 pb-10 lg:pt-20 lg:pb-12 bg-[#fff6ef] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
         <div className="relative z-10 grid grid-cols-1 gap-8 px-4 mx-auto max-w-7xl lg:px-8 md:grid-cols-2 lg:grid-cols-3">
           <ZoomReveal>
             <motion.div
               whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full min-h-[470px] lg:min-h-[500px] flex flex-col"
-            >
-              <div className="w-20 h-20 bg-[#D4AF37]/15 rounded-2xl flex items-center justify-center text-[#5B0E23] mb-10 group-hover:bg-[#D4AF37]/30 transition-all duration-500 shadow-xl">
-                <Target size={40} />
-              </div>
-              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider text-[#5B0E23] uppercase">
+              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full flex flex-col">
+              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider uppercase black-gold-animated">
                 Our Mission
               </h3>
               <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
@@ -179,12 +148,8 @@ const About = () => {
           <ZoomReveal delay={0.2}>
             <motion.div
               whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full min-h-[470px] lg:min-h-[500px] flex flex-col"
-            >
-              <div className="w-20 h-20 bg-[#D4AF37]/15 rounded-2xl flex items-center justify-center text-[#5B0E23] mb-10 group-hover:bg-[#D4AF37]/30 transition-all duration-500 shadow-xl">
-                <Eye size={40} />
-              </div>
-              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider text-[#5B0E23] uppercase">
+              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full flex flex-col">
+              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider uppercase black-gold-animated">
                 Our Vision
               </h3>
               <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
@@ -199,12 +164,8 @@ const About = () => {
           <ZoomReveal delay={0.3}>
             <motion.div
               whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full min-h-[470px] lg:min-h-[500px] flex flex-col"
-            >
-              <div className="w-20 h-20 bg-[#D4AF37]/15 rounded-2xl flex items-center justify-center text-[#5B0E23] mb-10 group-hover:bg-[#D4AF37]/30 transition-all duration-500 shadow-xl">
-                <Sparkles size={40} />
-              </div>
-              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider text-[#5B0E23] uppercase">
+              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full flex flex-col">
+              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider uppercase black-gold-animated">
                 Our Values
               </h3>
               <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
@@ -218,15 +179,17 @@ const About = () => {
       </section>
 
       {/* 4. WHY CHOOSE US SECTION */}
-      <section className="py-16 bg-white lg:py-20">
+      <section className="pt-10 pb-16 lg:pt-12 lg:pb-20 bg-white">
         <div className="px-4 mx-auto text-center max-w-7xl lg:px-8">
           <ZoomReveal>
-            <span className="text-maroon font-bold tracking-[0.4em] uppercase text-xs">
-              Service Excellence
-            </span>
-            <h2 className="text-4xl lg:text-6xl font-serif font-bold text-[#5B0E23] mt-3 mb-12 lg:mb-14 uppercase tracking-widest leading-tight">
-              The Pillars of Santhi
-            </h2>
+            <div className="flex flex-col items-center">
+              <span className="text-maroon font-bold tracking-[0.4em] uppercase text-xs block mb-3">
+                Service Excellence
+              </span>
+              <h2 className="text-4xl lg:text-6xl font-serif font-bold mb-12 lg:mb-14 uppercase tracking-widest leading-tight black-gold-animated">
+                The Pillars of Santhi
+              </h2>
+            </div>
           </ZoomReveal>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -275,14 +238,13 @@ const About = () => {
         <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <ZoomReveal>
-            <div className="mb-12 text-center lg:mb-14">
-              <span className="text-[#D4AF37] font-bold uppercase tracking-[0.5em] text-xs">
+            <div className="flex flex-col items-center mb-12 lg:mb-14">
+              <span className="text-maroon font-bold uppercase tracking-[0.5em] text-xs block mb-3">
                 Behind The Masterpiece
               </span>
-              <h2 className="mt-3 font-serif text-4xl font-bold text-[#5B0E23] lg:text-6xl drop-shadow-sm">
+              <h2 className="mt-3 font-serif text-4xl font-bold lg:text-6xl drop-shadow-sm black-gold-animated">
                 The Art of Creation
               </h2>
-              <div className="h-1.5 w-32 bg-[#D4AF37] mx-auto mt-8"></div>
             </div>
           </ZoomReveal>
 
@@ -312,16 +274,9 @@ const About = () => {
       <section className="relative py-20 overflow-hidden bg-white lg:py-24">
         <div className="relative z-10 max-w-4xl px-4 mx-auto space-y-8 text-center lg:space-y-10">
           <ZoomReveal>
-            <h2 className="text-4xl lg:text-6xl font-serif font-bold text-[#5B0E23] leading-tight drop-shadow-sm">
+            <h2 className="text-4xl lg:text-6xl font-serif font-bold leading-tight drop-shadow-sm black-gold-animated">
               Begin Your Legacy With Us
             </h2>
-          </ZoomReveal>
-          <ZoomReveal delay={0.2}>
-            <p className="max-w-2xl mx-auto text-lg italic font-light leading-relaxed lg:text-xl text-stone-500">
-              Step into a world of curated brilliance. Whether it's for a
-              wedding or daily luxury, we have the perfect piece waiting for
-              you.
-            </p>
           </ZoomReveal>
           <ZoomReveal delay={0.3}>
             <Link

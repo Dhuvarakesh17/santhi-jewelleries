@@ -294,6 +294,8 @@ const Home = () => {
     containScroll: "keepSnaps",
   });
   const [selectedTestimonial, setSelectedTestimonial] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
 
   const scrollPrevTestimonial = useCallback(() => {
     emblaApi?.scrollPrev();
@@ -328,14 +330,15 @@ const Home = () => {
   }, [emblaApi]);
 
   useEffect(() => {
-    if (!emblaApi) return;
+    if (!emblaApi || isPaused) return;
 
     const autoplay = setInterval(() => {
       emblaApi.scrollNext();
-    }, 15000);
+    }, 3000);
 
     return () => clearInterval(autoplay);
-  }, [emblaApi]);
+  }, [emblaApi, isPaused]);
+
 
   return (
     <div className="overflow-hidden font-sans bg-white">
@@ -345,10 +348,8 @@ const Home = () => {
       <section className="py-8 lg:py-10 max-w-[1440px] mx-auto px-4 lg:px-8">
         <ScrollReveal>
           <div className="mb-8 space-y-3 text-center lg:mb-10">
-            <span className="text-maroon text-[10px] font-black tracking-[0.4em] uppercase opacity-70">
-              Signature Collections
-            </span>
-            <h2 className="font-serif text-3xl font-bold text-gray-900 uppercase lg:text-5xl">
+           
+            <h2 className="font-serif text-3xl font-bold uppercase lg:text-5xl black-gold-animated">
               Curated Showcase
             </h2>
             <div className="w-20 h-1 mx-auto mt-4 bg-maroon"></div>
@@ -404,7 +405,7 @@ const Home = () => {
                   The Art of Creation
                 </span>
                 <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.1]">
-                  Mastering The Fine Art Of Gold
+                  Mastering The Fine Art Of <span className="gold-text-animated">Gold</span>
                 </h2>
                 <p className="pl-5 mt-6 text-lg italic font-light leading-relaxed border-l-4 text-stone-500 border-maroon/20">
                   "Every piece at Santhi Jewellers tells a story of meticulous
@@ -438,14 +439,73 @@ const Home = () => {
         </div>
       </section>
 
+      
+      {/* Fashionable Trends Section */}
+      <section className="py-12 bg-white lg:py-14">
+        <div className="px-4 mx-auto max-w-7xl lg:px-8">
+          <ScrollReveal>
+            <div className="mb-8 space-y-4 text-center lg:mb-10">
+              <h2 className="font-serif text-4xl font-bold uppercase lg:text-6xl black-gold-animated">
+                Fashionable Trends
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3">
+            {fashionableItems.map((item, i) => (
+              <ScrollReveal key={i} delay={i * 0.1}>
+                <div className="group relative overflow-hidden rounded-[24px] shadow-lg border border-stone-100">
+                  <div className="h-[340px] lg:h-[440px] overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110 border border-[#5B0E23]/20"
+                    />
+                  </div>
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 transition-opacity duration-500 opacity-0 lg:p-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:opacity-100">
+                    <span className="text-[#D4AF37] font-black text-[10px] tracking-[0.4em] mb-4">
+                      {item.tag}
+                    </span>
+                    <h4 className="mb-6 font-serif text-3xl font-bold leading-tight text-white">
+                      {item.name}
+                    </h4>
+                    <Link
+                      to="/category/Gold"
+                      className="text-white text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn border-b border-white/30 pb-2 w-fit"
+                    >
+                      Explore Suite{" "}
+                      <ChevronRight
+                        size={16}
+                        className="transition-transform group-hover/btn:translate-x-1"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
-      <section className="testimonials-section">
-        <div className="w-full">
-          <div className="section-header">
-            <h2>Testimonials</h2>
+      <section className="py-16 border-t border-stone-100 bg-stone-50/30 testimonials-section">
+        <div className="px-4 mx-auto max-w-7xl lg:px-8">
+          <div className="mb-12 text-center section-header">
+            <span className="text-[#D4AF37] text-xs font-black tracking-[0.4em] uppercase mb-3 block">
+              What Our Clients Say
+            </span>
+            <h2 className="relative inline-block pb-4 font-serif text-4xl font-bold tracking-tight text-maroon lg:text-6xl">
+              Testimonials
+              <div className="absolute left-1/2 bottom-0 w-24 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent transform -translate-x-1/2"></div>
+            </h2>
           </div>
 
-          <div className="testimonials-carousel">
+          <div 
+            className="testimonials-carousel"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+
             <div className="testimonials-viewport" ref={emblaRef}>
               <div className="testimonials-track">
                 {testimonials.map((item, index) => (
@@ -498,77 +558,47 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Fashionable Trends Section */}
-      <section className="py-12 bg-white lg:py-14">
-        <div className="px-4 mx-auto max-w-7xl lg:px-8">
-          <ScrollReveal>
-            <div className="mb-8 space-y-4 text-center lg:mb-10">
-              <h2 className="font-serif text-4xl font-bold text-gray-900 uppercase lg:text-6xl">
-                Fashionable Trends
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3">
-            {fashionableItems.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="group relative overflow-hidden rounded-[24px] shadow-lg border border-stone-100">
-                  <div className="h-[340px] lg:h-[440px] overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110 border border-[#5B0E23]/20"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 transition-opacity duration-500 opacity-0 lg:p-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:opacity-100">
-                    <span className="text-[#D4AF37] font-black text-[10px] tracking-[0.4em] mb-4">
-                      {item.tag}
-                    </span>
-                    <h4 className="mb-6 font-serif text-3xl font-bold leading-tight text-white">
-                      {item.name}
-                    </h4>
-                    <Link
-                      to="/category/Gold"
-                      className="text-white text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn border-b border-white/30 pb-2 w-fit"
-                    >
-                      Explore Suite{" "}
-                      <ChevronRight
-                        size={16}
-                        className="transition-transform group-hover/btn:translate-x-1"
-                      />
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
 
 const CategoryCard = ({ title, items, image, link }) => (
-  <Link
-    to={link}
-    className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[16px] border border-[#5B0E23]/10 shadow-lg hover:shadow-2xl transition-all duration-700"
+  <motion.div
+    whileHover={{ y: -10, scale: 1.02 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
   >
-    <img
-      src={image}
-      alt={title}
-      className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110 border border-[#5B0E23]/20"
-    />
-    <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-t from-white/95 via-white/40 to-white/5 group-hover:from-white group-hover:via-white/60"></div>
-    <div className="absolute left-0 right-0 px-6 text-center lg:px-8 bottom-7 lg:bottom-10">
-      <h3 className="text-3xl lg:text-4xl font-serif font-bold text-[#5B0E23] mb-2 uppercase tracking-wider">
-        {title}
-      </h3>
-      <p className="text-stone-500 text-[10px] font-bold tracking-[0.3em] uppercase mb-4 lg:mb-6 opacity-80">
-        {items}
-      </p>
-      <div className="w-12 h-[2px] bg-maroon mx-auto group-hover:w-full transition-all duration-700"></div>
-    </div>
-  </Link>
+    <Link
+      to={link}
+      className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[24px] border-[3.5px] border-[#D4AF37] shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] transition-all duration-700"
+    >
+      {/* Shimmer Effect */}
+      <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
+
+      {/* Image */}
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+      />
+
+      {/* DARK GRADIENT OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-500 group-hover:via-black/40"></div>
+
+      {/* Content */}
+      <div className="absolute left-0 right-0 px-6 text-center bottom-8">
+        <h3 className="text-3xl lg:text-4xl font-serif font-bold text-white mb-2 uppercase tracking-wider drop-shadow-xl">
+          {title}
+        </h3>
+
+        <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-5">
+          {items}
+        </p>
+
+        <div className="w-12 h-[2px] bg-[#D4AF37] mx-auto group-hover:w-24 transition-all duration-500 shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+      </div>
+    </Link>
+  </motion.div>
 );
+
 
 export default Home;
