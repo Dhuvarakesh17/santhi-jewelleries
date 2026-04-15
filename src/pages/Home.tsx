@@ -44,21 +44,21 @@ const Magnetic = ({ children }: { children: React.ReactNode }) => {
 const HeroSlider = () => {
   const slides = [
     {
-      image: "/images/showcase/hero-scene-corosol.webp",
+      image: "/images/showcase/6.webp",
       subtitle: "Bridal Grandeur • Timeless Craftsmanship",
       title: "Royal Temple Jewellery",
       desc: "Celebrate every occasion with intricate gold artistry inspired by heritage motifs and modern elegance.",
     },
     {
-      image: "/images/showcase/gold_5.webp",
+      image: "/images/showcase/grt_hero.webp",
       subtitle: "Daily Luxury • Modern Craftsmanship",
       title: "Designer Gold Bracelets",
       desc: "Sophisticated silhouettes designed for the modern woman. Elevate your everyday style with 22K pure gold.",
     },
     {
-      image: "/images/showcase/gold-jhumka1.webp",
+      image: "/images/showcase/1.webp",
       subtitle: "Antique Style • Divine Brilliance",
-      title: "Traditional Gold Jhumkas",
+      title: "Traditional Gold Classics",
       desc: "Intricate Nagas and Temple jewelry craftsmanship that reflects our rich cultural legacy.",
     },
   ];
