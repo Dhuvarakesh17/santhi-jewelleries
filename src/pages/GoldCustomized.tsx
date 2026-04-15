@@ -151,7 +151,7 @@ const GoldCustomized = () => {
       <section className="relative h-[62vh] min-h-[460px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/showcase/gold_custom_hero_indriya.webp"
+            src="/images/showcase/gold_custom_hero_new.webp"
             className="w-full h-full object-cover"
             alt="Gold Customized Jewelry"
           />
@@ -171,11 +171,14 @@ const GoldCustomized = () => {
             transition={{ delay: 0.1 }}
             className="mb-8 font-heading text-4xl lg:text-7xl leading-[1.1] text-white drop-shadow-2xl tracking-normal"
           >
-            <span className="font-script text-5xl lg:text-8xl text-[#D4AF37] lowercase block mb-2">Gold</span>
+            <span className="font-script text-5xl lg:text-8xl text-[#D4AF37] lowercase block mb-2">
+              Gold
+            </span>
             Customized Jewelry – <br className="hidden lg:block" />{" "}
-            <span className="text-3xl lg:text-5xl opacity-90 block mt-4 font-light tracking-wide">Bracelets, Rings & Pendants</span>
+            <span className="text-3xl lg:text-5xl opacity-90 block mt-4 font-light tracking-wide">
+              Bracelets, Rings & Pendants
+            </span>
           </motion.h1>
-          
         </div>
         <div className="absolute hidden -translate-x-1/2 bottom-10 left-1/2 animate-bounce lg:block">
           <div className="w-px h-16 bg-gradient-to-b from-maroon-light to-transparent"></div>
@@ -187,8 +190,16 @@ const GoldCustomized = () => {
         {/* Soft Background Accents */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-50">
           <svg className="w-full h-full" viewBox="0 0 1440 400" fill="none">
-            <path d="M-100 350C200 300 400 50 800 150C1200 250 1500 0 1500 0" stroke="#D4AF37" strokeWidth="1.2" />
-            <path d="M-50 400C300 350 500 100 900 200C1300 300 1600 50 1600 50" stroke="#D4AF37" strokeWidth="1.2" />
+            <path
+              d="M-100 350C200 300 400 50 800 150C1200 250 1500 0 1500 0"
+              stroke="#D4AF37"
+              strokeWidth="1.2"
+            />
+            <path
+              d="M-50 400C300 350 500 100 900 200C1300 300 1600 50 1600 50"
+              stroke="#D4AF37"
+              strokeWidth="1.2"
+            />
           </svg>
         </div>
 
@@ -199,17 +210,18 @@ const GoldCustomized = () => {
             transition={{ duration: 1.2 }}
             className="space-y-12"
           >
-           
-            
             <p className="text-2xl lg:text-4xl text-stone-600 font-serif leading-[1.6] italic max-w-5xl mx-auto">
-              Our master artisans combine heritage techniques with your personal vision <br className="hidden lg:block" />
-              to create jewelry that speaks your unique <span className="font-script text-5xl lg:text-7xl text-[#D4AF37] lowercase">language</span> of elegance.
+              Our master artisans combine heritage techniques with your personal
+              vision <br className="hidden lg:block" />
+              to create jewelry that speaks your unique{" "}
+              <span className="font-script text-5xl lg:text-7xl text-[#D4AF37] lowercase">
+                language
+              </span>{" "}
+              of elegance.
             </p>
           </motion.div>
         </div>
       </section>
-
-     
 
       {/* PRODUCT CATEGORIES */}
       <section
@@ -222,7 +234,6 @@ const GoldCustomized = () => {
             <h2 className="text-4xl lg:text-6xl font-heading font-bold black-gold-animated mb-6 uppercase tracking-wide">
               Customized Gold Bracelets
             </h2>
-            
           </div>
 
           <div className="space-y-10 lg:space-y-12">
@@ -290,11 +301,9 @@ const GoldCustomized = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-maroon/10 blur-[100px] rounded-full -mr-48 -mt-48"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <div className="mb-10 lg:mb-12 space-y-3 text-center">
-           
             <h2 className="font-serif text-4xl font-bold lg:text-5xl black-gold-animated">
               Lightweight Gold Jewelry
             </h2>
-           
           </div>
           <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-3">
             {lightweightItems.map((item, i) => (

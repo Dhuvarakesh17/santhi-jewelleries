@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MENU_DATA } from "../config/menuConfig";
+import { JEWELLERY_DATA } from "../constants/jewelleryData";
 import { useWishlist } from "../context/WishlistContext";
 
 const Navbar = () => {
@@ -61,52 +62,92 @@ const Navbar = () => {
     setActiveMenu(null);
   };
 
+  const normalizeText = (value: string) =>
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
   const filteredItems = useMemo(() => {
     if (!searchQuery) return [];
-    const query = searchQuery.toLowerCase();
+    const query = normalizeText(searchQuery);
+    const queryTokens = query.split(" ").filter(Boolean);
     const results: { title: string; category: string; path: string }[] = [];
 
+    const matchesQuery = (...values: string[]) => {
+      if (!queryTokens.length) return false;
+
+      const searchableText = normalizeText(values.join(" "));
+      return queryTokens.every((token) => searchableText.includes(token));
+    };
+
+    const pushResult = (title: string, category: string, path: string) => {
+      if (
+        results.some((result) => result.title === title && result.path === path)
+      ) {
+        return;
+      }
+
+      results.push({ title, category, path });
+    };
+
     MENU_DATA.forEach((item) => {
-      if (item.title.toLowerCase().includes(query)) {
-        results.push({
-          title: item.title,
-          category: "Main Category",
-          path:
-            item.title === "Gold Customization Order"
-              ? "/gold/customized"
-              : `/category/${item.title}`,
-        });
+      if (matchesQuery(item.title)) {
+        pushResult(
+          item.title,
+          "Main Category",
+          item.title === "Gold Customization Order"
+            ? "/gold/customized"
+            : `/category/${item.title}`,
+        );
       }
       if (item.items) {
         item.items.forEach((sub) => {
-          if (sub.toLowerCase().includes(query)) {
-            results.push({
-              title: sub,
-              category: item.title,
-              path:
-                item.title === "Gold Customization Order"
-                  ? "/gold/customized"
-                  : `/category/${item.title}/${sub}`,
-            });
+          if (matchesQuery(item.title, sub)) {
+            pushResult(
+              sub,
+              item.title,
+              item.title === "Gold Customization Order"
+                ? "/gold/customized"
+                : `/category/${item.title}/${sub}`,
+            );
           }
         });
       }
       if (item.columns) {
         item.columns.forEach((col) => {
           col.items.forEach((sub) => {
-            if (sub.toLowerCase().includes(query)) {
-              results.push({
-                title: sub,
-                category: `${item.title} / ${col.title}`,
-                path: `/category/${item.title}/${sub}`,
-              });
+            if (matchesQuery(item.title, col.title, sub)) {
+              pushResult(
+                sub,
+                `${item.title} / ${col.title}`,
+                `/category/${item.title}/${sub}`,
+              );
             }
           });
         });
       }
     });
 
-    return results.slice(0, 8);
+    JEWELLERY_DATA.forEach((item) => {
+      if (
+        matchesQuery(
+          item.name,
+          item.category,
+          item.subcategory,
+          item.description,
+        )
+      ) {
+        pushResult(
+          item.name,
+          `${item.category} / ${item.subcategory}`,
+          `/category/${item.category}/${item.subcategory}`,
+        );
+      }
+    });
+
+    return results.slice(0, 20);
   }, [searchQuery]);
 
   return (
@@ -246,7 +287,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="absolute right-0 top-full mt-2 w-72 lg:w-96 bg-white shadow-2xl p-4 border border-stone-100 rounded-lg z-[110]"
+                  className="absolute right-0 top-full mt-2 w-72 lg:w-96 bg-white shadow-2xl p-4 border border-stone-100 rounded-lg z-[110] max-h-[70vh] overflow-y-auto"
                 >
                   <div className="relative">
                     <input
