@@ -653,9 +653,9 @@ const SubCategoryPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] pt-8 pb-24 px-4 lg:px-10">
+    <div className="min-h-screen bg-[#fafaf9] pt-4 pb-24 px-4 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
-        <div className="relative mb-16 text-center">
+        <div className="relative mb-8 text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-24 bg-maroon/5 blur-[80px] rounded-full pointer-events-none"></div>
 
           <motion.div
@@ -664,25 +664,43 @@ const SubCategoryPage = () => {
             className="inline-block relative"
           >
             <motion.h1
-              initial={{ letterSpacing: "0.05em", opacity: 0 }}
-              animate={{ letterSpacing: "0.1em", opacity: 1 }}
+              initial={{ letterSpacing: "0.02em", opacity: 0, y: 10 }}
+              animate={{ letterSpacing: "0.05em", opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className={`relative font-heading text-4xl lg:text-7xl font-bold uppercase inline-block mb-2 tracking-[0.1em] ${getAnimationClassByCategory(type ?? "gold")}`}
+              className="relative font-cinzel text-4xl lg:text-7xl font-extrabold uppercase inline-block mb-1 group"
             >
-              {titleText}
+              {(() => {
+                const words = titleText.split(" ");
+                if (words.length <= 1) return <span className={getAnimationClassByCategory(type ?? "gold")}>{titleText}</span>;
+                
+                const materialWord = words[0];
+                const restOfTitle = words.slice(1).join(" ");
+                
+                return (
+                  <span className="flex flex-wrap items-center justify-center gap-x-4">
+                    <span className={getAnimationClassByCategory(type ?? "gold")}>
+                      {materialWord}
+                    </span>
+                    <span className="text-[#3b3c36]">
+                      {restOfTitle}
+                    </span>
+                  </span>
+                );
+              })()}
+              
               {/* Shine Effect on Text */}
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-shimmer pointer-events-none"></div>
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
             </motion.h1>
 
-            {/* Elegant double underline */}
+            {/* Refined minimalist underline */}
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 1.5, delay: 0.5 }}
-              className="mt-4 flex flex-col items-center gap-0.5"
+              className="mt-2 flex flex-col items-center gap-0.5"
             >
-              <div className="h-[2px] w-full bg-maroon max-w-[80px]"></div>
-              <div className="h-[1px] w-full bg-maroon/30 max-w-[120px]"></div>
+              <div className="h-[1.5px] w-full bg-slate-200 max-w-[140px]"></div>
+              <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-maroon/40 to-transparent max-w-[60px]"></div>
             </motion.div>
           </motion.div>
         </div>

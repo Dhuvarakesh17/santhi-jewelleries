@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Birthstone&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Cinzel+Decorative:wght@400;700;900&family=Prata&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Birthstone&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Prata&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -10,6 +10,7 @@
 
   --font-serif: "Cormorant Garamond", serif;
   --font-heading: "Cinzel Decorative", serif;
+  --font-cinzel: "Cinzel", serif;
   --font-aurora: "Prata", serif;
   --font-swash: "Playfair Display", serif;
   --font-script: "Birthstone", cursive;
@@ -31,69 +32,71 @@ body {
 .gold-text-animated {
   background: linear-gradient(
     to right,
-    #bf953f 0%,
-    #fcf6ba 25%,
-    #b38728 50%,
-    #fbf5b7 75%,
-    #bf953f 100%
+    #B8860B 0%,
+    #FFFACD 25%,
+    #D4AF37 50%,
+    #FBF5B7 75%,
+    #B38728 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   background-size: 200% auto;
-  animation: shine 3s linear infinite;
+  animation: shine 6s linear infinite;
   display: inline-block;
+  font-weight: 800;
 }
 
 .black-gold-animated {
   background: linear-gradient(
     to right,
-    #000000 0%,
-    #d4af37 25%,
-    #1a1a1a 50%,
+    #c9a84c 0%,
+    #fcf6ba 25%,
+    #bf953f 50%,
     #f3e5ab 75%,
-    #000000 100%
+    #c9a84c 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   background-size: 200% auto;
-  animation: shine 4s linear infinite;
+  animation: shine 6s linear infinite;
   display: inline-block;
 }
 
 .silver-animated {
   background: linear-gradient(
     to right,
-    #4a4a4a 0%,
-    #b0b0b0 25%,
-    #666666 50%,
-    #b0b0b0 75%,
-    #4a4a4a 100%
+    #717171 0%,
+    #b8b8b8 25%,
+    #8e8e8e 50%,
+    #d1d1d1 75%,
+    #717171 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   background-size: 200% auto;
-  animation: shine 4s linear infinite;
+  animation: shine 12s linear infinite;
   display: inline-block;
 }
 
 .diamond-animated {
   background: linear-gradient(
     to right,
-    #4a5568 0%,
-    #a0aec0 25%,
-    #2d3748 50%,
-    #a0aec0 75%,
-    #4a5568 100%
+    #5C6B8E 0%,
+    #d1e9ff 25%,
+    #8BA2D4 50%,
+    #e8f4ff 75%,
+    #5C6B8E 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   background-size: 200% auto;
-  animation: shine 4s linear infinite;
+  animation: shine 12s linear infinite;
   display: inline-block;
+  text-shadow: 0 0 10px rgba(180, 210, 255, 0.2);
 }
 
 @keyframes shine {

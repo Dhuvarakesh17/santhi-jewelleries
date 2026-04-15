@@ -331,33 +331,6 @@ const GoldCustomized = () => {
         </div>
       </section>
 
-      {/* WHY BUY FROM US */}
-      <section className="px-4 py-16 lg:py-20 mx-auto max-w-7xl lg:px-8">
-        <div className="mb-10 lg:mb-12 text-center">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold black-gold-animated mb-4 uppercase tracking-[0.2em]">
-            Why Buy From Us?
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {whyBuyFromUs.map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group space-y-6 text-center p-8 bg-white border border-[#5B0E23]/15 rounded-2xl shadow-sm hover:shadow-xl hover:border-[#5B0E23]/35 transition-all duration-500"
-            >
-              <div className="flex justify-center text-maroon transition-transform duration-500 group-hover:scale-110">
-                {item.icon}
-              </div>
-              <h3 className="font-bold text-lg text-[#5B0E23] uppercase tracking-widest">
-                {item.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-stone-500">
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* CTA SECTION */}
       <section className="py-16 lg:py-20 bg-[#faf7f2] border-y border-[#5B0E23]/10">

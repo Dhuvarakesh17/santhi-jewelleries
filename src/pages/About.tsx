@@ -96,7 +96,7 @@ const About = () => {
                 <span className="text-maroon font-bold tracking-[0.3em] uppercase text-xs">
                   Generation of Trust
                 </span>
-                <h2 className="text-4xl lg:text-7xl font-aurora font-light leading-none mt-2 black-gold-animated tracking-tight uppercase">
+                <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-maroon lg:text-6xl">
                   A Journey of Purity, <br className="hidden lg:block"/> Passion & Perfection
                 </h2>
               </ZoomReveal>

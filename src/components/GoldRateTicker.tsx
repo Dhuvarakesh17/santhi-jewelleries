@@ -41,7 +41,7 @@ const GoldRateTicker: React.FC = () => {
     ...tickerItems,
   ];
 
-  return (
+  return ( 
     <div className="bg-white text-stone-600 h-12 flex items-center overflow-hidden whitespace-nowrap border-b border-stone-200 relative z-[60] shadow-sm">
       <div className="inline-block animate-marquee">
         <div className="flex items-center gap-12 px-6">

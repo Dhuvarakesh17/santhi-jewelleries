@@ -115,60 +115,62 @@ const HeroSlider = () => {
               <p className="max-w-lg mb-12 text-lg font-light leading-relaxed lg:text-xl opacity-90">
                 {slides[current].desc}
               </p>
-              <div className="flex flex-col items-start gap-8 sm:flex-row">
-                <Magnetic>
-                  <Link
-                    to="/category/Gold"
-                    className="group relative px-12 py-6 bg-maroon text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 flex items-center shadow-[0_20px_40px_-10px_rgba(91,14,35,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.3)] active:scale-95 overflow-hidden"
-                  >
-                    {/* Shine Layer */}
-                    <div className="absolute inset-0 z-0 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
-
-                    {/* Border Trace SVG */}
-                    <svg
-                      className="absolute inset-0 z-10 w-full h-full pointer-events-none"
-                      fill="none"
-                    >
-                      <rect
-                        x="2"
-                        y="2"
-                        width="calc(100% - 4px)"
-                        height="calc(100% - 4px)"
-                        className="stroke-[#D4AF37] stroke-[2px] [stroke-dasharray:400,0] group-hover:[stroke-dasharray:0,400] transition-all duration-1000"
-                        strokeLinecap="square"
-                      />
-                    </svg>
-
-                    <span className="relative z-20 flex items-center">
-                      Browse Gold{" "}
-                      <ChevronRight
-                        size={22}
-                        className="ml-3 transition-transform duration-500 group-hover:translate-x-2"
-                      />
-                    </span>
-                  </Link>
-                </Magnetic>
-
-                <Magnetic>
-                  <Link
-                    to="/gold/customized"
-                    className="group relative px-12 py-6 border-2 border-white/20 hover:border-[#D4AF37] text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 backdrop-blur-sm active:scale-95 flex items-center bg-white/5 overflow-hidden"
-                  >
-                    {/* Liquid Fill */}
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-[#D4AF37] to-[#B8860B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
-
-                    <span className="relative z-20 flex items-center transition-colors duration-500 group-hover:text-black">
-                      Customization Order{" "}
-                      <ArrowRight
-                        size={20}
-                        className="ml-3 transition-all duration-700 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
-                      />
-                    </span>
-                  </Link>
-                </Magnetic>
-              </div>
             </motion.div>
           </AnimatePresence>
+
+          {/* Static Action Buttons */}
+          <div className="flex flex-col items-start gap-8 sm:flex-row">
+            <Magnetic>
+              <Link
+                to="/category/Gold"
+                className="group relative px-12 py-6 bg-maroon text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 flex items-center shadow-[0_20px_40px_-10px_rgba(91,14,35,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.3)] active:scale-95 overflow-hidden"
+              >
+                {/* Shine Layer */}
+                <div className="absolute inset-0 z-0 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
+
+                {/* Border Trace SVG */}
+                <svg
+                  className="absolute inset-0 z-10 w-full h-full pointer-events-none"
+                  fill="none"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="calc(100% - 4px)"
+                    height="calc(100% - 4px)"
+                    className="stroke-[#D4AF37] stroke-[2px] [stroke-dasharray:400,0] group-hover:[stroke-dasharray:0,400] transition-all duration-1000"
+                    strokeLinecap="square"
+                  />
+                </svg>
+
+                <span className="relative z-20 flex items-center">
+                  Browse Gold{" "}
+                  <ChevronRight
+                    size={22}
+                    className="ml-3 transition-transform duration-500 group-hover:translate-x-2"
+                  />
+                </span>
+              </Link>
+            </Magnetic>
+
+            <Magnetic>
+              <Link
+                to="/gold/customized"
+                className="group relative px-12 py-6 border-2 border-white/20 hover:border-[#D4AF37] text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 backdrop-blur-sm active:scale-95 flex items-center bg-white/5 overflow-hidden"
+              >
+                {/* Liquid Fill */}
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-[#D4AF37] to-[#B8860B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+
+                <span className="relative z-20 flex items-center transition-colors duration-500 group-hover:text-black">
+                  Customization Order{" "}
+                  <ArrowRight
+                    size={20}
+                    className="ml-3 transition-all duration-700 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
+                  />
+                </span>
+              </Link>
+            </Magnetic>
+          </div>
         </div>
       </div>
 
@@ -363,6 +365,7 @@ const Home = () => {
               items="Heritage Jewels"
               image={goldCategoryImg}
               link="/category/Gold"
+              type="gold"
             />
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -371,6 +374,7 @@ const Home = () => {
               items="Pure Radiance"
               image={silverCategoryImg}
               link="/category/Silver"
+              type="silver"
             />
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
@@ -379,6 +383,7 @@ const Home = () => {
               items="Luxury Solitaires"
               image={diamondCategoryImg}
               link="/category/Diamond"
+              type="diamond"
             />
           </ScrollReveal>
         </div>
@@ -567,51 +572,79 @@ const Home = () => {
   );
 };
 
-const CategoryCard = ({ title, items, image, link }) => (
-  <motion.div
-    whileHover={{ y: -10, scale: 1.02 }}
-    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    className="relative p-[3px] bg-gradient-to-br from-[#D4AF37] via-[#FBF5B7] to-[#8A6E2F] rounded-[28px] shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.3)] transition-all duration-500"
-  >
-    <Link
-      to={link}
-      className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[24px] bg-black"
+const CategoryCard = ({ title, items, image, link, type = "gold" }) => {
+  const frames = {
+    gold: {
+      border: "bg-gradient-to-br from-[#8A6E2F] via-[#FFE5A3] to-[#4B3B0A]", // Deep Bronze to Bright Gold
+      shadow: "hover:shadow-[0_25px_60px_rgba(212,175,55,0.45)]",
+      accent: "from-[#D4AF37] to-[#FFF5A5]",
+      glow: "shadow-[0_0_20px_rgba(255,245,165,0.8)]",
+      text: "text-[#D4AF37]"
+    },
+    silver: {
+      border: "bg-gradient-to-br from-[#717171] via-[#E2E2E2] to-[#3A3A3A]", // Polished Chrome / Neutral Metal
+      shadow: "hover:shadow-[0_25px_60px_rgba(180,180,180,0.3)]",
+      accent: "from-[#D1D5DB] to-[#F3F4F6]",
+      glow: "shadow-[0_0_20px_rgba(226,226,226,0.6)]",
+      text: "text-[#D1D5DB]"
+    },
+    diamond: {
+      border: "bg-gradient-to-br from-[#1E3A8A] via-[#E0F2FE] to-[#0F172A]", // Deep Sapphire to Ice Blue (High Contrast)
+      shadow: "hover:shadow-[0_25px_60px_rgba(56,189,248,0.25)]",
+      accent: "from-[#7DD3FC] to-[#F0F9FF]",
+      glow: "shadow-[0_0_25px_rgba(125,211,252,0.7)]",
+      text: "text-[#BAE6FD]"
+    }
+  };
+
+  const style = frames[type.toLowerCase()] || frames.gold;
+
+  return (
+    <motion.div
+      whileHover={{ y: -12, scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 200, damping: 12 }}
+      className={`relative p-[3.5px] ${style.border} rounded-[28px] shadow-2xl ${style.shadow} transition-all duration-500`}
     >
-      {/* Triple Layer Inner Bezel */}
-      <div className="absolute inset-0 border-4 border-white/10 rounded-[24px] pointer-events-none z-20"></div>
-      
-      {/* Shimmer Effect */}
-      <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
+      <Link
+        to={link}
+        className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[24px] bg-black"
+      >
+        {/* Triple Layer Inner Bezel */}
+        <div className="absolute inset-0 border-4 border-white/10 rounded-[24px] pointer-events-none z-20"></div>
+        
+        {/* Shimmer Effect */}
+        <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
 
-      {/* Image */}
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-90 group-hover:opacity-100"
-      />
+        {/* Image */}
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-90 group-hover:opacity-100"
+        />
 
-      {/* DARK GRADIENT OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 group-hover:via-black/50"></div>
+        {/* DARK GRADIENT OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 group-hover:via-black/50"></div>
 
-      {/* Content */}
-      <div className="absolute left-0 right-0 px-6 text-center bottom-8 z-30">
-        <h3 className="text-3xl lg:text-4xl font-serif font-bold text-white mb-2 uppercase tracking-wider drop-shadow-xl">
-          {title}
-        </h3>
+        {/* Content */}
+        <div className="absolute left-0 right-0 px-6 text-center bottom-8 z-30">
+          <h3 className="text-3xl lg:text-4xl font-serif font-bold text-white mb-2 uppercase tracking-wider drop-shadow-xl">
+            {title}
+          </h3>
 
-        <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-5">
-          {items}
-        </p>
+          <p className={`${style.text} text-[10px] font-bold tracking-[0.4em] uppercase mb-5`}>
+            {items}
+          </p>
 
-        <div className="w-12 h-[2.5px] bg-gradient-to-r from-[#D4AF37] to-[#FBF5B7] mx-auto group-hover:w-32 transition-all duration-500 shadow-[0_0_15px_rgba(251,245,183,1)]"></div>
-      </div>
+          <div className={`w-12 h-[2.5px] bg-gradient-to-r ${style.accent} mx-auto group-hover:w-32 transition-all duration-500 ${style.glow}`}></div>
+        </div>
 
-      {/* Frame Corner Accents */}
-      <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-white/40 rounded-tl-lg pointer-events-none z-20"></div>
-      <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-white/40 rounded-br-lg pointer-events-none z-20"></div>
-    </Link>
-  </motion.div>
-);
+        {/* Frame Corner Accents */}
+        <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-white/40 rounded-tl-lg pointer-events-none z-20"></div>
+        <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-white/40 rounded-br-lg pointer-events-none z-20"></div>
+      </Link>
+    </motion.div>
+  );
+};
 
 
 export default Home;
