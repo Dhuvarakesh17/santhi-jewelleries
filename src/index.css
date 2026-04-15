@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Birthstone&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Cinzel+Decorative:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Birthstone&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Cinzel+Decorative:wght@400;700;900&family=Prata&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -10,6 +10,8 @@
 
   --font-serif: "Cormorant Garamond", serif;
   --font-heading: "Cinzel Decorative", serif;
+  --font-aurora: "Prata", serif;
+  --font-swash: "Playfair Display", serif;
   --font-script: "Birthstone", cursive;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 }
@@ -167,7 +169,7 @@ body {
 }
 
 .luxury-frame--diamond {
-  border-color: #e8e8f0;
+  border-color: #8A9DBF;
 }
 
 .luxury-frame--diamond .luxury-frame__inner {
@@ -288,9 +290,9 @@ body {
   border-radius: 4px;
   padding: 26px;
   margin: 0;
-  box-shadow: 0 2px 12px rgba(105, 12, 59, 0.08);
+  box-shadow: 0 4px 18px rgba(91, 14, 35, 0.06);
   text-align: left;
-  border: 1px solid rgba(105, 12, 59, 0.08);
+  border: 2px solid #5B0E23;
   min-height: 300px;
   transition:
     box-shadow 0.45s ease,
@@ -298,8 +300,9 @@ body {
 }
 
 .testimonials-slide.is-active .testimonials-slider__text {
-  border-color: rgba(105, 12, 59, 0.22);
-  box-shadow: 0 18px 42px rgba(105, 12, 59, 0.19);
+  border-color: #5B0E23;
+  box-shadow: 0 18px 48px rgba(91, 14, 35, 0.18);
+  transform: translateY(-5px);
 }
 
 .testimonials-slider__text p {

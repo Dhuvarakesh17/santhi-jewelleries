@@ -99,12 +99,12 @@ const GoldCustomized = () => {
     },
     {
       name: "Classic Memory Pendant",
-      img: "/images/showcase/custom_photo_pendant.webp",
+      img: "/images/showcase/Product Shoot - TARA SRI by Tibarumal Gems & Jewels.webp",
       sub: "PHOTO PENDANTS",
     },
     {
       name: "Heart Photo Keepsake",
-      img: "/images/showcase/custom_photo_pendant.webp",
+      img: "/images/showcase/gorgeous necklace.webp",
       sub: "PHOTO PENDANTS",
     },
   ];
@@ -112,17 +112,17 @@ const GoldCustomized = () => {
   const rings = [
     {
       name: "Date Engraved Ring",
-      img: "/images/showcase/custom_ring_1.webp",
+      img: "/images/showcase/Forever Gleam Solitaire Gold-Plated Adjustable Ring.webp",
       sub: "ENGAGEMENT/CUSTOM",
     },
     {
       name: "Initial Gold Band",
-      img: "/images/showcase/custom_ring_1.webp",
+      img: "/images/showcase/Lulu Dainty Twist Adjustable Ring in Rose Gold.webp",
       sub: "ENGAGEMENT/CUSTOM",
     },
     {
       name: "Custom Solitaire",
-      img: "/images/showcase/custom_ring_1.webp",
+      img: "/images/showcase/Ring.webp",
       sub: "ENGAGEMENT/CUSTOM",
     },
   ];

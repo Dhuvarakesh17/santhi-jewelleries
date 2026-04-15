@@ -389,14 +389,19 @@ const Home = () => {
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <div className="flex flex-col items-center gap-10 lg:flex-row">
             <ScrollReveal className="lg:w-1/2">
-              <div className="relative p-4 border rounded-[40px] border-stone-500/60 bg-[#f4efed]">
-                <div className="overflow-hidden border rounded-[32px] border-stone-500/60">
-                  <img
-                    src={goldPlate}
-                    alt="Gold Artistry"
-                    className="w-full h-[380px] lg:h-[520px] object-cover rounded-[28px] shadow-2xl grayscale-[0.1] hover:grayscale-0 transition-all duration-700 border border-[#5B0E23]/20"
-                  />
+              <div className="relative p-2 bg-gradient-to-br from-[#D4AF37] via-[#FBF5B7] to-[#8A6E2F] rounded-[44px] shadow-2xl">
+                <div className="relative p-3 bg-white/10 backdrop-blur-sm rounded-[38px] border border-white/20">
+                  <div className="overflow-hidden border-2 rounded-[32px] border-[#D4AF37]/30 shadow-inner">
+                    <img
+                      src={goldPlate}
+                      alt="Gold Artistry"
+                      className="w-full h-[380px] lg:h-[520px] object-cover rounded-[30px] shadow-2xl grayscale-[0.05] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                    />
+                  </div>
                 </div>
+                {/* Frame Corner Accents */}
+                <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-[#FBF5B7] rounded-tl-[44px] -m-1"></div>
+                <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-[#8A6E2F] rounded-br-[44px] -m-1"></div>
               </div>
             </ScrollReveal>
             <div className="space-y-8 lg:w-1/2">
@@ -566,11 +571,15 @@ const CategoryCard = ({ title, items, image, link }) => (
   <motion.div
     whileHover={{ y: -10, scale: 1.02 }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    className="relative p-[3px] bg-gradient-to-br from-[#D4AF37] via-[#FBF5B7] to-[#8A6E2F] rounded-[28px] shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.3)] transition-all duration-500"
   >
     <Link
       to={link}
-      className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[24px] border-[3.5px] border-[#D4AF37] shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] transition-all duration-700"
+      className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[24px] bg-black"
     >
+      {/* Triple Layer Inner Bezel */}
+      <div className="absolute inset-0 border-4 border-white/10 rounded-[24px] pointer-events-none z-20"></div>
+      
       {/* Shimmer Effect */}
       <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
 
@@ -578,14 +587,14 @@ const CategoryCard = ({ title, items, image, link }) => (
       <img
         src={image}
         alt={title}
-        className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+        className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-90 group-hover:opacity-100"
       />
 
       {/* DARK GRADIENT OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-500 group-hover:via-black/40"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 group-hover:via-black/50"></div>
 
       {/* Content */}
-      <div className="absolute left-0 right-0 px-6 text-center bottom-8">
+      <div className="absolute left-0 right-0 px-6 text-center bottom-8 z-30">
         <h3 className="text-3xl lg:text-4xl font-serif font-bold text-white mb-2 uppercase tracking-wider drop-shadow-xl">
           {title}
         </h3>
@@ -594,8 +603,12 @@ const CategoryCard = ({ title, items, image, link }) => (
           {items}
         </p>
 
-        <div className="w-12 h-[2px] bg-[#D4AF37] mx-auto group-hover:w-24 transition-all duration-500 shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+        <div className="w-12 h-[2.5px] bg-gradient-to-r from-[#D4AF37] to-[#FBF5B7] mx-auto group-hover:w-32 transition-all duration-500 shadow-[0_0_15px_rgba(251,245,183,1)]"></div>
       </div>
+
+      {/* Frame Corner Accents */}
+      <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-white/40 rounded-tl-lg pointer-events-none z-20"></div>
+      <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-white/40 rounded-br-lg pointer-events-none z-20"></div>
     </Link>
   </motion.div>
 );
