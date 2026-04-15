@@ -1,21 +1,17 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import {
-  ChevronDown,
-  Menu,
-  X,
-  Search,
-  Heart,
-  User,
-  ShoppingBag,
-} from "lucide-react";
+import { ChevronDown, Menu, X, Search, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MENU_DATA } from "../config/menuConfig";
+import { JEWELLERY_DATA } from "../constants/jewelleryData";
 import { useWishlist } from "../context/WishlistContext";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileExpandedMenu, setMobileExpandedMenu] = useState<string | null>(
+    null,
+  );
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -28,6 +24,7 @@ const Navbar = () => {
   useEffect(() => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
+    setMobileExpandedMenu(null);
   }, [location.pathname]);
 
   // Close search when clicking outside
@@ -61,56 +58,96 @@ const Navbar = () => {
     setActiveMenu(null);
   };
 
+  const normalizeText = (value: string) =>
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
   const filteredItems = useMemo(() => {
     if (!searchQuery) return [];
-    const query = searchQuery.toLowerCase();
+    const query = normalizeText(searchQuery);
+    const queryTokens = query.split(" ").filter(Boolean);
     const results: { title: string; category: string; path: string }[] = [];
 
+    const matchesQuery = (...values: string[]) => {
+      if (!queryTokens.length) return false;
+
+      const searchableText = normalizeText(values.join(" "));
+      return queryTokens.every((token) => searchableText.includes(token));
+    };
+
+    const pushResult = (title: string, category: string, path: string) => {
+      if (
+        results.some((result) => result.title === title && result.path === path)
+      ) {
+        return;
+      }
+
+      results.push({ title, category, path });
+    };
+
     MENU_DATA.forEach((item) => {
-      if (item.title.toLowerCase().includes(query)) {
-        results.push({
-          title: item.title,
-          category: "Main Category",
-          path:
-            item.title === "Gold Customization Order"
-              ? "/gold/customized"
-              : `/category/${item.title}`,
-        });
+      if (matchesQuery(item.title)) {
+        pushResult(
+          item.title,
+          "Main Category",
+          item.title === "Gold Customization Order"
+            ? "/gold/customized"
+            : `/category/${item.title}`,
+        );
       }
       if (item.items) {
         item.items.forEach((sub) => {
-          if (sub.toLowerCase().includes(query)) {
-            results.push({
-              title: sub,
-              category: item.title,
-              path:
-                item.title === "Gold Customization Order"
-                  ? "/gold/customized"
-                  : `/category/${item.title}/${sub}`,
-            });
+          if (matchesQuery(item.title, sub)) {
+            pushResult(
+              sub,
+              item.title,
+              item.title === "Gold Customization Order"
+                ? "/gold/customized"
+                : `/category/${item.title}/${sub}`,
+            );
           }
         });
       }
       if (item.columns) {
         item.columns.forEach((col) => {
           col.items.forEach((sub) => {
-            if (sub.toLowerCase().includes(query)) {
-              results.push({
-                title: sub,
-                category: `${item.title} / ${col.title}`,
-                path: `/category/${item.title}/${sub}`,
-              });
+            if (matchesQuery(item.title, col.title, sub)) {
+              pushResult(
+                sub,
+                `${item.title} / ${col.title}`,
+                `/category/${item.title}/${sub}`,
+              );
             }
           });
         });
       }
     });
 
-    return results.slice(0, 8);
+    JEWELLERY_DATA.forEach((item) => {
+      if (
+        matchesQuery(
+          item.name,
+          item.category,
+          item.subcategory,
+          item.description,
+        )
+      ) {
+        pushResult(
+          item.name,
+          `${item.category} / ${item.subcategory}`,
+          `/category/${item.category}/${item.subcategory}`,
+        );
+      }
+    });
+
+    return results.slice(0, 20);
   }, [searchQuery]);
 
   return (
-    <header className="sticky top-0 z-[5000] bg-white/95 backdrop-blur-md shadow-sm border-b border-[#5B0E23]/10 font-serif">
+    <header className="sticky top-0 z-[5000] bg-white shadow-md border-b border-[#5B0E23]/10 font-serif">
       <nav className="max-w-[1440px] mx-auto px-4 lg:px-8 py-3 lg:py-4 flex justify-between items-center relative">
         {/* Mobile Menu Button - Left */}
         <button
@@ -141,7 +178,7 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation Links - Desktop Center */}
-        <div className="items-center order-2 hidden ml-auto mr-6 gap-4 xl:gap-5 lg:flex">
+        <div className="items-center order-2 hidden gap-4 ml-auto mr-6 xl:gap-5 lg:flex">
           {MENU_DATA.map((item) => (
             <div
               key={item.title}
@@ -246,9 +283,9 @@ const Navbar = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="absolute right-0 top-full mt-2 w-72 lg:w-96 bg-white shadow-2xl p-4 border border-stone-100 rounded-lg z-[110]"
+                  className="fixed inset-x-0 top-[6.75rem] bottom-0 sm:bottom-auto sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80 lg:w-96 bg-white shadow-2xl p-4 border-t border-stone-100 sm:border rounded-t-2xl sm:rounded-lg z-[110] overflow-y-auto"
                 >
-                  <div className="relative">
+                  <div className="relative pb-3">
                     <input
                       autoFocus
                       type="text"
@@ -263,11 +300,11 @@ const Navbar = () => {
                     />
                   </div>
                   {filteredItems.length > 0 && (
-                    <div className="pt-3 mt-4 border-t border-stone-100">
-                      <p className="text-[10px] uppercase tracking-widest text-stone-400 mb-2 px-2">
+                    <div className="pt-3 mt-2 border-t border-stone-100">
+                      <p className="text-[10px] uppercase tracking-widest text-stone-400 mb-2 px-2 sticky top-0 bg-white py-2">
                         Suggestions
                       </p>
-                      <div className="space-y-1">
+                      <div className="space-y-1 pb-4">
                         {filteredItems.map((res, i) => (
                           <button
                             key={i}
@@ -343,29 +380,36 @@ const Navbar = () => {
                 </button>
               </div>
 
-              <div className="flex flex-col space-y-4 overflow-y-auto">
-                <Link
-                  to="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-bold tracking-widest uppercase py-2 border-b border-stone-50 hover:text-[#5B0E23]"
-                >
-                  Home
-                </Link>
+              <div className="flex flex-col pb-8 space-y-2 overflow-y-auto">
                 {MENU_DATA.map((item) => (
                   <div
                     key={item.title}
-                    className="py-2 space-y-4 border-b border-stone-50"
+                    className="py-2 border-b border-stone-50"
                   >
                     <button
-                      onClick={() => handleCategoryClick(item.title)}
+                      onClick={() => {
+                        if (item.type === "link") {
+                          setMobileMenuOpen(false);
+                          navigate(item.path || "/");
+                          return;
+                        }
+
+                        setMobileExpandedMenu((prev) =>
+                          prev === item.title ? null : item.title,
+                        );
+                      }}
                       className="flex items-center justify-between w-full text-lg font-bold tracking-widest text-left uppercase text-stone-800"
                     >
                       {item.title}
                       {item.type !== "link" && (
-                        <ChevronDown size={20} className="text-stone-300" />
+                        <ChevronDown
+                          size={20}
+                          className={`text-stone-300 transition-transform duration-300 ${mobileExpandedMenu === item.title ? "rotate-180" : ""}`}
+                        />
                       )}
                     </button>
-                    {item.type === "megamenu" ? (
+                    {item.type === "megamenu" &&
+                    mobileExpandedMenu === item.title ? (
                       <div className="pl-4 space-y-4">
                         {item.columns?.map((col) => (
                           <div key={col.title} className="space-y-2">
@@ -387,27 +431,25 @@ const Navbar = () => {
                           </div>
                         ))}
                       </div>
-                    ) : (
-                      item.items && (
-                        <div className="flex flex-col pl-4 space-y-3 border-l-2 border-stone-100">
-                          {item.items.map((sub) => (
-                            <Link
-                              key={sub}
-                              to={
-                                sub === "Customized Jewelry" ||
-                                item.title === "Gold Customization Order"
-                                  ? "/gold/customized"
-                                  : `/category/${item.title}/${sub}`
-                              }
-                              onClick={() => setMobileMenuOpen(false)}
-                              className="text-sm font-medium text-stone-600"
-                            >
-                              {sub}
-                            </Link>
-                          ))}
-                        </div>
-                      )
-                    )}
+                    ) : item.items && mobileExpandedMenu === item.title ? (
+                      <div className="flex flex-col pl-4 space-y-3 border-l-2 border-stone-100">
+                        {item.items.map((sub) => (
+                          <Link
+                            key={sub}
+                            to={
+                              sub === "Customized Jewelry" ||
+                              item.title === "Gold Customization Order"
+                                ? "/gold/customized"
+                                : `/category/${item.title}/${sub}`
+                            }
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-sm font-medium text-stone-600"
+                          >
+                            {sub}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 ))}
               </div>

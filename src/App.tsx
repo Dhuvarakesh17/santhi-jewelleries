@@ -20,11 +20,11 @@ const AppLayout = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white">
         <TopBar />
-        <div className="sticky top-0 z-50">
+        <div className="sticky top-0 z-50 bg-white">
           <GoldRateTicker />
           <Navbar />
         </div>
-        <main className="flex-grow">
+        <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gold/customized" element={<GoldCustomized />} />

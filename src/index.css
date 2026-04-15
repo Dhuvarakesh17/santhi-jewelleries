@@ -140,7 +140,7 @@ body {
 
 .luxury-frame {
   position: relative;
-  border: 3px solid #c9a84c;
+  border: 5px solid #c9a84c;
   border-radius: 12px;
   background: #ffffff;
   overflow: hidden;
@@ -179,10 +179,10 @@ body {
 .luxury-frame--diamond::after {
   content: "";
   position: absolute;
-  inset: -3px;
+  inset: -5px;
   border-radius: 12px;
   pointer-events: none;
-  border: 3px solid transparent;
+  border: 5px solid transparent;
   background: linear-gradient(
       120deg,
       rgba(255, 255, 255, 0) 0%,
@@ -230,7 +230,6 @@ body {
 .testimonials-section .section-header span {
   color: #d4af37; /* Gold */
 }
-
 
 .testimonials-section .testimonial-stars {
   color: #ffd700;
