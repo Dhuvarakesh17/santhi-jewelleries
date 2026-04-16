@@ -16,6 +16,7 @@ const GoldRateTicker: React.FC = () => {
     rates.rate18K > 0 ||
     rates.rate20K > 0 ||
     rates.rate22K > 0 ||
+    rates.rate24K > 0 ||
     rates.silver > 0;
 
   if (!hasRates) {
@@ -30,6 +31,7 @@ const GoldRateTicker: React.FC = () => {
     { label: "GOLD 18K", value: rates.rate18K },
     { label: "GOLD 20K", value: rates.rate20K },
     { label: "GOLD 22K", value: rates.rate22K },
+    { label: "GOLD 24K", value: rates.rate24K },
     { label: "SILVER", value: rates.silver },
   ];
 
@@ -39,6 +41,7 @@ const GoldRateTicker: React.FC = () => {
     ...tickerItems,
     ...tickerItems,
     ...tickerItems,
+    ...tickerItems
   ];
 
   return ( 

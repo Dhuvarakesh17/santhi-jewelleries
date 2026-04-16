@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 type Rates = {
+  rate24K: number;
   rate18K: number;
   rate20K: number;
   rate22K: number;
@@ -19,6 +20,7 @@ const OUNCE_TO_GRAMS = 31.1034768;
 const GOLD_API_KEY = import.meta.env.VITE_GOLD_API_KEY || "";
 
 const defaultRates: Rates = {
+  rate24K: 0,
   rate18K: 0,
   rate20K: 0,
   rate22K: 0,
@@ -31,6 +33,7 @@ const readCachedRates = (): Rates => {
     if (!cached) return defaultRates;
     const parsed = JSON.parse(cached) as Rates;
     if (
+      typeof parsed.rate24K === "number" &&
       typeof parsed.rate18K === "number" &&
       typeof parsed.rate20K === "number" &&
       typeof parsed.rate22K === "number" &&
@@ -100,6 +103,7 @@ export const GoldRateProvider: React.FC<{ children: React.ReactNode }> = ({
       const rate24K = goldPricePerOunce / OUNCE_TO_GRAMS;
 
       const nextRates: Rates = {
+        rate24K: roundRate(rate24K),
         rate22K: roundRate((rate24K * 22) / 24),
         rate20K: roundRate((rate24K * 20) / 24),
         rate18K: roundRate((rate24K * 18) / 24),
