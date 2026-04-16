@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
@@ -9,7 +9,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import useEmblaCarousel from "embla-carousel-react";
 
 const Magnetic = ({ children }: { children: React.ReactNode }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -266,6 +265,35 @@ const Home = () => {
     },
   ];
 
+  const renderMetalHighlightedName = (
+    name: string,
+    type: string,
+    colorClass: string,
+  ) => {
+    const keywordByType: Record<string, string> = {
+      gold: "Gold",
+      silver: "Silver",
+      diamond: "Diamond",
+    };
+
+    const keyword = keywordByType[type.toLowerCase()];
+    if (!keyword) return name;
+
+    const match = name.match(new RegExp(`\\b(${keyword})\\b`, "i"));
+    if (!match || match.index === undefined) return name;
+
+    const start = match.index;
+    const end = start + match[0].length;
+
+    return (
+      <>
+        {name.slice(0, start)}
+        <span className={colorClass}>{name.slice(start, end)}</span>
+        {name.slice(end)}
+      </>
+    );
+  };
+
   const testimonials = [
     {
       text: "I had an excellent experience with Anu Jewellers while getting our engagement ring made. The craftsmanship was outstanding, with my name and my fiancee's name, along with my fingerprint, engraved beautifully on the ring.",
@@ -289,61 +317,8 @@ const Home = () => {
     },
   ];
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "center",
-    loop: true,
-    dragFree: false,
-    skipSnaps: false,
-    dragThreshold: 22,
-    slidesToScroll: 1,
-    containScroll: "keepSnaps",
-  });
-  const [selectedTestimonial, setSelectedTestimonial] = useState(0);
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
   const [isPaused, setIsPaused] = useState(false);
-
-
-  const scrollPrevTestimonial = useCallback(() => {
-    emblaApi?.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNextTestimonial = useCallback(() => {
-    emblaApi?.scrollNext();
-  }, [emblaApi]);
-
-  const scrollToTestimonial = useCallback(
-    (index: number) => {
-      emblaApi?.scrollTo(index);
-    },
-    [emblaApi],
-  );
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const updateSelected = () => {
-      setSelectedTestimonial(emblaApi.selectedScrollSnap());
-    };
-
-    updateSelected();
-    emblaApi.on("select", updateSelected);
-    emblaApi.on("reInit", updateSelected);
-
-    return () => {
-      emblaApi.off("select", updateSelected);
-      emblaApi.off("reInit", updateSelected);
-    };
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi || isPaused) return;
-
-    const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 3000);
-
-    return () => clearInterval(autoplay);
-  }, [emblaApi, isPaused]);
-
 
   return (
     <div className="overflow-hidden font-sans bg-white">
@@ -353,7 +328,6 @@ const Home = () => {
       <section className="py-8 lg:py-10 max-w-[1440px] mx-auto px-4 lg:px-8">
         <ScrollReveal>
           <div className="mb-8 space-y-3 text-center lg:mb-10">
-           
             <h2 className="font-serif text-3xl font-bold uppercase lg:text-5xl black-gold-animated">
               Curated Showcase
             </h2>
@@ -418,7 +392,8 @@ const Home = () => {
                   The Art of Creation
                 </span>
                 <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.1]">
-                  Mastering The Fine Art Of <span className="gold-text-animated">Gold</span>
+                  Mastering The Fine Art Of{" "}
+                  <span className="gold-text-animated">Gold</span>
                 </h2>
                 <p className="pl-5 mt-6 text-lg italic font-light leading-relaxed border-l-4 text-stone-500 border-maroon/20">
                   "Every piece at Santhi Jewellers tells a story of meticulous
@@ -452,7 +427,6 @@ const Home = () => {
         </div>
       </section>
 
-      
       {/* Fashionable Trends Section */}
       <section className="py-12 bg-white lg:py-14">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
@@ -468,60 +442,58 @@ const Home = () => {
             {fashionableItems.map((item, i) => {
               const frames = {
                 gold: {
-                  border: "bg-gradient-to-br from-[#A67C00] via-[#FFD700] to-[#85662F]",
+                  border: "bg-[#D4AF37]",
                   shadow: "hover:shadow-[0_25px_60px_rgba(255,215,0,0.3)]",
-                  accent: "from-[#FFD700] to-[#FFF9C4]",
+                  accent: "bg-[#D4AF37]",
                   glow: "shadow-[0_0_20px_rgba(255,215,0,0.5)]",
-                  text: "text-[#FFD700]"
+                  text: "text-[#FFD700]",
                 },
                 silver: {
-                  border: "bg-gradient-to-br from-[#717171] via-[#E2E2E2] to-[#3A3A3A]",
+                  border: "bg-[#C0C0C0]",
                   shadow: "hover:shadow-[0_25px_60px_rgba(180,180,180,0.3)]",
-                  accent: "from-[#D1D5DB] to-[#F3F4F6]",
+                  accent: "bg-[#C0C0C0]",
                   glow: "shadow-[0_0_20px_rgba(226,226,226,0.6)]",
-                  text: "text-[#D1D5DB]"
+                  text: "text-[#D1D5DB]",
                 },
                 diamond: {
-                  border: "bg-gradient-to-br from-[#1E3A8A] via-[#E0F2FE] to-[#0F172A]",
+                  border: "bg-[#A5D8FF]",
                   shadow: "hover:shadow-[0_25px_60px_rgba(56,189,248,0.25)]",
-                  accent: "from-[#7DD3FC] to-[#F0F9FF]",
+                  accent: "bg-[#A5D8FF]",
                   glow: "shadow-[0_0_25px_rgba(125,211,252,0.7)]",
-                  text: "text-[#BAE6FD]"
-                }
+                  text: "text-[#BAE6FD]",
+                },
               };
-              const style = frames[item.type as keyof typeof frames] || frames.gold;
+              const style =
+                frames[item.type as keyof typeof frames] || frames.gold;
 
               return (
                 <ScrollReveal key={i} delay={i * 0.1}>
                   <motion.div
                     whileHover={{ y: -12, scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 200, damping: 12 }}
-                    className={`relative p-[3.5px] ${style.border} rounded-[28px] shadow-2xl ${style.shadow} transition-all duration-500`}
+                    className={`relative p-1 ${style.border} rounded-[28px] shadow-2xl ${style.shadow} transition-all duration-500`}
                   >
                     <div className="group relative overflow-hidden rounded-[24px] bg-black h-[360px] lg:h-[460px]">
-                      {/* Layer Inner Bezel */}
-                      <div className="absolute inset-0 border-4 border-white/10 rounded-[24px] pointer-events-none z-20"></div>
-                      
-                      {/* Shimmer Effect */}
-                      <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
-
                       <div className="h-full w-full overflow-hidden">
                         <img
                           src={item.img}
                           alt={item.name}
-                          className="object-cover w-full h-full transition-transform duration-[1500ms] group-hover:scale-110 opacity-90 group-hover:opacity-100 border border-[#5B0E23]/20"
+                          className="object-cover w-full h-full transition-transform duration-[1500ms] group-hover:scale-110"
                         />
                       </div>
 
-                      {/* DARK GRADIENT OVERLAY */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 group-hover:via-black/50"></div>
-
                       <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-10 z-30">
-                        <span className={`${style.text} font-black text-[10px] tracking-[0.4em] mb-4 uppercase`}>
+                        <span
+                          className={`${style.text} font-black text-[10px] tracking-[0.4em] mb-4 uppercase`}
+                        >
                           {item.tag}
                         </span>
                         <h4 className="mb-6 font-serif text-3xl font-bold leading-tight text-white drop-shadow-xl">
-                          {item.name}
+                          {renderMetalHighlightedName(
+                            item.name,
+                            item.type,
+                            style.text,
+                          )}
                         </h4>
                         <Link
                           to={`/category/${item.type}`}
@@ -533,6 +505,9 @@ const Home = () => {
                             className="transition-transform group-hover/btn:translate-x-1"
                           />
                         </Link>
+                        <div
+                          className={`w-12 h-[2.5px] ${style.accent} mt-5 ${style.glow}`}
+                        ></div>
                       </div>
                     </div>
                   </motion.div>
@@ -556,20 +531,24 @@ const Home = () => {
             </h2>
           </div>
 
-          <div 
-            className="testimonials-carousel"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+          <div
+            className={`testimonials-carousel ${isPaused ? "is-paused" : ""}`}
           >
-
-            <div className="testimonials-viewport" ref={emblaRef}>
+            <div className="testimonials-viewport">
               <div className="testimonials-track">
-                {testimonials.map((item, index) => (
+                {duplicatedTestimonials.map((item, index) => (
                   <article
-                    key={index}
-                    className={`testimonials-slide ${selectedTestimonial === index ? "is-active" : ""}`}
+                    key={`${item.author}-${index}`}
+                    className="testimonials-slide"
                   >
-                    <blockquote className="testimonials-slider__text">
+                    <blockquote
+                      className="testimonials-slider__text"
+                      onMouseEnter={() => setIsPaused(true)}
+                      onMouseLeave={() => setIsPaused(false)}
+                      onTouchStart={() => setIsPaused(true)}
+                      onTouchEnd={() => setIsPaused(false)}
+                      onTouchCancel={() => setIsPaused(false)}
+                    >
                       <span className="testimonial-stars">★★★★★</span>
                       <p>{item.text}</p>
                       <cite>{item.author}</cite>
@@ -578,42 +557,9 @@ const Home = () => {
                 ))}
               </div>
             </div>
-
-            <div className="testimonials-controls">
-              <button
-                type="button"
-                className="testimonials-nav-btn"
-                onClick={scrollPrevTestimonial}
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft size={18} />
-              </button>
-
-              <div className="testimonials-dots">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    className={`testimonials-dot ${selectedTestimonial === index ? "is-active" : ""}`}
-                    onClick={() => scrollToTestimonial(index)}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                className="testimonials-nav-btn"
-                onClick={scrollNextTestimonial}
-                aria-label="Next testimonial"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 };
@@ -621,26 +567,26 @@ const Home = () => {
 const CategoryCard = ({ title, items, image, link, type = "gold" }) => {
   const frames = {
     gold: {
-      border: "bg-gradient-to-br from-[#A67C00] via-[#FFD700] to-[#85662F]", // Deep Gold to Bright Gold to Warm Gold
+      border: "bg-[#D4AF37]",
       shadow: "hover:shadow-[0_25px_60px_rgba(255,215,0,0.3)]",
-      accent: "from-[#FFD700] to-[#FFF9C4]",
+      accent: "bg-[#D4AF37]",
       glow: "shadow-[0_0_20px_rgba(255,215,0,0.5)]",
-      text: "text-[#FFD700]"
+      text: "text-[#FFD700]",
     },
     silver: {
-      border: "bg-gradient-to-br from-[#717171] via-[#E2E2E2] to-[#3A3A3A]", // Polished Chrome / Neutral Metal
+      border: "bg-[#C0C0C0]",
       shadow: "hover:shadow-[0_25px_60px_rgba(180,180,180,0.3)]",
-      accent: "from-[#D1D5DB] to-[#F3F4F6]",
+      accent: "bg-[#C0C0C0]",
       glow: "shadow-[0_0_20px_rgba(226,226,226,0.6)]",
-      text: "text-[#D1D5DB]"
+      text: "text-[#D1D5DB]",
     },
     diamond: {
-      border: "bg-gradient-to-br from-[#1E3A8A] via-[#E0F2FE] to-[#0F172A]", // Deep Sapphire to Ice Blue (High Contrast)
+      border: "bg-[#A5D8FF]",
       shadow: "hover:shadow-[0_25px_60px_rgba(56,189,248,0.25)]",
-      accent: "from-[#7DD3FC] to-[#F0F9FF]",
+      accent: "bg-[#A5D8FF]",
       glow: "shadow-[0_0_25px_rgba(125,211,252,0.7)]",
-      text: "text-[#BAE6FD]"
-    }
+      text: "text-[#BAE6FD]",
+    },
   };
 
   const style = frames[type.toLowerCase()] || frames.gold;
@@ -649,27 +595,18 @@ const CategoryCard = ({ title, items, image, link, type = "gold" }) => {
     <motion.div
       whileHover={{ y: -12, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 200, damping: 12 }}
-      className={`relative p-[3.5px] ${style.border} rounded-[28px] shadow-2xl ${style.shadow} transition-all duration-500`}
+      className={`relative p-1 ${style.border} rounded-[28px] shadow-2xl ${style.shadow} transition-all duration-500`}
     >
       <Link
         to={link}
         className="group relative block h-[280px] sm:h-[320px] lg:h-[380px] overflow-hidden rounded-[24px] bg-black"
       >
-        {/* Triple Layer Inner Bezel */}
-        <div className="absolute inset-0 border-4 border-white/10 rounded-[24px] pointer-events-none z-20"></div>
-        
-        {/* Shimmer Effect */}
-        <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
-
         {/* Image */}
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-90 group-hover:opacity-100"
+          className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
         />
-
-        {/* DARK GRADIENT OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 group-hover:via-black/50"></div>
 
         {/* Content */}
         <div className="absolute left-0 right-0 px-6 text-center bottom-8 z-30">
@@ -677,20 +614,19 @@ const CategoryCard = ({ title, items, image, link, type = "gold" }) => {
             {title}
           </h3>
 
-          <p className={`${style.text} text-[10px] font-bold tracking-[0.4em] uppercase mb-5`}>
+          <p
+            className={`${style.text} text-[10px] font-bold tracking-[0.4em] uppercase mb-5`}
+          >
             {items}
           </p>
 
-          <div className={`w-12 h-[2.5px] bg-gradient-to-r ${style.accent} mx-auto group-hover:w-32 transition-all duration-500 ${style.glow}`}></div>
+          <div
+            className={`w-12 h-[2.5px] ${style.accent} mx-auto group-hover:w-32 transition-all duration-500 ${style.glow}`}
+          ></div>
         </div>
-
-        {/* Frame Corner Accents */}
-        <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-white/40 rounded-tl-lg pointer-events-none z-20"></div>
-        <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-white/40 rounded-br-lg pointer-events-none z-20"></div>
       </Link>
     </motion.div>
   );
 };
-
 
 export default Home;

@@ -242,19 +242,22 @@ const SubCategoryPage = () => {
     setAvailability([]);
     setJewelTypes([]);
     setIsSortOpen(false);
-    setIsFilterOpen(false);
+    setIsFilterOpen(true);
   }, [type, sub]);
 
   const items = useMemo(() => {
     const normalizedType = normalizeCategory(type || "");
-    
+
     // 1. Filter by Main Category (Gold, Silver, etc.)
     const categoryItems = JEWELLERY_DATA.filter(
-      (item) => normalizeCategory(item.category) === normalizedType
+      (item) => normalizeCategory(item.category) === normalizedType,
     );
 
     // 2. Filter by Subcategory/Type if 'sub' slug is present
-    const subCategoryMatch = (item: (typeof JEWELLERY_DATA)[0], slug: string) => {
+    const subCategoryMatch = (
+      item: (typeof JEWELLERY_DATA)[0],
+      slug: string,
+    ) => {
       const normalizedSlug = normalizeText(slug);
       return (
         normalizeText(item.subcategory) === normalizedSlug ||
@@ -265,8 +268,8 @@ const SubCategoryPage = () => {
       );
     };
 
-    const targetItems = sub 
-      ? categoryItems.filter(item => subCategoryMatch(item, sub))
+    const targetItems = sub
+      ? categoryItems.filter((item) => subCategoryMatch(item, sub))
       : categoryItems;
 
     // Default to main category if no specific subcategory matches found (prevents empty screen)
@@ -396,7 +399,10 @@ const SubCategoryPage = () => {
   }, [availability, items, jewelTypes, priceRange, sortBy]);
 
   const ITEMS_PER_PAGE = 28;
-  const totalPages = Math.max(1, Math.ceil(filteredItems.length / ITEMS_PER_PAGE));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredItems.length / ITEMS_PER_PAGE),
+  );
 
   const paginatedItems = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -681,23 +687,30 @@ const SubCategoryPage = () => {
             >
               {(() => {
                 const words = titleText.split(" ");
-                if (words.length <= 1) return <span className={getAnimationClassByCategory(type ?? "gold")}>{titleText}</span>;
-                
+                if (words.length <= 1)
+                  return (
+                    <span
+                      className={getAnimationClassByCategory(type ?? "gold")}
+                    >
+                      {titleText}
+                    </span>
+                  );
+
                 const materialWord = words[0];
                 const restOfTitle = words.slice(1).join(" ");
-                
+
                 return (
                   <span className="flex flex-wrap items-center justify-center gap-x-4">
-                    <span className={getAnimationClassByCategory(type ?? "gold")}>
+                    <span
+                      className={getAnimationClassByCategory(type ?? "gold")}
+                    >
                       {materialWord}
                     </span>
-                    <span className="text-[#3b3c36]">
-                      {restOfTitle}
-                    </span>
+                    <span className="text-[#3b3c36]">{restOfTitle}</span>
                   </span>
                 );
               })()}
-              
+
               {/* Shine Effect on Text */}
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
             </motion.h1>
@@ -815,7 +828,7 @@ const SubCategoryPage = () => {
                     {isFilterOpen ? "Hide Filters" : "Show Filters"}
                   </motion.button>
 
-                  <div className="px-6 py-2.5 rounded-full border border-stone-200/60 text-stone-500 font-bold text-[10px] tracking-[0.25em] uppercase bg-stone-50/50">
+                  <div className="px-6 py-2.5 rounded-full border border-black text-stone-700 font-bold text-[10px] tracking-[0.25em] uppercase bg-white">
                     {filteredItems.length} Products Found
                   </div>
                 </div>
@@ -829,7 +842,7 @@ const SubCategoryPage = () => {
                   </p>
                   <button
                     onClick={() => setIsSortOpen(!isSortOpen)}
-                    className="w-full flex items-center justify-between px-6 py-4 bg-white border border-stone-200 rounded-xl text-[13px] font-bold text-stone-800 transition-all hover:border-maroon/40 hover:shadow-xl hover:shadow-maroon/5 group"
+                    className="w-full flex items-center justify-between px-6 py-4 bg-white border border-black rounded-xl text-[13px] font-bold text-stone-800 transition-all hover:border-black hover:shadow-xl hover:shadow-black/5 group"
                   >
                     <span className="tracking-wide">
                       {sortOptions.find((opt) => opt.value === sortBy)?.label}
@@ -849,7 +862,7 @@ const SubCategoryPage = () => {
                         transition={{ duration: 0.2, ease: "circOut" }}
                         className="absolute z-[100] top-full right-0 mt-0 w-full bg-transparent pt-1"
                       >
-                        <div className="bg-white border border-stone-200 rounded-2xl shadow-2xl overflow-hidden py-2">
+                        <div className="bg-white border border-black rounded-2xl shadow-2xl overflow-hidden py-2">
                           {sortOptions.map((option) => (
                             <button
                               key={option.value}
@@ -912,7 +925,8 @@ const SubCategoryPage = () => {
                               />
                             </div>
 
-                            {normalizeCategory(item.category) === "signaturecollection" && (
+                            {normalizeCategory(item.category) ===
+                              "signaturecollection" && (
                               <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                                 <div className="bg-[#5B0E23] text-white text-[8px] font-black tracking-[0.2em] px-2 py-1 rounded-sm uppercase shadow-xl flex items-center gap-1">
                                   <Star size={8} fill="white" />
@@ -934,7 +948,9 @@ const SubCategoryPage = () => {
                                   : "Add to wishlist"
                               }
                             >
-                              <div className={`transition-all duration-500 flex items-center justify-center rounded-[10px] w-9 h-9 ${isInWishlist(item.id) ? "bg-[#5A1024] shadow-[0_4px_12px_rgba(90,16,36,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#5A1024]/50 hover:bg-[#5A1024] group/icon"}`}>
+                              <div
+                                className={`transition-all duration-500 flex items-center justify-center rounded-[10px] w-9 h-9 ${isInWishlist(item.id) ? "bg-[#5A1024] shadow-[0_4px_12px_rgba(90,16,36,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#5A1024]/50 hover:bg-[#5A1024] group/icon"}`}
+                              >
                                 <Heart
                                   size={16}
                                   strokeWidth={2.5}
@@ -951,7 +967,7 @@ const SubCategoryPage = () => {
                               {item.name}
                             </h3>
                             <p
-                              className="text-[17px] font-medium"
+                              className="text-[17px] font-extrabold"
                               style={{ color: palette.priceColor }}
                             >
                               {formatCurrency(item.price)}
@@ -972,7 +988,7 @@ const SubCategoryPage = () => {
                       <div className="relative group">
                         {/* Decorative Background Glow */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-maroon/20 via-[#FFD700]/20 to-maroon/20 rounded-[40px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        
+
                         <div className="relative bg-white border-2 border-[#FFD700]/30 rounded-[28px] px-8 py-3 shadow-2xl shadow-maroon/5 flex items-center gap-6">
                           {/* Inner Bezel Effect */}
                           <div className="absolute inset-1 border border-[#FFD700]/10 rounded-[24px] pointer-events-none"></div>

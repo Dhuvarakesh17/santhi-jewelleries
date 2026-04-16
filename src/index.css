@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #D4AF37;
-  --color-gold-light: #F9E29C;
-  --color-gold-dark: #A67C00;
+  --color-gold: #d4af37;
+  --color-gold-light: #f9e29c;
+  --color-gold-dark: #a67c00;
   --color-luxury-accent: #5d0e2e;
   --color-luxury-text: #1a1a1a;
 
@@ -26,17 +26,17 @@ body {
 }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #A67C00 0%, #D4AF37 50%, #F9E29C 100%);
+  background: linear-gradient(135deg, #a67c00 0%, #d4af37 50%, #f9e29c 100%);
 }
 
 .gold-text-animated {
   background: linear-gradient(
     to right,
-    #A67C00 0%,
-    #F9E29C 25%,
-    #D4AF37 50%,
-    #FFF9C4 75%,
-    #A67C00 100%
+    #a67c00 0%,
+    #f9e29c 25%,
+    #d4af37 50%,
+    #fff9c4 75%,
+    #a67c00 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -50,11 +50,11 @@ body {
 .black-gold-animated {
   background: linear-gradient(
     to right,
-    #BF953F 0%,
-    #FCF6BA 25%,
-    #B58921 50%,
-    #F7EF8A 75%,
-    #BF953F 100%
+    #bf953f 0%,
+    #fcf6ba 25%,
+    #b58921 50%,
+    #f7ef8a 75%,
+    #bf953f 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -84,11 +84,11 @@ body {
 .diamond-animated {
   background: linear-gradient(
     to right,
-    #5C6B8E 0%,
+    #5c6b8e 0%,
     #d1e9ff 25%,
-    #8BA2D4 50%,
+    #8ba2d4 50%,
     #e8f4ff 75%,
-    #5C6B8E 100%
+    #5c6b8e 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -100,18 +100,19 @@ body {
 }
 
 @keyframes maroon-gold-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .maroon-gold-animated {
-  background: linear-gradient(
-    to right,
-    #5B0E23 0%,
-    #D4AF37 50%,
-    #5B0E23 100%
-  );
+  background: linear-gradient(to right, #5b0e23 0%, #d4af37 50%, #5b0e23 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -122,13 +123,13 @@ body {
 .signature-animated {
   background: linear-gradient(
     to right,
-    #5B0E23 0%,
-    #A67C00 20%,
-    #FFD700 40%,
+    #5b0e23 0%,
+    #a67c00 20%,
+    #ffd700 40%,
     #f9e29c 50%,
-    #FFD700 60%,
-    #A67C00 80%,
-    #5B0E23 100%
+    #ffd700 60%,
+    #a67c00 80%,
+    #5b0e23 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -183,7 +184,7 @@ body {
 
 .luxury-frame {
   position: relative;
-  border: 5px solid #D4AF37;
+  border: 5px solid #d4af37;
   border-radius: 12px;
   background: #ffffff;
   overflow: hidden;
@@ -196,7 +197,7 @@ body {
 }
 
 .luxury-frame--gold {
-  border-color: #D4AF37;
+  border-color: #d4af37;
 }
 
 .luxury-frame--gold .luxury-frame__inner {
@@ -212,7 +213,7 @@ body {
 }
 
 .luxury-frame--diamond {
-  border-color: #8A9DBF;
+  border-color: #8a9dbf;
 }
 
 .luxury-frame--diamond .luxury-frame__inner {
@@ -244,7 +245,7 @@ body {
 }
 
 .luxury-frame--signature {
-  border-color: #5B0E23;
+  border-color: #5b0e23;
   box-shadow: 0 0 25px rgba(91, 14, 35, 0.15);
 }
 
@@ -254,18 +255,22 @@ body {
   inset: -5px;
   border-radius: 12px;
   padding: 5px;
-  background: linear-gradient(45deg, #FFD700, #5B0E23, #FFD700);
-  -webkit-mask: 
-     linear-gradient(#fff 0 0) content-box, 
-     linear-gradient(#fff 0 0);
+  background: linear-gradient(45deg, #ffd700, #5b0e23, #ffd700);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: signature-border 3s linear infinite;
 }
 
 @keyframes signature-border {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
 @keyframes diamond-glint {
@@ -317,39 +322,37 @@ body {
 
 .testimonials-carousel {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding-inline: clamp(16px, 4vw, 64px);
+}
+
+.testimonials-carousel.is-paused .testimonials-track {
+  animation-play-state: paused;
 }
 
 .testimonials-viewport {
   width: 100%;
-  overflow: hidden;
-  padding: 26px 0;
-  cursor: grab;
-}
-
-.testimonials-viewport:active {
-  cursor: grabbing;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 16px 0 26px;
 }
 
 .testimonials-track {
   display: flex;
   gap: 26px;
-  padding: 0 7vw;
+  width: max-content;
+  align-items: stretch;
+  animation: testimonials-marquee 40s linear infinite;
+  will-change: transform;
 }
 
 .testimonials-slide {
   flex: 0 0 clamp(280px, 34vw, 440px);
   min-width: 0;
-  transition:
-    transform 0.5s ease,
-    opacity 0.45s ease;
-  opacity: 0.45;
-  transform: scale(0.92) translateY(8px);
-}
-
-.testimonials-slide.is-active {
-  transform: scale(1) translateY(0);
-  opacity: 1;
 }
 
 .testimonials-slider__text {
@@ -357,22 +360,25 @@ body {
   border-radius: 4px;
   padding: 26px;
   margin: 0;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 4px 18px rgba(91, 14, 35, 0.06);
   text-align: left;
-  border: 2px solid #5B0E23;
-  min-height: 300px;
+  border: 2px solid #5b0e23;
+  height: 320px;
   transition:
     box-shadow 0.45s ease,
     border-color 0.45s ease;
 }
 
-.testimonials-slide.is-active .testimonials-slider__text {
-  border-color: #5B0E23;
+.testimonials-slide:hover .testimonials-slider__text {
   box-shadow: 0 18px 48px rgba(91, 14, 35, 0.18);
   transform: translateY(-5px);
 }
 
 .testimonials-slider__text p {
+  flex: 1;
+  overflow: hidden;
   font-size: 16px;
   line-height: 1.7;
   color: #333;
@@ -425,6 +431,15 @@ body {
   background: #690c3b;
 }
 
+@keyframes testimonials-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 13px));
+  }
+}
+
 @media (max-width: 768px) {
   .testimonials-section {
     padding: 36px 0;
@@ -439,11 +454,7 @@ body {
   }
 
   .testimonials-slider__text {
-    min-height: auto;
-  }
-
-  .testimonials-track {
-    padding: 0 5vw;
+    height: 300px;
   }
 
   .testimonials-controls {

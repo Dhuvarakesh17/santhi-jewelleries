@@ -283,7 +283,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="fixed inset-x-0 top-[6.75rem] bottom-0 sm:absolute sm:inset-x-auto sm:bottom-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80 lg:w-96 bg-white shadow-2xl p-4 border-t border-stone-100 sm:border rounded-t-2xl sm:rounded-lg z-[5100] overflow-y-auto"
+                  className="fixed inset-x-0 top-[6.75rem] bottom-0 sm:absolute sm:inset-x-auto sm:bottom-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80 lg:w-96 bg-white shadow-2xl p-4 border-t border-stone-100 sm:border rounded-t-2xl sm:rounded-lg z-[5100] overflow-hidden"
                 >
                   <div className="relative pb-3">
                     <input
@@ -304,7 +304,7 @@ const Navbar = () => {
                       <p className="text-[10px] uppercase tracking-widest text-stone-400 mb-2 px-2 sticky top-0 bg-white py-2">
                         Suggestions
                       </p>
-                      <div className="pb-4 space-y-1">
+                      <div className="max-h-[52vh] sm:max-h-64 overflow-y-auto pb-4 pr-1 space-y-1">
                         {filteredItems.map((res, i) => (
                           <button
                             key={i}

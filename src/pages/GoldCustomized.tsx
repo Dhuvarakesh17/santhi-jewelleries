@@ -65,14 +65,17 @@ const GoldCustomized = () => {
     {
       name: "Classic Script Name",
       img: "/images/showcase/custom_name_bracelet.webp",
+      metal: "gold",
     },
     {
       name: "Initial Link Bracelet",
       img: "/images/showcase/custom_name_bracelet.webp",
+      metal: "gold",
     },
     {
       name: "Cursive Signature Band",
       img: "/images/showcase/custom_name_bracelet.webp",
+      metal: "gold",
     },
   ];
 
@@ -80,14 +83,17 @@ const GoldCustomized = () => {
     {
       name: "Men's Bold Engraved",
       img: "/images/showcase/custom_men_bracelet.webp",
+      metal: "gold",
     },
     {
       name: "Heritage Men's Band",
       img: "/images/showcase/custom_men_bracelet.webp",
+      metal: "gold",
     },
     {
       name: "Unity Star Cuff",
       img: "/images/showcase/star_gold_bracelet.webp",
+      metal: "gold",
     },
   ];
 
@@ -96,16 +102,19 @@ const GoldCustomized = () => {
       name: "Oval Photo Locket",
       img: "/images/showcase/custom_photo_pendant.webp",
       sub: "PHOTO PENDANTS",
+      metal: "gold",
     },
     {
       name: "Classic Memory Pendant",
       img: "/images/showcase/Product Shoot - TARA SRI by Tibarumal Gems & Jewels.webp",
       sub: "PHOTO PENDANTS",
+      metal: "gold",
     },
     {
       name: "Heart Photo Keepsake",
       img: "/images/showcase/gorgeous necklace.webp",
       sub: "PHOTO PENDANTS",
+      metal: "gold",
     },
   ];
 
@@ -114,16 +123,19 @@ const GoldCustomized = () => {
       name: "Date Engraved Ring",
       img: "/images/showcase/Forever Gleam Solitaire Gold-Plated Adjustable Ring.webp",
       sub: "ENGAGEMENT/CUSTOM",
+      metal: "gold",
     },
     {
       name: "Initial Gold Band",
       img: "/images/showcase/Lulu Dainty Twist Adjustable Ring in Rose Gold.webp",
       sub: "ENGAGEMENT/CUSTOM",
+      metal: "gold",
     },
     {
       name: "Custom Solitaire",
       img: "/images/showcase/Ring.webp",
       sub: "ENGAGEMENT/CUSTOM",
+      metal: "diamond",
     },
   ];
 
@@ -132,16 +144,19 @@ const GoldCustomized = () => {
       name: "Heart Haram",
       img: "/images/showcase/lightweight_heart_haram.webp",
       desc: "A delicate 22K gold necklace perfect for graceful everyday wear.",
+      metal: "gold",
     },
     {
       name: "Silver Bangle",
       img: "/images/showcase/lightweight_silver_bangle.webp",
       desc: "Pure silver handcrafted bangles with a radiant, polished finish.",
+      metal: "silver",
     },
     {
       name: "Baby Anklet (Thandai)",
       img: "/images/showcase/lightweight_baby_thandai.webp",
       desc: "Traditional silver anklets designed for comfort and heritage.",
+      metal: "silver",
     },
   ];
 
@@ -310,13 +325,25 @@ const GoldCustomized = () => {
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className="p-6 lg:p-7 border group bg-white border-[#5B0E23]/10 rounded-2xl"
+                className={`p-6 lg:p-7 border-[3px] group bg-white rounded-2xl ${
+                  item.metal === "gold"
+                    ? "border-[#D4AF37]/35"
+                    : item.metal === "silver"
+                      ? "border-[#C0C0C0]/45"
+                      : "border-[#A5D8FF]/55"
+                }`}
               >
                 <div className="mb-8 overflow-hidden aspect-square rounded-xl">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 border border-[#FFD700]/25"
+                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 border-[3px] ${
+                      item.metal === "gold"
+                        ? "border-[#D4AF37]/55"
+                        : item.metal === "silver"
+                          ? "border-[#C0C0C0]/70"
+                          : "border-[#A5D8FF]/80"
+                    }`}
                   />
                 </div>
                 <h4 className="mb-4 font-serif text-2xl font-bold text-[#5B0E23]">
@@ -330,7 +357,6 @@ const GoldCustomized = () => {
           </div>
         </div>
       </section>
-
 
       {/* CTA SECTION */}
       <section className="py-16 lg:py-20 bg-[#faf7f2] border-y border-[#5B0E23]/10">
@@ -365,32 +391,50 @@ interface ProductCardProps {
     name: string;
     img: string;
     sub?: string;
+    metal?: "gold" | "silver" | "diamond";
   };
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ item }) => (
-  <motion.div
-    whileHover={{ y: -10 }}
-    className="overflow-hidden transition-all duration-500 bg-white border shadow-sm group rounded-2xl border-stone-100 hover:shadow-xl"
-  >
-    <div className="aspect-[4/4.8] overflow-hidden relative">
-      <img
-        src={item.img}
-        alt={item.name}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 border border-[#5B0E23]/20"
-      />
-    </div>
-    <div className="p-6">
-      {item.sub && (
-        <span className="text-[10px] text-maroon font-bold tracking-[0.2em] uppercase mb-2 block">
-          {item.sub}
-        </span>
-      )}
-      <h4 className="text-xl font-serif font-bold text-[#5B0E23] group-hover:text-maroon transition-colors uppercase">
-        {item.name}
-      </h4>
-    </div>
-  </motion.div>
-);
+const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
+  const metal = item.metal || "gold";
+  const cardBorderClass =
+    metal === "gold"
+      ? "border-[#D4AF37]/35"
+      : metal === "silver"
+        ? "border-[#C0C0C0]/45"
+        : "border-[#A5D8FF]/55";
+
+  const imageBorderClass =
+    metal === "gold"
+      ? "border-[#D4AF37]/55"
+      : metal === "silver"
+        ? "border-[#C0C0C0]/70"
+        : "border-[#A5D8FF]/80";
+
+  return (
+    <motion.div
+      whileHover={{ y: -10 }}
+      className={`overflow-hidden transition-all duration-500 bg-white border-[3px] shadow-sm group rounded-2xl hover:shadow-xl ${cardBorderClass}`}
+    >
+      <div className="aspect-[4/4.8] overflow-hidden relative">
+        <img
+          src={item.img}
+          alt={item.name}
+          className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 border-[3px] ${imageBorderClass}`}
+        />
+      </div>
+      <div className="p-6">
+        {item.sub && (
+          <span className="text-[10px] text-maroon font-bold tracking-[0.2em] uppercase mb-2 block">
+            {item.sub}
+          </span>
+        )}
+        <h4 className="text-xl font-serif font-bold text-[#5B0E23] group-hover:text-maroon transition-colors uppercase">
+          {item.name}
+        </h4>
+      </div>
+    </motion.div>
+  );
+};
 
 export default GoldCustomized;
