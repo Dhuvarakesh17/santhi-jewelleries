@@ -56,12 +56,6 @@ const HeroSlider = () => {
       desc: "Sophisticated silhouettes designed for the modern woman. Elevate your everyday style with 22K pure gold.",
     },
     {
-      image: "/images/showcase/hero-section8.webp",
-      subtitle: "Bridal Grandeur • Timeless Elegance",
-      title: "Royal Bridal Heritage",
-      desc: "Celebrate your special day with masterfully crafted bridal sets.",
-    },
-    {
       image: "/images/showcase/hero-section1.webp",
       subtitle: "Diamond Dreams • Eternal Sparkle",
       title: "Signature Diamond Luxe",

@@ -335,13 +335,13 @@ const Navbar = () => {
             onClick={openWishlist}
             className="relative p-2 text-stone-800 hover:text-[#5B0E23] transition-colors"
           >
-            <Heart
-              size={22}
-              strokeWidth={2.5}
-              className={
-                wishlist.length > 0 ? "fill-[#5B0E23] text-[#5B0E23]" : ""
-              }
-            />
+            <div className="bg-[#5A1024] shadow-md flex items-center justify-center rounded-[7px] w-8 h-8 transition-all duration-300 hover:scale-110 hover:shadow-lg">
+              <Heart
+                size={16}
+                strokeWidth={2.5}
+                className="text-white fill-white"
+              />
+            </div>
             {wishlist.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-[#5B0E23] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {wishlist.length}

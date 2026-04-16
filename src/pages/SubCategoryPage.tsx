@@ -751,6 +751,9 @@ const SubCategoryPage = () => {
                     transition={{ type: "spring", stiffness: 240, damping: 28 }}
                     className="fixed inset-x-0 bottom-0 z-[130] max-h-[88vh] rounded-t-3xl bg-white border-t border-stone-200 shadow-2xl overflow-hidden lg:hidden"
                   >
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-stone-50">
+                      <span className="text-3xl grayscale opacity-30">💟</span>
+                    </div>
                     <div className="flex items-center justify-between px-5 py-4 border-b border-stone-100">
                       <h3 className="text-[12px] font-bold tracking-[0.22em] uppercase text-maroon">
                         Filters
@@ -931,14 +934,13 @@ const SubCategoryPage = () => {
                                   : "Add to wishlist"
                               }
                             >
-                              <Heart
-                                size={17}
-                                className={
-                                  isInWishlist(item.id)
-                                    ? "text-[#5B0E23] fill-[#5B0E23]"
-                                    : "text-[#5B0E23]"
-                                }
-                              />
+                              <div className={`transition-all duration-500 flex items-center justify-center rounded-[10px] w-9 h-9 ${isInWishlist(item.id) ? "bg-[#5A1024] shadow-[0_4px_12px_rgba(90,16,36,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#5A1024]/50 hover:bg-[#5A1024] group/icon"}`}>
+                                <Heart
+                                  size={16}
+                                  strokeWidth={2.5}
+                                  className={`transition-colors duration-300 ${isInWishlist(item.id) ? "text-white fill-white" : "text-[#5A1024] group-hover/icon:text-white"}`}
+                                />
+                              </div>
                             </button>
                           </motion.div>
                           <div className="pt-3 space-y-2 text-center">

@@ -35,7 +35,9 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
             {/* Header */}
             <div className="bg-[#5B0E23] text-white p-6 flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <Heart size={24} className="fill-white" />
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/30">
+                  <Heart size={20} className="text-white fill-white" />
+                </div>
                 <h2 className="text-xl font-bold tracking-wider font-calisto">My Wishlist</h2>
               </div>
               <button 
@@ -51,7 +53,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
               {wishlist.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full space-y-4 text-stone-400">
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-stone-50">
-                    <Heart size={32} />
+                    <Heart size={32} className="text-stone-300 opacity-50" />
                   </div>
                   <p className="font-serif italic">Your wishlist is empty</p>
                   <button 
