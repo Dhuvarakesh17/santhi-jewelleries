@@ -103,22 +103,26 @@ const About = () => {
             </div>
             <div className="relative lg:w-1/2">
               <ZoomReveal delay={0.3}>
-                <motion.div
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10"
-                >
-                  <div className="absolute -inset-4 border-2 border-maroon/5 rounded-[32px] z-0"></div>
-                  <img
-                    src="/images/showcase/gold_5.webp"
-                    alt="Our Heritage"
-                    className="w-full h-[360px] lg:h-[520px] object-cover rounded-[24px] shadow-[0_32px_64px_-16px_rgba(91,14,35,0.2)] relative z-10"
-                  />
-                </motion.div>
+                <div className="relative p-2 bg-gradient-to-br from-[#D4AF37] via-[#FBF5B7] to-[#8A6E2F] rounded-[44px] shadow-2xl">
+                  <div className="relative p-3 bg-white/10 backdrop-blur-sm rounded-[38px] border border-white/20">
+                    <div className="overflow-hidden border-2 rounded-[32px] border-[#D4AF37]/30 shadow-inner">
+                      <motion.img
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{
+                          duration: 6,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        src="/images/showcase/6.webp"
+                        alt="Our Heritage"
+                        className="w-full h-[360px] lg:h-[520px] object-cover rounded-[30px] shadow-2xl relative z-10"
+                      />
+                    </div>
+                  </div>
+                  {/* Frame Corner Accents */}
+                  <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-[#FBF5B7] rounded-tl-[44px] -m-1"></div>
+                  <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-[#8A6E2F] rounded-br-[44px] -m-1"></div>
+                </div>
               </ZoomReveal>
             </div>
           </div>
@@ -126,55 +130,39 @@ const About = () => {
       </section>
 
       {/* 3. MISSION, VISION & VALUES SECTION */}
-      <section className="pt-16 pb-10 lg:pt-20 lg:pb-12 bg-[#fff6ef] relative overflow-hidden">
+      <section className="pt-16 pb-10 lg:pt-20 lg:pb-12 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
         <div className="relative z-10 grid grid-cols-1 gap-8 px-4 mx-auto max-w-7xl lg:px-8 md:grid-cols-2 lg:grid-cols-3">
-          <ZoomReveal>
-            <motion.div
-              whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full flex flex-col">
-              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider uppercase black-gold-animated">
-                Our Mission
-              </h3>
-              <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
-                To bridge the gap between ancient artistry and modern design,
-                ensuring every customer walks away with a piece that is as
-                authentic as it is timeless. We strive for transparency in every
-                transaction.
-              </p>
-            </motion.div>
-          </ZoomReveal>
-
-          <ZoomReveal delay={0.2}>
-            <motion.div
-              whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full flex flex-col">
-              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider uppercase black-gold-animated">
-                Our Vision
-              </h3>
-              <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
-                To be the global benchmark for luxury handcrafted jewelry,
-                recognized for our unwavering dedication to ethical sourcing,
-                artisan empowerment, and the preservation of heritage Indian
-                craftsmanship.
-              </p>
-            </motion.div>
-          </ZoomReveal>
-
-          <ZoomReveal delay={0.3}>
-            <motion.div
-              whileHover={{ y: -15, scale: 1.02 }}
-              className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#5B0E23]/10 group transition-all duration-700 hover:border-[#5B0E23]/30 h-full flex flex-col">
-              <h3 className="mb-5 font-serif text-3xl font-bold tracking-wider uppercase black-gold-animated">
-                Our Values
-              </h3>
-              <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
-                Integrity in every transaction, purity in every ornament, and
-                care in every customer relationship. We stand for trust,
-                craftsmanship, transparency, and timeless design.
-              </p>
-            </motion.div>
-          </ZoomReveal>
+          {[
+            {
+              title: "Our Mission",
+              desc: "To bridge the gap between ancient artistry and modern design, ensuring every customer walks away with a piece that is as authentic as it is timeless. We strive for transparency in every transaction.",
+            },
+            {
+              title: "Our Vision",
+              desc: "To be the global benchmark for luxury handcrafted jewelry, recognized for our unwavering dedication to ethical sourcing, artisan empowerment, and the preservation of heritage Indian craftsmanship.",
+            },
+            {
+              title: "Our Values",
+              desc: "Integrity in every transaction, purity in every ornament, and care in every customer relationship. We stand for trust, craftsmanship, transparency, and timeless design.",
+            },
+          ].map((item, i) => (
+            <ZoomReveal key={i} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="relative p-[2.5px] rounded-[32px] bg-gradient-to-br from-[#5B0E23] via-[#8B1533] to-[#5B0E23]/30 h-full shadow-xl group transition-all duration-700 hover:shadow-[0_20px_50px_rgba(91,14,35,0.3)]"
+              >
+                <div className="bg-white p-8 lg:p-10 rounded-[30px] h-full flex flex-col border border-[#5B0E23]/10">
+                  <h3 className="mb-6 font-serif text-3xl font-bold tracking-wider uppercase maroon-gold-animated">
+                    {item.title}
+                  </h3>
+                  <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            </ZoomReveal>
+          ))}
         </div>
       </section>
 
