@@ -60,6 +60,7 @@ const getFrameVariant = (category: string) => {
   if (normalized === "diamond" || normalized === "platinum") {
     return "luxury-frame--diamond";
   }
+  if (normalized === "signaturecollection") return "luxury-frame--signature";
 
   return "luxury-frame--gold";
 };
@@ -83,7 +84,7 @@ const getCategoryPalette = (category: string) => {
 
   return {
     titleColor: "#5B0E23",
-    priceColor: "#C9A84C",
+    priceColor: "#D4AF37",
   };
 };
 
@@ -102,7 +103,7 @@ const getTitleColorByCategory = (category: string) => {
     return "#E5E4E2"; // Platinum
   }
 
-  return "#D4AF37"; // Gold
+  return "#FFD700"; // Gold
 };
 
 const buildCollectionTitle = (
@@ -113,6 +114,9 @@ const buildCollectionTitle = (
   const subCategory = (subCategoryParam ?? "").trim();
 
   if (!subCategory) {
+    if (category.toLowerCase().includes("collection")) {
+      return category.replace(/collection/i, "Collections").trim();
+    }
     return `${category} Collections`.trim();
   }
 
@@ -202,6 +206,7 @@ const getAnimationClassByCategory = (category: string) => {
   if (normalized === "silver") return "silver-animated";
   if (normalized === "diamond" || normalized === "platinum")
     return "diamond-animated";
+  if (normalized === "signaturecollection") return "signature-animated";
   return "black-gold-animated";
 };
 
@@ -231,23 +236,43 @@ const SubCategoryPage = () => {
     { value: "name-a-z", label: "Alphabetically, A-Z" },
   ];
 
+  // 🔄 RE-SYNC FILTERS ON NAVIGATION (Main Category or Subcategory changes)
+  useEffect(() => {
+    setCurrentPage(1);
+    setAvailability([]);
+    setJewelTypes([]);
+    setIsSortOpen(false);
+    setIsFilterOpen(false);
+  }, [type, sub]);
+
   const items = useMemo(() => {
     const normalizedType = normalizeCategory(type || "");
+    
+    // 1. Filter by Main Category (Gold, Silver, etc.)
     const categoryItems = JEWELLERY_DATA.filter(
-      (item) => normalizeCategory(item.category) === normalizedType,
+      (item) => normalizeCategory(item.category) === normalizedType
     );
 
-    const subcategoryItems = sub
-      ? categoryItems.filter(
-          (item) => normalizeText(item.subcategory) === normalizeText(sub),
-        )
+    // 2. Filter by Subcategory/Type if 'sub' slug is present
+    const subCategoryMatch = (item: (typeof JEWELLERY_DATA)[0], slug: string) => {
+      const normalizedSlug = normalizeText(slug);
+      return (
+        normalizeText(item.subcategory) === normalizedSlug ||
+        normalizeText(item.type) === normalizedSlug ||
+        // Handle names that might include the category like "GOLD BANGLES" vs "Bangles"
+        normalizeText(item.subcategory).includes(normalizedSlug) ||
+        normalizedSlug.includes(normalizeText(item.type))
+      );
+    };
+
+    const targetItems = sub 
+      ? categoryItems.filter(item => subCategoryMatch(item, sub))
       : categoryItems;
 
-    // Keep strict category filtering, but avoid empty pages for unmatched subcategory slugs.
-    const selectedItems =
-      sub && subcategoryItems.length === 0 ? categoryItems : subcategoryItems;
+    // Default to main category if no specific subcategory matches found (prevents empty screen)
+    const finalItems = targetItems.length > 0 ? targetItems : categoryItems;
 
-    return selectedItems.map((item, index): EnrichedItem => {
+    return finalItems.map((item, index): EnrichedItem => {
       const hash = hashString(item.id + item.name);
       const catBase = categoryBasePrice[item.category.toLowerCase()] ?? 40000;
       const price = catBase + (hash % 90000) + index * 213;
@@ -263,6 +288,7 @@ const SubCategoryPage = () => {
     });
   }, [type, sub]);
 
+  // Derived filter options based on the current items set
   const availableJewelTypes = useMemo(
     () => Array.from(new Set(items.map((item) => item.subcategory))).sort(),
     [items],
@@ -323,9 +349,7 @@ const SubCategoryPage = () => {
           const imagePriorityDiff =
             imagePriorityMatch(b.image, normalizedType) -
             imagePriorityMatch(a.image, normalizedType);
-
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
-
           return a.price - b.price;
         });
         break;
@@ -334,9 +358,7 @@ const SubCategoryPage = () => {
           const imagePriorityDiff =
             imagePriorityMatch(b.image, normalizedType) -
             imagePriorityMatch(a.image, normalizedType);
-
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
-
           return b.price - a.price;
         });
         break;
@@ -345,9 +367,7 @@ const SubCategoryPage = () => {
           const imagePriorityDiff =
             imagePriorityMatch(b.image, normalizedType) -
             imagePriorityMatch(a.image, normalizedType);
-
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
-
           return a.name.localeCompare(b.name);
         });
         break;
@@ -356,9 +376,7 @@ const SubCategoryPage = () => {
           const imagePriorityDiff =
             imagePriorityMatch(b.image, normalizedType) -
             imagePriorityMatch(a.image, normalizedType);
-
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
-
           return b.addedRank - a.addedRank;
         });
         break;
@@ -368,9 +386,7 @@ const SubCategoryPage = () => {
           const imagePriorityDiff =
             imagePriorityMatch(b.image, normalizedType) -
             imagePriorityMatch(a.image, normalizedType);
-
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
-
           return b.bestScore - a.bestScore;
         });
         break;
@@ -379,26 +395,20 @@ const SubCategoryPage = () => {
     return sorted;
   }, [availability, items, jewelTypes, priceRange, sortBy]);
 
-  const ITEMS_PER_PAGE = 12;
-  const totalPages = Math.max(
-    1,
-    Math.ceil(filteredItems.length / ITEMS_PER_PAGE),
-  );
+  const ITEMS_PER_PAGE = 28;
+  const totalPages = Math.max(1, Math.ceil(filteredItems.length / ITEMS_PER_PAGE));
 
   const paginatedItems = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredItems.slice(start, start + ITEMS_PER_PAGE);
   }, [currentPage, filteredItems]);
 
+  // Current page correction
   useEffect(() => {
-    setCurrentPage(1);
-  }, [type, sub, availability, jewelTypes, priceRange, sortBy]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
+    if (currentPage > totalPages && totalPages > 0) {
       setCurrentPage(totalPages);
     }
-  }, [currentPage, totalPages]);
+  }, [filteredItems, totalPages]);
 
   useEffect(() => {
     if (!isMobileFilterOpen) return;
@@ -655,7 +665,7 @@ const SubCategoryPage = () => {
   return (
     <div className="min-h-screen bg-[#fafaf9] pt-4 pb-24 px-4 lg:px-10">
       <div className="max-w-[1440px] mx-auto">
-        <div className="relative mb-8 text-center">
+        <div className="relative mb-4 text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-24 bg-maroon/5 blur-[80px] rounded-full pointer-events-none"></div>
 
           <motion.div
@@ -763,8 +773,8 @@ const SubCategoryPage = () => {
               )}
             </AnimatePresence>
 
-            <section className="space-y-8">
-              <div className="relative z-[10] flex flex-wrap items-center justify-between gap-6 px-4 py-8 border-y border-stone-100/60 bg-white/30 backdrop-blur-sm">
+            <section className="space-y-6">
+              <div className="relative z-[10] flex flex-wrap items-center justify-between gap-6 px-4 py-4 border-y border-stone-100/60 bg-white/30 backdrop-blur-sm">
                 <div className="flex flex-wrap items-center gap-4">
                   <motion.button
                     whileHover={{
@@ -862,7 +872,7 @@ const SubCategoryPage = () => {
 
               {filteredItems.length > 0 ? (
                 <>
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {paginatedItems.map((item, index) => {
                       const palette = getCategoryPalette(item.category);
 
@@ -898,6 +908,19 @@ const SubCategoryPage = () => {
                                 }}
                               />
                             </div>
+
+                            {normalizeCategory(item.category) === "signaturecollection" && (
+                              <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+                                <div className="bg-[#5B0E23] text-white text-[8px] font-black tracking-[0.2em] px-2 py-1 rounded-sm uppercase shadow-xl flex items-center gap-1">
+                                  <Star size={8} fill="white" />
+                                  Signature
+                                </div>
+                                <div className="bg-white/90 backdrop-blur-sm text-maroon text-[7px] font-bold tracking-[0.1em] px-2 py-0.5 rounded-sm uppercase border border-maroon/10">
+                                  LTD Edition
+                                </div>
+                              </div>
+                            )}
+
                             <button
                               type="button"
                               onClick={() => handleWishlistClick(item)}
@@ -943,83 +966,96 @@ const SubCategoryPage = () => {
                   </div>
 
                   {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-12 pt-12 pb-12 border-t border-stone-100/60 mt-8">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setCurrentPage((prev) => Math.max(1, prev - 1))
-                        }
-                        disabled={currentPage === 1}
-                        className="flex items-center gap-3 text-maroon disabled:opacity-20 disabled:cursor-not-allowed group transition-all"
-                      >
-                        <ChevronLeft
-                          size={18}
-                          className="group-hover:-translate-x-1 transition-transform"
-                        />
-                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">
-                          Previous
-                        </span>
-                      </button>
+                    <div className="mt-16 flex justify-center">
+                      <div className="relative group">
+                        {/* Decorative Background Glow */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-maroon/20 via-[#FFD700]/20 to-maroon/20 rounded-[40px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div className="relative bg-white border-2 border-[#FFD700]/30 rounded-[28px] px-8 py-3 shadow-2xl shadow-maroon/5 flex items-center gap-6">
+                          {/* Inner Bezel Effect */}
+                          <div className="absolute inset-1 border border-[#FFD700]/10 rounded-[24px] pointer-events-none"></div>
 
-                      <div className="flex items-center gap-8">
-                        {(() => {
-                          const windowSize = 3;
-                          const currentBlock = Math.floor(
-                            (currentPage - 1) / windowSize,
-                          );
-                          const startPage = currentBlock * windowSize + 1;
-                          const pages = [];
-                          for (let i = 0; i < windowSize; i++) {
-                            const page = startPage + i;
-                            if (page <= totalPages) {
-                              pages.push(
-                                <button
-                                  key={page}
-                                  type="button"
-                                  onClick={() => setCurrentPage(page)}
-                                  className="relative group py-2"
-                                >
-                                  <span
-                                    className={`font-serif text-xl transition-all duration-300 ${
-                                      currentPage === page
-                                        ? "text-maroon font-bold scale-110"
-                                        : "text-stone-400 hover:text-maroon"
-                                    }`}
-                                  >
-                                    {page}
-                                  </span>
-                                  {currentPage === page && (
-                                    <motion.div
-                                      layoutId="activePage"
-                                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-maroon rounded-full"
-                                    />
-                                  )}
-                                </button>,
-                              );
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setCurrentPage((prev) => Math.max(1, prev - 1))
                             }
-                          }
-                          return pages;
-                        })()}
-                      </div>
+                            disabled={currentPage === 1}
+                            className="flex items-center gap-2.5 text-maroon disabled:opacity-30 disabled:cursor-not-allowed group/nav transition-all"
+                          >
+                            <ChevronLeft
+                              size={20}
+                              className="group-hover/nav:-translate-x-1 transition-transform"
+                            />
+                            <span className="text-[11px] font-black tracking-[0.3em] uppercase hidden sm:inline">
+                              Prev
+                            </span>
+                          </button>
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setCurrentPage((prev) =>
-                            Math.min(totalPages, prev + 1),
-                          )
-                        }
-                        disabled={currentPage === totalPages}
-                        className="flex items-center gap-3 text-maroon disabled:opacity-20 disabled:cursor-not-allowed group transition-all"
-                      >
-                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">
-                          Next
-                        </span>
-                        <ChevronRight
-                          size={18}
-                          className="group-hover:translate-x-1 transition-transform"
-                        />
-                      </button>
+                          <div className="h-6 w-px bg-stone-100 hidden sm:block"></div>
+
+                          <div className="flex items-center gap-8">
+                            {(() => {
+                              const windowSize = 3;
+                              const currentBlock = Math.floor(
+                                (currentPage - 1) / windowSize,
+                              );
+                              const startPage = currentBlock * windowSize + 1;
+                              const pages = [];
+                              for (let i = 0; i < windowSize; i++) {
+                                const page = startPage + i;
+                                if (page <= totalPages) {
+                                  pages.push(
+                                    <button
+                                      key={page}
+                                      type="button"
+                                      onClick={() => setCurrentPage(page)}
+                                      className="relative group/num py-1.5 min-w-[28px]"
+                                    >
+                                      <span
+                                        className={`font-serif text-xl font-black transition-all duration-300 ${
+                                          currentPage === page
+                                            ? "text-maroon scale-125"
+                                            : "text-stone-900/40 hover:text-maroon"
+                                        }`}
+                                      >
+                                        {page}
+                                      </span>
+                                      {currentPage === page && (
+                                        <motion.div
+                                          layoutId="activePage"
+                                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-maroon rounded-full"
+                                        />
+                                      )}
+                                    </button>,
+                                  );
+                                }
+                              }
+                              return pages;
+                            })()}
+                          </div>
+
+                          <div className="h-6 w-px bg-stone-100 hidden sm:block"></div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setCurrentPage((prev) =>
+                                Math.min(totalPages, prev + 1),
+                              )
+                            }
+                            disabled={currentPage === totalPages}
+                            className="flex items-center gap-2.5 text-maroon disabled:opacity-30 disabled:cursor-not-allowed group/nav transition-all"
+                          >
+                            <span className="text-[11px] font-black tracking-[0.3em] uppercase hidden sm:inline">
+                              Next
+                            </span>
+                            <ChevronRight
+                              size={20}
+                              className="group-hover/nav:translate-x-1 transition-transform"
+                            />
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </>

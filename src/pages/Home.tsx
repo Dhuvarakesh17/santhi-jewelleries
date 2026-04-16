@@ -44,22 +44,34 @@ const Magnetic = ({ children }: { children: React.ReactNode }) => {
 const HeroSlider = () => {
   const slides = [
     {
-      image: "/images/showcase/6.webp",
-      subtitle: "Bridal Grandeur • Timeless Craftsmanship",
-      title: "Royal Temple Jewellery",
-      desc: "Celebrate every occasion with intricate gold artistry inspired by heritage motifs and modern elegance.",
-    },
-    {
-      image: "/images/showcase/grt_hero.webp",
-      subtitle: "Daily Luxury • Modern Craftsmanship",
-      title: "Designer Gold Bracelets",
-      desc: "Sophisticated silhouettes designed for the modern woman. Elevate your everyday style with 22K pure gold.",
-    },
-    {
-      image: "/images/showcase/1.webp",
+      image: "/images/showcase/hero-hd-4.webp",
       subtitle: "Antique Style • Divine Brilliance",
       title: "Traditional Gold Classics",
       desc: "Intricate Nagas and Temple jewelry craftsmanship that reflects our rich cultural legacy.",
+    },
+    {
+      image: "/images/showcase/hero-section11.webp",
+      subtitle: "Daily Luxury • Modern Craftsmanship",
+      title: "Designer Gold Collections",
+      desc: "Sophisticated silhouettes designed for the modern woman. Elevate your everyday style with 22K pure gold.",
+    },
+    {
+      image: "/images/showcase/hero-section8.webp",
+      subtitle: "Bridal Grandeur • Timeless Elegance",
+      title: "Royal Bridal Heritage",
+      desc: "Celebrate your special day with masterfully crafted bridal sets.",
+    },
+    {
+      image: "/images/showcase/hero-section1.webp",
+      subtitle: "Diamond Dreams • Eternal Sparkle",
+      title: "Signature Diamond Luxe",
+      desc: "Unmistakable brilliance set in handcrafted gold. Discover our exclusive range of boutique diamond masterpieces.",
+    },
+    {
+      image: "/images/showcase/hero-section8.webp",
+      subtitle: "Silver Artistry • Modern Tradition",
+      title: "Sterling Silver Boutique",
+      desc: "Hand-finished silver articles and contemporary jewelry that blend traditional motifs with modern aesthetics.",
     },
   ];
 
@@ -90,7 +102,7 @@ const HeroSlider = () => {
           <img
             src={slides[current].image}
             alt="Hero Slide"
-            className="object-cover w-full h-full border border-[#5B0E23]/20"
+            className="object-cover object-top lg:object-[right_10%] w-full h-full border border-[#5B0E23]/20"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
         </motion.div>
@@ -138,7 +150,7 @@ const HeroSlider = () => {
                     y="2"
                     width="calc(100% - 4px)"
                     height="calc(100% - 4px)"
-                    className="stroke-[#D4AF37] stroke-[2px] [stroke-dasharray:400,0] group-hover:[stroke-dasharray:0,400] transition-all duration-1000"
+                    className="stroke-[#FFD700] stroke-[2px] [stroke-dasharray:400,0] group-hover:[stroke-dasharray:0,400] transition-all duration-1000"
                     strokeLinecap="square"
                   />
                 </svg>
@@ -156,10 +168,10 @@ const HeroSlider = () => {
             <Magnetic>
               <Link
                 to="/gold/customized"
-                className="group relative px-12 py-6 border-2 border-white/20 hover:border-[#D4AF37] text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 backdrop-blur-sm active:scale-95 flex items-center bg-white/5 overflow-hidden"
+                className="group relative px-12 py-6 border-2 border-white/20 hover:border-[#FFD700] text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 backdrop-blur-sm active:scale-95 flex items-center bg-white/5 overflow-hidden"
               >
                 {/* Liquid Fill */}
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-[#D4AF37] to-[#B8860B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-[#FFD700] to-[#A67C00] translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
 
                 <span className="relative z-20 flex items-center transition-colors duration-500 group-hover:text-black">
                   Customization Order{" "}
@@ -250,16 +262,19 @@ const Home = () => {
       name: "Fusion Gold Neck Piece",
       img: "/images/showcase/gold_2.webp",
       tag: "TRENDING",
+      type: "gold",
     },
     {
       name: "Oxidized Silver Suite",
       img: "/images/showcase/silver_3.webp",
       tag: "NEW",
+      type: "silver",
     },
     {
       name: "Glamour Diamond Ring",
       img: "/images/showcase/diamond_ext_1.webp",
       tag: "POPULAR",
+      type: "diamond",
     },
   ];
 
@@ -462,37 +477,80 @@ const Home = () => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3">
-            {fashionableItems.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="group relative overflow-hidden rounded-[24px] shadow-lg border border-stone-100">
-                  <div className="h-[340px] lg:h-[440px] overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110 border border-[#5B0E23]/20"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 transition-opacity duration-500 opacity-0 lg:p-10 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:opacity-100">
-                    <span className="text-[#D4AF37] font-black text-[10px] tracking-[0.4em] mb-4">
-                      {item.tag}
-                    </span>
-                    <h4 className="mb-6 font-serif text-3xl font-bold leading-tight text-white">
-                      {item.name}
-                    </h4>
-                    <Link
-                      to="/category/Gold"
-                      className="text-white text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn border-b border-white/30 pb-2 w-fit"
-                    >
-                      Explore Suite{" "}
-                      <ChevronRight
-                        size={16}
-                        className="transition-transform group-hover/btn:translate-x-1"
-                      />
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+            {fashionableItems.map((item, i) => {
+              const frames = {
+                gold: {
+                  border: "bg-gradient-to-br from-[#A67C00] via-[#FFD700] to-[#85662F]",
+                  shadow: "hover:shadow-[0_25px_60px_rgba(255,215,0,0.3)]",
+                  accent: "from-[#FFD700] to-[#FFF9C4]",
+                  glow: "shadow-[0_0_20px_rgba(255,215,0,0.5)]",
+                  text: "text-[#FFD700]"
+                },
+                silver: {
+                  border: "bg-gradient-to-br from-[#717171] via-[#E2E2E2] to-[#3A3A3A]",
+                  shadow: "hover:shadow-[0_25px_60px_rgba(180,180,180,0.3)]",
+                  accent: "from-[#D1D5DB] to-[#F3F4F6]",
+                  glow: "shadow-[0_0_20px_rgba(226,226,226,0.6)]",
+                  text: "text-[#D1D5DB]"
+                },
+                diamond: {
+                  border: "bg-gradient-to-br from-[#1E3A8A] via-[#E0F2FE] to-[#0F172A]",
+                  shadow: "hover:shadow-[0_25px_60px_rgba(56,189,248,0.25)]",
+                  accent: "from-[#7DD3FC] to-[#F0F9FF]",
+                  glow: "shadow-[0_0_25px_rgba(125,211,252,0.7)]",
+                  text: "text-[#BAE6FD]"
+                }
+              };
+              const style = frames[item.type as keyof typeof frames] || frames.gold;
+
+              return (
+                <ScrollReveal key={i} delay={i * 0.1}>
+                  <motion.div
+                    whileHover={{ y: -12, scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 12 }}
+                    className={`relative p-[3.5px] ${style.border} rounded-[28px] shadow-2xl ${style.shadow} transition-all duration-500`}
+                  >
+                    <div className="group relative overflow-hidden rounded-[24px] bg-black h-[360px] lg:h-[460px]">
+                      {/* Layer Inner Bezel */}
+                      <div className="absolute inset-0 border-4 border-white/10 rounded-[24px] pointer-events-none z-20"></div>
+                      
+                      {/* Shimmer Effect */}
+                      <div className="absolute inset-0 z-10 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-shimmer pointer-events-none"></div>
+
+                      <div className="h-full w-full overflow-hidden">
+                        <img
+                          src={item.img}
+                          alt={item.name}
+                          className="object-cover w-full h-full transition-transform duration-[1500ms] group-hover:scale-110 opacity-90 group-hover:opacity-100 border border-[#5B0E23]/20"
+                        />
+                      </div>
+
+                      {/* DARK GRADIENT OVERLAY */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 group-hover:via-black/50"></div>
+
+                      <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-10 z-30">
+                        <span className={`${style.text} font-black text-[10px] tracking-[0.4em] mb-4 uppercase`}>
+                          {item.tag}
+                        </span>
+                        <h4 className="mb-6 font-serif text-3xl font-bold leading-tight text-white drop-shadow-xl">
+                          {item.name}
+                        </h4>
+                        <Link
+                          to={`/category/${item.type}`}
+                          className="text-white text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn border-b border-white/30 pb-2 w-fit transition-colors hover:border-white"
+                        >
+                          Explore Suite{" "}
+                          <ChevronRight
+                            size={16}
+                            className="transition-transform group-hover/btn:translate-x-1"
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -575,11 +633,11 @@ const Home = () => {
 const CategoryCard = ({ title, items, image, link, type = "gold" }) => {
   const frames = {
     gold: {
-      border: "bg-gradient-to-br from-[#8A6E2F] via-[#FFE5A3] to-[#4B3B0A]", // Deep Bronze to Bright Gold
-      shadow: "hover:shadow-[0_25px_60px_rgba(212,175,55,0.45)]",
-      accent: "from-[#D4AF37] to-[#FFF5A5]",
-      glow: "shadow-[0_0_20px_rgba(255,245,165,0.8)]",
-      text: "text-[#D4AF37]"
+      border: "bg-gradient-to-br from-[#A67C00] via-[#FFD700] to-[#85662F]", // Deep Gold to Bright Gold to Warm Gold
+      shadow: "hover:shadow-[0_25px_60px_rgba(255,215,0,0.3)]",
+      accent: "from-[#FFD700] to-[#FFF9C4]",
+      glow: "shadow-[0_0_20px_rgba(255,215,0,0.5)]",
+      text: "text-[#FFD700]"
     },
     silver: {
       border: "bg-gradient-to-br from-[#717171] via-[#E2E2E2] to-[#3A3A3A]", // Polished Chrome / Neutral Metal

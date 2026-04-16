@@ -63,7 +63,7 @@ const About = () => {
       <section className="relative h-[560px] lg:h-[620px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/about_bg_indriya.webp"
+            src="/images/showcase/about-us-bg-new.webp"
             alt="About Santhi Jewellers"
             className="object-cover w-full h-full"
           />
@@ -77,7 +77,7 @@ const About = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="max-w-4xl mx-auto"
           >
-            <span className="text-[#D4AF37] font-script text-5xl lg:text-7xl lowercase mb-4 block drop-shadow-md">
+            <span className="text-[#FFD700] font-script text-5xl lg:text-7xl lowercase mb-4 block drop-shadow-md">
               our legacy
             </span>
             <h1 className="mb-8 font-heading text-5xl lg:text-9xl font-black uppercase tracking-[0.1em] leading-none drop-shadow-2xl">
@@ -217,7 +217,7 @@ const About = () => {
             ].map((item, i) => (
               <ZoomReveal key={i} delay={i * 0.1}>
                 <div className="p-7 lg:p-8 space-y-5 group bg-white border border-[#5B0E23]/15 hover:border-[#5B0E23]/35 rounded-[24px] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_24px_48px_-20px_rgba(91,14,35,0.45)]">
-                  <div className="text-[#D4AF37] mx-auto w-fit group-hover:scale-125 group-hover:text-[#5B0E23] transition-all duration-500">
+                  <div className="text-[#FFD700] mx-auto w-fit group-hover:scale-125 group-hover:text-[#5B0E23] transition-all duration-500">
                     {item.icon}
                   </div>
                   <h4 className="text-xl font-bold uppercase tracking-widest text-[#5B0E23]">
@@ -254,10 +254,10 @@ const About = () => {
             {steps.map((step, i) => (
               <ZoomReveal key={i} delay={i * 0.15}>
                 <div className="relative z-10 flex flex-col items-center text-center group">
-                  <div className="w-20 h-20 bg-[#D4AF37] text-maroon rounded-full flex items-center justify-center border-4 border-[#5B0E23]/15 shadow-2xl mb-6 group-hover:bg-[#5B0E23] group-hover:text-[#fff6ef] transition-all duration-700 cursor-default">
+                  <div className="w-20 h-20 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center border-4 border-[#5B0E23]/15 shadow-2xl mb-6 group-hover:bg-[#5B0E23] group-hover:text-[#fff6ef] transition-all duration-700 cursor-default">
                     {step.icon}
                   </div>
-                  <h3 className="text-xl font-serif font-bold mb-2 uppercase tracking-wider text-[#D4AF37]">
+                  <h3 className="text-xl font-serif font-bold mb-2 uppercase tracking-wider text-[#FFD700]">
                     {step.title}
                   </h3>
                   <p className="text-[#5B0E23]/85 text-[11px] font-bold uppercase tracking-widest">
@@ -284,12 +284,12 @@ const About = () => {
               className="relative inline-flex items-center gap-6 bg-maroon text-white px-14 py-7 rounded-full font-bold tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(91,14,35,0.4)] hover:bg-[#3D0916] transition-all group overflow-hidden"
             >
               <div className="absolute inset-0 w-full h-full transition-transform duration-500 -translate-x-full bg-white/10 group-hover:translate-x-0"></div>
-              <span className="relative z-10 uppercase text-[#D4AF37]">
+              <span className="relative z-10 uppercase text-[#FFD700]">
                 EXPLORE COLLECTIONS
               </span>
               <ChevronRight
                 size={24}
-                className="relative z-10 text-[#D4AF37] group-hover:translate-x-2 transition-transform duration-500"
+                className="relative z-10 text-[#FFD700] group-hover:translate-x-2 transition-transform duration-500"
               />
             </Link>
           </ZoomReveal>

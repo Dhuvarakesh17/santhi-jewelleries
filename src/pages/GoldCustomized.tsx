@@ -171,7 +171,7 @@ const GoldCustomized = () => {
             transition={{ delay: 0.1 }}
             className="mb-8 font-heading text-4xl lg:text-7xl leading-[1.1] text-white drop-shadow-2xl tracking-normal"
           >
-            <span className="font-script text-5xl lg:text-8xl text-[#D4AF37] lowercase block mb-2">
+            <span className="font-script text-5xl lg:text-8xl text-[#FFD700] lowercase block mb-2">
               Gold
             </span>
             Customized Jewelry – <br className="hidden lg:block" />{" "}
@@ -192,12 +192,12 @@ const GoldCustomized = () => {
           <svg className="w-full h-full" viewBox="0 0 1440 400" fill="none">
             <path
               d="M-100 350C200 300 400 50 800 150C1200 250 1500 0 1500 0"
-              stroke="#D4AF37"
+              stroke="#FFD700"
               strokeWidth="1.2"
             />
             <path
               d="M-50 400C300 350 500 100 900 200C1300 300 1600 50 1600 50"
-              stroke="#D4AF37"
+              stroke="#FFD700"
               strokeWidth="1.2"
             />
           </svg>
@@ -214,7 +214,7 @@ const GoldCustomized = () => {
               Our master artisans combine heritage techniques with your personal
               vision <br className="hidden lg:block" />
               to create jewelry that speaks your unique{" "}
-              <span className="font-script text-5xl lg:text-7xl text-[#D4AF37] lowercase">
+              <span className="font-script text-5xl lg:text-7xl text-[#FFD700] lowercase">
                 language
               </span>{" "}
               of elegance.
@@ -316,7 +316,7 @@ const GoldCustomized = () => {
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 border border-[#D4AF37]/25"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 border border-[#FFD700]/25"
                   />
                 </div>
                 <h4 className="mb-4 font-serif text-2xl font-bold text-[#5B0E23]">

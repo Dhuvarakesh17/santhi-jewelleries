@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#5B0E23] text-white pt-24 pb-12 border-t border-[#D4AF37]/20 relative overflow-hidden">
+    <footer className="bg-[#5B0E23] text-white pt-24 pb-12 border-t border-[#FFD700]/20 relative overflow-hidden">
       {/* Background Motif - Subtle */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
 
@@ -24,7 +24,7 @@ const Footer = () => {
               <span className="text-2xl font-bold tracking-tighter leading-none">
                 SANTHI
               </span>
-              <span className="text-[10px] tracking-[0.4em] font-medium text-[#D4AF37] -mt-0.5 uppercase">
+              <span className="text-[10px] tracking-[0.4em] font-medium text-[#FFD700] -mt-0.5 uppercase">
                 JEWELLERS
               </span>
             </div>
@@ -36,13 +36,13 @@ const Footer = () => {
           <div className="flex space-x-5">
             <a
               href="#"
-              className="p-3 bg-white/5 rounded-full hover:bg-[#D4AF37] hover:text-[#5B0E23] transition-all duration-300"
+              className="p-3 bg-white/5 rounded-full hover:bg-[#FFD700] hover:text-[#5B0E23] transition-all duration-300"
             >
               <Instagram size={20} />
             </a>
             <a
               href="#"
-              className="p-3 bg-white/5 rounded-full hover:bg-[#D4AF37] hover:text-[#5B0E23] transition-all duration-300"
+              className="p-3 bg-white/5 rounded-full hover:bg-[#FFD700] hover:text-[#5B0E23] transition-all duration-300"
             >
               <Twitter size={20} />
             </a>
@@ -51,14 +51,14 @@ const Footer = () => {
 
         {/* Collections */}
         <div>
-          <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-[#D4AF37] mb-8">
+          <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-[#FFD700] mb-8">
             Our Collections
           </h4>
           <ul className="space-y-5 text-sm text-stone-200">
             <li>
               <Link
                 to="/category/Gold"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -70,7 +70,7 @@ const Footer = () => {
             <li>
               <Link
                 to="/category/Diamond"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -82,7 +82,7 @@ const Footer = () => {
             <li>
               <Link
                 to="/category/Silver"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -94,7 +94,7 @@ const Footer = () => {
             <li>
               <Link
                 to="/gold/customized"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -108,14 +108,14 @@ const Footer = () => {
 
         {/* Company Info */}
         <div>
-          <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-[#D4AF37] mb-8">
+          <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-[#FFD700] mb-8">
             Information
           </h4>
           <ul className="space-y-5 text-sm text-stone-200">
             <li>
               <a
                 href="#"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -127,7 +127,7 @@ const Footer = () => {
             <li>
               <a
                 href="#"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -139,7 +139,7 @@ const Footer = () => {
             <li>
               <a
                 href="#"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -151,7 +151,7 @@ const Footer = () => {
             <li>
               <a
                 href="#"
-                className="hover:text-[#D4AF37] transition-all flex items-center gap-2 group"
+                className="hover:text-[#FFD700] transition-all flex items-center gap-2 group"
               >
                 <ChevronRight
                   size={14}
@@ -165,12 +165,12 @@ const Footer = () => {
 
         {/* Contact Details */}
         <div>
-          <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-[#D4AF37] mb-8">
+          <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-[#FFD700] mb-8">
             Contact Us
           </h4>
           <ul className="space-y-6 text-sm text-stone-200">
             <li className="flex items-start space-x-4">
-              <div className="p-2 bg-white/5 rounded-md text-[#D4AF37]">
+              <div className="p-2 bg-white/5 rounded-md text-[#FFD700]">
                 <MapPin size={20} />
               </div>
               <div>
@@ -181,7 +181,7 @@ const Footer = () => {
               </div>
             </li>
             <li className="flex items-center space-x-4">
-              <div className="p-2 bg-white/5 rounded-md text-[#D4AF37]">
+              <div className="p-2 bg-white/5 rounded-md text-[#FFD700]">
                 <Phone size={20} />
               </div>
               <div>
@@ -190,7 +190,7 @@ const Footer = () => {
               </div>
             </li>
             <li className="flex items-center space-x-4">
-              <div className="p-2 bg-white/5 rounded-md text-[#D4AF37]">
+              <div className="p-2 bg-white/5 rounded-md text-[#FFD700]">
                 <Mail size={20} />
               </div>
               <div>

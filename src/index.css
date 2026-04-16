@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #d4af37;
-  --color-gold-light: #f3e5ab;
-  --color-gold-dark: #b8860b;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F9E29C;
+  --color-gold-dark: #A67C00;
   --color-luxury-accent: #5d0e2e;
   --color-luxury-text: #1a1a1a;
 
@@ -26,17 +26,17 @@ body {
 }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #b8860b 100%);
+  background: linear-gradient(135deg, #A67C00 0%, #D4AF37 50%, #F9E29C 100%);
 }
 
 .gold-text-animated {
   background: linear-gradient(
     to right,
-    #B8860B 0%,
-    #FFFACD 25%,
+    #A67C00 0%,
+    #F9E29C 25%,
     #D4AF37 50%,
-    #FBF5B7 75%,
-    #B38728 100%
+    #FFF9C4 75%,
+    #A67C00 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -50,11 +50,11 @@ body {
 .black-gold-animated {
   background: linear-gradient(
     to right,
-    #c9a84c 0%,
-    #fcf6ba 25%,
-    #bf953f 50%,
-    #f3e5ab 75%,
-    #c9a84c 100%
+    #BF953F 0%,
+    #FCF6BA 25%,
+    #B58921 50%,
+    #F7EF8A 75%,
+    #BF953F 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -97,6 +97,26 @@ body {
   animation: shine 12s linear infinite;
   display: inline-block;
   text-shadow: 0 0 10px rgba(180, 210, 255, 0.2);
+}
+
+.signature-animated {
+  background: linear-gradient(
+    to right,
+    #5B0E23 0%,
+    #A67C00 20%,
+    #FFD700 40%,
+    #f9e29c 50%,
+    #FFD700 60%,
+    #A67C00 80%,
+    #5B0E23 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 8s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 2px rgba(166, 124, 0, 0.2));
 }
 
 @keyframes shine {
@@ -143,7 +163,7 @@ body {
 
 .luxury-frame {
   position: relative;
-  border: 5px solid #c9a84c;
+  border: 5px solid #D4AF37;
   border-radius: 12px;
   background: #ffffff;
   overflow: hidden;
@@ -156,7 +176,7 @@ body {
 }
 
 .luxury-frame--gold {
-  border-color: #c9a84c;
+  border-color: #D4AF37;
 }
 
 .luxury-frame--gold .luxury-frame__inner {
@@ -201,6 +221,31 @@ body {
   mask-composite: exclude;
   background-size: 250% 100%;
   animation: diamond-glint 4.5s linear infinite;
+}
+
+.luxury-frame--signature {
+  border-color: #5B0E23;
+  box-shadow: 0 0 25px rgba(91, 14, 35, 0.15);
+}
+
+.luxury-frame--signature::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 12px;
+  padding: 5px;
+  background: linear-gradient(45deg, #FFD700, #5B0E23, #FFD700);
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: signature-border 3s linear infinite;
+}
+
+@keyframes signature-border {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
 }
 
 @keyframes diamond-glint {
