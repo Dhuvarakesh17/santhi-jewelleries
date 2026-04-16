@@ -67,12 +67,6 @@ const HeroSlider = () => {
       title: "Signature Diamond Luxe",
       desc: "Unmistakable brilliance set in handcrafted gold. Discover our exclusive range of boutique diamond masterpieces.",
     },
-    {
-      image: "/images/showcase/hero-section8.webp",
-      subtitle: "Silver Artistry • Modern Tradition",
-      title: "Sterling Silver Boutique",
-      desc: "Hand-finished silver articles and contemporary jewelry that blend traditional motifs with modern aesthetics.",
-    },
   ];
 
   const [current, setCurrent] = useState(0);
