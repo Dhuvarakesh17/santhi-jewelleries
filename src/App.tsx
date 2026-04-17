@@ -11,6 +11,7 @@ import SubCategoryPage from "./pages/SubCategoryPage";
 import GoldCustomized from "./pages/GoldCustomized";
 import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingChatActions from "./components/FloatingChatActions";
 
 const AppLayout = () => {
   const { isWishlistOpen, closeWishlist } = useWishlist();
@@ -35,6 +36,7 @@ const AppLayout = () => {
         </main>
         <Footer />
       </div>
+      <FloatingChatActions />
       <WishlistDrawer isOpen={isWishlistOpen} onClose={closeWishlist} />
     </Router>
   );
