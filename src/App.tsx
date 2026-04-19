@@ -12,6 +12,7 @@ import GoldCustomized from "./pages/GoldCustomized";
 import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingChatActions from "./components/FloatingChatActions";
+import ProductDetails from "./pages/ProductDetails";
 
 const AppLayout = () => {
   const { isWishlistOpen, closeWishlist } = useWishlist();
@@ -31,6 +32,10 @@ const AppLayout = () => {
             <Route path="/gold/customized" element={<GoldCustomized />} />
             <Route path="/category/:type" element={<SubCategoryPage />} />
             <Route path="/category/:type/:sub" element={<SubCategoryPage />} />
+            <Route
+              path="/category/:type/:sub/products/:id/:slug"
+              element={<ProductDetails />}
+            />
             <Route path="/about" element={<About />} />
           </Routes>
         </main>

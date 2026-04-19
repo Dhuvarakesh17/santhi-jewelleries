@@ -320,6 +320,23 @@ body {
   font-style: normal;
 }
 
+@keyframes product-image-breathe {
+  0% {
+    transform: scale(1.06);
+  }
+  50% {
+    transform: scale(1.11);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+.product-main-image-zoom {
+  animation: product-image-breathe 9s ease-in-out infinite;
+  transform-origin: center center;
+}
+
 .testimonials-carousel {
   position: relative;
   width: 100vw;

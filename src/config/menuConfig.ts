@@ -93,7 +93,7 @@ export const MENU_DATA: MenuItem[] = [
         items: ["Traditional", "Antique", "Fancy", "Rose Gold", "Baby Anklets"],
       },
       {
-        title: "SILVER MUGAPPU CHAIN",
+        title: "CHETTINADU SILVER COLLECTIONS",
         items: [],
       },
     ],

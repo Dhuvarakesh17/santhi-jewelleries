@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { JEWELLERY_DATA } from "../constants/jewelleryData";
 import { useWishlist } from "../context/WishlistContext";
+import { buildProductPath } from "../utils/productPath";
 
 type EnrichedItem = {
   id: string;
@@ -212,6 +213,7 @@ const getAnimationClassByCategory = (category: string) => {
 
 const SubCategoryPage = () => {
   const { type, sub } = useParams();
+  const navigate = useNavigate();
   const { addToWishlist, removeFromWishlist, isInWishlist, openWishlist } =
     useWishlist();
   const [sortBy, setSortBy] = useState("best-selling");
@@ -278,7 +280,7 @@ const SubCategoryPage = () => {
     return finalItems.map((item, index): EnrichedItem => {
       const hash = hashString(item.id + item.name);
       const catBase = categoryBasePrice[item.category.toLowerCase()] ?? 40000;
-      const price = catBase + (hash % 90000) + index * 213;
+      const price = catBase + (hash % 90000);
       const inStock = hash % 9 !== 0;
 
       return {
@@ -463,6 +465,10 @@ const SubCategoryPage = () => {
     openWishlist();
   };
 
+  const handleCardClick = (item: EnrichedItem) => {
+    navigate(buildProductPath(item));
+  };
+
   const titleText = buildCollectionTitle(type, sub);
   const collectionText = titleText.toLowerCase();
   const rangeSpan = Math.max(maxPrice - minPrice, 1);
@@ -492,7 +498,7 @@ const SubCategoryPage = () => {
         }
       >
         <label className="flex items-center justify-between text-sm cursor-pointer group">
-          <span className="text-stone-600 group-hover:text-maroon transition-colors">
+          <span className="transition-colors text-stone-600 group-hover:text-maroon">
             In stock ({availabilityCounts.inStock})
           </span>
           <input
@@ -501,11 +507,11 @@ const SubCategoryPage = () => {
             onChange={() =>
               toggleSelection("in-stock", availability, setAvailability)
             }
-            className="w-4 h-4 accent-maroon rounded cursor-pointer transition-transform group-hover:scale-110"
+            className="w-4 h-4 transition-transform rounded cursor-pointer accent-maroon group-hover:scale-110"
           />
         </label>
         <label className="flex items-center justify-between text-sm cursor-pointer group">
-          <span className="text-stone-600 group-hover:text-maroon transition-colors">
+          <span className="transition-colors text-stone-600 group-hover:text-maroon">
             Out of stock ({availabilityCounts.outOfStock})
           </span>
           <input
@@ -514,7 +520,7 @@ const SubCategoryPage = () => {
             onChange={() =>
               toggleSelection("out-of-stock", availability, setAvailability)
             }
-            className="w-4 h-4 accent-maroon rounded cursor-pointer transition-transform group-hover:scale-110"
+            className="w-4 h-4 transition-transform rounded cursor-pointer accent-maroon group-hover:scale-110"
           />
         </label>
       </FilterSection>
@@ -585,7 +591,7 @@ const SubCategoryPage = () => {
                   if (Number.isNaN(nextMin)) return;
                   updatePriceRange(nextMin, priceRange[1]);
                 }}
-                className="w-full rounded-lg border border-stone-200 bg-white/50 px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-maroon focus:ring-4 focus:ring-maroon/5"
+                className="w-full px-4 py-3 text-base font-medium transition-colors border rounded-lg outline-none border-stone-200 bg-white/50 text-stone-900 focus:border-maroon focus:ring-4 focus:ring-maroon/5"
               />
             </div>
             <div className="space-y-1.5">
@@ -601,7 +607,7 @@ const SubCategoryPage = () => {
                   if (Number.isNaN(nextMax)) return;
                   updatePriceRange(priceRange[0], nextMax);
                 }}
-                className="w-full rounded-lg border border-stone-200 bg-white/50 px-4 py-3 text-base font-medium text-stone-900 outline-none transition-colors focus:border-maroon focus:ring-4 focus:ring-maroon/5"
+                className="w-full px-4 py-3 text-base font-medium transition-colors border rounded-lg outline-none border-stone-200 bg-white/50 text-stone-900 focus:border-maroon focus:ring-4 focus:ring-maroon/5"
               />
             </div>
           </div>
@@ -623,7 +629,7 @@ const SubCategoryPage = () => {
             key={jewelType}
             className="flex items-center justify-between text-sm cursor-pointer group"
           >
-            <span className="text-stone-600 group-hover:text-maroon transition-colors">
+            <span className="transition-colors text-stone-600 group-hover:text-maroon">
               {jewelType} ({jewelTypeCounts.get(jewelType) || 0})
             </span>
             <input
@@ -632,7 +638,7 @@ const SubCategoryPage = () => {
               onChange={() =>
                 toggleSelection(jewelType, jewelTypes, setJewelTypes)
               }
-              className="w-4 h-4 accent-maroon rounded cursor-pointer transition-transform group-hover:scale-110"
+              className="w-4 h-4 transition-transform rounded cursor-pointer accent-maroon group-hover:scale-110"
             />
           </label>
         ))}
@@ -677,13 +683,13 @@ const SubCategoryPage = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="inline-block relative"
+            className="relative inline-block"
           >
             <motion.h1
               initial={{ letterSpacing: "0.02em", opacity: 0, y: 10 }}
               animate={{ letterSpacing: "0.05em", opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative font-cinzel text-4xl lg:text-7xl font-extrabold uppercase inline-block mb-1 group"
+              className="relative inline-block mb-1 text-4xl font-extrabold uppercase font-cinzel lg:text-7xl group"
             >
               {(() => {
                 const words = titleText.split(" ");
@@ -712,7 +718,7 @@ const SubCategoryPage = () => {
               })()}
 
               {/* Shine Effect on Text */}
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
+              <div className="absolute inset-0 w-full h-full -translate-x-full pointer-events-none bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
             </motion.h1>
 
             {/* Refined minimalist underline */}
@@ -805,7 +811,7 @@ const SubCategoryPage = () => {
                     <SlidersHorizontal
                       size={14}
                       strokeWidth={2.5}
-                      className="group-hover:rotate-180 transition-transform duration-500"
+                      className="transition-transform duration-500 group-hover:rotate-180"
                     />
                     Filters
                   </motion.button>
@@ -823,7 +829,7 @@ const SubCategoryPage = () => {
                     <SlidersHorizontal
                       size={14}
                       strokeWidth={2.5}
-                      className="group-hover:rotate-180 transition-transform duration-500"
+                      className="transition-transform duration-500 group-hover:rotate-180"
                     />
                     {isFilterOpen ? "Hide Filters" : "Show Filters"}
                   </motion.button>
@@ -862,7 +868,7 @@ const SubCategoryPage = () => {
                         transition={{ duration: 0.2, ease: "circOut" }}
                         className="absolute z-[100] top-full right-0 mt-0 w-full bg-transparent pt-1"
                       >
-                        <div className="bg-white border border-black rounded-2xl shadow-2xl overflow-hidden py-2">
+                        <div className="py-2 overflow-hidden bg-white border border-black shadow-2xl rounded-2xl">
                           {sortOptions.map((option) => (
                             <button
                               key={option.value}
@@ -911,6 +917,15 @@ const SubCategoryPage = () => {
                               stiffness: 300,
                               damping: 20,
                             }}
+                            onClick={() => handleCardClick(item)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter" || event.key === " ") {
+                                event.preventDefault();
+                                handleCardClick(item);
+                              }
+                            }}
                             className={`luxury-frame aspect-square relative overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ${getFrameVariant(item.category)}`}
                           >
                             <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[12px] bg-white">
@@ -940,7 +955,10 @@ const SubCategoryPage = () => {
 
                             <button
                               type="button"
-                              onClick={() => handleWishlistClick(item)}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                handleWishlistClick(item);
+                              }}
                               className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 border border-stone-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#5B0E23] transition-all"
                               aria-label={
                                 isInWishlist(item.id)
@@ -984,7 +1002,7 @@ const SubCategoryPage = () => {
                   </div>
 
                   {totalPages > 1 && (
-                    <div className="mt-16 flex justify-center">
+                    <div className="flex justify-center mt-16">
                       <div className="relative group">
                         {/* Decorative Background Glow */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-maroon/20 via-[#FFD700]/20 to-maroon/20 rounded-[40px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -1003,14 +1021,14 @@ const SubCategoryPage = () => {
                           >
                             <ChevronLeft
                               size={20}
-                              className="group-hover/nav:-translate-x-1 transition-transform"
+                              className="transition-transform group-hover/nav:-translate-x-1"
                             />
                             <span className="text-[11px] font-black tracking-[0.3em] uppercase hidden sm:inline">
                               Prev
                             </span>
                           </button>
 
-                          <div className="h-6 w-px bg-stone-100 hidden sm:block"></div>
+                          <div className="hidden w-px h-6 bg-stone-100 sm:block"></div>
 
                           <div className="flex items-center gap-8">
                             {(() => {
@@ -1053,7 +1071,7 @@ const SubCategoryPage = () => {
                             })()}
                           </div>
 
-                          <div className="h-6 w-px bg-stone-100 hidden sm:block"></div>
+                          <div className="hidden w-px h-6 bg-stone-100 sm:block"></div>
                           <button
                             type="button"
                             onClick={() =>
@@ -1069,7 +1087,7 @@ const SubCategoryPage = () => {
                             </span>
                             <ChevronRight
                               size={20}
-                              className="group-hover/nav:translate-x-1 transition-transform"
+                              className="transition-transform group-hover/nav:translate-x-1"
                             />
                           </button>
                         </div>
