@@ -695,6 +695,21 @@ const SubCategoryPage = () => {
               className="relative inline-block mb-1 text-4xl font-extrabold uppercase font-cinzel lg:text-7xl group"
             >
               {(() => {
+                const isChettinadu = titleText.toUpperCase().includes("CHETTINADU");
+                
+                if (isChettinadu) {
+                   return (
+                    <div className="flex flex-col items-center gap-2">
+                       <span className="signature-animated scale-105">
+                        {titleText}
+                      </span>
+                      <span className="bg-[#480607] text-white text-[10px] px-3 py-1 rounded-full animate-pulse tracking-[0.4em] font-black shadow-lg">
+                        SPECIAL COLLECTION
+                      </span>
+                    </div>
+                  );
+                }
+
                 const words = titleText.split(" ");
                 if (words.length <= 1)
                   return (

@@ -1,3 +1,12 @@
+import { 
+  GOLD_IMAGES, 
+  SILVER_IMAGES, 
+  DIAMOND_IMAGES, 
+  GEM_IMAGES, 
+  PLATINUM_IMAGES,
+  NO_IMAGE 
+} from "./imageAssets";
+
 export interface ShowcaseItem {
   id: string;
   name: string;
@@ -8,67 +17,89 @@ export interface ShowcaseItem {
   description: string;
 }
 
-const ALL_IMAGES = [
-  '/images/showcase/gold_1.webp', '/images/showcase/gold_2.webp', '/images/showcase/gold_3.webp',
-  '/images/showcase/gold_4.webp', '/images/showcase/gold_5.webp', '/images/showcase/gold_ring_1.webp',
-  '/images/showcase/gold_chain_1.webp', '/images/showcase/gold_bangle_1.webp', '/images/showcase/gold_ext_1.webp',
-  '/images/showcase/silver_1.webp', '/images/showcase/silver_2.webp', '/images/showcase/silver_3.webp',
-  '/images/showcase/silver_anklet_1.webp', '/images/showcase/silver_ring_1.webp', '/images/showcase/silver_ext_1.webp',
-  '/images/showcase/diamond_ring_1.webp', '/images/showcase/diamond_pendant_1.webp', '/images/showcase/diamond_ext_1.webp',
-  '/images/showcase/platinum_band_1.webp', '/images/showcase/platinum_chain_1.webp', '/images/showcase/platinum_2.webp'
-];
+// Track used image indices globally for this generation pass
+const usedIndices: Record<string, number> = {
+  Gold: 0,
+  Silver: 0,
+  Diamond: 0,
+  Gems: 0,
+  Platinum: 0,
+  "Signature Collection": 0,
+};
+
+const getCategoryImages = (cat: string) => {
+  switch (cat) {
+    case "Gold": return GOLD_IMAGES;
+    case "Silver": return SILVER_IMAGES;
+    case "Diamond": return DIAMOND_IMAGES;
+    case "Gems": return GEM_IMAGES;
+    case "Platinum": return PLATINUM_IMAGES;
+    default: return GOLD_IMAGES; // Default for Signature or others
+  }
+};
 
 // Helper to generate unique items per subcategory
-const generateSubcategoryItems = (cat: string, sub: string, type: string, startIndex: number): ShowcaseItem[] => {
-  return Array.from({ length: 32 }).map((_, i) => {
-    // Pick from ALL_IMAGES using a offset to ensure variety across subcategories
-    const imgIndex = (startIndex + i) % ALL_IMAGES.length;
+const generateSubcategoryItems = (cat: string, sub: string, type: string, count: number = 8): ShowcaseItem[] => {
+  const images = getCategoryImages(cat);
+  
+  return Array.from({ length: count }).map((_, i) => {
+    const currentIndex = usedIndices[cat] || 0;
+    const imgPath = currentIndex < images.length ? images[currentIndex] : NO_IMAGE;
+    
+    // Increment global category counter
+    if (usedIndices[cat] !== undefined) {
+      usedIndices[cat]++;
+    }
+
     return {
       id: `${cat.toLowerCase()}-${sub.toLowerCase().replace(/\s+/g, '-')}-${i + 1}`,
       name: `${cat} ${type} ${i + 1}`,
       category: cat,
       subcategory: sub,
       type: type,
-      image: ALL_IMAGES[imgIndex],
+      image: imgPath,
       description: `A unique and masterfully crafted ${type.toLowerCase()} piece from our exclusive ${cat} collection.`
     };
   });
 };
 
 export const JEWELLERY_DATA: ShowcaseItem[] = [
-  // GOLD
-  ...generateSubcategoryItems('Gold', 'GOLD NECKLACE', 'Necklace', 0),
-  ...generateSubcategoryItems('Gold', 'GOLD CHAIN', 'Chain', 9),
-  ...generateSubcategoryItems('Gold', 'GOLD ANKLET', 'Anklet', 18),
-  ...generateSubcategoryItems('Gold', 'GOLD RING', 'Ring', 2),
-  ...generateSubcategoryItems('Gold', 'GOLD BRACELET', 'Bracelet', 11),
-  ...generateSubcategoryItems('Gold', 'GOLD EARRINGS', 'Earrings', 20),
-  ...generateSubcategoryItems('Gold', 'GOLD BANGLES', 'Bangles', 5),
+  // GOLD - Using smaller counts to ensure image uniqueness with current assets
+  ...generateSubcategoryItems('Gold', 'GOLD NECKLACE', 'Necklace', 4),
+  ...generateSubcategoryItems('Gold', 'GOLD CHAIN', 'Chain', 4),
+  ...generateSubcategoryItems('Gold', 'GOLD ANKLET', 'Anklet', 3),
+  ...generateSubcategoryItems('Gold', 'GOLD RING', 'Ring', 4),
+  ...generateSubcategoryItems('Gold', 'GOLD BRACELET', 'Bracelet', 3),
+  ...generateSubcategoryItems('Gold', 'GOLD EARRINGS', 'Earrings', 2),
+  ...generateSubcategoryItems('Gold', 'GOLD BANGLES', 'Bangles', 2),
 
   // SILVER
-  ...generateSubcategoryItems('Silver', 'Traditional', 'Traditional', 14),
+  ...generateSubcategoryItems('Silver', 'Traditional', 'Traditional', 3),
   ...generateSubcategoryItems('Silver', 'Nagas', 'Nagas', 3),
-  ...generateSubcategoryItems('Silver', 'Antique', 'Antique', 12),
-  ...generateSubcategoryItems('Silver', 'Swarovski', 'Swarovski', 1),
-  ...generateSubcategoryItems('Silver', 'Victorian', 'Victorian', 10),
-  ...generateSubcategoryItems('Silver', 'Necklace Sets', 'Necklace Set', 19),
-
-  // PLATINUM
-  ...generateSubcategoryItems('Platinum', 'Rings', 'Ring', 6),
-  ...generateSubcategoryItems('Platinum', 'Couple Rings', 'Couple Ring', 15),
-  ...generateSubcategoryItems('Platinum', 'Chains', 'Chain', 4),
-  ...generateSubcategoryItems('Platinum', 'Bracelets', 'Bracelet', 13),
-  ...generateSubcategoryItems('Platinum', 'Pendants', 'Pendant', 7),
+  ...generateSubcategoryItems('Silver', 'Antique', 'Antique', 3),
+  ...generateSubcategoryItems('Silver', 'Swarovski', 'Swarovski', 3),
+  ...generateSubcategoryItems('Silver', 'Victorian', 'Victorian', 2),
+  ...generateSubcategoryItems('Silver', 'Necklace Sets', 'Necklace Set', 2),
 
   // DIAMOND
-  ...generateSubcategoryItems('Diamond', 'Diamond Rings', 'Ring', 17),
-  ...generateSubcategoryItems('Diamond', 'Diamond Necklace', 'Necklace', 8),
-  ...generateSubcategoryItems('Diamond', 'Diamond Earrings', 'Earrings', 0),
-  ...generateSubcategoryItems('Diamond', 'Diamond Pendants', 'Pendant', 18),
-  ...generateSubcategoryItems('Diamond', 'Diamond Chain', 'Chain', 9),
-  ...generateSubcategoryItems('Diamond', 'Diamond Kada', 'Kada', 2),
+  ...generateSubcategoryItems('Diamond', 'Diamond Rings', 'Ring', 2),
+  ...generateSubcategoryItems('Diamond', 'Diamond Necklace', 'Necklace', 2),
+  ...generateSubcategoryItems('Diamond', 'Diamond Earrings', 'Earrings', 1),
+  ...generateSubcategoryItems('Diamond', 'Diamond Pendants', 'Pendant', 1),
+  ...generateSubcategoryItems('Diamond', 'Diamond Chain', 'Chain', 1),
 
-  // SIGNATURE COLLECTION (MOST EXCLUSIVE)
+  // PLATINUM
+  ...generateSubcategoryItems('Platinum', 'Rings', 'Ring', 1),
+  ...generateSubcategoryItems('Platinum', 'Couple Rings', 'Couple Ring', 1),
+  ...generateSubcategoryItems('Platinum', 'Chains', 'Chain', 1),
+  ...generateSubcategoryItems('Platinum', 'Bracelets', 'Bracelet', 1),
+
+  // GEMS (Navaratna)
+  ...generateSubcategoryItems('Gems', 'Ruby', 'Ruby Stone', 1),
+  ...generateSubcategoryItems('Gems', 'Emerald', 'Emerald Stone', 1),
+  ...generateSubcategoryItems('Gems', 'Sapphire', 'Sapphire Stone', 1),
+
+  // SIGNATURE COLLECTION
   { 
     id: 'sig-1', 
     name: 'Maharani Antique Haram', 
@@ -123,12 +154,4 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     image: '/images/showcase/gold-jhumka1.webp', 
     description: 'Traditional temple jhumkas with exquisite deity carvings and pearl drops.' 
   },
-  ...generateSubcategoryItems('Signature Collection', 'Heritage', 'Masterpiece', 5),
-  ...generateSubcategoryItems('Signature Collection', 'Signature Selection', 'Bespoke', 12),
-
-  // CUSTOMIZED & LIGHTWEIGHT SPECIALS
-  { id: 'custom-1', name: 'Gold Fingerprint Ring', category: 'Gold', subcategory: 'Fingerprint Rings', type: 'Ring', image: '/images/showcase/custom_name_bracelet.webp', description: 'Personalized gold name bracelet.' },
-  { id: 'custom-2', name: 'Gold Photo Pendant', category: 'Gold', subcategory: 'Other Customized Products', type: 'Pendant', image: '/images/showcase/custom_photo_pendant.webp', description: 'Memory photo engraved locket.' },
-  { id: 'light-1', name: 'Gold Heart Haram', category: 'Gold', subcategory: 'GOLD HARAM', type: 'Haram', image: '/images/showcase/lightweight_heart_haram.webp', description: 'Lightweight 22K gold heart haram.' },
-  { id: 'light-2', name: 'Silver Baby Thandai', category: 'Silver', subcategory: 'Baby Anklets', type: 'Anklet', image: '/images/showcase/lightweight_baby_thandai.webp', description: 'Traditional baby silver anklets.' },
 ];

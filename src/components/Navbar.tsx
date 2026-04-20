@@ -221,8 +221,13 @@ const Navbar = () => {
                       <div className="grid grid-cols-3 gap-12">
                         {item.columns?.map((col) => (
                           <div key={col.title} className="space-y-4">
-                            <h4 className="text-[12px] font-bold text-[#480607] tracking-[0.2em] border-b border-stone-100 pb-2">
+                            <h4 className={`text-[12px] font-bold tracking-[0.2em] border-b border-stone-100 pb-2 flex items-center justify-between ${col.title === "CHETTINADU SILVER COLLECTIONS" ? "signature-animated" : "text-[#480607]"}`}>
                               {col.title}
+                              {col.title === "CHETTINADU SILVER COLLECTIONS" && (
+                                <span className="text-[8px] bg-[#480607] text-white px-2 py-0.5 rounded-full ml-2 animate-pulse tracking-widest leading-none">
+                                  SPECIAL
+                                </span>
+                              )}
                             </h4>
                             <ul className="space-y-2">
                               {col.items.map((sub) => (
@@ -413,8 +418,13 @@ const Navbar = () => {
                       <div className="pl-4 space-y-4">
                         {item.columns?.map((col) => (
                           <div key={col.title} className="space-y-2">
-                            <p className="text-[10px] font-bold text-[#480607] tracking-widest uppercase opacity-60">
+                            <p className={`text-[10px] font-bold tracking-widest uppercase flex items-center gap-2 ${col.title === "CHETTINADU SILVER COLLECTIONS" ? "signature-animated !opacity-100 scale-105 origin-left" : "text-[#480607] opacity-60"}`}>
                               {col.title}
+                              {col.title === "CHETTINADU SILVER COLLECTIONS" && (
+                                <span className="bg-[#480607] text-white text-[7px] px-1.5 py-0.5 rounded-full animate-pulse uppercase tracking-[0.2em] font-black">
+                                  SPECIAL
+                                </span>
+                              )}
                             </p>
                             <div className="flex flex-col space-y-2">
                               {col.items.map((sub) => (

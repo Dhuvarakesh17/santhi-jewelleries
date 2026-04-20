@@ -64,7 +64,7 @@ const About = () => {
           className="absolute inset-0 z-0"
         >
           <img
-            src="/images/about-hero.webp"
+            src="/images/showcase/about-us-bg-new.webp"
             alt="Heritage Jewellery Crafting"
             className="object-cover w-full h-full opacity-60"
           />
@@ -72,31 +72,14 @@ const About = () => {
         </motion.div>
 
         <div className="relative z-10 px-4 text-center max-w-5xl">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-[#FFD700]/10 text-[#FFD700] text-[10px] font-bold tracking-[0.4em] uppercase border border-[#FFD700]/20 mb-8"
-          >
-            Since 1985
-          </motion.span>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="font-cinzel text-5xl lg:text-8xl text-white mb-8 tracking-wider leading-[1.1]"
+            initial={{ opacity: 0, y: 30, letterSpacing: "0.05em" }}
+            animate={{ opacity: 1, y: 0, letterSpacing: "0.1em" }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="font-cinzel text-7xl lg:text-9xl text-white font-black uppercase"
           >
-            Where <span className="signature-animated italic">Legacy</span>{" "}
-            Meets <span className="gold-text-animated">Artistry</span>
+            <span className="signature-animated">About</span> <br className="lg:hidden"/> <span className="gold-text-animated">Us</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="mx-auto text-lg leading-relaxed text-stone-200 lg:text-xl max-w-3xl font-light italic"
-          >
-            "For generations, Santhi Jewellers has been more than a name—it's a
-            custodian of heritage, a bridge between tradition and the modern soul."
-          </motion.p>
         </div>
       </section>
 
@@ -134,16 +117,18 @@ const About = () => {
                 </p>
               </motion.div>
             </div>
-            <div className="relative lg:w-1/2">
-              <div className="relative z-10 overflow-hidden shadow-2xl rounded-tr-[80px] rounded-bl-[80px] border-8 border-stone-50">
-                <img
-                  src="/images/about-story.webp"
-                  alt="Traditional Goldsmith"
-                  className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-1000"
-                />
+            <div className="relative lg:w-1/2 group">
+              <div className="relative z-10 p-5 bg-gradient-to-br from-[#D4AF37] via-[#FFD700] to-[#A67C00] rounded-[60px] shadow-[0_20px_50px_rgba(212,175,55,0.4)] transition-all duration-700 hover:scale-[1.02]">
+                <div className="overflow-hidden rounded-[45px] border-4 border-[#480607]/10">
+                  <img
+                    src="/images/about_bg_indriya.webp"
+                    alt="Traditional Goldsmith"
+                    className="w-full h-[500px] object-cover hover:scale-110 transition-transform duration-1000"
+                  />
+                </div>
               </div>
-              <div className="absolute top-1/2 -left-12 -translate-y-1/2 w-64 h-64 bg-[#480607]/5 rounded-full blur-[80px] -z-10"></div>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#FFD700]/10 rounded-full blur-[60px] -z-10"></div>
+              <div className="absolute top-1/2 -left-12 -translate-y-1/2 w-80 h-80 bg-[#D4AF37]/10 rounded-full blur-[100px] -z-10 group-hover:bg-[#D4AF37]/20 transition-all duration-700"></div>
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#480607]/5 rounded-full blur-[80px] -z-10"></div>
             </div>
           </div>
         </div>
@@ -151,7 +136,7 @@ const About = () => {
 
       {/* 3. CORE PHILOSOPHY - THREE PILLARS */}
       <section className="py-20 lg:py-28 bg-[#fafafc]">
-        <div className="px-4 mx-auto max-w-7xl lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 lg:gap-14">
+        <div className="px-4 mx-auto max-w-7xl lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {[
             {
               title: "Our Mission",
@@ -161,18 +146,22 @@ const About = () => {
               title: "Our Vision",
               desc: "To become the global hallmark of South Indian heritage jewelry, where ancient craftsmanship survives and thrives in the hearts of modern trendsetters.",
             },
+            {
+              title: "Our Values",
+              desc: "Integrity in every transaction, purity in every ornament, and care in every customer relationship. We stand for trust, craftsmanship, transparency, and timeless design.",
+            },
           ].map((item, i) => (
             <React.Fragment key={i}>
               <ZoomReveal delay={i * 0.1}>
                 <motion.div
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="relative p-[2.5px] rounded-[32px] bg-gradient-to-br from-[#480607] via-[#8B1533] to-[#480607]/30 h-full shadow-xl group transition-all duration-700 hover:shadow-[0_20px_50px_rgba(72,6,7,0.3)]"
+                  className="relative p-[2px] rounded-[32px] bg-gradient-to-br from-[#480607] via-[#8B1533] to-[#480607]/30 h-full shadow-lg group transition-all duration-700 hover:shadow-[0_20px_50px_rgba(72,6,7,0.25)]"
                 >
-                  <div className="bg-white p-8 lg:p-10 rounded-[30px] h-full flex flex-col border border-[#480607]/10">
-                    <h3 className="mb-6 font-serif text-3xl font-bold tracking-wider uppercase maroon-gold-animated">
+                  <div className="bg-white p-6 lg:p-8 rounded-[30px] h-full flex flex-col border border-[#480607]/10">
+                    <h3 className="mb-4 font-serif text-2xl font-bold tracking-wider uppercase maroon-gold-animated">
                       {item.title}
                     </h3>
-                    <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
+                    <p className="text-sm font-light leading-relaxed lg:text-base text-stone-600">
                       {item.desc}
                     </p>
                   </div>
@@ -279,30 +268,34 @@ const About = () => {
         </div>
       </section>
 
-      {/* 6. STATS / HERITAGE STRIP */}
-      <section className="bg-[#480607] py-16">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-          <motion.div whileHover={{ y: -5 }}>
-            <div className="w-16 h-16 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
-              <UserSquare size={32} />
-            </div>
-            <h4 className="text-4xl font-serif font-bold text-white mb-2 tracking-widest">35+</h4>
-            <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-[0.3em]">Years of Heritage</p>
-          </motion.div>
-          <motion.div whileHover={{ y: -5 }}>
-            <div className="w-16 h-16 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
-              <Sparkles size={32} />
-            </div>
-            <h4 className="text-4xl font-serif font-bold text-white mb-2 tracking-widest">10k+</h4>
-            <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-[0.3em]">Masterpieces Crafted</p>
-          </motion.div>
-          <motion.div whileHover={{ y: -5 }}>
-            <div className="w-16 h-16 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
-              <Users size={32} />
-            </div>
-            <h4 className="text-4xl font-serif font-bold text-white mb-2 tracking-widest">50k+</h4>
-            <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-[0.3em]">Happy Families</p>
-          </motion.div>
+      {/* 7. FINAL CTA - LEGACY CALL */}
+      <section className="py-24 bg-[#480607] relative overflow-hidden">
+        {/* Background Texture Overlay */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/silk.png')]"></div>
+        
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <ZoomReveal>
+            <h2 className="text-4xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-wider">
+              Begin Your <span className="signature-animated italic">Legacy</span> With Us
+            </h2>
+            <p className="text-stone-300 text-lg lg:text-xl mb-12 font-light leading-relaxed max-w-2xl mx-auto">
+              Step into a world of curated brilliance. Whether it's for a wedding or daily luxury, 
+              we have the perfect piece waiting for you.
+            </p>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block"
+            >
+              <a 
+                href="/category/Gold"
+                className="inline-block px-12 py-5 bg-[#FFD700] text-[#480607] font-bold tracking-[0.3em] uppercase rounded-full shadow-[0_15px_30px_rgba(255,215,0,0.3)] hover:shadow-[0_20px_40px_rgba(255,215,0,0.4)] transition-all duration-500"
+              >
+                EXPLORE COLLECTIONS
+              </a>
+            </motion.div>
+          </ZoomReveal>
         </div>
       </section>
     </div>
