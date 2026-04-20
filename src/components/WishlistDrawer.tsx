@@ -93,6 +93,36 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
                 </div>
               )}
             </div>
+
+            {/* Footer Action */}
+            <div className="p-6 border-t border-stone-100 bg-stone-50/50">
+              <button 
+                disabled={wishlist.length === 0}
+                onClick={() => {
+                  const itemsList = wishlist.map((item, index) => 
+                    `${index + 1}. Product Name: ${item.name}\n   Link: ${window.location.origin}/product/${item.id}`
+                  ).join('\n\n');
+
+                  const message = `Hello Santhi Jewellers,\n\nI would like to enquire about the following products:\n\n${itemsList}\n\nPlease share price and availability.\n\nThank you.`;
+                  
+                  const encodedMessage = encodeURIComponent(message);
+                  window.open(`https://wa.me/919443211809?text=${encodedMessage}`, '_blank');
+                }}
+                className={`w-full py-4 px-6 rounded-xl font-bold uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 transition-all duration-300 ${
+                  wishlist.length > 0 
+                  ? 'bg-[#480607] text-white shadow-xl hover:bg-[#5D0E2E] active:scale-[0.98] shadow-[#480607]/20' 
+                  : 'bg-stone-200 text-stone-400 cursor-not-allowed'
+                }`}
+              >
+                <div className="flex items-center justify-center w-6 h-6 bg-green-500 rounded-full animate-pulse">
+                  <Heart size={14} className="fill-white text-white" />
+                </div>
+                Order via WhatsApp
+              </button>
+              <p className="mt-3 text-[10px] text-center text-stone-400 uppercase tracking-widest font-medium">
+                {wishlist.length} {wishlist.length === 1 ? 'Item' : 'Items'} in your wishlist
+              </p>
+            </div>
           </motion.div>
         </>
       )}
