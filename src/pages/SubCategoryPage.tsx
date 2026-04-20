@@ -71,14 +71,14 @@ const getCategoryPalette = (category: string) => {
   if (normalized === "silver") {
     return {
       titleColor: "#5B0E23",
-      priceColor: "#5c636a",
+      priceColor: "#555555",
     };
   }
 
   if (normalized === "diamond" || normalized === "platinum") {
     return {
       titleColor: "#5B0E23",
-      priceColor: "#4a5568",
+      priceColor: "#8BA2D4",
     };
   }
 
@@ -92,11 +92,11 @@ const getTitleColorByCategory = (category: string) => {
   const normalized = normalizeCategory(category);
 
   if (normalized === "silver") {
-    return "#5c636a"; // Darker Silver
+    return "#555555"; // Davy's Grey
   }
 
   if (normalized === "diamond") {
-    return "#7E86A1";
+    return "#8BA2D4";
   }
 
   if (normalized === "platinum") {
