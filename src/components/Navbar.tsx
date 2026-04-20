@@ -160,18 +160,18 @@ const Navbar = () => {
         {/* Brand Logo - Center on Mobile, Left on Desktop */}
         <Link
           to="/"
-          className="flex items-center flex-shrink-0 order-2 gap-3 group font-calisto lg:mr-6 lg:order-1 focus:outline-none"
+          className="flex items-center flex-shrink-0 order-2 gap-1 group font-calisto lg:mr-6 lg:order-1 focus:outline-none"
         >
           <img
-            src="/images/logo.png"
+            src="/images/logo-transparent.png"
             alt="Santhi Jewellers"
-            className="object-contain w-auto h-10 lg:h-12 filter drop-shadow-sm"
+            className="object-contain w-auto h-10 lg:h-12"
           />
-          <div className="flex flex-col items-start lg:items-center">
+          <div className="-ml-0.5 flex flex-col justify-center items-start translate-y-0.5 lg:translate-y-1">
             <span className="text-2xl lg:text-3xl font-bold text-[#5B0E23] tracking-tighter leading-none group-hover:opacity-80 transition-opacity">
               SANTHI
             </span>
-            <span className="text-[10px] lg:text-[11px] tracking-[0.4em] font-medium text-stone-500 -mt-0.5 opacity-80 uppercase">
+            <span className="text-[10px] lg:text-[11px] tracking-[0.32em] font-medium text-stone-500 opacity-80 uppercase">
               JEWELLERS
             </span>
           </div>
