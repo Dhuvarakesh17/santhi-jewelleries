@@ -438,7 +438,7 @@ const Home = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 lg:grid-cols-3">
             {fashionableItems.map((item, i) => {
               const frames = {
                 gold: {
