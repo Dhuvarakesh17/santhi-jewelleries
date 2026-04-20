@@ -112,6 +112,21 @@ export const MENU_DATA: MenuItem[] = [
     ],
   },
   {
+    title: "Gems",
+    type: "dropdown",
+    items: [
+      "Ruby",
+      "Pearl",
+      "Red Coral",
+      "Emerald",
+      "Yellow Sapphire",
+      "Diamond",
+      "Blue Sapphire",
+      "Hessonite",
+      "Cat’s Eye",
+    ],
+  },
+  {
     title: "Signature Collection",
     type: "dropdown",
     items: [

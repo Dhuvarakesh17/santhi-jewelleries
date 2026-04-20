@@ -5,7 +5,8 @@
   --color-gold: #d4af37;
   --color-gold-light: #f9e29c;
   --color-gold-dark: #a67c00;
-  --color-luxury-accent: #5d0e2e;
+  --color-luxury-accent: #480607;
+  --color-maroon: #480607;
   --color-luxury-text: #1a1a1a;
 
   --font-serif: "Cormorant Garamond", serif;
@@ -112,7 +113,7 @@ body {
 }
 
 .maroon-gold-animated {
-  background: linear-gradient(to right, #5b0e23 0%, #d4af37 50%, #5b0e23 100%);
+  background: linear-gradient(to right, #480607 0%, #d4af37 50%, #480607 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -123,13 +124,13 @@ body {
 .signature-animated {
   background: linear-gradient(
     to right,
-    #5b0e23 0%,
+    #480607 0%,
     #a67c00 20%,
     #ffd700 40%,
     #f9e29c 50%,
     #ffd700 60%,
     #a67c00 80%,
-    #5b0e23 100%
+    #480607 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -245,8 +246,8 @@ body {
 }
 
 .luxury-frame--signature {
-  border-color: #5b0e23;
-  box-shadow: 0 0 25px rgba(91, 14, 35, 0.15);
+  border-color: #480607;
+  box-shadow: 0 0 25px rgba(72, 6, 7, 0.15);
 }
 
 .luxury-frame--signature::before {
@@ -255,7 +256,7 @@ body {
   inset: -5px;
   border-radius: 12px;
   padding: 5px;
-  background: linear-gradient(45deg, #ffd700, #5b0e23, #ffd700);
+  background: linear-gradient(45deg, #ffd700, #480607, #ffd700);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -285,6 +286,7 @@ body {
 .testimonials-section {
   background-color: #fffaf7;
   color: #5d0e2e;
+  color: #480607;
   padding: 80px 0;
 }
 
@@ -295,7 +297,7 @@ body {
 
 .testimonials-section .section-header h2 {
   font-family: var(--font-serif);
-  color: #5d0e2e; /* Maroon */
+  color: #480607; /* Maroon */
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
@@ -312,7 +314,7 @@ body {
 }
 
 .testimonials-section cite {
-  color: #690c3b;
+  color: #480607;
   font-weight: 600;
   font-size: 16px;
   display: block;
@@ -379,9 +381,9 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 18px rgba(91, 14, 35, 0.06);
+  box-shadow: 0 4px 18px rgba(72, 6, 7, 0.06);
   text-align: left;
-  border: 2px solid #5b0e23;
+  border: 2px solid #480607;
   height: 320px;
   transition:
     box-shadow 0.45s ease,
@@ -389,7 +391,7 @@ body {
 }
 
 .testimonials-slide:hover .testimonials-slider__text {
-  box-shadow: 0 18px 48px rgba(91, 14, 35, 0.18);
+  box-shadow: 0 18px 48px rgba(72, 6, 7, 0.18);
   transform: translateY(-5px);
 }
 
@@ -488,9 +490,9 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #5b0e23;
+  background: #480607;
   border: 3px solid #fff;
-  box-shadow: 0 4px 10px rgba(91, 14, 35, 0.3);
+  box-shadow: 0 4px 10px rgba(72, 6, 7, 0.3);
   cursor: pointer;
   z-index: 10;
   position: relative;
@@ -501,9 +503,9 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #5b0e23;
+  background: #480607;
   border: 3px solid #fff;
-  box-shadow: 0 4px 10px rgba(91, 14, 35, 0.3);
+  box-shadow: 0 4px 10px rgba(72, 6, 7, 0.3);
   cursor: pointer;
   z-index: 10;
 }

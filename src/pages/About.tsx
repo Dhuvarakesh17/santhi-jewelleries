@@ -2,32 +2,29 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Award,
-  ShieldCheck,
   Sparkles,
+  ShieldCheck,
   Users,
-  Target,
-  Eye,
-  ChevronRight,
-  Brush,
+  Compass,
   Hammer,
-  Microscope,
-  PackageCheck,
+  Gem,
+  CheckCircle2,
+  Heart,
+  UserSquare,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
-const ZoomReveal: React.FC<{ children: React.ReactNode; delay?: number }> = ({
+const ZoomReveal = ({
   children,
   delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
 }) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.8, y: 30 }}
-    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1], // Custom bounce-out ease
-      delay,
-    }}
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay, ease: "easeOut" }}
   >
     {children}
   </motion.div>
@@ -36,132 +33,152 @@ const ZoomReveal: React.FC<{ children: React.ReactNode; delay?: number }> = ({
 const About = () => {
   const steps = [
     {
-      icon: <Brush size={32} />,
-      title: "The Vision",
-      desc: "Design & Sketching",
+      icon: <Compass size={32} />,
+      title: "Curation",
+      desc: "Sourcing the world's most exquisite raw materials.",
     },
     {
       icon: <Hammer size={32} />,
-      title: "Mastering",
-      desc: "Handcrafting & Smelting",
+      title: "Handcrafting",
+      desc: "Shaping metal with heritage tools and patience.",
     },
     {
-      icon: <Microscope size={32} />,
-      title: "Precision",
-      desc: "Quality & Purity Check",
+      icon: <Gem size={32} />,
+      title: "Setting",
+      desc: "Perfectly aligning stones for maximum brilliance.",
     },
     {
-      icon: <PackageCheck size={32} />,
-      title: "Heritage",
-      desc: "The Final Masterpiece",
+      icon: <CheckCircle2 size={32} />,
+      title: "Quality Check",
+      desc: "Rigorous 5-point inspection for every single piece.",
     },
   ];
 
   return (
-    <div className="overflow-hidden font-sans bg-white">
-      {/* 1. HERO SECTION */}
-      <section className="relative h-[560px] lg:h-[620px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+    <div className="bg-[#fafafc]">
+      {/* 1. HERO SECTION - EMOTIONAL & BOLD */}
+      <section className="relative h-[65vh] lg:h-[75vh] flex items-center justify-center overflow-hidden bg-[#1a1311]">
+        <motion.div
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 z-0"
+        >
           <img
-            src="/images/showcase/about-us-bg-new.webp"
-            alt="About Santhi Jewellers"
-            className="object-cover w-full h-full"
+            src="/images/about-hero.webp"
+            alt="Heritage Jewellery Crafting"
+            className="object-cover w-full h-full opacity-60"
           />
-          <div className="absolute inset-0 bg-black/30"></div>
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80" />
+        </motion.div>
 
-        <div className="relative z-10 w-full px-4 mx-auto text-white text-center max-w-7xl lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 1.1, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="max-w-4xl mx-auto"
+        <div className="relative z-10 px-4 text-center max-w-5xl">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-[#FFD700]/10 text-[#FFD700] text-[10px] font-bold tracking-[0.4em] uppercase border border-[#FFD700]/20 mb-8"
           >
-            <span className="text-[#FFD700] font-script text-5xl lg:text-7xl lowercase mb-4 block drop-shadow-md">
-              our legacy
-            </span>
-            <h1 className="mb-8 font-heading text-5xl lg:text-9xl font-black uppercase tracking-[0.1em] leading-none drop-shadow-2xl">
-              About Us
-            </h1>
-          </motion.div>
+            Since 1985
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="font-cinzel text-5xl lg:text-8xl text-white mb-8 tracking-wider leading-[1.1]"
+          >
+            Where <span className="signature-animated italic">Legacy</span>{" "}
+            Meets <span className="gold-text-animated">Artistry</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mx-auto text-lg leading-relaxed text-stone-200 lg:text-xl max-w-3xl font-light italic"
+          >
+            "For generations, Santhi Jewellers has been more than a name—it's a
+            custodian of heritage, a bridge between tradition and the modern soul."
+          </motion.p>
         </div>
       </section>
 
-      {/* 2. BRAND STORY SECTION - TINTED BACKGROUND */}
-      <section className="py-16 lg:py-20 bg-[#faf7f2]">
+      {/* 2. OUR STORY - DUAL COLUMN DEPTH */}
+      <section className="py-20 bg-white lg:py-32">
         <div className="px-4 mx-auto max-w-7xl lg:px-8">
           <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-14">
             <div className="space-y-8 lg:w-1/2">
               <ZoomReveal>
-                <span className="text-maroon font-bold tracking-[0.3em] uppercase text-xs">
+                <span className="text-[#480607] font-bold tracking-[0.3em] uppercase text-xs">
                   Generation of Trust
                 </span>
-                <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-maroon lg:text-6xl">
+                <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-[#480607] lg:text-6xl">
                   A Journey of Purity, <br className="hidden lg:block"/> Passion & Perfection
                 </h2>
               </ZoomReveal>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6 text-base leading-relaxed text-stone-600 lg:text-lg lg:leading-loose"
+              >
+                <p>
+                  Santhi Jewellers was founded on a simple yet profound belief:
+                  that every piece of jewelry should tell a story of integrity.
+                  In 1985, our founder envisioned a boutique where purity was
+                  non-negotiable and craftsmanship was an act of worship.
+                </p>
+                <p>
+                  From a small workshop specializing in traditional Thali chains
+                  and antique Nagas, we have grown into a multi-generational
+                  institution. Today, while we embrace the precision of modern
+                  design, our heart remains with the artisans who breathe life
+                  into gold with their bare hands.
+                </p>
+              </motion.div>
             </div>
             <div className="relative lg:w-1/2">
-              <ZoomReveal delay={0.3}>
-                <div className="relative p-2 bg-gradient-to-br from-[#D4AF37] via-[#FBF5B7] to-[#8A6E2F] rounded-[44px] shadow-2xl">
-                  <div className="relative p-3 bg-white/10 backdrop-blur-sm rounded-[38px] border border-white/20">
-                    <div className="overflow-hidden border-2 rounded-[32px] border-[#D4AF37]/30 shadow-inner">
-                      <motion.img
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{
-                          duration: 6,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        src="/images/showcase/6.webp"
-                        alt="Our Heritage"
-                        className="w-full h-[360px] lg:h-[520px] object-cover rounded-[30px] shadow-2xl relative z-10"
-                      />
-                    </div>
-                  </div>
-                  {/* Frame Corner Accents */}
-                  <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-[#FBF5B7] rounded-tl-[44px] -m-1"></div>
-                  <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-[#8A6E2F] rounded-br-[44px] -m-1"></div>
-                </div>
-              </ZoomReveal>
+              <div className="relative z-10 overflow-hidden shadow-2xl rounded-tr-[80px] rounded-bl-[80px] border-8 border-stone-50">
+                <img
+                  src="/images/about-story.webp"
+                  alt="Traditional Goldsmith"
+                  className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-1000"
+                />
+              </div>
+              <div className="absolute top-1/2 -left-12 -translate-y-1/2 w-64 h-64 bg-[#480607]/5 rounded-full blur-[80px] -z-10"></div>
+              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#FFD700]/10 rounded-full blur-[60px] -z-10"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. MISSION, VISION & VALUES SECTION */}
-      <section className="pt-16 pb-10 lg:pt-20 lg:pb-12 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
-        <div className="relative z-10 grid grid-cols-1 gap-8 px-4 mx-auto max-w-7xl lg:px-8 md:grid-cols-2 lg:grid-cols-3">
+      {/* 3. CORE PHILOSOPHY - THREE PILLARS */}
+      <section className="py-20 lg:py-28 bg-[#fafafc]">
+        <div className="px-4 mx-auto max-w-7xl lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 lg:gap-14">
           {[
             {
               title: "Our Mission",
-              desc: "To bridge the gap between ancient artistry and modern design, ensuring every customer walks away with a piece that is as authentic as it is timeless. We strive for transparency in every transaction.",
+              desc: "To empower every occasion with jewelry that reflects uncompromised purity and the distinct personality of the wearer, ensuring trust is passed down through generations.",
             },
             {
               title: "Our Vision",
-              desc: "To be the global benchmark for luxury handcrafted jewelry, recognized for our unwavering dedication to ethical sourcing, artisan empowerment, and the preservation of heritage Indian craftsmanship.",
-            },
-            {
-              title: "Our Values",
-              desc: "Integrity in every transaction, purity in every ornament, and care in every customer relationship. We stand for trust, craftsmanship, transparency, and timeless design.",
+              desc: "To become the global hallmark of South Indian heritage jewelry, where ancient craftsmanship survives and thrives in the hearts of modern trendsetters.",
             },
           ].map((item, i) => (
-            <ZoomReveal key={i} delay={i * 0.1}>
-              <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="relative p-[2.5px] rounded-[32px] bg-gradient-to-br from-[#5B0E23] via-[#8B1533] to-[#5B0E23]/30 h-full shadow-xl group transition-all duration-700 hover:shadow-[0_20px_50px_rgba(91,14,35,0.3)]"
-              >
-                <div className="bg-white p-8 lg:p-10 rounded-[30px] h-full flex flex-col border border-[#5B0E23]/10">
-                  <h3 className="mb-6 font-serif text-3xl font-bold tracking-wider uppercase maroon-gold-animated">
-                    {item.title}
-                  </h3>
-                  <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            </ZoomReveal>
+            <React.Fragment key={i}>
+              <ZoomReveal delay={i * 0.1}>
+                <motion.div
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="relative p-[2.5px] rounded-[32px] bg-gradient-to-br from-[#480607] via-[#8B1533] to-[#480607]/30 h-full shadow-xl group transition-all duration-700 hover:shadow-[0_20px_50px_rgba(72,6,7,0.3)]"
+                >
+                  <div className="bg-white p-8 lg:p-10 rounded-[30px] h-full flex flex-col border border-[#480607]/10">
+                    <h3 className="mb-6 font-serif text-3xl font-bold tracking-wider uppercase maroon-gold-animated">
+                      {item.title}
+                    </h3>
+                    <p className="text-base font-light leading-relaxed lg:text-lg text-stone-600">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              </ZoomReveal>
+            </React.Fragment>
           ))}
         </div>
       </section>
@@ -171,7 +188,7 @@ const About = () => {
         <div className="px-4 mx-auto text-center max-w-7xl lg:px-8">
           <ZoomReveal>
             <div className="flex flex-col items-center">
-              <span className="text-maroon font-bold tracking-[0.4em] uppercase text-xs block mb-3">
+              <span className="text-[#480607] font-bold tracking-[0.4em] uppercase text-xs block mb-3">
                 Service Excellence
               </span>
               <h2 className="text-4xl lg:text-6xl font-serif font-bold mb-12 lg:mb-14 uppercase tracking-widest leading-tight black-gold-animated">
@@ -203,31 +220,33 @@ const About = () => {
                 desc: "From custom orders to restoration, we put your happiness at the center.",
               },
             ].map((item, i) => (
-              <ZoomReveal key={i} delay={i * 0.1}>
-                <div className="p-7 lg:p-8 space-y-5 group bg-white border border-[#5B0E23]/15 hover:border-[#5B0E23]/35 rounded-[24px] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_24px_48px_-20px_rgba(91,14,35,0.45)]">
-                  <div className="text-[#FFD700] mx-auto w-fit group-hover:scale-125 group-hover:text-[#5B0E23] transition-all duration-500">
-                    {item.icon}
+              <React.Fragment key={i}>
+                <ZoomReveal delay={i * 0.1}>
+                  <div className="p-7 lg:p-8 space-y-5 group bg-white border border-[#480607]/15 hover:border-[#480607]/35 rounded-[24px] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_24px_48px_-20px_rgba(72,6,7,0.45)]">
+                    <div className="text-[#FFD700] mx-auto w-fit group-hover:scale-125 group-hover:text-[#480607] transition-all duration-500">
+                      {item.icon}
+                    </div>
+                    <h4 className="text-xl font-bold uppercase tracking-widest text-[#480607]">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm font-light leading-relaxed text-stone-500">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h4 className="text-xl font-bold uppercase tracking-widest text-[#5B0E23]">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm font-light leading-relaxed text-stone-500">
-                    {item.desc}
-                  </p>
-                </div>
-              </ZoomReveal>
+                </ZoomReveal>
+              </React.Fragment>
             ))}
           </div>
         </div>
       </section>
 
       {/* 5. CRAFTSMANSHIP PROCESS SECTION */}
-      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
+      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#480607] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <ZoomReveal>
             <div className="flex flex-col items-center mb-12 lg:mb-14">
-              <span className="text-maroon font-bold uppercase tracking-[0.5em] text-xs block mb-3">
+              <span className="text-[#480607] font-bold uppercase tracking-[0.5em] text-xs block mb-3">
                 Behind The Masterpiece
               </span>
               <h2 className="mt-3 font-serif text-4xl font-bold lg:text-6xl drop-shadow-sm black-gold-animated">
@@ -237,50 +256,53 @@ const About = () => {
           </ZoomReveal>
 
           <div className="relative grid grid-cols-1 gap-8 md:grid-cols-4">
-            <div className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[2px] bg-[#5B0E23]/20 z-0"></div>
+            <div className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[2px] bg-[#480607]/20 z-0"></div>
 
             {steps.map((step, i) => (
-              <ZoomReveal key={i} delay={i * 0.15}>
-                <div className="relative z-10 flex flex-col items-center text-center group">
-                  <div className="w-20 h-20 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center border-4 border-[#5B0E23]/15 shadow-2xl mb-6 group-hover:bg-[#5B0E23] group-hover:text-[#fff6ef] transition-all duration-700 cursor-default">
-                    {step.icon}
+              <React.Fragment key={i}>
+                <ZoomReveal delay={i * 0.15}>
+                  <div className="relative z-10 flex flex-col items-center text-center group">
+                    <div className="w-20 h-20 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center border-4 border-[#480607]/15 shadow-2xl mb-6 group-hover:bg-[#480607] group-hover:text-[#fff6ef] transition-all duration-700 cursor-default">
+                      {step.icon}
+                    </div>
+                    <h3 className="text-xl font-serif font-bold mb-2 uppercase tracking-wider text-[#FFD700]">
+                      {step.title}
+                    </h3>
+                    <p className="text-[#480607]/85 text-[11px] font-bold uppercase tracking-widest">
+                      {step.desc}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-serif font-bold mb-2 uppercase tracking-wider text-[#FFD700]">
-                    {step.title}
-                  </h3>
-                  <p className="text-[#5B0E23]/85 text-[11px] font-bold uppercase tracking-widest">
-                    {step.desc}
-                  </p>
-                </div>
-              </ZoomReveal>
+                </ZoomReveal>
+              </React.Fragment>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. CTA SECTION */}
-      <section className="relative py-20 overflow-hidden bg-white lg:py-24">
-        <div className="relative z-10 max-w-4xl px-4 mx-auto space-y-8 text-center lg:space-y-10">
-          <ZoomReveal>
-            <h2 className="text-4xl lg:text-6xl font-serif font-bold leading-tight drop-shadow-sm black-gold-animated">
-              Begin Your Legacy With Us
-            </h2>
-          </ZoomReveal>
-          <ZoomReveal delay={0.3}>
-            <Link
-              to="/category/Gold"
-              className="relative inline-flex items-center gap-6 bg-maroon text-white px-14 py-7 rounded-full font-bold tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(91,14,35,0.4)] hover:bg-[#3D0916] transition-all group overflow-hidden"
-            >
-              <div className="absolute inset-0 w-full h-full transition-transform duration-500 -translate-x-full bg-white/10 group-hover:translate-x-0"></div>
-              <span className="relative z-10 uppercase text-[#FFD700]">
-                EXPLORE COLLECTIONS
-              </span>
-              <ChevronRight
-                size={24}
-                className="relative z-10 text-[#FFD700] group-hover:translate-x-2 transition-transform duration-500"
-              />
-            </Link>
-          </ZoomReveal>
+      {/* 6. STATS / HERITAGE STRIP */}
+      <section className="bg-[#480607] py-16">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <motion.div whileHover={{ y: -5 }}>
+            <div className="w-16 h-16 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+              <UserSquare size={32} />
+            </div>
+            <h4 className="text-4xl font-serif font-bold text-white mb-2 tracking-widest">35+</h4>
+            <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-[0.3em]">Years of Heritage</p>
+          </motion.div>
+          <motion.div whileHover={{ y: -5 }}>
+            <div className="w-16 h-16 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+              <Sparkles size={32} />
+            </div>
+            <h4 className="text-4xl font-serif font-bold text-white mb-2 tracking-widest">10k+</h4>
+            <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-[0.3em]">Masterpieces Crafted</p>
+          </motion.div>
+          <motion.div whileHover={{ y: -5 }}>
+            <div className="w-16 h-16 bg-[#FFD700] text-maroon rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+              <Users size={32} />
+            </div>
+            <h4 className="text-4xl font-serif font-bold text-white mb-2 tracking-widest">50k+</h4>
+            <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-[0.3em]">Happy Families</p>
+          </motion.div>
         </div>
       </section>
     </div>

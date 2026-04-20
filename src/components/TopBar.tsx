@@ -16,7 +16,7 @@ const TopBar: React.FC = () => {
     }, []);
 
     return (
-        <div className="bg-[#5B0E23] text-white py-2.5 border-b border-black/10 relative z-[70] shadow-sm overflow-hidden h-11">
+        <div className="bg-[#480607] text-white py-2.5 border-b border-black/10 relative z-[70] shadow-sm overflow-hidden h-11">
             <div className="max-w-[1440px] mx-auto px-4 h-full flex justify-center items-center">
                 <AnimatePresence mode="wait">
                     <motion.div

@@ -49,6 +49,7 @@ const normalizeCategory = (value: string) => {
   const normalized = normalizeText(value);
   const aliases: Record<string, string> = {
     diamonds: "diamond",
+    gem: "gems",
     signaturescollection: "signaturecollection",
   };
   return aliases[normalized] || normalized;
@@ -61,7 +62,9 @@ const getFrameVariant = (category: string) => {
   if (normalized === "diamond" || normalized === "platinum") {
     return "luxury-frame--diamond";
   }
-  if (normalized === "signaturecollection") return "luxury-frame--signature";
+  if (normalized === "gems" || normalized === "signaturecollection") {
+    return "luxury-frame--signature";
+  }
 
   return "luxury-frame--gold";
 };
@@ -71,20 +74,20 @@ const getCategoryPalette = (category: string) => {
 
   if (normalized === "silver") {
     return {
-      titleColor: "#5B0E23",
+      titleColor: "#480607",
       priceColor: "#555555",
     };
   }
 
   if (normalized === "diamond" || normalized === "platinum") {
     return {
-      titleColor: "#5B0E23",
+      titleColor: "#480607",
       priceColor: "#8BA2D4",
     };
   }
 
   return {
-    titleColor: "#5B0E23",
+    titleColor: "#480607",
     priceColor: "#D4AF37",
   };
 };
@@ -545,7 +548,7 @@ const SubCategoryPage = () => {
           </div>
 
           <div className="relative h-9">
-            <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#5b0e23]/10"></div>
+            <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#480607]/10"></div>
             <div
               className="absolute top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-maroon"
               style={{
@@ -744,7 +747,7 @@ const SubCategoryPage = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="hidden lg:block h-fit sticky top-[120px] bg-[#5B0E23]/[0.04] backdrop-blur-2xl border-2 border-[#5B0E23]/20 shadow-2xl rounded-[32px] overflow-hidden"
+                  className="hidden lg:block h-fit sticky top-[120px] bg-[#480607]/[0.04] backdrop-blur-2xl border-2 border-[#480607]/20 shadow-2xl rounded-[32px] overflow-hidden"
                 >
                   <div className="max-h-[calc(100vh-180px)] overflow-y-auto custom-scrollbar p-8">
                     {renderFilters()}
@@ -787,7 +790,7 @@ const SubCategoryPage = () => {
                       </button>
                     </div>
 
-                    <div className="overflow-y-auto max-h-[calc(88vh-72px)] px-5 py-5 bg-[#5B0E23]/[0.03]">
+                    <div className="overflow-y-auto max-h-[calc(88vh-72px)] px-5 py-5 bg-[#480607]/[0.03]">
                       {renderFilters(true)}
                     </div>
                   </motion.aside>
@@ -943,7 +946,7 @@ const SubCategoryPage = () => {
                             {normalizeCategory(item.category) ===
                               "signaturecollection" && (
                               <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-                                <div className="bg-[#5B0E23] text-white text-[8px] font-black tracking-[0.2em] px-2 py-1 rounded-sm uppercase shadow-xl flex items-center gap-1">
+                                <div className="bg-[#480607] text-white text-[8px] font-black tracking-[0.2em] px-2 py-1 rounded-sm uppercase shadow-xl flex items-center gap-1">
                                   <Star size={8} fill="white" />
                                   Signature
                                 </div>
@@ -959,7 +962,7 @@ const SubCategoryPage = () => {
                                 event.stopPropagation();
                                 handleWishlistClick(item);
                               }}
-                              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 border border-stone-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#5B0E23] transition-all"
+                              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 border border-stone-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#480607] transition-all"
                               aria-label={
                                 isInWishlist(item.id)
                                   ? "Remove from wishlist"
@@ -967,12 +970,12 @@ const SubCategoryPage = () => {
                               }
                             >
                               <div
-                                className={`transition-all duration-500 flex items-center justify-center rounded-[10px] w-9 h-9 ${isInWishlist(item.id) ? "bg-[#5A1024] shadow-[0_4px_12px_rgba(90,16,36,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#5A1024]/50 hover:bg-[#5A1024] group/icon"}`}
+                                className={`transition-all duration-500 flex items-center justify-center rounded-[10px] w-9 h-9 ${isInWishlist(item.id) ? "bg-[#480607] shadow-[0_4px_12px_rgba(72,6,7,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#480607]/50 hover:bg-[#480607] group/icon"}`}
                               >
                                 <Heart
                                   size={16}
                                   strokeWidth={2.5}
-                                  className={`transition-colors duration-300 ${isInWishlist(item.id) ? "text-white fill-white" : "text-[#5A1024] group-hover/icon:text-white"}`}
+                                  className={`transition-colors duration-300 ${isInWishlist(item.id) ? "text-white fill-white" : "text-[#480607] group-hover/icon:text-white"}`}
                                 />
                               </div>
                             </button>

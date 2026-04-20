@@ -50,10 +50,10 @@ const GoldRateTicker: React.FC = () => {
         <div className="flex items-center gap-12 px-6">
           {repeatedItems.map((item, index) => (
             <div key={index} className="flex items-center gap-2">
-              <span className="text-[11px] lg:text-[12px] font-bold tracking-[0.1em] text-[#5B0E23] uppercase opacity-90">
+              <span className="text-[11px] lg:text-[12px] font-bold tracking-[0.1em] text-[#480607] uppercase opacity-90">
                 {item.label}
               </span>
-              <span className="text-[14px] lg:text-[16px] font-bold tracking-tight text-[#5B0E23]">
+              <span className="text-[14px] lg:text-[16px] font-bold tracking-tight text-[#480607]">
                 ₹ {item.value}
               </span>
             </div>

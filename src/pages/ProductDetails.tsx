@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ChevronDown, Gem, Heart, Pin, Scale, Share2 } from "lucide-react";
 import { JEWELLERY_DATA } from "../constants/jewelleryData";
@@ -22,13 +22,13 @@ const hashString = (value: string) => {
 
 const formatCurrency = (value: number) => `₹ ${value.toLocaleString("en-IN")}`;
 const formatEstimatedCurrency = (value: number) =>
-  `*${formatCurrency(value)}`;
+  `${formatCurrency(value)}`;
 
 const accordionTitleClass =
-  "flex w-full items-center justify-between border-b border-[#d87630] px-4 py-4 text-center";
+  "flex w-full items-center justify-between border-b border-maroon/10 px-6 py-5 text-left group transition-all hover:bg-maroon/[0.02]";
 
 const accordionHeadingClass =
-  "w-full text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3a342e]";
+  "text-[12px] font-bold uppercase tracking-[0.2em] text-maroon group-hover:tracking-[0.25em] transition-all";
 
 const ProductDetails = () => {
   const { type, sub, id } = useParams();
@@ -41,6 +41,60 @@ const ProductDetails = () => {
     shippingInfo: true,
     askQuestion: true,
   });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { name, email, phone, message } = formData;
+
+    // Validation
+    if (!name.trim() || !phone.trim() || !message.trim()) {
+      alert("Please fill in all required fields (Name, Phone, and Message).");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email && !emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const whatsappNumber = "919443211809";
+    const template = `Hello Santhi Jewellers,
+
+I’m interested in your jewellery collection and would like more details.
+
+Here are my details:
+
+Name: ${name}
+Email: ${email || "Not provided"}
+Phone: ${phone}
+
+Message:
+${message}
+
+Kindly assist me with more information about this product.
+
+Thank you.`;
+
+    const encodedMessage = encodeURIComponent(template);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
 
   const product = useMemo(() => {
     if (!id) return null;
@@ -130,7 +184,7 @@ const ProductDetails = () => {
     return (
       <div className="min-h-[70vh] bg-[#fafaf9] px-4 py-20 lg:px-10">
         <div className="max-w-3xl p-10 mx-auto text-center bg-white border rounded-3xl border-stone-200">
-          <h1 className="font-cinzel text-3xl text-[#5B0E23]">
+          <h1 className="font-cinzel text-3xl text-[#480607]">
             Product not found
           </h1>
           <p className="mt-4 text-stone-600">
@@ -138,7 +192,7 @@ const ProductDetails = () => {
           </p>
           <Link
             to={sub ? `/category/${type}/${sub}` : `/category/${type}`}
-            className="mt-8 inline-flex rounded-full bg-[#5B0E23] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white"
+            className="mt-8 inline-flex rounded-full bg-[#480607] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white"
           >
             Back To Collection
           </Link>
@@ -148,28 +202,28 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="bg-[#f2f2f2] px-4 py-8 lg:px-8 lg:py-10">
-      <div className="mx-auto max-w-420">
+    <div className="bg-[#fafafa] px-4 py-8 lg:px-8 lg:py-16">
+      <div className="mx-auto max-w-[1400px]">
         <div className="mb-6 text-xs uppercase tracking-[0.18em] text-stone-500">
-          <Link to="/" className="hover:text-[#5B0E23]">
+          <Link to="/" className="hover:text-[#480607]">
             Home
           </Link>
           <span className="mx-2">/</span>
           <Link
             to={`/category/${enrichedProduct.category}`}
-            className="hover:text-[#5B0E23]"
+            className="hover:text-[#480607]"
           >
             {enrichedProduct.category}
           </Link>
           <span className="mx-2">/</span>
           <Link
             to={`/category/${enrichedProduct.category}/${enrichedProduct.subcategory}`}
-            className="hover:text-[#5B0E23]"
+            className="hover:text-[#480607]"
           >
             {enrichedProduct.subcategory}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-[#5B0E23]">{enrichedProduct.name}</span>
+          <span className="text-[#480607]">{enrichedProduct.name}</span>
         </div>
 
         <section className="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
@@ -214,31 +268,34 @@ const ProductDetails = () => {
 
           <div className="space-y-6">
             <div>
-              <h1 className="font-cinzel text-2xl leading-tight text-[#171717] lg:text-3xl">
+              <h1 className="font-cinzel text-3xl leading-tight text-[#1a1a1a] lg:text-5xl font-bold">
                 {enrichedProduct.name}
               </h1>
 
-              <div className="mt-6 border-b border-[#d9a174] pb-5">
-                <p className="text-2xl text-[#d06f2e] lg:text-[28px]">
-                  *Rs.{enrichedProduct.price.toLocaleString("en-IN")}
+              <div className="mt-8 border-b border-stone-200 pb-8">
+                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora">
+                  {formatEstimatedCurrency(enrichedProduct.price)}
                 </p>
-                <p className="text-sm text-[#3a342e]">
-                  Shipping calculated at checkout.
-                </p>
-                <p className="mt-1.5 text-sm font-bold text-[#3a342e]">
-                  *This is an estimated price, actual price may differ as per actual weights.
-                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <p className="text-sm text-stone-500 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                    Inclusive of all taxes & free shipping
+                  </p>
+                  <p className="text-[12px] font-medium text-stone-400 italic">
+                    Note: This is an estimated price, actual price may differ as per actual weights.
+                  </p>
+                </div>
               </div>
 
               <button
                 type="button"
                 onClick={handleWishlistToggle}
-                className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-[#5B0E23]"
+                className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-[#480607]"
               >
                 <Heart
                   size={16}
                   className={
-                    isInWishlist(enrichedProduct.id) ? "fill-[#5B0E23]" : ""
+                    isInWishlist(enrichedProduct.id) ? "fill-[#480607]" : ""
                   }
                 />
                 {isInWishlist(enrichedProduct.id)
@@ -246,35 +303,55 @@ const ProductDetails = () => {
                   : "Add To Wishlist"}
               </button>
 
-              <h3 className="mt-7 text-2xl font-semibold text-[#121212] lg:text-[26px]">
-                Description:
-              </h3>
-              <p className="mt-2.5 text-base leading-[1.6] text-[#1f1f1f] lg:text-[15px]">
-                {enrichedProduct.description}
-              </p>
+              <div className="mt-10 mb-8 p-6 bg-maroon/[0.02] border border-maroon/5 rounded-2xl">
+                <h3 className="text-[14px] font-bold text-maroon uppercase tracking-[0.2em] mb-4">
+                  Designer's Note:
+                </h3>
+                <p className="text-base leading-[1.8] text-stone-700 italic">
+                  "{enrichedProduct.description}"
+                </p>
+              </div>
 
-              <h3 className="mt-7 text-2xl font-semibold text-[#121212] lg:text-[26px]">
-                Styling Tips:
-              </h3>
-              <ul className="mt-2.5 list-disc space-y-2 pl-6 text-base leading-[1.6] text-[#1f1f1f] lg:text-[15px]">
-                <li>
-                  Pair with matching chains for a complete traditional styling
-                  look.
-                </li>
-                <li>Style with ethnic outfits for festive occasions.</li>
-              </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+                <div className="space-y-4">
+                  <h3 className="text-[12px] font-bold text-stone-400 uppercase tracking-[0.2em]">
+                    Styling Tips
+                  </h3>
+                  <ul className="space-y-3 pl-1 text-[14px] text-stone-600 leading-relaxed font-medium">
+                    <li className="flex gap-3">
+                      <span className="text-maroon">✦</span>
+                      Pair with matching chains for a complete traditional look.
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-maroon">✦</span>
+                      Style with ethnic outfits for festive occasions.
+                    </li>
+                  </ul>
+                </div>
 
-              <h3 className="mt-7 text-2xl font-semibold text-[#121212] lg:text-[26px]">
-                Jewellery Care:
-              </h3>
-              <ul className="mt-2.5 list-disc space-y-2 pl-6 text-base leading-[1.6] text-[#1f1f1f] lg:text-[15px]">
-                <li>Avoid exposure to water and harsh chemicals.</li>
-                <li>Clean gently using a soft cloth after every use.</li>
-                <li>Store separately to maintain detailed finish.</li>
-              </ul>
+                <div className="space-y-4">
+                  <h3 className="text-[12px] font-bold text-stone-400 uppercase tracking-[0.2em]">
+                    Jewellery Care
+                  </h3>
+                  <ul className="space-y-3 pl-1 text-[14px] text-stone-600 leading-relaxed font-medium">
+                    <li className="flex gap-3">
+                      <span className="text-maroon">✦</span>
+                      Avoid exposure to water and harsh chemicals.
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-maroon">✦</span>
+                      Clean gently with a soft cloth after use.
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-maroon">✦</span>
+                      Store separately to maintain finish.
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-              <section className="mt-8 overflow-hidden border border-[#d87630] bg-[#f7f7f5]">
-                <div className="border-b border-[#d87630]">
+              <section className="mt-12 bg-white rounded-3xl shadow-xl shadow-stone-200/50 border border-stone-100 overflow-hidden">
+                <div className="border-b border-stone-100">
                   <button
                     type="button"
                     className={accordionTitleClass}
@@ -295,44 +372,34 @@ const ProductDetails = () => {
                   </button>
 
                   {openPanels.productDetails && (
-                    <div className="grid grid-cols-1 divide-y divide-[#d87630] md:grid-cols-2 md:divide-x md:divide-y-0">
-                      <div className="px-4 py-4 text-center">
-                        <Scale
-                          size={18}
-                          className="mx-auto mb-1.5 text-[#3a342e]"
-                          strokeWidth={1.75}
-                        />
-                        <p className="text-[18px] font-medium text-[#3a342e]">
+                    <div className="grid grid-cols-2 divide-x divide-stone-100 bg-maroon/[0.01]">
+                      <div className="px-6 py-8 text-center">
+                        <div className="w-12 h-12 rounded-full bg-maroon/5 flex items-center justify-center mx-auto mb-4">
+                          <Scale size={20} className="text-maroon" strokeWidth={1.5} />
+                        </div>
+                        <p className="text-[13px] font-bold text-stone-400 uppercase tracking-widest mb-1">
                           Total Weight
                         </p>
-                        <p className="mt-0.5 text-[22px] font-semibold text-[#2a2520]">
-                          {formattedGrossWeight} Grams
-                        </p>
-                        <p className="mt-0.5 text-[13px] text-[#9a928a]">
-                          Approx. Gross Weight
+                        <p className="text-2xl font-aurora font-bold text-maroon">
+                          {formattedGrossWeight}g
                         </p>
                       </div>
-                      <div className="px-4 py-4 text-center">
-                        <Gem
-                          size={18}
-                          className="mx-auto mb-1.5 text-[#3a342e]"
-                          strokeWidth={1.75}
-                        />
-                        <p className="text-[18px] font-medium text-[#3a342e]">
+                      <div className="px-6 py-8 text-center">
+                        <div className="w-12 h-12 rounded-full bg-maroon/5 flex items-center justify-center mx-auto mb-4">
+                          <Gem size={20} className="text-maroon" strokeWidth={1.5} />
+                        </div>
+                        <p className="text-[13px] font-bold text-stone-400 uppercase tracking-widest mb-1">
                           22K {enrichedProduct.category}
                         </p>
-                        <p className="mt-0.5 text-[22px] font-semibold text-[#2a2520]">
-                          {formattedMetalWeight} Grams
-                        </p>
-                        <p className="mt-0.5 text-[13px] text-[#9a928a]">
-                          Approx. Metal Weight
+                        <p className="text-2xl font-aurora font-bold text-maroon">
+                          {formattedMetalWeight}g
                         </p>
                       </div>
                     </div>
                   )}
                 </div>
 
-                <div className="border-b border-[#d87630]">
+                <div className="border-b border-stone-100">
                   <button
                     type="button"
                     className={accordionTitleClass}
@@ -351,46 +418,47 @@ const ProductDetails = () => {
                   </button>
 
                   {openPanels.priceBreakup && (
-                    <div className="px-4 pt-3 pb-4">
-                      <table className="w-full border border-[#d87630] text-sm text-[#3a342e]">
-                        <tbody>
-                          <tr className="border-b border-[#d87630]">
-                            <td className="border-r border-[#d87630] px-3 py-2">
-                              {enrichedProduct.category} ({estimatedWeight}g)
-                            </td>
-                            <td className="px-3 py-2 text-right">
-                              {formatEstimatedCurrency(
-                                enrichedProduct.price - makingCharge,
-                              )}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-[#d87630]">
-                            <td className="border-r border-[#d87630] px-3 py-2">
-                              Making Charges
-                            </td>
-                            <td className="px-3 py-2 text-right">
-                              {formatEstimatedCurrency(makingCharge)}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="border-r border-[#d87630] px-3 py-2 font-semibold">
-                              Total
-                            </td>
-                            <td className="px-3 py-2 font-semibold text-right">
-                              {formatEstimatedCurrency(enrichedProduct.price)}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <p className="mt-2 text-[12px] text-[#5b524b]">
-                        *This is an estimated price, actual price may differ as
-                        per actual weights.
+                    <div className="px-8 pt-6 pb-8 bg-stone-50/50">
+                      <div className="overflow-hidden rounded-2xl border border-stone-100 bg-white shadow-sm">
+                        <table className="w-full text-sm text-[#3a342e]">
+                          <tbody>
+                            <tr className="border-b border-stone-50">
+                              <td className="px-6 py-4 font-medium">
+                                {enrichedProduct.category} ({estimatedWeight}g)
+                              </td>
+                              <td className="px-6 py-4 text-right font-aurora">
+                                {formatEstimatedCurrency(
+                                  enrichedProduct.price - makingCharge,
+                                )}
+                              </td>
+                            </tr>
+                            <tr className="border-b border-stone-50">
+                              <td className="px-6 py-4 font-medium">
+                                Making Charges
+                              </td>
+                              <td className="px-6 py-4 text-right font-aurora">
+                                {formatEstimatedCurrency(makingCharge)}
+                              </td>
+                            </tr>
+                            <tr className="bg-maroon/[0.02]">
+                              <td className="px-6 py-5 font-bold text-maroon text-base">
+                                Total Amount
+                              </td>
+                              <td className="px-6 py-5 font-bold text-maroon text-right text-lg font-aurora">
+                                {formatEstimatedCurrency(enrichedProduct.price)}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="mt-4 text-[11px] text-stone-400 italic text-center">
+                        * Final price may vary based on gold rate at time of purchase and actual weights.
                       </p>
                     </div>
                   )}
                 </div>
 
-                <div className="border-b border-[#d87630]">
+                <div className="border-b border-stone-100">
                   <button
                     type="button"
                     className={accordionTitleClass}
@@ -411,37 +479,25 @@ const ProductDetails = () => {
                   </button>
 
                   {openPanels.shippingInfo && (
-                    <div className="px-6 pb-6 pt-5 text-[14px] leading-7 text-[#3a342e]">
-                      <ul className="pl-5 space-y-3 list-disc">
-                        <li>
-                          <span className="font-semibold">
-                            Shipping Coverage:
-                          </span>{" "}
-                          We currently ship only within India.
+                    <div className="px-8 pb-10 pt-8 text-[15px] leading-8 text-stone-600 bg-stone-50/30">
+                      <ul className="space-y-4">
+                        <li className="flex gap-4">
+                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">1</span>
+                          <div>
+                            <span className="font-bold text-stone-800">Shipping Coverage:</span> We currently ship only within India.
+                          </div>
                         </li>
-                        <li>
-                          <span className="font-semibold">Delivery Time:</span>{" "}
-                          Orders are usually processed and shipped within 2-5
-                          business days.
+                        <li className="flex gap-4">
+                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">2</span>
+                          <div>
+                            <span className="font-bold text-stone-800">Delivery Time:</span> Orders are usually processed within 2-5 business days.
+                          </div>
                         </li>
-                        <li>
-                          <span className="font-semibold">
-                            Shipping Charges:
-                          </span>{" "}
-                          Calculated during checkout based on delivery address.
-                        </li>
-                        <li>
-                          <span className="font-semibold">
-                            Shipping Partners:
-                          </span>{" "}
-                          We partner with reliable courier services for safe
-                          delivery.
-                        </li>
-                        <li>
-                          <span className="font-semibold">
-                            Delivery Issues:
-                          </span>{" "}
-                          Contact customer support for any delay or issue.
+                        <li className="flex gap-4">
+                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">3</span>
+                          <div>
+                            <span className="font-bold text-stone-800">Shipping Partners:</span> We partner with reliable courier services for insured delivery.
+                          </div>
                         </li>
                       </ul>
                     </div>
@@ -470,69 +526,90 @@ const ProductDetails = () => {
 
                   {openPanels.askQuestion && (
                     <form
-                      className="px-4 pt-5 pb-8 space-y-5"
-                      onSubmit={(event) => event.preventDefault()}
+                      className="px-8 pt-8 pb-10 space-y-6 bg-maroon/[0.02]"
+                      onSubmit={handleWhatsAppSubmit}
                     >
-                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                        <div>
-                          <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#5f574f]">
-                            Name
+                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
+                            Full Name
                           </label>
                           <input
                             type="text"
-                            className="w-full border border-[#d87630] bg-white px-3 py-2.5 text-sm text-[#3a342e] outline-none"
+                            name="name"
+                            placeholder="Enter your name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
                           />
                         </div>
-                        <div>
-                          <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#5f574f]">
-                            Email
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
+                            Email Address
                           </label>
                           <input
                             type="email"
-                            className="w-full border border-[#d87630] bg-white px-3 py-2.5 text-sm text-[#3a342e] outline-none"
+                            name="email"
+                            placeholder="your@email.com"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            className="w-full border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
                           />
                         </div>
                       </div>
-                      <div>
-                        <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#5f574f]">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
                           Phone Number
                         </label>
                         <input
                           type="tel"
-                          className="w-full border border-[#d87630] bg-white px-3 py-2.5 text-sm text-[#3a342e] outline-none"
+                          name="phone"
+                          placeholder="+91 00000 00000"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
                         />
                       </div>
-                      <div>
-                        <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#5f574f]">
-                          Message
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
+                          How can we help?
                         </label>
                         <textarea
-                          rows={5}
-                          className="w-full resize-y border border-[#d87630] bg-white px-3 py-2.5 text-sm text-[#3a342e] outline-none"
+                          rows={4}
+                          name="message"
+                          placeholder="Tell us about your requirements..."
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full resize-y border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
                         />
                       </div>
-                      <div className="text-center">
+                      <div className="pt-2">
                         <button
                           type="submit"
-                          className="rounded-full bg-[#6b0f37] px-9 py-3 text-xs font-bold uppercase tracking-[0.22em] text-white"
+                          disabled={!formData.name || !formData.phone || !formData.message}
+                          className="w-full bg-maroon text-white py-4 rounded-2xl font-bold text-sm tracking-[0.3em] uppercase shadow-lg shadow-maroon/20 hover:bg-[#480607] transition-all disabled:opacity-30 disabled:cursor-not-allowed group flex items-center justify-center gap-3"
                         >
-                          Send
+                          Send Inquiry
+                          <Share2 size={16} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                       </div>
-                      <p className="text-center text-[11px] text-[#7f756d]">
-                        This site is protected by hCaptcha and the hCaptcha
-                        Privacy Policy and Terms of Service apply.
+                      <p className="text-center text-[10px] text-stone-400 leading-relaxed max-w-xs mx-auto">
+                        Your inquiry will be directly sent to our experts via WhatsApp for immediate assistance.
                       </p>
                     </form>
                   )}
                 </div>
               </section>
 
-              <div className="pt-2">
+              <div className="pt-8 flex justify-center">
                 <Link
                   to={`/category/${enrichedProduct.category}/${enrichedProduct.subcategory}`}
-                  className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5B0E23]"
+                  className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-maroon/20 text-maroon font-bold text-[11px] tracking-[0.3em] uppercase hover:bg-maroon hover:text-white transition-all shadow-sm hover:shadow-maroon/20 group"
                 >
+                  <ChevronDown className="rotate-90 group-hover:-translate-x-1 transition-transform" size={16} />
                   Continue Shopping
                 </Link>
               </div>
@@ -542,7 +619,7 @@ const ProductDetails = () => {
 
         {relatedProducts.length > 0 && (
           <section className="mt-16">
-            <h2 className="font-cinzel text-2xl uppercase text-[#5B0E23] lg:text-3xl">
+            <h2 className="font-cinzel text-2xl uppercase text-[#480607] lg:text-3xl">
               Similar Designs
             </h2>
             <div className="grid grid-cols-2 gap-4 mt-6 lg:grid-cols-4">

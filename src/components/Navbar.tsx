@@ -147,7 +147,7 @@ const Navbar = () => {
   }, [searchQuery]);
 
   return (
-    <header className="sticky top-0 z-[5000] bg-white shadow-md border-b border-[#5B0E23]/10 font-serif">
+    <header className="sticky top-0 z-[5000] bg-white shadow-md border-b border-[#480607]/10 font-serif">
       <nav className="max-w-[1440px] mx-auto px-4 lg:px-8 py-3 lg:py-4 flex justify-between items-center relative">
         {/* Mobile Menu Button - Left */}
         <button
@@ -168,7 +168,7 @@ const Navbar = () => {
             className="object-contain w-auto h-10 lg:h-12"
           />
           <div className="-ml-0.5 flex flex-col justify-center items-start translate-y-0.5 lg:translate-y-1">
-            <span className="text-2xl lg:text-3xl font-bold text-[#5B0E23] tracking-tighter leading-none group-hover:opacity-80 transition-opacity">
+            <span className="text-2xl lg:text-3xl font-bold text-[#480607] tracking-tighter leading-none group-hover:opacity-80 transition-opacity">
               SANTHI
             </span>
             <span className="text-[10px] lg:text-[11px] tracking-[0.32em] font-medium text-stone-500 opacity-80 uppercase">
@@ -190,14 +190,14 @@ const Navbar = () => {
                 {item.type === "link" ? (
                   <Link
                     to={item.path || "#"}
-                    className={`relative text-[12px] xl:text-[13px] font-bold text-[#5B0E23] uppercase transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#5B0E23] after:transition-all after:duration-300 hover:after:w-full ${item.title === "Home" ? "tracking-[0.02em]" : "tracking-[0.1em] xl:tracking-[0.13em]"}`}
+                    className={`relative text-[12px] xl:text-[13px] font-bold text-[#480607] uppercase transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#480607] after:transition-all after:duration-300 hover:after:w-full ${item.title === "Home" ? "tracking-[0.02em]" : "tracking-[0.1em] xl:tracking-[0.13em]"}`}
                   >
                     {item.title}
                   </Link>
                 ) : (
                   <button
                     onClick={() => handleCategoryClick(item.title)}
-                    className={`relative flex items-center text-[12px] xl:text-[13px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.13em] text-[#5B0E23] transition-all duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#5B0E23] after:transition-all after:duration-300 ${activeMenu === item.title ? "after:w-full" : "after:w-0 hover:after:w-full"}`}
+                    className={`relative flex items-center text-[12px] xl:text-[13px] font-bold uppercase tracking-[0.1em] xl:tracking-[0.13em] text-[#480607] transition-all duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#480607] after:transition-all after:duration-300 ${activeMenu === item.title ? "after:w-full" : "after:w-0 hover:after:w-full"}`}
                   >
                     {item.title}
                     <ChevronDown
@@ -215,13 +215,13 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 15 }}
                     transition={{ duration: 0.2 }}
-                    className={`absolute top-full left-0 bg-white shadow-2xl border-t-2 border-[#5B0E23] p-8 z-[5001] ${item.type === "megamenu" ? "w-[800px] -left-48" : "min-w-[240px]"}`}
+                    className={`absolute top-full left-0 bg-white shadow-2xl border-t-2 border-[#480607] p-8 z-[5001] ${item.type === "megamenu" ? "w-[800px] -left-48" : "min-w-[240px]"}`}
                   >
                     {item.type === "megamenu" ? (
                       <div className="grid grid-cols-3 gap-12">
                         {item.columns?.map((col) => (
                           <div key={col.title} className="space-y-4">
-                            <h4 className="text-[12px] font-bold text-[#5B0E23] tracking-[0.2em] border-b border-stone-100 pb-2">
+                            <h4 className="text-[12px] font-bold text-[#480607] tracking-[0.2em] border-b border-stone-100 pb-2">
                               {col.title}
                             </h4>
                             <ul className="space-y-2">
@@ -230,7 +230,7 @@ const Navbar = () => {
                                   <Link
                                     to={`/category/${item.title}/${sub}`}
                                     onClick={() => setActiveMenu(null)}
-                                    className="text-[13px] text-stone-500 hover:text-[#5B0E23] transition-colors block"
+                                    className="text-[13px] text-stone-500 hover:text-gold transition-all duration-300 block hover:translate-x-1"
                                   >
                                     {sub}
                                   </Link>
@@ -252,7 +252,7 @@ const Navbar = () => {
                                   : `/category/${item.title}/${sub}`
                               }
                               onClick={() => setActiveMenu(null)}
-                              className="text-[13px] text-stone-600 hover:text-[#5B0E23] hover:pl-2 transition-all block"
+                              className="text-[13px] text-stone-600 hover:text-gold hover:pl-2 transition-all duration-300 block"
                             >
                               {sub}
                             </Link>
@@ -273,7 +273,7 @@ const Navbar = () => {
           <div className="relative" ref={searchRef}>
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 text-stone-800 hover:text-[#5B0E23] transition-colors focus:outline-none"
+              className="p-2 text-stone-800 hover:text-[#480607] transition-colors focus:outline-none"
             >
               <Search size={22} strokeWidth={2.5} />
             </button>
@@ -292,7 +292,7 @@ const Navbar = () => {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search jewelry collections..."
-                      className="w-full pl-10 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-md focus:outline-none focus:border-[#5B0E23] text-sm"
+                      className="w-full pl-10 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-md focus:outline-none focus:border-[#480607] text-sm"
                     />
                     <Search
                       size={16}
@@ -333,9 +333,9 @@ const Navbar = () => {
 
           <button
             onClick={openWishlist}
-            className="relative p-2 text-stone-800 hover:text-[#5B0E23] transition-colors"
+            className="relative p-2 text-stone-800 hover:text-[#480607] transition-colors"
           >
-            <div className="bg-[#5A1024] shadow-md flex items-center justify-center rounded-[7px] w-8 h-8 transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <div className="bg-[#480607] shadow-md flex items-center justify-center rounded-[7px] w-8 h-8 transition-all duration-300 hover:scale-110 hover:shadow-lg">
               <Heart
                 size={16}
                 strokeWidth={2.5}
@@ -343,7 +343,7 @@ const Navbar = () => {
               />
             </div>
             {wishlist.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-[#5B0E23] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-[#480607] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {wishlist.length}
               </span>
             )}
@@ -365,7 +365,7 @@ const Navbar = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex flex-col items-center font-calisto"
                 >
-                  <span className="text-2xl font-bold text-[#5B0E23] tracking-tighter leading-none">
+                  <span className="text-2xl font-bold text-[#480607] tracking-tighter leading-none">
                     SANTHI
                   </span>
                   <span className="text-[10px] tracking-[0.3em] font-medium text-stone-400 uppercase">
@@ -413,7 +413,7 @@ const Navbar = () => {
                       <div className="pl-4 space-y-4">
                         {item.columns?.map((col) => (
                           <div key={col.title} className="space-y-2">
-                            <p className="text-[10px] font-bold text-[#5B0E23] tracking-widest uppercase opacity-60">
+                            <p className="text-[10px] font-bold text-[#480607] tracking-widest uppercase opacity-60">
                               {col.title}
                             </p>
                             <div className="flex flex-col space-y-2">

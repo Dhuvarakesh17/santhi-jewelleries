@@ -89,7 +89,7 @@ const HeroSlider = () => {
           <img
             src={slides[current].image}
             alt="Hero Slide"
-            className="object-cover object-top lg:object-[right_10%] w-full h-full border border-[#5B0E23]/20"
+            className="object-cover object-top lg:object-[right_10%] w-full h-full border border-[#480607]/20"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
         </motion.div>

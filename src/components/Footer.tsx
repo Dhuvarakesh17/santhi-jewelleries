@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#5B0E23] text-white pt-24 pb-12 border-t border-[#FFD700]/20 relative overflow-hidden">
+    <footer className="bg-[#480607] text-white pt-24 pb-12 border-t border-[#FFD700]/20 relative overflow-hidden">
       {/* Background Motif - Subtle */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-5 pointer-events-none"></div>
 
@@ -36,13 +36,13 @@ const Footer = () => {
           <div className="flex space-x-5">
             <a
               href="#"
-              className="p-3 bg-white/5 rounded-full hover:bg-[#FFD700] hover:text-[#5B0E23] transition-all duration-300"
+              className="p-3 bg-white/5 rounded-full hover:bg-[#FFD700] hover:text-[#480607] transition-all duration-300"
             >
               <Instagram size={20} />
             </a>
             <a
               href="#"
-              className="p-3 bg-white/5 rounded-full hover:bg-[#FFD700] hover:text-[#5B0E23] transition-all duration-300"
+              className="p-3 bg-white/5 rounded-full hover:bg-[#FFD700] hover:text-[#480607] transition-all duration-300"
             >
               <Twitter size={20} />
             </a>
@@ -204,9 +204,12 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 mt-24 pt-8 border-t border-white/10 text-center">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p className="text-[11px] text-stone-400 uppercase tracking-widest font-light">
           © {new Date().getFullYear()} Santhi Jewellers. All rights reserved.
+        </p>
+        <p className="text-[11px] text-stone-400 uppercase tracking-widest font-light">
+          Developed by <a href="https://www.creinx.com/" target="_blank" rel="noopener noreferrer" className="text-[#FFD700] hover:underline">Creinx</a>
         </p>
       </div>
     </footer>

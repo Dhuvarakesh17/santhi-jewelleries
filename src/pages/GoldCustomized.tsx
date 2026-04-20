@@ -312,7 +312,7 @@ const GoldCustomized = () => {
       </section>
 
       {/* LIGHTWEIGHT SECTION */}
-      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#5B0E23] relative overflow-hidden">
+      <section className="py-16 lg:py-20 bg-[#fff6ef] text-[#480607] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-maroon/10 blur-[100px] rounded-full -mr-48 -mt-48"></div>
         <div className="relative z-10 px-4 mx-auto max-w-7xl lg:px-8">
           <div className="mb-10 lg:mb-12 space-y-3 text-center">
@@ -346,7 +346,7 @@ const GoldCustomized = () => {
                     }`}
                   />
                 </div>
-                <h4 className="mb-4 font-serif text-2xl font-bold text-[#5B0E23]">
+                <h4 className="mb-4 font-serif text-2xl font-bold text-[#480607]">
                   {item.name}
                 </h4>
                 <p className="font-light leading-relaxed text-stone-600">
@@ -359,7 +359,7 @@ const GoldCustomized = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-16 lg:py-20 bg-[#faf7f2] border-y border-[#5B0E23]/10">
+      <section className="py-16 lg:py-20 bg-[#faf7f2] border-y border-[#480607]/10">
         <div className="max-w-4xl px-4 mx-auto space-y-7 lg:space-y-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-heading font-bold black-gold-animated tracking-wide uppercase">
             Order Your Gold Customized Jewelry Today
@@ -371,7 +371,7 @@ const GoldCustomized = () => {
           <div className="pt-6">
             <a
               href="/category/gold"
-              className="bg-[#5B0E23] hover:bg-[#3D0916] text-white px-10 py-5 font-bold tracking-[0.2em] transition-all uppercase inline-flex items-center gap-4 mx-auto group shadow-xl hover:shadow-2xl"
+              className="bg-[#480607] hover:bg-[#3D0916] text-white px-10 py-5 font-bold tracking-[0.2em] transition-all uppercase inline-flex items-center gap-4 mx-auto group shadow-xl hover:shadow-2xl"
             >
               Explore Collection{" "}
               <ArrowRight
@@ -429,7 +429,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
             {item.sub}
           </span>
         )}
-        <h4 className="text-xl font-serif font-bold text-[#5B0E23] group-hover:text-maroon transition-colors uppercase">
+        <h4 className="text-xl font-serif font-bold text-[#480607] group-hover:text-maroon transition-colors uppercase">
           {item.name}
         </h4>
       </div>

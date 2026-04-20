@@ -33,7 +33,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
             className="fixed right-0 top-0 h-full w-full max-w-[400px] bg-white shadow-2xl z-[101] flex flex-col"
           >
             {/* Header */}
-            <div className="bg-[#5B0E23] text-white p-6 flex justify-between items-center">
+            <div className="bg-[#480607] text-white p-6 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/30">
                   <Heart size={20} className="text-white fill-white" />
@@ -58,7 +58,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
                   <p className="font-serif italic">Your wishlist is empty</p>
                   <button 
                     onClick={onClose}
-                    className="text-[#5B0E23] font-bold uppercase tracking-widest text-sm hover:underline"
+                    className="text-[#480607] font-bold uppercase tracking-widest text-sm hover:underline"
                   >
                     Start Browsing
                   </button>
@@ -78,7 +78,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
                         <div>
                           <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">{item.category}</p>
                           <h3 className="font-bold leading-tight text-stone-800">{item.name}</h3>
-                          <p className="text-[#5B0E23] font-bold mt-1">{item.price}</p>
+                          <p className="text-[#480607] font-bold mt-1">{item.price}</p>
                         </div>
                         <button 
                           onClick={() => removeFromWishlist(item.id)}
