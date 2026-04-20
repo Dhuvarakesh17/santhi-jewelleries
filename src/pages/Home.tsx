@@ -137,7 +137,7 @@ const HeroSlider = () => {
                     y="2"
                     width="calc(100% - 4px)"
                     height="calc(100% - 4px)"
-                    className="stroke-[#FFD700] stroke-[2px] [stroke-dasharray:400,0] group-hover:[stroke-dasharray:0,400] transition-all duration-1000"
+                    className="stroke-[#D4AF37] stroke-[2px] [stroke-dasharray:400,0] group-hover:[stroke-dasharray:0,400] transition-all duration-1000"
                     strokeLinecap="square"
                   />
                 </svg>
@@ -155,10 +155,10 @@ const HeroSlider = () => {
             <Magnetic>
               <Link
                 to="/gold/customized"
-                className="group relative px-12 py-6 border-2 border-white/20 hover:border-[#FFD700] text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 backdrop-blur-sm active:scale-95 flex items-center bg-white/5 overflow-hidden"
+                className="group relative px-12 py-6 border-2 border-white/20 hover:border-[#D4AF37] text-white font-bold tracking-[0.25em] uppercase transition-all duration-500 backdrop-blur-sm active:scale-95 flex items-center bg-white/5 overflow-hidden"
               >
                 {/* Liquid Fill */}
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-[#FFD700] to-[#A67C00] translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-[#D4AF37] to-[#8B1533] translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
 
                 <span className="relative z-20 flex items-center transition-colors duration-500 group-hover:text-black">
                   Customization Order{" "}
