@@ -57,10 +57,11 @@ const About = () => {
   return (
     <div className="bg-[#fafafc]">
       {/* 1. HERO SECTION - EMOTIONAL & BOLD */}
-      <section className="relative h-[65vh] lg:h-[75vh] flex items-center justify-center overflow-hidden bg-[#1a1311]">
+      <section className="relative h-[60vh] lg:h-[88vh] flex items-center justify-center overflow-hidden bg-stone-900">
         <motion.div
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5 }}
           className="absolute inset-0 z-0"
         >
           <img
@@ -68,7 +69,7 @@ const About = () => {
             alt="Heritage Jewellery Crafting"
             className="object-cover w-full h-full opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fafafc]"></div>
         </motion.div>
 
         <div className="relative z-10 px-4 text-center max-w-5xl">
@@ -76,7 +77,7 @@ const About = () => {
             initial={{ opacity: 0, y: 30, letterSpacing: "0.05em" }}
             animate={{ opacity: 1, y: 0, letterSpacing: "0.1em" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="font-cinzel text-7xl lg:text-9xl text-white font-black uppercase"
+            className="font-cinzel text-4xl lg:text-9xl text-white font-black uppercase"
           >
             <span className="signature-animated">About</span> <br className="lg:hidden"/> <span className="gold-text-animated">Us</span>
           </motion.h1>
@@ -276,7 +277,7 @@ const About = () => {
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <ZoomReveal>
             <h2 className="text-4xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-wider">
-              Begin Your <span className="signature-animated italic">Legacy</span> With Us
+              Begin Your <span className="signature-animated italic inline-block py-4">Legacy</span> With Us
             </h2>
             <p className="text-stone-300 text-lg lg:text-xl mb-12 font-light leading-relaxed max-w-2xl mx-auto">
               Step into a world of curated brilliance. Whether it's for a wedding or daily luxury, 

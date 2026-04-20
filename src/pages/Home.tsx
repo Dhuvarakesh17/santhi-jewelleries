@@ -76,7 +76,7 @@ const HeroSlider = () => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative h-[88vh] min-h-[560px] w-full overflow-hidden bg-stone-900">
+    <section className="relative h-[60vh] lg:h-[88vh] min-h-[420px] lg:min-h-[560px] w-full overflow-hidden bg-stone-900">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -105,13 +105,13 @@ const HeroSlider = () => {
               exit={{ opacity: 0, x: 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-maroon-light tracking-[0.5em] uppercase text-xs lg:text-sm font-bold mb-6 block font-serif">
+              <span className="text-maroon-light tracking-[0.4em] uppercase text-[10px] lg:text-sm font-bold mb-4 lg:mb-6 block font-serif">
                 {slides[current].subtitle}
               </span>
-              <h1 className="text-5xl lg:text-8xl font-serif font-bold mb-8 leading-[1.1]">
+              <h1 className="text-3xl lg:text-8xl font-serif font-bold mb-6 lg:mb-8 leading-tight">
                 {slides[current].title}
               </h1>
-              <p className="max-w-lg mb-12 text-lg font-light leading-relaxed lg:text-xl opacity-90">
+              <p className="max-w-lg mb-8 lg:mb-12 text-sm font-light leading-relaxed lg:text-xl opacity-90 line-clamp-2 lg:line-clamp-none">
                 {slides[current].desc}
               </p>
             </motion.div>
@@ -174,7 +174,7 @@ const HeroSlider = () => {
       </div>
 
       {/* Slider Controls */}
-      <div className="absolute z-20 flex gap-4 bottom-12 right-12">
+      <div className="absolute z-20 flex gap-4 bottom-8 right-12">
         <button
           onClick={prevSlide}
           className="p-3 text-white transition-all border rounded-full border-white/20 hover:bg-white hover:text-black backdrop-blur-sm"
@@ -190,7 +190,7 @@ const HeroSlider = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute z-20 flex gap-3 -translate-x-1/2 bottom-12 left-1/2">
+      <div className="absolute z-20 flex gap-3 -translate-x-1/2 bottom-8 left-1/2">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -438,7 +438,7 @@ const Home = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 lg:grid-cols-4">
             {fashionableItems.map((item, i) => {
               const frames = {
                 gold: {

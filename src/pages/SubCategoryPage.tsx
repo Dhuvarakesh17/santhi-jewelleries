@@ -912,7 +912,7 @@ const SubCategoryPage = () => {
 
               {filteredItems.length > 0 ? (
                 <>
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {paginatedItems.map((item, index) => {
                       const palette = getCategoryPalette(item.category);
 
@@ -997,13 +997,13 @@ const SubCategoryPage = () => {
                           </motion.div>
                           <div className="pt-3 space-y-2 text-center">
                             <h3
-                              className="text-[19px] leading-tight font-serif"
+                              className="text-[14px] lg:text-[19px] leading-tight font-serif"
                               style={{ color: palette.titleColor }}
                             >
                               {item.name}
                             </h3>
                             <p
-                              className="text-[17px] font-extrabold"
+                              className="text-base lg:text-[17px] font-extrabold"
                               style={{ color: palette.priceColor }}
                             >
                               {formatCurrency(item.price)}

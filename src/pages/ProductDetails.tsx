@@ -226,24 +226,24 @@ Thank you.`;
           <span className="text-[#480607]">{enrichedProduct.name}</span>
         </div>
 
-        <section className="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-          <div className="grid grid-cols-[72px_minmax(0,1fr)] gap-3 lg:sticky lg:top-24 lg:self-start lg:grid-cols-[84px_minmax(0,1fr)]">
-            <div className="flex flex-col gap-4">
+        <section className="grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+          <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-3 lg:sticky lg:top-24 lg:self-start lg:grid-cols-[72px_minmax(0,1fr)]">
+            <div className="flex flex-col gap-3">
               {galleryImages.map((image, index) => (
                 <button
                   key={`${image}-${index}`}
                   type="button"
                   onClick={() => setSelectedImage(index)}
-                  className={`overflow-hidden border bg-white transition ${
+                  className={`overflow-hidden border bg-white transition rounded-lg ${
                     selectedImage === index
-                      ? "border-black shadow-sm"
-                      : "border-stone-300"
+                      ? "border-[#480607] shadow-md ring-2 ring-[#480607]/10"
+                      : "border-stone-200"
                   }`}
                 >
                   <img
                     src={image}
                     alt={`${enrichedProduct.name} thumbnail ${index + 1}`}
-                    className="object-cover object-center w-full h-16 lg:h-20"
+                    className="object-cover object-center w-full h-14 lg:h-16"
                     onError={(event) => {
                       (event.target as HTMLImageElement).src =
                         "https://via.placeholder.com/300x300?text=Jewellery";
@@ -253,11 +253,11 @@ Thank you.`;
               ))}
             </div>
 
-            <div className="overflow-hidden bg-white">
+            <div className="overflow-hidden bg-white rounded-2xl shadow-sm border border-stone-100">
               <img
                 src={galleryImages[selectedImage] || enrichedProduct.image}
                 alt={enrichedProduct.name}
-                className="product-main-image-zoom object-cover object-[50%_42%] w-full h-full max-h-165"
+                className="product-main-image-zoom object-cover object-[50%_42%] w-full h-auto max-h-[600px]"
                 onError={(event) => {
                   (event.target as HTMLImageElement).src =
                     "https://via.placeholder.com/1200x1200?text=Jewellery+Showcase";
