@@ -762,7 +762,7 @@ const SubCategoryPage = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="hidden lg:block h-fit sticky top-[120px] bg-[#480607]/[0.04] backdrop-blur-2xl border-2 border-[#480607]/20 shadow-2xl rounded-[32px] overflow-hidden"
+                  className="hidden lg:block h-fit sticky top-36 bg-[#480607]/[0.04] backdrop-blur-2xl border-2 border-[#480607]/20 shadow-2xl rounded-[32px] overflow-hidden"
                 >
                   <div className="max-h-[calc(100vh-180px)] overflow-y-auto custom-scrollbar p-8">
                     {renderFilters()}

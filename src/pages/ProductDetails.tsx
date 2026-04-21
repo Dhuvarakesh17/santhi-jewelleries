@@ -20,15 +20,33 @@ const hashString = (value: string) => {
   return hash;
 };
 
+const normalizeCategory = (value: string) => {
+  const normalized = value.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const aliases: Record<string, string> = {
+    diamonds: "diamond",
+    gem: "gems",
+    signaturescollection: "signaturecollection",
+  };
+  return aliases[normalized] || normalized;
+};
+
+const getFrameVariant = (category: string) => {
+  const normalized = normalizeCategory(category);
+  if (normalized === "silver") return "luxury-frame--silver";
+  if (normalized === "diamond" || normalized === "platinum") return "luxury-frame--diamond";
+  if (normalized === "gems" || normalized === "signaturecollection") return "luxury-frame--signature";
+  return "luxury-frame--gold";
+};
+
 const formatCurrency = (value: number) => `₹ ${value.toLocaleString("en-IN")}`;
 const formatEstimatedCurrency = (value: number) =>
   `${formatCurrency(value)}`;
 
 const accordionTitleClass =
-  "flex w-full items-center justify-between border-b border-maroon/10 px-6 py-5 text-left group transition-all hover:bg-maroon/[0.02]";
+  "flex w-full items-center justify-between border-b border-maroon/20 px-6 py-6 text-left group transition-all hover:bg-maroon/[0.04] bg-maroon/[0.01]";
 
 const accordionHeadingClass =
-  "text-[12px] font-bold uppercase tracking-[0.2em] text-maroon group-hover:tracking-[0.25em] transition-all";
+  "text-[13px] font-bold uppercase tracking-[0.25em] text-maroon group-hover:tracking-[0.3em] transition-all";
 
 const ProductDetails = () => {
   const { type, sub, id } = useParams();
@@ -36,10 +54,10 @@ const ProductDetails = () => {
     useWishlist();
   const [selectedImage, setSelectedImage] = useState(0);
   const [openPanels, setOpenPanels] = useState({
-    productDetails: true,
-    priceBreakup: true,
-    shippingInfo: true,
-    askQuestion: true,
+    productDetails: false,
+    priceBreakup: false,
+    shippingInfo: false,
+    askQuestion: false,
   });
   const [formData, setFormData] = useState({
     name: "",
@@ -116,12 +134,53 @@ Thank you.`;
 
   const relatedProducts = useMemo(() => {
     if (!product) return [];
-    return JEWELLERY_DATA.filter(
+    
+    // 1. Precise matches (Same Material & Same Type - e.g., Gold Ring)
+    const exactMatches = JEWELLERY_DATA.filter(
       (item) =>
         item.id !== product.id &&
         item.category === product.category &&
         item.subcategory === product.subcategory,
-    ).slice(0, 4);
+    );
+
+    if (exactMatches.length >= 4) {
+      return exactMatches.slice(0, 4);
+    }
+
+    // 2. Cross-category matches (Same Type, Different Material - e.g., Silver Ring for a Gold Ring)
+    const typeMatches = JEWELLERY_DATA.filter(
+      (item) =>
+        item.id !== product.id &&
+        item.subcategory === product.subcategory &&
+        item.category !== product.category
+    );
+
+    let combined = [...exactMatches, ...typeMatches];
+    if (combined.length >= 4) {
+      return combined.slice(0, 4);
+    }
+
+    // 3. Fallback to same material (Same Material, Different Type - e.g., Gold Bangle for a Gold Ring)
+    const categoryMatches = JEWELLERY_DATA.filter(
+      (item) =>
+        item.id !== product.id &&
+        item.category === product.category &&
+        item.subcategory !== product.subcategory
+    );
+
+    combined = [...combined, ...categoryMatches];
+    if (combined.length >= 4) {
+      return combined.slice(0, 4);
+    }
+
+    // 4. Last fallback (Any remaining products)
+    const otherMatches = JEWELLERY_DATA.filter(
+      (item) =>
+        !combined.find(c => c.id === item.id) &&
+        item.id !== product.id
+    );
+
+    return [...combined, ...otherMatches].slice(0, 4);
   }, [product]);
 
   const estimatedWeight = useMemo(() => {
@@ -150,16 +209,39 @@ Thank you.`;
   const galleryImages = useMemo(() => {
     if (!product) return [];
 
-    const similarImages = JEWELLERY_DATA.filter(
+    // 1. Same Type matches
+    const sameType = JEWELLERY_DATA.filter(
       (item) =>
         item.category === product.category &&
         item.subcategory === product.subcategory &&
         item.id !== product.id,
-    )
-      .slice(0, 4)
-      .map((item) => item.image);
+    ).map((item) => item.image);
 
-    return [product.image, ...similarImages];
+    if (sameType.length >= 2) {
+      return [product.image, ...sameType.slice(0, 2)];
+    }
+
+    // 2. Same Category matches
+    const sameCat = JEWELLERY_DATA.filter(
+      (item) =>
+        item.category === product.category &&
+        item.subcategory !== product.subcategory &&
+        item.id !== product.id,
+    ).map((item) => item.image);
+
+    const combined = [product.image, ...sameType, ...sameCat];
+    if (combined.length >= 3) {
+      return combined.slice(0, 3);
+    }
+
+    // 3. Any other matches
+    const others = JEWELLERY_DATA.filter(
+      (item) =>
+        item.id !== product.id &&
+        item.category !== product.category
+    ).map((item) => item.image);
+
+    return [...combined, ...others].slice(0, 3);
   }, [product]);
 
   const handleWishlistToggle = () => {
@@ -227,52 +309,73 @@ Thank you.`;
         </div>
 
         <section className="grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-          <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-3 lg:sticky lg:top-24 lg:self-start lg:grid-cols-[72px_minmax(0,1fr)]">
+          <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-3 lg:sticky lg:top-36 lg:self-start lg:grid-cols-[72px_minmax(0,1fr)]">
             <div className="flex flex-col gap-3">
               {galleryImages.map((image, index) => (
                 <button
                   key={`${image}-${index}`}
                   type="button"
                   onClick={() => setSelectedImage(index)}
-                  className={`overflow-hidden border bg-white transition rounded-lg ${
+                  className={`overflow-hidden transition rounded-lg luxury-frame luxury-frame--sm ${getFrameVariant(enrichedProduct.category)} ${
                     selectedImage === index
-                      ? "border-[#480607] shadow-md ring-2 ring-[#480607]/10"
-                      : "border-stone-200"
+                      ? "ring-2 ring-maroon shadow-md scale-105"
+                      : "opacity-80 hover:opacity-100"
                   }`}
                 >
-                  <img
-                    src={image}
-                    alt={`${enrichedProduct.name} thumbnail ${index + 1}`}
-                    className="object-cover object-center w-full h-14 lg:h-16"
-                    onError={(event) => {
-                      (event.target as HTMLImageElement).src =
-                        "https://via.placeholder.com/300x300?text=Jewellery";
-                    }}
-                  />
+                  <div className="luxury-frame__inner">
+                    <img
+                      src={image}
+                      alt={`${enrichedProduct.name} thumbnail ${index + 1}`}
+                      className="object-cover object-center w-full h-14 lg:h-16"
+                      onError={(event) => {
+                        (event.target as HTMLImageElement).src =
+                          "https://via.placeholder.com/300x300?text=Jewellery";
+                      }}
+                    />
+                  </div>
                 </button>
               ))}
             </div>
 
-            <div className="overflow-hidden bg-white rounded-2xl shadow-sm border border-stone-100">
-              <img
-                src={galleryImages[selectedImage] || enrichedProduct.image}
-                alt={enrichedProduct.name}
-                className="product-main-image-zoom object-cover object-[50%_42%] w-full h-auto max-h-[600px]"
-                onError={(event) => {
-                  (event.target as HTMLImageElement).src =
-                    "https://via.placeholder.com/1200x1200?text=Jewellery+Showcase";
-                }}
-              />
+            <div className={`overflow-hidden bg-white rounded-2xl shadow-xl luxury-frame ${getFrameVariant(enrichedProduct.category)}`}>
+              <div className="luxury-frame__inner">
+                <img
+                  src={galleryImages[selectedImage] || enrichedProduct.image}
+                  alt={enrichedProduct.name}
+                  className="product-main-image-zoom object-cover object-[50%_42%] w-full h-auto max-h-[600px]"
+                  onError={(event) => {
+                    (event.target as HTMLImageElement).src =
+                      "https://via.placeholder.com/1200x1200?text=Jewellery+Showcase";
+                  }}
+                />
+              </div>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div>
-              <h1 className="font-cinzel text-3xl leading-tight text-[#1a1a1a] lg:text-5xl font-bold">
-                {enrichedProduct.name}
-              </h1>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
+                <h1 className="font-cinzel text-3xl leading-tight text-[#1a1a1a] lg:text-5xl font-bold">
+                  {enrichedProduct.name}
+                </h1>
+                
+                <button
+                  type="button"
+                  onClick={handleWishlistToggle}
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-maroon/20 text-maroon shadow-md hover:shadow-lg hover:border-maroon/50 hover:bg-maroon/[0.02] transition-all group shrink-0 mt-1"
+                  aria-label={isInWishlist(enrichedProduct.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+                  title={isInWishlist(enrichedProduct.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+                >
+                  <Heart
+                    size={24}
+                    className={`transition-all duration-300 ${
+                      isInWishlist(enrichedProduct.id) ? "fill-maroon scale-110" : "group-hover:scale-110 text-maroon/40 group-hover:text-maroon"
+                    }`}
+                  />
+                </button>
+              </div>
 
-              <div className="mt-8 border-b border-stone-200 pb-8">
+              <div className="mt-2 border-b border-stone-200 pb-8">
                 <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora">
                   {formatEstimatedCurrency(enrichedProduct.price)}
                 </p>
@@ -287,44 +390,23 @@ Thank you.`;
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={handleWishlistToggle}
-                className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-[#480607]"
-              >
-                <Heart
-                  size={16}
-                  className={
-                    isInWishlist(enrichedProduct.id) ? "fill-[#480607]" : ""
-                  }
-                />
-                {isInWishlist(enrichedProduct.id)
-                  ? "Wishlisted"
-                  : "Add To Wishlist"}
-              </button>
 
-              <div className="mt-10 mb-8 p-6 bg-maroon/[0.02] border border-maroon/5 rounded-2xl">
-                <h3 className="text-[14px] font-bold text-maroon uppercase tracking-[0.2em] mb-4">
-                  Designer's Note:
-                </h3>
-                <p className="text-base leading-[1.8] text-stone-700 italic">
-                  "{enrichedProduct.description}"
-                </p>
-              </div>
+
+              
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
                 <div className="space-y-4">
                   <h3 className="text-[12px] font-bold text-stone-400 uppercase tracking-[0.2em]">
-                    Styling Tips
+                    Excludes
                   </h3>
                   <ul className="space-y-3 pl-1 text-[14px] text-stone-600 leading-relaxed font-medium">
                     <li className="flex gap-3">
                       <span className="text-maroon">✦</span>
-                      Pair with matching chains for a complete traditional look.
+                      Chains and secondary items shown in the display are for representative purposes only.
                     </li>
                     <li className="flex gap-3">
                       <span className="text-maroon">✦</span>
-                      Style with ethnic outfits for festive occasions.
+                      This product purchase does not include any additional jewellery pieces or props shown.
                     </li>
                   </ul>
                 </div>
@@ -365,10 +447,12 @@ Thank you.`;
                     <span className={accordionHeadingClass}>
                       Product Details
                     </span>
-                    <ChevronDown
-                      size={16}
-                      className={`text-[#3a342e] transition-transform ${openPanels.productDetails ? "rotate-180" : ""}`}
-                    />
+                    <div className="w-8 h-8 rounded-full bg-maroon/5 flex items-center justify-center group-hover:bg-maroon/10 transition-all">
+                      <ChevronDown
+                        size={18}
+                        className={`text-maroon transition-transform duration-300 ${openPanels.productDetails ? "rotate-180" : ""}`}
+                      />
+                    </div>
                   </button>
 
                   {openPanels.productDetails && (
@@ -411,10 +495,12 @@ Thank you.`;
                     }
                   >
                     <span className={accordionHeadingClass}>Price Breakup</span>
-                    <ChevronDown
-                      size={16}
-                      className={`text-[#3a342e] transition-transform ${openPanels.priceBreakup ? "rotate-180" : ""}`}
-                    />
+                    <div className="w-8 h-8 rounded-full bg-maroon/5 flex items-center justify-center group-hover:bg-maroon/10 transition-all">
+                      <ChevronDown
+                        size={18}
+                        className={`text-maroon transition-transform duration-300 ${openPanels.priceBreakup ? "rotate-180" : ""}`}
+                      />
+                    </div>
                   </button>
 
                   {openPanels.priceBreakup && (
@@ -472,10 +558,12 @@ Thank you.`;
                     <span className={accordionHeadingClass}>
                       Shipping Information
                     </span>
-                    <ChevronDown
-                      size={16}
-                      className={`text-[#3a342e] transition-transform ${openPanels.shippingInfo ? "rotate-180" : ""}`}
-                    />
+                    <div className="w-8 h-8 rounded-full bg-maroon/5 flex items-center justify-center group-hover:bg-maroon/10 transition-all">
+                      <ChevronDown
+                        size={18}
+                        className={`text-maroon transition-transform duration-300 ${openPanels.shippingInfo ? "rotate-180" : ""}`}
+                      />
+                    </div>
                   </button>
 
                   {openPanels.shippingInfo && (
@@ -504,104 +592,7 @@ Thank you.`;
                   )}
                 </div>
 
-                <div>
-                  <button
-                    type="button"
-                    className={accordionTitleClass}
-                    onClick={() =>
-                      setOpenPanels((prev) => ({
-                        ...prev,
-                        askQuestion: !prev.askQuestion,
-                      }))
-                    }
-                  >
-                    <span className={accordionHeadingClass}>
-                      Ask A Question
-                    </span>
-                    <ChevronDown
-                      size={16}
-                      className={`text-[#3a342e] transition-transform ${openPanels.askQuestion ? "rotate-180" : ""}`}
-                    />
-                  </button>
-
-                  {openPanels.askQuestion && (
-                    <form
-                      className="px-8 pt-8 pb-10 space-y-6 bg-maroon/[0.02]"
-                      onSubmit={handleWhatsAppSubmit}
-                    >
-                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                        <div className="space-y-2">
-                          <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
-                            Full Name
-                          </label>
-                          <input
-                            type="text"
-                            name="name"
-                            placeholder="Enter your name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            required
-                            className="w-full border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
-                            Email Address
-                          </label>
-                          <input
-                            type="email"
-                            name="email"
-                            placeholder="your@email.com"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            className="w-full border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
-                          />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          placeholder="+91 00000 00000"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 pl-1">
-                          How can we help?
-                        </label>
-                        <textarea
-                          rows={4}
-                          name="message"
-                          placeholder="Tell us about your requirements..."
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full resize-y border-b-2 border-stone-100 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] outline-none focus:border-maroon transition-colors rounded-xl shadow-sm"
-                        />
-                      </div>
-                      <div className="pt-2">
-                        <button
-                          type="submit"
-                          disabled={!formData.name || !formData.phone || !formData.message}
-                          className="w-full bg-maroon text-white py-4 rounded-2xl font-bold text-sm tracking-[0.3em] uppercase shadow-lg shadow-maroon/20 hover:bg-[#480607] transition-all disabled:opacity-30 disabled:cursor-not-allowed group flex items-center justify-center gap-3"
-                        >
-                          Send Inquiry
-                          <Share2 size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                      </div>
-                      <p className="text-center text-[10px] text-stone-400 leading-relaxed max-w-xs mx-auto">
-                        Your inquiry will be directly sent to our experts via WhatsApp for immediate assistance.
-                      </p>
-                    </form>
-                  )}
-                </div>
+               
               </section>
 
               <div className="pt-8 flex justify-center">
@@ -622,22 +613,27 @@ Thank you.`;
             <h2 className="font-cinzel text-2xl uppercase text-[#480607] lg:text-3xl">
               Similar Designs
             </h2>
-            <div className="grid grid-cols-2 gap-4 mt-6 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-6 mt-8 lg:grid-cols-4">
               {relatedProducts.map((item) => (
                 <Link
                   key={item.id}
                   to={buildProductPath(item)}
-                  className="overflow-hidden bg-white border group rounded-2xl border-stone-200"
+                  className={`overflow-hidden bg-white group rounded-2xl luxury-frame ${getFrameVariant(item.category)} transition-transform hover:-translate-y-1`}
                 >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="object-cover w-full transition-transform duration-500 h-52 group-hover:scale-105"
-                  />
-                  <div className="p-4">
-                    <p className="text-sm font-semibold text-stone-800 line-clamp-2">
-                      {item.name}
-                    </p>
+                  <div className="luxury-frame__inner">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="object-cover w-full transition-transform duration-500 h-52 group-hover:scale-105"
+                    />
+                    <div className="p-4 bg-white border-t border-stone-100">
+                      <p className="text-[13px] font-bold text-stone-800 line-clamp-1 italic">
+                        {item.name}
+                      </p>
+                      <p className="text-[11px] uppercase tracking-widest text-maroon font-bold mt-1 opacity-70">
+                        View Details
+                      </p>
+                    </div>
                   </div>
                 </Link>
               ))}

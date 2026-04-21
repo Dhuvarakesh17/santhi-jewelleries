@@ -191,6 +191,11 @@ body {
   overflow: hidden;
 }
 
+.luxury-frame--sm {
+  border-width: 2px;
+  border-radius: 8px;
+}
+
 .luxury-frame__inner {
   border-radius: 9px;
   background: #ffffff;

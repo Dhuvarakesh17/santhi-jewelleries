@@ -331,7 +331,6 @@ const Home = () => {
             <h2 className="font-serif text-3xl font-bold uppercase lg:text-5xl black-gold-animated">
               Curated Showcase
             </h2>
-            <div className="w-20 h-1 mx-auto mt-4 bg-maroon"></div>
           </div>
         </ScrollReveal>
 
