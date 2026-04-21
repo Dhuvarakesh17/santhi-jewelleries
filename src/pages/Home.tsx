@@ -76,7 +76,7 @@ const HeroSlider = () => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative h-[60vh] lg:h-[88vh] min-h-[420px] lg:min-h-[560px] w-full overflow-hidden bg-stone-900">
+    <section className="relative h-[75vh] lg:h-[88vh] min-h-[500px] lg:min-h-[560px] w-full overflow-hidden bg-stone-900">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -86,32 +86,34 @@ const HeroSlider = () => {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          <img
-            src={slides[current].image}
-            alt="Hero Slide"
-            className="object-cover object-top lg:object-[right_10%] w-full h-full border border-[#480607]/20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-        </motion.div>
-      </AnimatePresence>
+      <img
+        src={slides[current].image}
+        alt="Hero Slide"
+        className="object-cover object-[80%_top] lg:object-[right_10%] w-full h-full border border-[#480607]/20"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-black/80 lg:via-black/40 lg:to-transparent"></div>
+    </motion.div>
+  </AnimatePresence>
 
-      <div className="relative z-10 flex items-center h-full px-4 mx-auto max-w-7xl lg:px-8">
-        <div className="max-w-3xl text-white">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span className="text-maroon-light tracking-[0.4em] uppercase text-[10px] lg:text-sm font-bold mb-4 lg:mb-6 block font-serif">
-                {slides[current].subtitle}
-              </span>
-              <h1 className="text-3xl lg:text-8xl font-serif font-bold mb-6 lg:mb-8 leading-tight">
-                {slides[current].title}
-              </h1>
-              <p className="max-w-lg mb-8 lg:mb-12 text-sm font-light leading-relaxed lg:text-xl opacity-90 line-clamp-2 lg:line-clamp-none">
+  <div className="relative z-10 flex items-end h-full px-4 mx-auto max-w-7xl lg:px-8 pb-24 lg:pb-0 lg:items-center">
+
+    <div className="max-w-3xl text-white">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <span className="text-maroon-light tracking-[0.4em] uppercase text-[10px] lg:text-sm font-bold mb-3 lg:mb-6 block font-serif">
+            {slides[current].subtitle}
+          </span>
+          <h1 className="text-4xl lg:text-8xl font-serif font-bold mb-4 lg:mb-8 leading-tight">
+            {slides[current].title}
+          </h1>
+
+              <p className="max-w-lg mb-6 lg:mb-12 text-sm font-light leading-relaxed lg:text-xl opacity-90 line-clamp-3 lg:line-clamp-none">
                 {slides[current].desc}
               </p>
             </motion.div>
