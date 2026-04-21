@@ -346,12 +346,9 @@ body {
 
 .testimonials-carousel {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding-inline: clamp(16px, 4vw, 64px);
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .testimonials-carousel.is-paused .testimonials-track {
@@ -360,9 +357,8 @@ body {
 
 .testimonials-viewport {
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: visible;
-  padding: 16px 0 26px;
+  overflow: hidden;
+  padding: 20px 0 30px;
 }
 
 .testimonials-track {
@@ -370,7 +366,7 @@ body {
   gap: 26px;
   width: max-content;
   align-items: stretch;
-  animation: testimonials-marquee 40s linear infinite;
+  animation: testimonials-marquee 60s linear infinite;
   will-change: transform;
 }
 
@@ -474,11 +470,12 @@ body {
   }
 
   .testimonials-slide {
-    flex: 0 0 86%;
+    flex: 0 0 300px;
   }
 
   .testimonials-slider__text {
-    height: 300px;
+    height: 280px;
+    padding: 20px;
   }
 
   .testimonials-controls {
