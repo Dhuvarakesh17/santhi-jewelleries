@@ -376,8 +376,8 @@ Thank you.`;
               </div>
 
               <div className="mt-2 border-b border-stone-200 pb-8">
-                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora">
-                  {formatEstimatedCurrency(enrichedProduct.price)}
+                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora flex items-start">
+                  {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.6em]">*</sup>
                 </p>
                 <div className="mt-4 flex flex-col gap-2">
                   <p className="text-sm text-stone-500 flex items-center gap-2">
@@ -389,11 +389,6 @@ Thank you.`;
                   </p>
                 </div>
               </div>
-
-
-
-              
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
                 <div className="space-y-4">
                   <h3 className="text-[12px] font-bold text-stone-400 uppercase tracking-[0.2em]">
@@ -513,9 +508,11 @@ Thank you.`;
                                 {enrichedProduct.category} ({estimatedWeight}g)
                               </td>
                               <td className="px-6 py-4 text-right font-aurora">
-                                {formatEstimatedCurrency(
-                                  enrichedProduct.price - makingCharge,
-                                )}
+                                <span className="flex items-start justify-end">
+                                  {formatEstimatedCurrency(
+                                    enrichedProduct.price - makingCharge,
+                                  )}<sup className="text-[0.6em]">*</sup>
+                                </span>
                               </td>
                             </tr>
                             <tr className="border-b border-stone-50">
@@ -523,7 +520,9 @@ Thank you.`;
                                 Making Charges
                               </td>
                               <td className="px-6 py-4 text-right font-aurora">
-                                {formatEstimatedCurrency(makingCharge)}
+                                <span className="flex items-start justify-end">
+                                  {formatEstimatedCurrency(makingCharge)}<sup className="text-[0.6em]">*</sup>
+                                </span>
                               </td>
                             </tr>
                             <tr className="bg-maroon/[0.02]">
@@ -531,7 +530,9 @@ Thank you.`;
                                 Total Amount
                               </td>
                               <td className="px-6 py-5 font-bold text-maroon text-right text-lg font-aurora">
-                                {formatEstimatedCurrency(enrichedProduct.price)}
+                                <span className="flex items-start justify-end text-lg">
+                                  {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.6em]">*</sup>
+                                </span>
                               </td>
                             </tr>
                           </tbody>
@@ -591,10 +592,7 @@ Thank you.`;
                     </div>
                   )}
                 </div>
-
-               
               </section>
-
               <div className="pt-8 flex justify-center">
                 <Link
                   to={`/category/${enrichedProduct.category}/${enrichedProduct.subcategory}`}

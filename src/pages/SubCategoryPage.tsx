@@ -1003,10 +1003,11 @@ const SubCategoryPage = () => {
                               {item.name}
                             </h3>
                             <p
-                              className="text-base lg:text-[17px] font-extrabold"
+                              className="text-base lg:text-[17px] font-extrabold flex justify-center items-start"
                               style={{ color: palette.priceColor }}
                             >
-                              {formatCurrency(item.price)}
+                              <span>{formatCurrency(item.price)}</span>
+                              <sup className="text-[0.6em]">*</sup>
                             </p>
                             {!item.inStock && (
                               <p className="text-[12px] text-red-500 uppercase tracking-wider">
