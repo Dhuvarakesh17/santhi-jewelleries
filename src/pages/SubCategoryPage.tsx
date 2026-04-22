@@ -695,12 +695,14 @@ const SubCategoryPage = () => {
               className="relative inline-block mb-1 text-4xl font-extrabold uppercase font-cinzel lg:text-7xl group"
             >
               {(() => {
-                const isChettinadu = titleText.toUpperCase().includes("CHETTINADU");
-                
+                const isChettinadu = titleText
+                  .toUpperCase()
+                  .includes("CHETTINADU");
+
                 if (isChettinadu) {
-                   return (
+                  return (
                     <div className="flex flex-col items-center gap-2">
-                       <span className="signature-animated scale-105">
+                      <span className="scale-105 signature-animated">
                         {titleText}
                       </span>
                       <span className="bg-[#480607] text-white text-[10px] px-3 py-1 rounded-full animate-pulse tracking-[0.4em] font-black shadow-lg">
@@ -1003,11 +1005,13 @@ const SubCategoryPage = () => {
                               {item.name}
                             </h3>
                             <p
-                              className="text-base lg:text-[17px] font-extrabold flex justify-center items-start"
+                              className="text-base lg:text-[17px] font-extrabold inline-flex justify-center items-start leading-none"
                               style={{ color: palette.priceColor }}
                             >
                               <span>{formatCurrency(item.price)}</span>
-                              <sup className="text-[0.6em]">*</sup>
+                              <sup className="-ml-0.5 text-xs lg:text-sm leading-none font-black">
+                                *
+                              </sup>
                             </p>
                             {!item.inStock && (
                               <p className="text-[12px] text-red-500 uppercase tracking-wider">
