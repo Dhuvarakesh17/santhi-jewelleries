@@ -644,4 +644,3 @@ Thank you.`;
 };
 
 export default ProductDetails;
-
