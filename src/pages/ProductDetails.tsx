@@ -33,14 +33,15 @@ const normalizeCategory = (value: string) => {
 const getFrameVariant = (category: string) => {
   const normalized = normalizeCategory(category);
   if (normalized === "silver") return "luxury-frame--silver";
-  if (normalized === "diamond" || normalized === "platinum") return "luxury-frame--diamond";
-  if (normalized === "gems" || normalized === "signaturecollection") return "luxury-frame--signature";
+  if (normalized === "diamond" || normalized === "platinum")
+    return "luxury-frame--diamond";
+  if (normalized === "gems" || normalized === "signaturecollection")
+    return "luxury-frame--signature";
   return "luxury-frame--gold";
 };
 
 const formatCurrency = (value: number) => `₹ ${value.toLocaleString("en-IN")}`;
-const formatEstimatedCurrency = (value: number) =>
-  `${formatCurrency(value)}`;
+const formatEstimatedCurrency = (value: number) => `${formatCurrency(value)}`;
 
 const accordionTitleClass =
   "flex w-full items-center justify-between border-b border-maroon/20 px-6 py-6 text-left group transition-all hover:bg-maroon/[0.04] bg-maroon/[0.01]";
@@ -134,7 +135,7 @@ Thank you.`;
 
   const relatedProducts = useMemo(() => {
     if (!product) return [];
-    
+
     // 1. Precise matches (Same Material & Same Type - e.g., Gold Ring)
     const exactMatches = JEWELLERY_DATA.filter(
       (item) =>
@@ -184,6 +185,7 @@ Thank you.`;
       }
     }
 
+<<<<<<< HEAD
     return result.map(item => {
       const hash = hashString(item.id + item.name);
       const base = categoryBasePrice[item.category.toLowerCase()] ?? 40000;
@@ -192,6 +194,41 @@ Thank you.`;
         price: base + (hash % 90000)
       };
     });
+=======
+    // 2. Cross-category matches (Same Type, Different Material - e.g., Silver Ring for a Gold Ring)
+    const typeMatches = JEWELLERY_DATA.filter(
+      (item) =>
+        item.id !== product.id &&
+        item.subcategory === product.subcategory &&
+        item.category !== product.category,
+    );
+
+    let combined = [...exactMatches, ...typeMatches];
+    if (combined.length >= 4) {
+      return combined.slice(0, 4);
+    }
+
+    // 3. Fallback to same material (Same Material, Different Type - e.g., Gold Bangle for a Gold Ring)
+    const categoryMatches = JEWELLERY_DATA.filter(
+      (item) =>
+        item.id !== product.id &&
+        item.category === product.category &&
+        item.subcategory !== product.subcategory,
+    );
+
+    combined = [...combined, ...categoryMatches];
+    if (combined.length >= 4) {
+      return combined.slice(0, 4);
+    }
+
+    // 4. Last fallback (Any remaining products)
+    const otherMatches = JEWELLERY_DATA.filter(
+      (item) =>
+        !combined.find((c) => c.id === item.id) && item.id !== product.id,
+    );
+
+    return [...combined, ...otherMatches].slice(0, 4);
+>>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
   }, [product]);
 
   const estimatedWeight = useMemo(() => {
@@ -247,9 +284,7 @@ Thank you.`;
 
     // 3. Any other matches
     const others = JEWELLERY_DATA.filter(
-      (item) =>
-        item.id !== product.id &&
-        item.category !== product.category
+      (item) => item.id !== product.id && item.category !== product.category,
     ).map((item) => item.image);
 
     return [...combined, ...others].slice(0, 3);
@@ -348,7 +383,9 @@ Thank you.`;
               ))}
             </div>
 
-            <div className={`overflow-hidden bg-white rounded-2xl shadow-xl luxury-frame ${getFrameVariant(enrichedProduct.category)}`}>
+            <div
+              className={`overflow-hidden bg-white rounded-2xl shadow-xl luxury-frame ${getFrameVariant(enrichedProduct.category)}`}
+            >
               <div className="luxury-frame__inner">
                 <img
                   src={galleryImages[selectedImage] || enrichedProduct.image}
@@ -369,34 +406,52 @@ Thank you.`;
                 <h1 className="font-cinzel text-3xl leading-tight text-[#1a1a1a] lg:text-5xl font-bold">
                   {enrichedProduct.name}
                 </h1>
-                
+
                 <button
                   type="button"
                   onClick={handleWishlistToggle}
                   className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-maroon/20 text-maroon shadow-md hover:shadow-lg hover:border-maroon/50 hover:bg-maroon/[0.02] transition-all group shrink-0 mt-1"
-                  aria-label={isInWishlist(enrichedProduct.id) ? "Remove from Wishlist" : "Add to Wishlist"}
-                  title={isInWishlist(enrichedProduct.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+                  aria-label={
+                    isInWishlist(enrichedProduct.id)
+                      ? "Remove from Wishlist"
+                      : "Add to Wishlist"
+                  }
+                  title={
+                    isInWishlist(enrichedProduct.id)
+                      ? "Remove from Wishlist"
+                      : "Add to Wishlist"
+                  }
                 >
                   <Heart
                     size={24}
                     className={`transition-all duration-300 ${
-                      isInWishlist(enrichedProduct.id) ? "fill-maroon scale-110" : "group-hover:scale-110 text-maroon/40 group-hover:text-maroon"
+                      isInWishlist(enrichedProduct.id)
+                        ? "fill-maroon scale-110"
+                        : "group-hover:scale-110 text-maroon/40 group-hover:text-maroon"
                     }`}
                   />
                 </button>
               </div>
 
               <div className="mt-2 border-b border-stone-200 pb-8">
+<<<<<<< HEAD
                 <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora flex items-start gap-[1px]">
                   {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.9em] mt-1">*</sup>
+=======
+                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora inline-flex items-start leading-none">
+                  {formatEstimatedCurrency(enrichedProduct.price)}
+                  <sup className="-ml-px text-[0.52em] leading-none">*</sup>
+>>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                 </p>
                 <div className="mt-4 flex flex-col gap-2">
+                  <p className="rounded-md border-l-2 border-maroon/60 bg-maroon/4 px-3 py-2 text-[13px] font-semibold text-maroon/90">
+                    <span className="font-bold">Note:</span> This is an
+                    estimated price, actual price may differ as per actual
+                    weights.
+                  </p>
                   <p className="text-sm text-stone-500 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                     Exclusive of all taxes
-                  </p>
-                  <p className="text-[12px] font-medium text-stone-400 italic">
-                    Note: This is an estimated price, actual price may differ as per actual weights.
                   </p>
                 </div>
               </div>
@@ -413,11 +468,13 @@ Thank you.`;
                   <ul className="space-y-3 pl-1 text-[14px] text-stone-600 leading-relaxed font-medium">
                     <li className="flex gap-3">
                       <span className="text-maroon">✦</span>
-                      Chains and secondary items shown in the display are for representative purposes only.
+                      Chains and secondary items shown in the display are for
+                      representative purposes only.
                     </li>
                     <li className="flex gap-3">
                       <span className="text-maroon">✦</span>
-                      This product purchase does not include any additional jewellery pieces or props shown.
+                      This product purchase does not include any additional
+                      jewellery pieces or props shown.
                     </li>
                   </ul>
                 </div>
@@ -470,7 +527,11 @@ Thank you.`;
                     <div className="grid grid-cols-2 divide-x divide-stone-100 bg-maroon/[0.01]">
                       <div className="px-6 py-8 text-center">
                         <div className="w-12 h-12 rounded-full bg-maroon/5 flex items-center justify-center mx-auto mb-4">
-                          <Scale size={20} className="text-maroon" strokeWidth={1.5} />
+                          <Scale
+                            size={20}
+                            className="text-maroon"
+                            strokeWidth={1.5}
+                          />
                         </div>
                         <p className="text-[13px] font-bold text-stone-400 uppercase tracking-widest mb-1">
                           Total Weight
@@ -481,7 +542,11 @@ Thank you.`;
                       </div>
                       <div className="px-6 py-8 text-center">
                         <div className="w-12 h-12 rounded-full bg-maroon/5 flex items-center justify-center mx-auto mb-4">
-                          <Gem size={20} className="text-maroon" strokeWidth={1.5} />
+                          <Gem
+                            size={20}
+                            className="text-maroon"
+                            strokeWidth={1.5}
+                          />
                         </div>
                         <p className="text-[13px] font-bold text-stone-400 uppercase tracking-widest mb-1">
                           22K {enrichedProduct.category}
@@ -527,7 +592,12 @@ Thank you.`;
                                 <span className="flex items-start justify-end gap-[1px]">
                                   {formatEstimatedCurrency(
                                     enrichedProduct.price - makingCharge,
+<<<<<<< HEAD
                                   )}<sup className="text-[0.8em] mt-1">*</sup>
+=======
+                                  )}
+                                  <sup className="text-[0.6em]">*</sup>
+>>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                                 </span>
                               </td>
                             </tr>
@@ -536,8 +606,14 @@ Thank you.`;
                                 Making Charges
                               </td>
                               <td className="px-6 py-4 text-right font-aurora">
+<<<<<<< HEAD
                                 <span className="flex items-start justify-end gap-[1px]">
                                   {formatEstimatedCurrency(makingCharge)}<sup className="text-[0.8em] mt-1">*</sup>
+=======
+                                <span className="flex items-start justify-end">
+                                  {formatEstimatedCurrency(makingCharge)}
+                                  <sup className="text-[0.6em]">*</sup>
+>>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                                 </span>
                               </td>
                             </tr>
@@ -546,8 +622,16 @@ Thank you.`;
                                 Total Amount
                               </td>
                               <td className="px-6 py-5 font-bold text-maroon text-right text-lg font-aurora">
+<<<<<<< HEAD
                                 <span className="flex items-start justify-end gap-[1px] text-lg">
                                   {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.8em] mt-1">*</sup>
+=======
+                                <span className="flex items-start justify-end text-lg">
+                                  {formatEstimatedCurrency(
+                                    enrichedProduct.price,
+                                  )}
+                                  <sup className="text-[0.6em]">*</sup>
+>>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                                 </span>
                               </td>
                             </tr>
@@ -555,7 +639,8 @@ Thank you.`;
                         </table>
                       </div>
                       <p className="mt-4 text-[11px] text-stone-400 italic text-center">
-                        * Final price may vary based on gold rate at time of purchase and actual weights.
+                        * Final price may vary based on gold rate at time of
+                        purchase and actual weights.
                       </p>
                     </div>
                   )}
@@ -587,21 +672,38 @@ Thank you.`;
                     <div className="px-8 pb-10 pt-8 text-[15px] leading-8 text-stone-600 bg-stone-50/30">
                       <ul className="space-y-4">
                         <li className="flex gap-4">
-                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">1</span>
+                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">
+                            1
+                          </span>
                           <div>
-                            <span className="font-bold text-stone-800">Shipping Coverage:</span> We currently ship only within India.
+                            <span className="font-bold text-stone-800">
+                              Shipping Coverage:
+                            </span>{" "}
+                            We currently ship only within India.
                           </div>
                         </li>
                         <li className="flex gap-4">
-                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">2</span>
+                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">
+                            2
+                          </span>
                           <div>
-                            <span className="font-bold text-stone-800">Delivery Time:</span> Orders are usually processed within 2-5 business days.
+                            <span className="font-bold text-stone-800">
+                              Delivery Time:
+                            </span>{" "}
+                            Orders are usually processed within 2-5 business
+                            days.
                           </div>
                         </li>
                         <li className="flex gap-4">
-                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">3</span>
+                          <span className="w-6 h-6 rounded-full bg-maroon/5 flex items-center justify-center text-[10px] text-maroon font-bold flex-shrink-0 mt-1">
+                            3
+                          </span>
                           <div>
-                            <span className="font-bold text-stone-800">Shipping Partners:</span> We partner with reliable courier services for insured delivery.
+                            <span className="font-bold text-stone-800">
+                              Shipping Partners:
+                            </span>{" "}
+                            We partner with reliable courier services for
+                            insured delivery.
                           </div>
                         </li>
                       </ul>
@@ -617,7 +719,10 @@ Thank you.`;
                   to={`/category/${enrichedProduct.category}/${enrichedProduct.subcategory}`}
                   className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-maroon/20 text-maroon font-bold text-[11px] tracking-[0.3em] uppercase hover:bg-maroon hover:text-white transition-all shadow-sm hover:shadow-maroon/20 group"
                 >
-                  <ChevronDown className="rotate-90 group-hover:-translate-x-1 transition-transform" size={16} />
+                  <ChevronDown
+                    className="rotate-90 group-hover:-translate-x-1 transition-transform"
+                    size={16}
+                  />
                   Continue Shopping
                 </Link>
               </div>
