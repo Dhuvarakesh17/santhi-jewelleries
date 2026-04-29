@@ -185,7 +185,6 @@ Thank you.`;
       }
     }
 
-<<<<<<< HEAD
     return result.map(item => {
       const hash = hashString(item.id + item.name);
       const base = categoryBasePrice[item.category.toLowerCase()] ?? 40000;
@@ -194,41 +193,6 @@ Thank you.`;
         price: base + (hash % 90000)
       };
     });
-=======
-    // 2. Cross-category matches (Same Type, Different Material - e.g., Silver Ring for a Gold Ring)
-    const typeMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        item.id !== product.id &&
-        item.subcategory === product.subcategory &&
-        item.category !== product.category,
-    );
-
-    let combined = [...exactMatches, ...typeMatches];
-    if (combined.length >= 4) {
-      return combined.slice(0, 4);
-    }
-
-    // 3. Fallback to same material (Same Material, Different Type - e.g., Gold Bangle for a Gold Ring)
-    const categoryMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        item.id !== product.id &&
-        item.category === product.category &&
-        item.subcategory !== product.subcategory,
-    );
-
-    combined = [...combined, ...categoryMatches];
-    if (combined.length >= 4) {
-      return combined.slice(0, 4);
-    }
-
-    // 4. Last fallback (Any remaining products)
-    const otherMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        !combined.find((c) => c.id === item.id) && item.id !== product.id,
-    );
-
-    return [...combined, ...otherMatches].slice(0, 4);
->>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
   }, [product]);
 
   const estimatedWeight = useMemo(() => {
@@ -434,14 +398,8 @@ Thank you.`;
               </div>
 
               <div className="mt-2 border-b border-stone-200 pb-8">
-<<<<<<< HEAD
                 <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora flex items-start gap-[1px]">
                   {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.9em] mt-1">*</sup>
-=======
-                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora inline-flex items-start leading-none">
-                  {formatEstimatedCurrency(enrichedProduct.price)}
-                  <sup className="-ml-px text-[0.52em] leading-none">*</sup>
->>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                 </p>
                 <div className="mt-4 flex flex-col gap-2">
                   <p className="rounded-md border-l-2 border-maroon/60 bg-maroon/4 px-3 py-2 text-[13px] font-semibold text-maroon/90">
@@ -592,12 +550,7 @@ Thank you.`;
                                 <span className="flex items-start justify-end gap-[1px]">
                                   {formatEstimatedCurrency(
                                     enrichedProduct.price - makingCharge,
-<<<<<<< HEAD
                                   )}<sup className="text-[0.8em] mt-1">*</sup>
-=======
-                                  )}
-                                  <sup className="text-[0.6em]">*</sup>
->>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                                 </span>
                               </td>
                             </tr>
@@ -606,14 +559,8 @@ Thank you.`;
                                 Making Charges
                               </td>
                               <td className="px-6 py-4 text-right font-aurora">
-<<<<<<< HEAD
                                 <span className="flex items-start justify-end gap-[1px]">
                                   {formatEstimatedCurrency(makingCharge)}<sup className="text-[0.8em] mt-1">*</sup>
-=======
-                                <span className="flex items-start justify-end">
-                                  {formatEstimatedCurrency(makingCharge)}
-                                  <sup className="text-[0.6em]">*</sup>
->>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                                 </span>
                               </td>
                             </tr>
@@ -622,16 +569,8 @@ Thank you.`;
                                 Total Amount
                               </td>
                               <td className="px-6 py-5 font-bold text-maroon text-right text-lg font-aurora">
-<<<<<<< HEAD
                                 <span className="flex items-start justify-end gap-[1px] text-lg">
                                   {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.8em] mt-1">*</sup>
-=======
-                                <span className="flex items-start justify-end text-lg">
-                                  {formatEstimatedCurrency(
-                                    enrichedProduct.price,
-                                  )}
-                                  <sup className="text-[0.6em]">*</sup>
->>>>>>> bb0c77bf08c2a26a1becfa85e7fb44ebc412d2f5
                                 </span>
                               </td>
                             </tr>
