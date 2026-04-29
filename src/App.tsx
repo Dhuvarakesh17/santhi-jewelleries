@@ -22,7 +22,7 @@ const AppLayout = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white">
         <TopBar />
-        <div className="sticky top-0 z-50 bg-white">
+        <div className="sticky top-0 z-[100] bg-white">
           <GoldRateTicker />
           <Navbar />
         </div>
