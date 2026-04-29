@@ -143,44 +143,55 @@ Thank you.`;
         item.subcategory === product.subcategory,
     );
 
+    let result = [];
+
     if (exactMatches.length >= 4) {
-      return exactMatches.slice(0, 4);
+      result = exactMatches.slice(0, 4);
+    } else {
+      // 2. Cross-category matches (Same Type, Different Material - e.g., Silver Ring for a Gold Ring)
+      const typeMatches = JEWELLERY_DATA.filter(
+        (item) =>
+          item.id !== product.id &&
+          item.subcategory === product.subcategory &&
+          item.category !== product.category
+      );
+
+      let combined = [...exactMatches, ...typeMatches];
+      if (combined.length >= 4) {
+        result = combined.slice(0, 4);
+      } else {
+        // 3. Fallback to same material (Same Material, Different Type - e.g., Gold Bangle for a Gold Ring)
+        const categoryMatches = JEWELLERY_DATA.filter(
+          (item) =>
+            item.id !== product.id &&
+            item.category === product.category &&
+            item.subcategory !== product.subcategory
+        );
+
+        combined = [...combined, ...categoryMatches];
+        if (combined.length >= 4) {
+          result = combined.slice(0, 4);
+        } else {
+          // 4. Last fallback (Any remaining products)
+          const otherMatches = JEWELLERY_DATA.filter(
+            (item) =>
+              !combined.find(c => c.id === item.id) &&
+              item.id !== product.id
+          );
+
+          result = [...combined, ...otherMatches].slice(0, 4);
+        }
+      }
     }
 
-    // 2. Cross-category matches (Same Type, Different Material - e.g., Silver Ring for a Gold Ring)
-    const typeMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        item.id !== product.id &&
-        item.subcategory === product.subcategory &&
-        item.category !== product.category
-    );
-
-    let combined = [...exactMatches, ...typeMatches];
-    if (combined.length >= 4) {
-      return combined.slice(0, 4);
-    }
-
-    // 3. Fallback to same material (Same Material, Different Type - e.g., Gold Bangle for a Gold Ring)
-    const categoryMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        item.id !== product.id &&
-        item.category === product.category &&
-        item.subcategory !== product.subcategory
-    );
-
-    combined = [...combined, ...categoryMatches];
-    if (combined.length >= 4) {
-      return combined.slice(0, 4);
-    }
-
-    // 4. Last fallback (Any remaining products)
-    const otherMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        !combined.find(c => c.id === item.id) &&
-        item.id !== product.id
-    );
-
-    return [...combined, ...otherMatches].slice(0, 4);
+    return result.map(item => {
+      const hash = hashString(item.id + item.name);
+      const base = categoryBasePrice[item.category.toLowerCase()] ?? 40000;
+      return {
+        ...item,
+        price: base + (hash % 90000)
+      };
+    });
   }, [product]);
 
   const estimatedWeight = useMemo(() => {
@@ -376,19 +387,24 @@ Thank you.`;
               </div>
 
               <div className="mt-2 border-b border-stone-200 pb-8">
-                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora flex items-start">
-                  {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.6em]">*</sup>
+                <p className="text-3xl text-maroon lg:text-[40px] font-bold font-aurora flex items-start gap-[1px]">
+                  {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.9em] mt-1">*</sup>
                 </p>
                 <div className="mt-4 flex flex-col gap-2">
                   <p className="text-sm text-stone-500 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                    Inclusive of all taxes & free shipping
+                    Exclusive of all taxes
                   </p>
                   <p className="text-[12px] font-medium text-stone-400 italic">
                     Note: This is an estimated price, actual price may differ as per actual weights.
                   </p>
                 </div>
               </div>
+
+
+
+              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
                 <div className="space-y-4">
                   <h3 className="text-[12px] font-bold text-stone-400 uppercase tracking-[0.2em]">
@@ -508,10 +524,10 @@ Thank you.`;
                                 {enrichedProduct.category} ({estimatedWeight}g)
                               </td>
                               <td className="px-6 py-4 text-right font-aurora">
-                                <span className="flex items-start justify-end">
+                                <span className="flex items-start justify-end gap-[1px]">
                                   {formatEstimatedCurrency(
                                     enrichedProduct.price - makingCharge,
-                                  )}<sup className="text-[0.6em]">*</sup>
+                                  )}<sup className="text-[0.8em] mt-1">*</sup>
                                 </span>
                               </td>
                             </tr>
@@ -520,8 +536,8 @@ Thank you.`;
                                 Making Charges
                               </td>
                               <td className="px-6 py-4 text-right font-aurora">
-                                <span className="flex items-start justify-end">
-                                  {formatEstimatedCurrency(makingCharge)}<sup className="text-[0.6em]">*</sup>
+                                <span className="flex items-start justify-end gap-[1px]">
+                                  {formatEstimatedCurrency(makingCharge)}<sup className="text-[0.8em] mt-1">*</sup>
                                 </span>
                               </td>
                             </tr>
@@ -530,8 +546,8 @@ Thank you.`;
                                 Total Amount
                               </td>
                               <td className="px-6 py-5 font-bold text-maroon text-right text-lg font-aurora">
-                                <span className="flex items-start justify-end text-lg">
-                                  {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.6em]">*</sup>
+                                <span className="flex items-start justify-end gap-[1px] text-lg">
+                                  {formatEstimatedCurrency(enrichedProduct.price)}<sup className="text-[0.8em] mt-1">*</sup>
                                 </span>
                               </td>
                             </tr>
@@ -592,7 +608,10 @@ Thank you.`;
                     </div>
                   )}
                 </div>
+
+               
               </section>
+
               <div className="pt-8 flex justify-center">
                 <Link
                   to={`/category/${enrichedProduct.category}/${enrichedProduct.subcategory}`}
@@ -624,13 +643,20 @@ Thank you.`;
                       alt={item.name}
                       className="object-cover w-full transition-transform duration-500 h-52 group-hover:scale-105"
                     />
-                    <div className="p-4 bg-white border-t border-stone-100">
-                      <p className="text-[13px] font-bold text-stone-800 line-clamp-1 italic">
-                        {item.name}
-                      </p>
-                      <p className="text-[11px] uppercase tracking-widest text-maroon font-bold mt-1 opacity-70">
-                        View Details
-                      </p>
+                    <div className="p-4 bg-white border-t border-stone-100 flex justify-between items-center">
+                      <div className="overflow-hidden pr-2">
+                        <p className="text-[13px] font-bold text-stone-800 truncate italic">
+                          {item.name}
+                        </p>
+                        <p className="text-[11px] uppercase tracking-widest text-maroon font-bold mt-1 opacity-70">
+                          View Details
+                        </p>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <p className="text-[14px] font-aurora font-bold text-maroon whitespace-nowrap">
+                          {formatEstimatedCurrency(item.price)}<sup className="text-[0.8em] ml-[1px]">*</sup>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </Link>
