@@ -257,7 +257,7 @@ const GoldCustomized = () => {
               <h3 className="text-lg font-bold tracking-[0.15em] text-maroon uppercase border-b border-stone-100 pb-3 mb-6 lg:mb-8">
                 1. Name Bracelets
               </h3>
-              <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {nameBracelets.map((item, i) => (
                   <ProductCard key={i} item={item} />
                 ))}
@@ -269,7 +269,7 @@ const GoldCustomized = () => {
               <h3 className="text-lg font-bold tracking-[0.15em] text-maroon uppercase border-b border-stone-100 pb-3 mb-6 lg:mb-8">
                 2. Bracelets for Men & Women
               </h3>
-              <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {menWomenBracelets.map((item, i) => (
                   <ProductCard key={i} item={item} />
                 ))}
@@ -320,12 +320,12 @@ const GoldCustomized = () => {
               Lightweight Gold Jewelry
             </h2>
           </div>
-          <div className="grid grid-cols-1 gap-6 lg:gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8 md:grid-cols-3">
             {lightweightItems.map((item, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className={`p-6 lg:p-7 border-[3px] group bg-white rounded-2xl ${
+                className={`p-3 sm:p-6 lg:p-7 border-[3px] group bg-white rounded-xl sm:rounded-2xl ${
                   item.metal === "gold"
                     ? "border-[#D4AF37]/35"
                     : item.metal === "silver"
@@ -333,7 +333,7 @@ const GoldCustomized = () => {
                       : "border-[#A5D8FF]/55"
                 }`}
               >
-                <div className="mb-8 overflow-hidden aspect-square rounded-xl">
+                <div className="mb-3 sm:mb-8 overflow-hidden aspect-square rounded-lg sm:rounded-xl">
                   <img
                     src={item.img}
                     alt={item.name}
@@ -346,10 +346,10 @@ const GoldCustomized = () => {
                     }`}
                   />
                 </div>
-                <h4 className="mb-4 font-serif text-2xl font-bold text-[#480607]">
+                <h4 className="mb-1.5 sm:mb-4 font-serif text-[14px] sm:text-2xl font-bold text-[#480607] leading-tight">
                   {item.name}
                 </h4>
-                <p className="font-light leading-relaxed text-stone-600">
+                <p className="font-light leading-snug sm:leading-relaxed text-[11px] sm:text-base text-stone-600">
                   {item.desc}
                 </p>
               </motion.div>
@@ -423,13 +423,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
           className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 border-[3px] ${imageBorderClass}`}
         />
       </div>
-      <div className="p-6">
+      <div className="p-3 sm:p-6">
         {item.sub && (
-          <span className="text-[10px] text-maroon font-bold tracking-[0.2em] uppercase mb-2 block">
+          <span className="text-[8px] sm:text-[10px] text-maroon font-bold tracking-[0.2em] uppercase mb-1 sm:mb-2 block">
             {item.sub}
           </span>
         )}
-        <h4 className="text-xl font-serif font-bold text-[#480607] group-hover:text-maroon transition-colors uppercase">
+        <h4 className="text-[12px] sm:text-xl font-serif font-bold text-[#480607] group-hover:text-maroon transition-colors uppercase leading-tight">
           {item.name}
         </h4>
       </div>

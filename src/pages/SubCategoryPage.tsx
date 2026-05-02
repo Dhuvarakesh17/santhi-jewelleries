@@ -173,7 +173,7 @@ const FilterSection: React.FC<{
   <div className="pb-6 mb-6 border-b border-stone-100 last:border-0 last:mb-0">
     <button
       onClick={onToggle}
-      className="flex items-center justify-between w-full text-left group"
+      className="flex items-center justify-between w-full text-left group min-h-[40px] touch-manipulation"
       type="button"
     >
       <span className="text-[11px] tracking-[0.25em] font-bold text-stone-800 uppercase group-hover:text-maroon transition-colors">
@@ -500,7 +500,7 @@ const SubCategoryPage = () => {
           }))
         }
       >
-        <label className="flex items-center justify-between text-sm cursor-pointer group">
+        <label className="flex items-center justify-between text-sm cursor-pointer group min-h-[40px] touch-manipulation">
           <span className="transition-colors text-stone-600 group-hover:text-maroon">
             In stock ({availabilityCounts.inStock})
           </span>
@@ -513,7 +513,7 @@ const SubCategoryPage = () => {
             className="w-4 h-4 transition-transform rounded cursor-pointer accent-maroon group-hover:scale-110"
           />
         </label>
-        <label className="flex items-center justify-between text-sm cursor-pointer group">
+        <label className="flex items-center justify-between text-sm cursor-pointer group min-h-[40px] touch-manipulation">
           <span className="transition-colors text-stone-600 group-hover:text-maroon">
             Out of stock ({availabilityCounts.outOfStock})
           </span>
@@ -594,7 +594,7 @@ const SubCategoryPage = () => {
                   if (Number.isNaN(nextMin)) return;
                   updatePriceRange(nextMin, priceRange[1]);
                 }}
-                className="w-full px-4 py-3 text-base font-medium transition-colors border rounded-lg outline-none border-stone-200 bg-white/50 text-stone-900 focus:border-maroon focus:ring-4 focus:ring-maroon/5"
+                className="w-full px-4 py-3 text-base font-medium transition-colors border rounded-lg outline-none border-stone-200 bg-white/50 text-stone-900 focus:border-maroon focus:ring-4 focus:ring-maroon/5 min-h-[44px]"
               />
             </div>
             <div className="space-y-1.5">
@@ -610,7 +610,7 @@ const SubCategoryPage = () => {
                   if (Number.isNaN(nextMax)) return;
                   updatePriceRange(priceRange[0], nextMax);
                 }}
-                className="w-full px-4 py-3 text-base font-medium transition-colors border rounded-lg outline-none border-stone-200 bg-white/50 text-stone-900 focus:border-maroon focus:ring-4 focus:ring-maroon/5"
+                className="w-full px-4 py-3 text-base font-medium transition-colors border rounded-lg outline-none border-stone-200 bg-white/50 text-stone-900 focus:border-maroon focus:ring-4 focus:ring-maroon/5 min-h-[44px]"
               />
             </div>
           </div>
@@ -648,7 +648,7 @@ const SubCategoryPage = () => {
       </FilterSection>
 
       <div
-        className={`grid ${isMobile ? "grid-cols-2" : "grid-cols-1"} gap-3 mt-6`}
+        className={`grid ${isMobile ? "grid-cols-2" : "grid-cols-1"} gap-3 mt-6 pb-4 sm:pb-0`}
       >
         <motion.button
           whileHover={{
@@ -658,7 +658,7 @@ const SubCategoryPage = () => {
           whileTap={{ scale: 0.98 }}
           onClick={clearFilters}
           type="button"
-          className="w-full text-maroon font-bold text-[10px] tracking-[0.25em] py-4 rounded-xl border border-maroon/20 transition-all uppercase bg-maroon/[0.03] hover:border-maroon/40"
+          className="w-full text-maroon font-bold text-[10px] tracking-[0.25em] py-3.5 sm:py-4 rounded-xl border border-maroon/20 transition-all uppercase bg-maroon/[0.03] hover:border-maroon/40 min-h-[44px]"
         >
           Reset Filters
         </motion.button>
@@ -668,7 +668,7 @@ const SubCategoryPage = () => {
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsMobileFilterOpen(false)}
             type="button"
-            className="w-full bg-maroon text-white font-bold text-[10px] tracking-[0.25em] py-4 rounded-xl border border-maroon transition-all uppercase"
+            className="w-full bg-maroon text-white font-bold text-[10px] tracking-[0.25em] py-3.5 sm:py-4 rounded-xl border border-maroon transition-all uppercase min-h-[44px]"
           >
             Apply
           </motion.button>
@@ -678,7 +678,7 @@ const SubCategoryPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] pt-4 pb-24 px-4 lg:px-10">
+    <div className="min-h-screen bg-[#fafaf9] pt-2 sm:pt-4 pb-20 sm:pb-24 px-3 sm:px-4 lg:px-10 overflow-x-hidden">
       <div className="max-w-[1440px] mx-auto">
         <div className="relative mb-4 text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-24 bg-maroon/5 blur-[80px] rounded-full pointer-events-none"></div>
@@ -692,7 +692,7 @@ const SubCategoryPage = () => {
               initial={{ letterSpacing: "0.02em", opacity: 0, y: 10 }}
               animate={{ letterSpacing: "0.05em", opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative inline-block mb-1 text-4xl font-extrabold uppercase font-cinzel lg:text-7xl group"
+              className="relative inline-block mb-1 text-3xl sm:text-4xl font-extrabold uppercase font-cinzel lg:text-7xl group"
             >
               {(() => {
                 const isChettinadu = titleText
@@ -788,26 +788,26 @@ const SubCategoryPage = () => {
                     animate={{ y: 0 }}
                     exit={{ y: "100%" }}
                     transition={{ type: "spring", stiffness: 240, damping: 28 }}
-                    className="fixed inset-x-0 bottom-0 z-[130] max-h-[88vh] rounded-t-3xl bg-white border-t border-stone-200 shadow-2xl overflow-hidden lg:hidden"
+                    className="fixed inset-x-0 bottom-0 z-[130] h-[85vh] rounded-t-[32px] bg-white border-t border-stone-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] flex flex-col lg:hidden"
                   >
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-stone-50">
-                      <span className="text-3xl grayscale opacity-30">💟</span>
-                    </div>
-                    <div className="flex items-center justify-between px-5 py-4 border-b border-stone-100">
-                      <h3 className="text-[12px] font-bold tracking-[0.22em] uppercase text-maroon">
-                        Filters
-                      </h3>
-                      <button
-                        type="button"
-                        onClick={() => setIsMobileFilterOpen(false)}
-                        className="p-2 rounded-full text-stone-600 hover:bg-stone-100"
-                        aria-label="Close filters"
-                      >
-                        <X size={18} />
-                      </button>
+                    <div className="flex-none sticky top-0 bg-white z-10 rounded-t-[32px]">
+                      <div className="w-12 h-1.5 bg-stone-200 rounded-full mx-auto mt-3 mb-1"></div>
+                      <div className="flex items-center justify-between px-5 pb-4 pt-2 border-b border-stone-100">
+                        <h3 className="text-[12px] font-bold tracking-[0.22em] uppercase text-maroon">
+                          Filters
+                        </h3>
+                        <button
+                          type="button"
+                          onClick={() => setIsMobileFilterOpen(false)}
+                          className="flex items-center justify-center w-10 h-10 rounded-full text-stone-600 hover:bg-stone-100 min-h-[40px] min-w-[40px] touch-manipulation"
+                          aria-label="Close filters"
+                        >
+                          <X size={20} />
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="overflow-y-auto max-h-[calc(88vh-72px)] px-5 py-5 bg-[#480607]/[0.03]">
+                    <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 bg-white/50">
                       {renderFilters(true)}
                     </div>
                   </motion.aside>
@@ -826,7 +826,7 @@ const SubCategoryPage = () => {
                     whileTap={{ scale: 0.98 }}
                     type="button"
                     onClick={() => setIsMobileFilterOpen(true)}
-                    className="lg:hidden group inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-maroon/20 text-maroon font-bold text-[10px] tracking-[0.25em] uppercase transition-all shadow-sm"
+                    className="lg:hidden group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-maroon/20 text-maroon font-bold text-[10px] tracking-[0.25em] uppercase transition-all shadow-sm min-h-[40px]"
                   >
                     <SlidersHorizontal
                       size={14}
@@ -854,7 +854,7 @@ const SubCategoryPage = () => {
                     {isFilterOpen ? "Hide Filters" : "Show Filters"}
                   </motion.button>
 
-                  <div className="px-6 py-2.5 rounded-full border border-black text-stone-700 font-bold text-[10px] tracking-[0.25em] uppercase bg-white">
+                  <div className="px-4 sm:px-6 py-2.5 rounded-full border border-black text-stone-700 font-bold text-[10px] tracking-[0.15em] sm:tracking-[0.25em] uppercase bg-white flex items-center min-h-[40px]">
                     {filteredItems.length} Products Found
                   </div>
                 </div>
@@ -868,7 +868,7 @@ const SubCategoryPage = () => {
                   </p>
                   <button
                     onClick={() => setIsSortOpen(!isSortOpen)}
-                    className="w-full flex items-center justify-between px-6 py-4 bg-white border border-black rounded-xl text-[13px] font-bold text-stone-800 transition-all hover:border-black hover:shadow-xl hover:shadow-black/5 group"
+                    className="w-full flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-white border border-black rounded-xl text-[12px] sm:text-[13px] font-bold text-stone-800 transition-all hover:border-black hover:shadow-xl hover:shadow-black/5 group min-h-[44px]"
                   >
                     <span className="tracking-wide">
                       {sortOptions.find((opt) => opt.value === sortBy)?.label}
@@ -914,7 +914,7 @@ const SubCategoryPage = () => {
 
               {filteredItems.length > 0 ? (
                 <>
-                  <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
                     {paginatedItems.map((item, index) => {
                       const palette = getCategoryPalette(item.category);
 
@@ -946,13 +946,13 @@ const SubCategoryPage = () => {
                                 handleCardClick(item);
                               }
                             }}
-                            className={`luxury-frame aspect-square relative overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ${getFrameVariant(item.category)}`}
+                            className={`luxury-frame aspect-square relative overflow-hidden shadow-sm lg:hover:shadow-2xl transition-all duration-300 lg:duration-500 ${getFrameVariant(item.category)}`}
                           >
-                            <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[12px] bg-white">
+                            <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[8px] sm:rounded-[12px] bg-white">
                               <img
                                 src={item.image}
                                 alt={item.name}
-                                className="object-cover w-full h-full transition-all duration-700 group-hover:scale-110"
+                                className="object-cover w-full h-full transition-transform duration-300 sm:duration-700 lg:group-hover:scale-110"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src =
                                     "https://via.placeholder.com/400x500?text=Jewellery+Showcase";
@@ -962,12 +962,12 @@ const SubCategoryPage = () => {
 
                             {normalizeCategory(item.category) ===
                               "signaturecollection" && (
-                              <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-                                <div className="bg-[#480607] text-white text-[8px] font-black tracking-[0.2em] px-2 py-1 rounded-sm uppercase shadow-xl flex items-center gap-1">
+                              <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-col gap-1.5">
+                                <div className="bg-[#480607] text-white text-[7px] sm:text-[8px] font-black tracking-[0.2em] px-2 py-1 rounded-sm uppercase shadow-xl flex items-center gap-1">
                                   <Star size={8} fill="white" />
                                   Signature
                                 </div>
-                                <div className="bg-white/90 backdrop-blur-sm text-maroon text-[7px] font-bold tracking-[0.1em] px-2 py-0.5 rounded-sm uppercase border border-maroon/10">
+                                <div className="bg-white/90 backdrop-blur-sm text-maroon text-[6px] sm:text-[7px] font-bold tracking-[0.1em] px-1.5 sm:px-2 py-0.5 rounded-sm uppercase border border-maroon/10">
                                   LTD Edition
                                 </div>
                               </div>
@@ -979,7 +979,7 @@ const SubCategoryPage = () => {
                                 event.stopPropagation();
                                 handleWishlistClick(item);
                               }}
-                              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 border border-stone-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#480607] transition-all"
+                              className="absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-9 sm:h-9 rounded-[10px] bg-transparent flex items-center justify-center shadow-sm hover:shadow-md transition-all z-10 touch-manipulation"
                               aria-label={
                                 isInWishlist(item.id)
                                   ? "Remove from wishlist"
@@ -987,32 +987,33 @@ const SubCategoryPage = () => {
                               }
                             >
                               <div
-                                className={`transition-all duration-500 flex items-center justify-center rounded-[10px] w-9 h-9 ${isInWishlist(item.id) ? "bg-[#480607] shadow-[0_4px_12px_rgba(72,6,7,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#480607]/50 hover:bg-[#480607] group/icon"}`}
+                                className={`transition-all duration-300 sm:duration-500 flex items-center justify-center rounded-[10px] w-full h-full ${isInWishlist(item.id) ? "bg-[#480607] shadow-[0_4px_12px_rgba(72,6,7,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#480607]/50 hover:bg-[#480607] group/icon"}`}
                               >
                                 <Heart
-                                  size={16}
+                                  size={14}
                                   strokeWidth={2.5}
-                                  className={`transition-colors duration-300 ${isInWishlist(item.id) ? "text-white fill-white" : "text-[#480607] group-hover/icon:text-white"}`}
+                                  className={`transition-colors duration-300 sm:w-4 sm:h-4 ${isInWishlist(item.id) ? "text-white fill-white" : "text-[#480607] group-hover/icon:text-white"}`}
                                 />
                               </div>
                             </button>
                           </motion.div>
-                          <div className="pt-3 space-y-2 text-center">
+                          <div className="pt-2.5 sm:pt-3 space-y-1.5 sm:space-y-2 text-center px-1 sm:px-0">
                             <h3
-                              className="text-[14px] lg:text-[19px] leading-tight font-serif"
+                              className="text-[12px] sm:text-[14px] lg:text-[19px] leading-tight font-serif line-clamp-2"
                               style={{ color: palette.titleColor }}
+                              title={item.name}
                             >
                               {item.name}
                             </h3>
                             <p
-                              className="text-base lg:text-[17px] font-extrabold flex justify-center items-start gap-[1px]"
+                              className="text-[13px] sm:text-base lg:text-[17px] font-extrabold flex justify-center items-start gap-[1px]"
                               style={{ color: palette.priceColor }}
                             >
                               <span>{formatCurrency(item.price)}</span>
                               <sup className="text-[0.6em] mt-1">*</sup>
                             </p>
                             {!item.inStock && (
-                              <p className="text-[12px] text-red-500 uppercase tracking-wider">
+                              <p className="text-[10px] sm:text-[12px] text-red-500 uppercase tracking-wider">
                                 Out of stock
                               </p>
                             )}

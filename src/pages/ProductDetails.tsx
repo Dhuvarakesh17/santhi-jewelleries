@@ -294,7 +294,7 @@ Thank you.`;
   }
 
   return (
-    <div className="bg-[#fafafa] px-4 py-8 lg:px-8 lg:py-16">
+    <div className="bg-[#fafafa] px-3 sm:px-4 py-4 sm:py-8 lg:px-8 lg:py-16 overflow-x-hidden">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-6 text-xs uppercase tracking-[0.18em] text-stone-500">
           <Link to="/" className="hover:text-[#480607]">
@@ -674,7 +674,7 @@ Thank you.`;
             <h2 className="font-cinzel text-2xl uppercase text-[#480607] lg:text-3xl">
               Similar Designs
             </h2>
-            <div className="grid grid-cols-2 gap-6 mt-8 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 mt-8 lg:grid-cols-4">
               {relatedProducts.map((item) => (
                 <Link
                   key={item.id}
@@ -685,19 +685,19 @@ Thank you.`;
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="object-cover w-full transition-transform duration-500 h-52 group-hover:scale-105"
+                      className="object-cover w-full transition-transform duration-300 sm:duration-500 h-40 sm:h-52 group-hover:scale-105"
                     />
-                    <div className="p-4 bg-white border-t border-stone-100 flex justify-between items-center">
-                      <div className="overflow-hidden pr-2">
-                        <p className="text-[13px] font-bold text-stone-800 truncate italic">
+                    <div className="p-2.5 sm:p-4 bg-white border-t border-stone-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+                      <div className="overflow-hidden sm:pr-2">
+                        <p className="text-[11px] sm:text-[13px] font-bold text-stone-800 line-clamp-2 sm:truncate italic">
                           {item.name}
                         </p>
-                        <p className="text-[11px] uppercase tracking-widest text-maroon font-bold mt-1 opacity-70">
+                        <p className="hidden sm:block text-[11px] uppercase tracking-widest text-maroon font-bold mt-1 opacity-70">
                           View Details
                         </p>
                       </div>
-                      <div className="text-right flex-shrink-0">
-                        <p className="text-[14px] font-aurora font-bold text-maroon whitespace-nowrap">
+                      <div className="text-left sm:text-right flex-shrink-0 mt-0.5 sm:mt-0">
+                        <p className="text-[12px] sm:text-[14px] font-aurora font-bold text-maroon whitespace-nowrap">
                           {formatEstimatedCurrency(item.price)}<sup className="text-[0.8em] ml-[1px]">*</sup>
                         </p>
                       </div>
