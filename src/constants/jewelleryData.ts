@@ -67,14 +67,118 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
   // User requested product
   {
     id: "102",
-    name: "Lakshmi Maavilakku Kinnam",
+    name: "Lakshmi Maavilakku Kinnam (250g - 1kg)",
     category: "Silver",
     subcategory: "Traditional",
     type: "Kinnam",
     images: [
-      "/images/products/silver/lakshmi-maavilakku-kinnam-front.webp"
+      "/images/products/silver/lakshmi-maavilakku-kinnam-250g-front.webp",
+      "/images/products/silver/lakshmi-maavilakku-kinnam-250g-side.webp"
     ],
     description: "A beautiful, traditional, and auspicious Lakshmi Maavilakku Kinnam masterfully crafted in premium silver."
+  },
+  {
+    id: "silver-maravai-thambulam",
+    name: "Maravai Thambulam (250g - 1kg)",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Thambulam",
+    images: [
+      "/images/products/silver/maravai-thambulam-front.webp",
+      "/images/products/silver/maravai-thambulam-side.webp"
+    ],
+    description: "A beautifully crafted traditional Maravai Thambulam."
+  },
+  {
+    id: "silver-plain-sombu",
+    name: "Plain Sombu 200 Gram",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Sombu",
+    images: [
+      "/images/products/silver/plain-sombu-200g-front.webp"
+    ],
+    description: "A classic, elegant plain silver Sombu."
+  },
+  {
+    id: "silver-plate-180g",
+    name: "Silver Plate (180g - 1KG)",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Plate",
+    images: [
+      "/images/products/silver/silver-plate-180g-front.webp"
+    ],
+    description: "A premium silver plate for traditional offerings."
+  },
+  {
+    id: "silver-poo-koodai",
+    name: "Poo Koodai 650 Gram",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Poo Koodai",
+    images: [
+      "/images/products/silver/poo-koodai-650g-front.webp",
+      "/images/products/silver/poo-koodai-650g-side.webp"
+    ],
+    description: "An intricately designed silver Poo Koodai for floral offerings."
+  },
+  {
+    id: "silver-set-kinnam",
+    name: "Silver Set Kinnam",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Kinnam",
+    images: [
+      "/images/products/silver/set-kinnam-front.webp",
+      "/images/products/silver/set-kinnam-one.webp"
+    ],
+    description: "A complete set of traditional silver Kinnams."
+  },
+  {
+    id: "silver-gopura-vizhaku",
+    name: "Silver Gopura Vizhaku 850 Gram",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Vizhaku",
+    images: [
+      "/images/products/silver/silver-gopura-vizhaku-850g-front.webp",
+      "/images/products/silver/silver-gopura-vizhaku-850g-side.webp"
+    ],
+    description: "A grand silver Gopura Vizhaku weighing 850 grams."
+  },
+  {
+    id: "silver-paneer-chembu",
+    name: "Silver Paneer Chembu / Gulabdani",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Chembu",
+    images: [
+      "/images/products/silver/silver-paneer-chembu-front.webp"
+    ],
+    description: "A beautiful silver Paneer Chembu (Gulabdani) for sprinkling rose water."
+  },
+  {
+    id: "silver-sembu",
+    name: "Silver Sembu",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Sembu",
+    images: [
+      "/images/products/silver/sembu-front.webp"
+    ],
+    description: "A premium silver Sembu for auspicious rituals."
+  },
+  {
+    id: "silver-judda",
+    name: "Silver Judda 35 Gram",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Judda",
+    images: [
+      "/images/products/silver/silver-judda-35g-front.webp"
+    ],
+    description: "An elegant silver Judda hair accessory."
   },
   {
     id: "silver-anna-vizhaku",
@@ -200,7 +304,8 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     subcategory: "Traditional",
     type: "Vilakku",
     images: [
-      "/images/products/silver/kerala-samai-kuthu-vilakku-front.webp"
+      "/images/products/silver/kerala-samai-kuthu-vilakku-front.webp",
+      "/images/products/silver/silver-gemini-generated-1.webp"
     ],
     description: "An authentic pair of Kerala Samai Kuthu Vilakku, ranging from 500g to 1KG."
   },
@@ -239,18 +344,6 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     ],
     description: "A premium silver Koppi piece."
   },
-  {
-    id: "silver-special-generated",
-    name: "Exclusive Silver Masterpiece",
-    category: "Silver",
-    subcategory: "Signature Collection",
-    type: "Masterpiece",
-    images: [
-      "/images/products/silver/silver-gemini-generated-1.webp"
-    ],
-    description: "An exclusive generated silver masterpiece highlighting intricate design."
-  },
-
   // Multi-image demo product
   {
     id: "101",
