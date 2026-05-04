@@ -19,7 +19,7 @@ type EnrichedItem = {
   name: string;
   category: string;
   subcategory: string;
-  image: string;
+  images: string[];
   description: string;
   price: number;
   inStock: boolean;
@@ -355,8 +355,8 @@ const SubCategoryPage = () => {
       case "price-low-high":
         sorted.sort((a, b) => {
           const imagePriorityDiff =
-            imagePriorityMatch(b.image, normalizedType) -
-            imagePriorityMatch(a.image, normalizedType);
+            imagePriorityMatch(b.images[0] || "", normalizedType) -
+            imagePriorityMatch(a.images[0] || "", normalizedType);
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
           return a.price - b.price;
         });
@@ -364,8 +364,8 @@ const SubCategoryPage = () => {
       case "price-high-low":
         sorted.sort((a, b) => {
           const imagePriorityDiff =
-            imagePriorityMatch(b.image, normalizedType) -
-            imagePriorityMatch(a.image, normalizedType);
+            imagePriorityMatch(b.images[0] || "", normalizedType) -
+            imagePriorityMatch(a.images[0] || "", normalizedType);
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
           return b.price - a.price;
         });
@@ -373,8 +373,8 @@ const SubCategoryPage = () => {
       case "name-a-z":
         sorted.sort((a, b) => {
           const imagePriorityDiff =
-            imagePriorityMatch(b.image, normalizedType) -
-            imagePriorityMatch(a.image, normalizedType);
+            imagePriorityMatch(b.images[0] || "", normalizedType) -
+            imagePriorityMatch(a.images[0] || "", normalizedType);
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
           return a.name.localeCompare(b.name);
         });
@@ -382,8 +382,8 @@ const SubCategoryPage = () => {
       case "newest":
         sorted.sort((a, b) => {
           const imagePriorityDiff =
-            imagePriorityMatch(b.image, normalizedType) -
-            imagePriorityMatch(a.image, normalizedType);
+            imagePriorityMatch(b.images[0] || "", normalizedType) -
+            imagePriorityMatch(a.images[0] || "", normalizedType);
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
           return b.addedRank - a.addedRank;
         });
@@ -392,8 +392,8 @@ const SubCategoryPage = () => {
       default:
         sorted.sort((a, b) => {
           const imagePriorityDiff =
-            imagePriorityMatch(b.image, normalizedType) -
-            imagePriorityMatch(a.image, normalizedType);
+            imagePriorityMatch(b.images[0] || "", normalizedType) -
+            imagePriorityMatch(a.images[0] || "", normalizedType);
           if (imagePriorityDiff !== 0) return imagePriorityDiff;
           return b.bestScore - a.bestScore;
         });
@@ -460,7 +460,7 @@ const SubCategoryPage = () => {
         id: item.id,
         name: item.name,
         price: formatCurrency(item.price),
-        image: item.image,
+        image: item.images[0] || "/images/placeholder.webp",
         category: item.category,
       });
     }
@@ -950,7 +950,7 @@ const SubCategoryPage = () => {
                           >
                             <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[8px] sm:rounded-[12px] bg-white">
                               <img
-                                src={item.image}
+                                src={item.images[0] || "/images/placeholder.webp"}
                                 alt={item.name}
                                 className="object-cover w-full h-full transition-transform duration-300 sm:duration-700 lg:group-hover:scale-110"
                                 onError={(e) => {

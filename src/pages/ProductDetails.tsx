@@ -220,38 +220,9 @@ Thank you.`;
 
   const galleryImages = useMemo(() => {
     if (!product) return [];
-
-    // 1. Same Type matches
-    const sameType = JEWELLERY_DATA.filter(
-      (item) =>
-        item.category === product.category &&
-        item.subcategory === product.subcategory &&
-        item.id !== product.id,
-    ).map((item) => item.image);
-
-    if (sameType.length >= 2) {
-      return [product.image, ...sameType.slice(0, 2)];
-    }
-
-    // 2. Same Category matches
-    const sameCat = JEWELLERY_DATA.filter(
-      (item) =>
-        item.category === product.category &&
-        item.subcategory !== product.subcategory &&
-        item.id !== product.id,
-    ).map((item) => item.image);
-
-    const combined = [product.image, ...sameType, ...sameCat];
-    if (combined.length >= 3) {
-      return combined.slice(0, 3);
-    }
-
-    // 3. Any other matches
-    const others = JEWELLERY_DATA.filter(
-      (item) => item.id !== product.id && item.category !== product.category,
-    ).map((item) => item.image);
-
-    return [...combined, ...others].slice(0, 3);
+    return product.images && product.images.length > 0 
+      ? product.images 
+      : ["/images/placeholder.webp"];
   }, [product]);
 
   const handleWishlistToggle = () => {
@@ -264,7 +235,7 @@ Thank you.`;
         id: enrichedProduct.id,
         name: enrichedProduct.name,
         price: formatCurrency(enrichedProduct.price),
-        image: enrichedProduct.image,
+        image: enrichedProduct.images[0] || "/images/placeholder.webp",
         category: enrichedProduct.category,
       });
     }
@@ -339,7 +310,7 @@ Thank you.`;
                       className="object-cover object-center w-full h-14 lg:h-16"
                       onError={(event) => {
                         (event.target as HTMLImageElement).src =
-                          "https://via.placeholder.com/300x300?text=Jewellery";
+                          "/images/placeholder.webp";
                       }}
                     />
                   </div>
@@ -352,12 +323,12 @@ Thank you.`;
             >
               <div className="luxury-frame__inner">
                 <img
-                  src={galleryImages[selectedImage] || enrichedProduct.image}
+                  src={galleryImages[selectedImage] || enrichedProduct.images[0] || "/images/placeholder.webp"}
                   alt={enrichedProduct.name}
                   className="product-main-image-zoom object-cover object-[50%_42%] w-full h-auto max-h-[600px]"
                   onError={(event) => {
                     (event.target as HTMLImageElement).src =
-                      "https://via.placeholder.com/1200x1200?text=Jewellery+Showcase";
+                      "/images/placeholder.webp";
                   }}
                 />
               </div>
@@ -683,9 +654,13 @@ Thank you.`;
                 >
                   <div className="luxury-frame__inner">
                     <img
-                      src={item.image}
+                      src={item.images[0] || "/images/placeholder.webp"}
                       alt={item.name}
                       className="object-cover w-full transition-transform duration-300 sm:duration-500 h-40 sm:h-52 group-hover:scale-105"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "/images/placeholder.webp";
+                      }}
                     />
                     <div className="p-2.5 sm:p-4 bg-white border-t border-stone-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
                       <div className="overflow-hidden sm:pr-2">

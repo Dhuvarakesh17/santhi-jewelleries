@@ -13,7 +13,7 @@ export interface ShowcaseItem {
   category: string;
   subcategory: string;
   type: string;
-  image: string;
+  images: string[];
   description: string;
 }
 
@@ -57,13 +57,215 @@ const generateSubcategoryItems = (cat: string, sub: string, type: string, count:
       category: cat,
       subcategory: sub,
       type: type,
-      image: imgPath,
+      images: imgPath === NO_IMAGE ? ["/images/placeholder.webp"] : [imgPath],
       description: `A unique and masterfully crafted ${type.toLowerCase()} piece from our exclusive ${cat} collection.`
     };
   });
 };
 
 export const JEWELLERY_DATA: ShowcaseItem[] = [
+  // User requested product
+  {
+    id: "102",
+    name: "Lakshmi Maavilakku Kinnam",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Kinnam",
+    images: [
+      "/images/products/silver/lakshmi-maavilakku-kinnam-front.webp"
+    ],
+    description: "A beautiful, traditional, and auspicious Lakshmi Maavilakku Kinnam masterfully crafted in premium silver."
+  },
+  {
+    id: "silver-anna-vizhaku",
+    name: "Anna Vizhaku",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Vizhaku",
+    images: [
+      "/images/products/silver/anna-vizhaku-front.webp",
+      "/images/products/silver/anna-vizhaku-top.webp",
+      "/images/products/silver/anna-vizhaku-backtop.webp"
+    ],
+    description: "A beautifully crafted traditional silver Anna Vizhaku, featuring exquisite details."
+  },
+  {
+    id: "silver-anna-vizhaku-1kg",
+    name: "Anna Vizhaku 1KG",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Vizhaku",
+    images: [
+      "/images/products/silver/anna-vizhaku-1kg-front.webp"
+    ],
+    description: "A grand, heavy 1KG silver Anna Vizhaku, perfect for grand auspicious occasions."
+  },
+  {
+    id: "silver-annam-engraving-thambulam",
+    name: "Annam Engraving Thambulam",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Thambulam",
+    images: [
+      "/images/products/silver/annam-engraving-thambulam-front.webp"
+    ],
+    description: "An elegant silver Thambulam plate featuring beautiful Annam bird engravings."
+  },
+  {
+    id: "silver-asta-lakshmi-basket",
+    name: "Asta Lakshmi Flower Basket (250g - 1kg)",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Basket",
+    images: [
+      "/images/products/silver/asta-lakshmi-flower-basket-front.webp",
+      "/images/products/silver/asta-lakshmi-flower-basket-zoom.webp"
+    ],
+    description: "An auspicious Asta Lakshmi Flower Basket available from 250 grams to 1kg."
+  },
+  {
+    id: "silver-chettinadu-anna-vizhaku",
+    name: "Chettinadu Anna Vizhaku 1KG",
+    category: "Silver",
+    subcategory: "Antique",
+    type: "Vizhaku",
+    images: [
+      "/images/products/silver/chettinadu-anna-vizhaku-1kg-front.webp",
+      "/images/products/silver/chettinadu-anna-vizhaku-1kg-top.webp"
+    ],
+    description: "A premium 1KG Chettinadu Anna Vizhaku showcasing authentic heritage craftsmanship."
+  },
+  {
+    id: "silver-chettinadu-vizhaku",
+    name: "Chettinadu Vizhaku 1KG",
+    category: "Silver",
+    subcategory: "Antique",
+    type: "Vizhaku",
+    images: [
+      "/images/products/silver/chettinadu-vizhaku-1kg-front.webp"
+    ],
+    description: "A classic heavy 1KG Chettinadu Vizhaku."
+  },
+  {
+    id: "silver-engraving-sangu",
+    name: "Engraving Sangu 180 Gram",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Sangu",
+    images: [
+      "/images/products/silver/engraving-sangu-180g-front.webp",
+      "/images/products/silver/engraving-sangu-180g-top.webp"
+    ],
+    description: "An intricately engraved silver Sangu weighing 180 grams."
+  },
+  {
+    id: "silver-engraving-sombu",
+    name: "Engraving Sombu 300 Gram",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Sombu",
+    images: [
+      "/images/products/silver/engraving-sombu-300g-front.webp",
+      "/images/products/silver/engraving-sombu-300g-back.webp"
+    ],
+    description: "A beautifully detailed silver Sombu featuring traditional engravings."
+  },
+  {
+    id: "silver-kadagam-1kg",
+    name: "Kadagam 1KG",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Kadagam",
+    images: [
+      "/images/products/silver/kadagam-1kg-front.webp",
+      "/images/products/silver/kadagam-1kg-left.webp"
+    ],
+    description: "A grand and majestic 1KG silver Kadagam."
+  },
+  {
+    id: "silver-kathirikai",
+    name: "Silver Kathirikai",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Pooja Item",
+    images: [
+      "/images/products/silver/kathirikai-front.webp"
+    ],
+    description: "A traditional silver Kathirikai for auspicious occasions."
+  },
+  {
+    id: "silver-kerala-samai",
+    name: "Kerala Samai Kuthu Vilakku Pair",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Vilakku",
+    images: [
+      "/images/products/silver/kerala-samai-kuthu-vilakku-front.webp"
+    ],
+    description: "An authentic pair of Kerala Samai Kuthu Vilakku, ranging from 500g to 1KG."
+  },
+  {
+    id: "silver-karaikudi-items",
+    name: "Karaikudi Silver Items",
+    category: "Silver",
+    subcategory: "Antique",
+    type: "Karaikudi Items",
+    images: [
+      "/images/products/silver/karaikudi-items-front.webp",
+      "/images/products/silver/karaikudi-items-side.webp"
+    ],
+    description: "Authentic and heavy set of Karaikudi heritage silver items."
+  },
+  {
+    id: "silver-kilukki",
+    name: "Silver Kilukki",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Kilukki",
+    images: [
+      "/images/products/silver/kilukki-front.webp",
+      "/images/products/silver/kilukki-side.webp"
+    ],
+    description: "A beautifully crafted traditional silver Kilukki."
+  },
+  {
+    id: "silver-koppi",
+    name: "Silver Koppi",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Koppi",
+    images: [
+      "/images/products/silver/koppi-front.webp"
+    ],
+    description: "A premium silver Koppi piece."
+  },
+  {
+    id: "silver-special-generated",
+    name: "Exclusive Silver Masterpiece",
+    category: "Silver",
+    subcategory: "Signature Collection",
+    type: "Masterpiece",
+    images: [
+      "/images/products/silver/silver-gemini-generated-1.webp"
+    ],
+    description: "An exclusive generated silver masterpiece highlighting intricate design."
+  },
+
+  // Multi-image demo product
+  {
+    id: "101",
+    name: "Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold-jhumka-front.webp",
+      "/images/products/gold-jhumka-left.webp",
+      "/images/products/gold-jhumka-right.webp"
+    ],
+    description: "A unique and masterfully crafted earrings piece from our exclusive Gold collection."
+  },
+
   // GOLD - Using smaller counts to ensure image uniqueness with current assets
   ...generateSubcategoryItems('Gold', 'GOLD NECKLACE', 'Necklace', 4),
   ...generateSubcategoryItems('Gold', 'GOLD CHAIN', 'Chain', 4),
@@ -106,7 +308,7 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     category: 'Signature Collection', 
     subcategory: 'Antique Haram', 
     type: 'Necklace', 
-    image: '/images/showcase/gold_heritage_heavy_necklace.webp', 
+    images: ['/images/showcase/gold_heritage_heavy_necklace.webp'], 
     description: 'A grand architectural masterpiece featuring complex Nagas work and royal antique finish.' 
   },
   { 
@@ -115,7 +317,7 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     category: 'Signature Collection', 
     subcategory: 'Victorian', 
     type: 'Necklace', 
-    image: '/images/showcase/Queen necklace 🍂🍂.webp', 
+    images: ['/images/showcase/Queen necklace 🍂🍂.webp'], 
     description: 'Bespoke Victorian-inspired design set with premium gemstones and intricate gold lace work.' 
   },
   { 
@@ -124,7 +326,7 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     category: 'Signature Collection', 
     subcategory: 'Signature Malai', 
     type: 'Necklace', 
-    image: '/images/showcase/silver_antique_malai.webp', 
+    images: ['/images/showcase/silver_antique_malai.webp'], 
     description: 'Hand-carved peacock motifs in heavy silver with gold duality plating.' 
   },
   { 
@@ -133,7 +335,7 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     category: 'Signature Collection', 
     subcategory: 'Bridal Sets', 
     type: 'Choker', 
-    image: '/images/showcase/gold_choker_bridal_set.webp', 
+    images: ['/images/showcase/gold_choker_bridal_set.webp'], 
     description: 'The pinnacle of bridal luxury, a heavy choker set with cascading gold droplets.' 
   },
   { 
@@ -142,7 +344,7 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     category: 'Signature Collection', 
     subcategory: 'Bracelet', 
     type: 'Cuff', 
-    image: '/images/showcase/gold_flower_cuff.webp', 
+    images: ['/images/showcase/gold_flower_cuff.webp'], 
     description: 'A bold, structural cuff bracelet featuring blooming floral Nagas artistry.' 
   },
   { 
@@ -151,7 +353,7 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     category: 'Signature Collection', 
     subcategory: 'Earrings', 
     type: 'Jhumka', 
-    image: '/images/showcase/gold-jhumka1.webp', 
+    images: ['/images/showcase/gold-jhumka1.webp'], 
     description: 'Traditional temple jhumkas with exquisite deity carvings and pearl drops.' 
   },
 ];
