@@ -94,7 +94,7 @@ export const MENU_DATA: MenuItem[] = [
       },
       {
         title: "CHETTINADU SILVER COLLECTIONS",
-        items: [],
+        items: ["CHETTINADU SILVER COLLECTIONS"],
       },
     ],
   },

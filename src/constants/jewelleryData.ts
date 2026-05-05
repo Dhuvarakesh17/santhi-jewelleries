@@ -181,6 +181,29 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     description: "An elegant silver Judda hair accessory."
   },
   {
+    id: "silver-thenga-chatti",
+    name: "Silver Thenga Chatti",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Chatti",
+    images: [
+      "/images/products/silver/thenga-chatti-front.webp",
+      "/images/products/silver/thenga-chatti-side.webp"
+    ],
+    description: "A beautifully crafted traditional Silver Thenga Chatti."
+  },
+  {
+    id: "silver-vilaku-chatti-moodi",
+    name: "Vilaku Chatti with Moodi",
+    category: "Silver",
+    subcategory: "Traditional",
+    type: "Chatti",
+    images: [
+      "/images/products/silver/vilaku-chatti-moodi-front.webp"
+    ],
+    description: "An elegant Silver Vilaku Chatti complete with a beautifully designed moodi (lid)."
+  },
+  {
     id: "silver-anna-vizhaku",
     name: "Anna Vizhaku",
     category: "Silver",
