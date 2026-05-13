@@ -64,16 +64,17 @@ const generateSubcategoryItems = (cat: string, sub: string, type: string, count:
 };
 
 export const JEWELLERY_DATA: ShowcaseItem[] = [
-  // User requested product
+  // ===== CHETTINADU SILVER COLLECTIONS =====
   {
     id: "102",
     name: "Lakshmi Maavilakku Kinnam (250g - 1kg)",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Kinnam",
     images: [
-      "/images/products/silver/lakshmi-maavilakku-kinnam-250g-front.webp",
-      "/images/products/silver/lakshmi-maavilakku-kinnam-250g-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/lakshmi-maavilakku-kinnam-250g-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/lakshmi-maavilakku-kinnam-250g-side.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/lakshmi-maavilakku-kinnam-front.webp"
     ],
     description: "A beautiful, traditional, and auspicious Lakshmi Maavilakku Kinnam masterfully crafted in premium silver."
   },
@@ -81,11 +82,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-maravai-thambulam",
     name: "Maravai Thambulam (250g - 1kg)",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Thambulam",
     images: [
-      "/images/products/silver/maravai-thambulam-front.webp",
-      "/images/products/silver/maravai-thambulam-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/maravai-thambulam-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/maravai-thambulam-side.webp"
     ],
     description: "A beautifully crafted traditional Maravai Thambulam."
   },
@@ -93,10 +94,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-plain-sombu",
     name: "Plain Sombu 200 Gram",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Sombu",
     images: [
-      "/images/products/silver/plain-sombu-200g-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/plain-sombu-200g-front.webp"
     ],
     description: "A classic, elegant plain silver Sombu."
   },
@@ -104,10 +105,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-plate-180g",
     name: "Silver Plate (180g - 1KG)",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Plate",
     images: [
-      "/images/products/silver/silver-plate-180g-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/silver-plate-180g-front.webp"
     ],
     description: "A premium silver plate for traditional offerings."
   },
@@ -115,11 +116,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-poo-koodai",
     name: "Poo Koodai 650 Gram",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Poo Koodai",
     images: [
-      "/images/products/silver/poo-koodai-650g-front.webp",
-      "/images/products/silver/poo-koodai-650g-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/poo-koodai-650g-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/poo-koodai-650g-side.webp"
     ],
     description: "An intricately designed silver Poo Koodai for floral offerings."
   },
@@ -127,11 +128,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-set-kinnam",
     name: "Silver Set Kinnam",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Kinnam",
     images: [
-      "/images/products/silver/set-kinnam-front.webp",
-      "/images/products/silver/set-kinnam-one.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/set-kinnam-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/set-kinnam-one.webp"
     ],
     description: "A complete set of traditional silver Kinnams."
   },
@@ -139,11 +140,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-gopura-vizhaku",
     name: "Silver Gopura Vizhaku 850 Gram",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Vizhaku",
     images: [
-      "/images/products/silver/silver-gopura-vizhaku-850g-front.webp",
-      "/images/products/silver/silver-gopura-vizhaku-850g-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/silver-gopura-vizhaku-850g-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/silver-gopura-vizhaku-850g-side.webp"
     ],
     description: "A grand silver Gopura Vizhaku weighing 850 grams."
   },
@@ -151,10 +152,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-paneer-chembu",
     name: "Silver Paneer Chembu / Gulabdani",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Chembu",
     images: [
-      "/images/products/silver/silver-paneer-chembu-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/silver-paneer-chembu-front.webp"
     ],
     description: "A beautiful silver Paneer Chembu (Gulabdani) for sprinkling rose water."
   },
@@ -162,10 +163,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-sembu",
     name: "Silver Sembu",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Sembu",
     images: [
-      "/images/products/silver/sembu-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/sembu-front.webp"
     ],
     description: "A premium silver Sembu for auspicious rituals."
   },
@@ -173,10 +174,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-judda",
     name: "Silver Judda 35 Gram",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Judda",
     images: [
-      "/images/products/silver/silver-judda-35g-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/silver-judda-35g-front.webp"
     ],
     description: "An elegant silver Judda hair accessory."
   },
@@ -184,11 +185,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-thenga-chatti",
     name: "Silver Thenga Chatti",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Chatti",
     images: [
-      "/images/products/silver/thenga-chatti-front.webp",
-      "/images/products/silver/thenga-chatti-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/thenga-chatti-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/thenga-chatti-side.webp"
     ],
     description: "A beautifully crafted traditional Silver Thenga Chatti."
   },
@@ -196,10 +197,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-vilaku-chatti-moodi",
     name: "Vilaku Chatti with Moodi",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Chatti",
     images: [
-      "/images/products/silver/vilaku-chatti-moodi-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/vilaku-chatti-moodi-front.webp"
     ],
     description: "An elegant Silver Vilaku Chatti complete with a beautifully designed moodi (lid)."
   },
@@ -207,12 +208,12 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-anna-vizhaku",
     name: "Anna Vizhaku",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Vizhaku",
     images: [
-      "/images/products/silver/anna-vizhaku-front.webp",
-      "/images/products/silver/anna-vizhaku-top.webp",
-      "/images/products/silver/anna-vizhaku-backtop.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/anna-vizhaku-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/anna-vizhaku-top.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/anna-vizhaku-backtop.webp"
     ],
     description: "A beautifully crafted traditional silver Anna Vizhaku, featuring exquisite details."
   },
@@ -220,10 +221,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-anna-vizhaku-1kg",
     name: "Anna Vizhaku 1KG",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Vizhaku",
     images: [
-      "/images/products/silver/anna-vizhaku-1kg-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/anna-vizhaku-1kg-front.webp"
     ],
     description: "A grand, heavy 1KG silver Anna Vizhaku, perfect for grand auspicious occasions."
   },
@@ -231,10 +232,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-annam-engraving-thambulam",
     name: "Annam Engraving Thambulam",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Thambulam",
     images: [
-      "/images/products/silver/annam-engraving-thambulam-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/annam-engraving-thambulam-front.webp"
     ],
     description: "An elegant silver Thambulam plate featuring beautiful Annam bird engravings."
   },
@@ -242,11 +243,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-asta-lakshmi-basket",
     name: "Asta Lakshmi Flower Basket (250g - 1kg)",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Basket",
     images: [
-      "/images/products/silver/asta-lakshmi-flower-basket-front.webp",
-      "/images/products/silver/asta-lakshmi-flower-basket-zoom.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/asta-lakshmi-flower-basket-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/asta-lakshmi-flower-basket-zoom.webp"
     ],
     description: "An auspicious Asta Lakshmi Flower Basket available from 250 grams to 1kg."
   },
@@ -254,11 +255,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-chettinadu-anna-vizhaku",
     name: "Chettinadu Anna Vizhaku 1KG",
     category: "Silver",
-    subcategory: "Antique",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Vizhaku",
     images: [
-      "/images/products/silver/chettinadu-anna-vizhaku-1kg-front.webp",
-      "/images/products/silver/chettinadu-anna-vizhaku-1kg-top.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/chettinadu-anna-vizhaku-1kg-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/chettinadu-anna-vizhaku-1kg-top.webp"
     ],
     description: "A premium 1KG Chettinadu Anna Vizhaku showcasing authentic heritage craftsmanship."
   },
@@ -266,10 +267,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-chettinadu-vizhaku",
     name: "Chettinadu Vizhaku 1KG",
     category: "Silver",
-    subcategory: "Antique",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Vizhaku",
     images: [
-      "/images/products/silver/chettinadu-vizhaku-1kg-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/chettinadu-vizhaku-1kg-front.webp"
     ],
     description: "A classic heavy 1KG Chettinadu Vizhaku."
   },
@@ -277,11 +278,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-engraving-sangu",
     name: "Engraving Sangu 180 Gram",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Sangu",
     images: [
-      "/images/products/silver/engraving-sangu-180g-front.webp",
-      "/images/products/silver/engraving-sangu-180g-top.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/engraving-sangu-180g-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/engraving-sangu-180g-top.webp"
     ],
     description: "An intricately engraved silver Sangu weighing 180 grams."
   },
@@ -289,11 +290,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-engraving-sombu",
     name: "Engraving Sombu 300 Gram",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Sombu",
     images: [
-      "/images/products/silver/engraving-sombu-300g-front.webp",
-      "/images/products/silver/engraving-sombu-300g-back.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/engraving-sombu-300g-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/engraving-sombu-300g-back.webp"
     ],
     description: "A beautifully detailed silver Sombu featuring traditional engravings."
   },
@@ -301,11 +302,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-kadagam-1kg",
     name: "Kadagam 1KG",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Kadagam",
     images: [
-      "/images/products/silver/kadagam-1kg-front.webp",
-      "/images/products/silver/kadagam-1kg-left.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/kadagam-1kg-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/kadagam-1kg-left.webp"
     ],
     description: "A grand and majestic 1KG silver Kadagam."
   },
@@ -313,10 +314,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-kathirikai",
     name: "Silver Kathirikai",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Pooja Item",
     images: [
-      "/images/products/silver/kathirikai-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/kathirikai-front.webp"
     ],
     description: "A traditional silver Kathirikai for auspicious occasions."
   },
@@ -324,11 +325,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-kerala-samai",
     name: "Kerala Samai Kuthu Vilakku Pair",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Vilakku",
     images: [
-      "/images/products/silver/kerala-samai-kuthu-vilakku-front.webp",
-      "/images/products/silver/silver-gemini-generated-1.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/kerala-samai-kuthu-vilakku-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/silver-gemini-generated-1.webp"
     ],
     description: "An authentic pair of Kerala Samai Kuthu Vilakku, ranging from 500g to 1KG."
   },
@@ -336,11 +337,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-karaikudi-items",
     name: "Karaikudi Silver Items",
     category: "Silver",
-    subcategory: "Antique",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Karaikudi Items",
     images: [
-      "/images/products/silver/karaikudi-items-front.webp",
-      "/images/products/silver/karaikudi-items-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/karaikudi-items-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/karaikudi-items-side.webp"
     ],
     description: "Authentic and heavy set of Karaikudi heritage silver items."
   },
@@ -348,11 +349,11 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-kilukki",
     name: "Silver Kilukki",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Kilukki",
     images: [
-      "/images/products/silver/kilukki-front.webp",
-      "/images/products/silver/kilukki-side.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/kilukki-front.webp",
+      "/images/products/silver/ChettiNadu Silver Collections/kilukki-side.webp"
     ],
     description: "A beautifully crafted traditional silver Kilukki."
   },
@@ -360,10 +361,10 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     id: "silver-koppi",
     name: "Silver Koppi",
     category: "Silver",
-    subcategory: "Traditional",
+    subcategory: "CHETTINADU SILVER COLLECTIONS",
     type: "Koppi",
     images: [
-      "/images/products/silver/koppi-front.webp"
+      "/images/products/silver/ChettiNadu Silver Collections/koppi-front.webp"
     ],
     description: "A premium silver Koppi piece."
   },
@@ -412,10 +413,277 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
   ...generateSubcategoryItems('Platinum', 'Chains', 'Chain', 1),
   ...generateSubcategoryItems('Platinum', 'Bracelets', 'Bracelet', 1),
 
-  // GEMS (Navaratna)
-  ...generateSubcategoryItems('Gems', 'Ruby', 'Ruby Stone', 1),
-  ...generateSubcategoryItems('Gems', 'Emerald', 'Emerald Stone', 1),
-  ...generateSubcategoryItems('Gems', 'Sapphire', 'Sapphire Stone', 1),
+  // ===== GEMS (Navaratna) =====
+  // --- Ruby ---
+  {
+    id: "gem-ruby",
+    name: "Ruby",
+    category: "Gems",
+    subcategory: "Ruby",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Ruby/ruby.webp"],
+    description: "A vibrant, premium-quality natural Ruby — the king of gemstones, symbolizing passion and prosperity."
+  },
+  {
+    id: "gem-star-ruby",
+    name: "Star Ruby",
+    category: "Gems",
+    subcategory: "Ruby",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Ruby/star-ruby.webp"],
+    description: "A rare Star Ruby displaying a mesmerizing six-rayed asterism, prized by collectors."
+  },
+  {
+    id: "gem-pink-sapphire",
+    name: "Pink Sapphire",
+    category: "Gems",
+    subcategory: "Ruby",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Ruby/pink-sapphire.webp"],
+    description: "A delicate Pink Sapphire with brilliant lustre, perfect for elegant jewellery settings."
+  },
+  // --- Pearl ---
+  {
+    id: "gem-pearl",
+    name: "Pearl",
+    category: "Gems",
+    subcategory: "Pearl",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Pearl/pearl.webp"],
+    description: "A luminous natural Pearl radiating timeless elegance and purity."
+  },
+  {
+    id: "gem-white-coral",
+    name: "White Coral",
+    category: "Gems",
+    subcategory: "Pearl",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Pearl/white-coral.webp"],
+    description: "A pristine White Coral gemstone believed to bring peace and mental clarity."
+  },
+  // --- Red Coral ---
+  {
+    id: "gem-red-coral",
+    name: "Red Coral",
+    category: "Gems",
+    subcategory: "Red Coral",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Red Coral/red-coral.webp"],
+    description: "A vibrant natural Red Coral (Moonga) — an auspicious gemstone associated with Mars."
+  },
+  // --- Emerald ---
+  {
+    id: "gem-emerald",
+    name: "Emerald",
+    category: "Gems",
+    subcategory: "Emerald",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Emerald/emerald.webp"],
+    description: "A vivid green natural Emerald (Panna), the gemstone of Mercury, symbolizing wisdom and growth."
+  },
+  {
+    id: "gem-peridot",
+    name: "Peridot",
+    category: "Gems",
+    subcategory: "Emerald",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Emerald/peridot.webp"],
+    description: "A brilliant olive-green Peridot, a refreshing alternative gemstone in the Emerald family."
+  },
+  // --- Yellow Sapphire ---
+  {
+    id: "gem-yellow-sapphire",
+    name: "Yellow Sapphire",
+    category: "Gems",
+    subcategory: "Yellow Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Yellow Sapphire/yellow-sapphire.webp"],
+    description: "A radiant Yellow Sapphire (Pukhraj), the gemstone of Jupiter, bringing wisdom and fortune."
+  },
+  {
+    id: "gem-citrine",
+    name: "Citrine",
+    category: "Gems",
+    subcategory: "Yellow Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Yellow Sapphire/citrine.webp"],
+    description: "A warm golden Citrine gemstone, known as the merchant's stone for attracting abundance."
+  },
+  // --- Diamond ---
+  {
+    id: "gem-diamond",
+    name: "Diamond",
+    category: "Gems",
+    subcategory: "Diamond",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Diamond/diamond.webp"],
+    description: "A dazzling natural Diamond of exceptional clarity — the eternal symbol of luxury and strength."
+  },
+  {
+    id: "gem-white-sapphire",
+    name: "White Sapphire",
+    category: "Gems",
+    subcategory: "Diamond",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Diamond/white-sapphire.webp"],
+    description: "A brilliant White Sapphire, a stunning and affordable alternative to diamond."
+  },
+  {
+    id: "gem-white-topaz",
+    name: "White Topaz",
+    category: "Gems",
+    subcategory: "Diamond",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Diamond/white-topaz.webp"],
+    description: "A sparkling White Topaz with excellent clarity and fire."
+  },
+  {
+    id: "gem-zircon",
+    name: "Zircon",
+    category: "Gems",
+    subcategory: "Diamond",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Diamond/zircon.webp"],
+    description: "A natural Zircon with exceptional brilliance, often used as a diamond substitute."
+  },
+  // --- Blue Sapphire ---
+  {
+    id: "gem-blue-sapphire",
+    name: "Blue Sapphire",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/blue-sapphire.webp"],
+    description: "A majestic Blue Sapphire (Neelam), the powerful gemstone of Saturn for rapid fortune."
+  },
+  {
+    id: "gem-aquamarine",
+    name: "Aquamarine",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/aquamarine.webp"],
+    description: "A serene Aquamarine with calming ocean-blue hues, symbolizing tranquility."
+  },
+  {
+    id: "gem-blue-topaz",
+    name: "Blue Topaz",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/blue-topaz.webp"],
+    description: "A vivid Blue Topaz displaying a stunning Swiss-blue colour with exceptional clarity."
+  },
+  {
+    id: "gem-blue-zircon",
+    name: "Blue Zircon",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/blue-zircon.webp"],
+    description: "A brilliant Blue Zircon with dazzling fire and dispersion."
+  },
+  {
+    id: "gem-iolite",
+    name: "Iolite",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/iolite.webp"],
+    description: "A violet-blue Iolite known as the Viking's compass stone, prized for its pleochroism."
+  },
+  {
+    id: "gem-neelambari",
+    name: "Neelambari",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/neelambari.webp"],
+    description: "A deep-hued Neelambari stone, a traditional favourite in South Indian gem collections."
+  },
+  {
+    id: "gem-purple-sapphire",
+    name: "Purple Sapphire",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/purple-sapphire.webp"],
+    description: "A regal Purple Sapphire displaying a rich violet hue with superb saturation."
+  },
+  {
+    id: "gem-star-sapphires",
+    name: "Star Sapphire",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/star-sapphires.webp"],
+    description: "A rare Star Sapphire exhibiting a captivating six-rayed star phenomenon."
+  },
+  {
+    id: "gem-tanzanite",
+    name: "Tanzanite",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/tanzanite.webp"],
+    description: "An exquisite Tanzanite with mesmerizing violet-blue colour, rarer than diamonds."
+  },
+  {
+    id: "gem-turquoise",
+    name: "Turquoise",
+    category: "Gems",
+    subcategory: "Blue Sapphire",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Blue Sapphire/turquoise.webp"],
+    description: "A vibrant Turquoise gemstone with a distinctive sky-blue hue, cherished for centuries."
+  },
+  // --- Hessonite ---
+  {
+    id: "gem-hessonite",
+    name: "Hessonite",
+    category: "Gems",
+    subcategory: "Hessonite",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Hessonite/hessonite.webp"],
+    description: "A warm honey-coloured Hessonite (Gomed), the gemstone of Rahu for protection and clarity."
+  },
+  {
+    id: "gem-amethyst",
+    name: "Amethyst",
+    category: "Gems",
+    subcategory: "Hessonite",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Hessonite/amethyst.webp"],
+    description: "A stunning purple Amethyst, the stone of spiritual wisdom and calm."
+  },
+  {
+    id: "gem-ametrine",
+    name: "Ametrine",
+    category: "Gems",
+    subcategory: "Hessonite",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Hessonite/amertine.webp"],
+    description: "A unique Ametrine blending Amethyst purple and Citrine gold in a single gemstone."
+  },
+  // --- Cat's Eye ---
+  {
+    id: "gem-cats-eye",
+    name: "Cat's Eye",
+    category: "Gems",
+    subcategory: "Cat's Eye",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Cat's Eye/cats-eye.webp"],
+    description: "A remarkable Cat's Eye (Lehsunia) chrysoberyl displaying a sharp chatoyant band."
+  },
+  {
+    id: "gem-fire-opal",
+    name: "Fire Opal",
+    category: "Gems",
+    subcategory: "Cat's Eye",
+    type: "Gemstone",
+    images: ["/images/products/Gems/Cat's Eye/fire-opal.webp"],
+    description: "A fiery Fire Opal with vivid orange-red play of colour, radiating warmth and energy."
+  },
 
   // SIGNATURE COLLECTION
   { 
