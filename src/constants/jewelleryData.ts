@@ -384,7 +384,175 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
   },
 
   // GOLD - Using smaller counts to ensure image uniqueness with current assets
-  ...generateSubcategoryItems('Gold', 'GOLD NECKLACE', 'Necklace', 4),
+  // Real Gold Necklaces
+  {
+    id: "gold-necklace-1",
+    name: "Classic Gold Choker Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec1.webp",
+      "/images/products/gold/necklace/nec1_sideview.webp"
+    ],
+    description: "An elegant and traditional gold choker necklace designed with intricate motifs, offering a royal look."
+  },
+  {
+    id: "gold-necklace-2",
+    name: "Antique Temple Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec2.webp",
+      "/images/products/gold/necklace/nec2_sideview.webp"
+    ],
+    description: "A heritage temple-style gold necklace showcasing premium craftsmanship with divine design patterns."
+  },
+  {
+    id: "gold-necklace-3",
+    name: "Elegant Floral Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec3.webp",
+      "/images/products/gold/necklace/nec3_sideview.webp"
+    ],
+    description: "Features delicate floral elements beautifully cast in pure gold, creating a graceful statement piece."
+  },
+  {
+    id: "gold-necklace-4",
+    name: "Majestic Heritage Haram Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec4.webp",
+      "/images/products/gold/necklace/nec4_sideview.webp"
+    ],
+    description: "A longer traditional necklace featuring heavy gold work, ideal for bridal wear and grand celebrations."
+  },
+  {
+    id: "gold-necklace-5",
+    name: "Royal Peacock Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec5.webp",
+      "/images/products/gold/necklace/nec5_sideview.webp"
+    ],
+    description: "Adorned with majestic peacock carvings and intricate drop hangings in pure 22K gold."
+  },
+  {
+    id: "gold-necklace-6",
+    name: "Intricate Filigree Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec6.webp",
+      "/images/products/gold/necklace/nec6_sideview.webp"
+    ],
+    description: "Exquisite filigree patterns hand-woven in gold thread, combining classic artistry with a modern silhouette."
+  },
+  {
+    id: "gold-necklace-7",
+    name: "Traditional Mango Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec7.webp",
+      "/images/products/gold/necklace/nec7_sideview.webp"
+    ],
+    description: "The classic South Indian Manga Malai redesigned with a contemporary touch for the modern bride."
+  },
+  {
+    id: "gold-necklace-8",
+    name: "Modern Designer Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec8.webp",
+      "/images/products/gold/necklace/nec8_sideview.webp"
+    ],
+    description: "A stylish designer piece presenting fluid geometric links and polished gold drops."
+  },
+  {
+    id: "gold-necklace-9",
+    name: "Kundan Fusion Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec9.webp",
+      "/images/products/gold/necklace/nec9_sideview.webp"
+    ],
+    description: "Fuses traditional Kundan-inspired motifs with high-polish yellow gold drops."
+  },
+  {
+    id: "gold-necklace-10",
+    name: "Opulent Bridal Gold Haram",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec10.webp",
+      "/images/products/gold/necklace/nec10_sideview.webp"
+    ],
+    description: "A grand bridal masterwork displaying multiple layers of finely detailed gold motifs."
+  },
+  {
+    id: "gold-necklace-11",
+    name: "Guttapusalu Style Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec11.webp",
+      "/images/products/gold/necklace/nec11_sideview.webp"
+    ],
+    description: "Inspired by the heritage Guttapusalu design, featuring rich gold bunching and delicate design work."
+  },
+  {
+    id: "gold-necklace-12",
+    name: "Contemporary Mesh Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec12.webp",
+      "/images/products/gold/necklace/nec12_sideview.webp"
+    ],
+    description: "Features a modern mesh collar layout that sits beautifully around the neck, radiating high-gleam lustre."
+  },
+  {
+    id: "gold-necklace-13",
+    name: "Delicate Dailywear Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec13.webp",
+      "/images/products/gold/necklace/nec13_sideview.webp"
+    ],
+    description: "A lightweight, minimal gold necklace suitable for everyday luxury and casual elegance."
+  },
+  {
+    id: "gold-necklace-14",
+    name: "Royal Coin Gold Necklace",
+    category: "Gold",
+    subcategory: "GOLD NECKLACE",
+    type: "Necklace",
+    images: [
+      "/images/products/gold/necklace/nec14.webp",
+      "/images/products/gold/necklace/nec14_sideview.webp"
+    ],
+    description: "Features auspicious coin shapes featuring intricate engravings, set along a thick gold band."
+  },
   ...generateSubcategoryItems('Gold', 'GOLD CHAIN', 'Chain', 4),
   ...generateSubcategoryItems('Gold', 'GOLD ANKLET', 'Anklet', 3),
   ...generateSubcategoryItems('Gold', 'GOLD RING', 'Ring', 4),
