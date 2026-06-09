@@ -384,6 +384,104 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
   },
 
   // GOLD - Using smaller counts to ensure image uniqueness with current assets
+  // Real Gold Harams
+  {
+    id: "gold-haram-1",
+    name: "Classic Mango Gold Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram1.webp",
+      "/images/products/gold/Haram/haram1_view.webp"
+    ],
+    description: "A magnificent traditional mango-shaped haram necklace crafted in 22K gold, perfect for heritage bridal styling."
+  },
+  {
+    id: "gold-haram-2",
+    name: "Royal Temple Nakshi Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram2.webp",
+      "/images/products/gold/Haram/haram2_view.webp"
+    ],
+    description: "Showcases intricate temple Nakshi work with divine motifs and heavy gold hangings, representing South Indian royalty."
+  },
+  {
+    id: "gold-haram-3",
+    name: "Elegant Peacock Bridal Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram3.webp",
+      "/images/products/gold/Haram/haram3_view.webp"
+    ],
+    description: "A stunning long peacock haram adorned with delicate gold bead clusters and exceptional filigree patterns."
+  },
+  {
+    id: "gold-haram-4",
+    name: "Antique Gold Bead Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram4.webp",
+      "/images/products/gold/Haram/haram4_view.webp"
+    ],
+    description: "Features multiple strands of classic gold beads leading down to a grand pendant with premium antique finish."
+  },
+  {
+    id: "gold-haram-5",
+    name: "Traditional Guttapusalu Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram5.webp",
+      "/images/products/gold/Haram/haram5_view.webp"
+    ],
+    description: "Adorned with bunching gold beads along a masterfully designed chain, ideal for grand weddings and festivities."
+  },
+  {
+    id: "gold-haram-6",
+    name: "Delicate Leaf-Pattern Gold Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram6.webp",
+      "/images/products/gold/Haram/haram6_view.webp"
+    ],
+    description: "A lightweight, long haram showcasing delicate leaf motifs linked beautifully in high-polish 22K gold."
+  },
+  {
+    id: "gold-haram-7",
+    name: "Contemporary Kundan Gold Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram7.webp",
+      "/images/products/gold/Haram/haram7_view.webp"
+    ],
+    description: "Blends traditional Kundan artistry with contemporary long chain styling, finished with dainty gold drops."
+  },
+  {
+    id: "gold-haram-8",
+    name: "Grand Royal Heritage Haram",
+    category: "Gold",
+    subcategory: "GOLD HARAM",
+    type: "Haram",
+    images: [
+      "/images/products/gold/Haram/haram8.webp",
+      "/images/products/gold/Haram/haram8_view.webp"
+    ],
+    description: "The pinnacle of bridal luxury, featuring multiple layers of heavily sculpted gold panels and intricate engravings."
+  },
+
   // Real Gold Necklaces
   {
     id: "gold-necklace-1",
@@ -553,14 +651,840 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     ],
     description: "Features auspicious coin shapes featuring intricate engravings, set along a thick gold band."
   },
-  ...generateSubcategoryItems('Gold', 'GOLD CHAIN', 'Chain', 4),
+  // Real Gold Chains
+  {
+    id: "gold-chain-1",
+    name: "Classic Gold Rope Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain1.webp"
+    ],
+    description: "A beautifully designed classic gold rope chain crafted in pure 22K gold, weighing approximately 11 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-2",
+    name: "Intricate Gold Box Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain2.webp"
+    ],
+    description: "A beautifully designed intricate gold box chain crafted in pure 22K gold, weighing approximately 14 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-3",
+    name: "Elegant Gold Wheat Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain3.webp"
+    ],
+    description: "A beautifully designed elegant gold wheat chain crafted in pure 22K gold, weighing approximately 17 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-4",
+    name: "Traditional Gold Cable Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain4.webp"
+    ],
+    description: "A beautifully designed traditional gold cable chain crafted in pure 22K gold, weighing approximately 20 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-5",
+    name: "Modern Gold Curb Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain5.webp"
+    ],
+    description: "A beautifully designed modern gold curb chain crafted in pure 22K gold, weighing approximately 23 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-6",
+    name: "Handcrafted Gold Figaro Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain6.webp"
+    ],
+    description: "A beautifully designed handcrafted gold figaro chain crafted in pure 22K gold, weighing approximately 26 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-7",
+    name: "High-Polish Gold Singapore Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain7.webp"
+    ],
+    description: "A beautifully designed high-polish gold singapore chain crafted in pure 22K gold, weighing approximately 29 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-8",
+    name: "Sleek Gold Mariner Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain8.webp"
+    ],
+    description: "A beautifully designed sleek gold mariner chain crafted in pure 22K gold, weighing approximately 32 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-9",
+    name: "Premium Gold Snake Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain9.webp"
+    ],
+    description: "A beautifully designed premium gold snake chain crafted in pure 22K gold, weighing approximately 35 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-10",
+    name: "Heavy Gold Herringbone Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain10.webp"
+    ],
+    description: "A beautifully designed heavy gold herringbone chain crafted in pure 22K gold, weighing approximately 38 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-11",
+    name: "Lightweight Gold Bead/Ball Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain11.webp"
+    ],
+    description: "A beautifully designed lightweight gold bead/ball chain crafted in pure 22K gold, weighing approximately 41 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-12",
+    name: "Dainty Gold Franco Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain12.webp"
+    ],
+    description: "A beautifully designed dainty gold franco chain crafted in pure 22K gold, weighing approximately 44 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-13",
+    name: "Royal Gold Spiga Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain13.webp"
+    ],
+    description: "A beautifully designed royal gold spiga chain crafted in pure 22K gold, weighing approximately 47 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-14",
+    name: "Bespoke Gold Belcher Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain14.webp"
+    ],
+    description: "A beautifully designed bespoke gold belcher chain crafted in pure 22K gold, weighing approximately 10 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-15",
+    name: "Ornate Gold Rollo Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain15.webp"
+    ],
+    description: "A beautifully designed ornate gold rollo chain crafted in pure 22K gold, weighing approximately 13 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-16",
+    name: "Classic Gold Rope Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain16.webp"
+    ],
+    description: "A beautifully designed classic gold rope chain crafted in pure 22K gold, weighing approximately 16 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-17",
+    name: "Intricate Gold Box Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain17.webp"
+    ],
+    description: "A beautifully designed intricate gold box chain crafted in pure 22K gold, weighing approximately 19 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-18",
+    name: "Elegant Gold Wheat Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain18.webp"
+    ],
+    description: "A beautifully designed elegant gold wheat chain crafted in pure 22K gold, weighing approximately 22 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-19",
+    name: "Traditional Gold Cable Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain19.webp"
+    ],
+    description: "A beautifully designed traditional gold cable chain crafted in pure 22K gold, weighing approximately 25 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-20",
+    name: "Modern Gold Curb Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain20.webp"
+    ],
+    description: "A beautifully designed modern gold curb chain crafted in pure 22K gold, weighing approximately 28 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-21",
+    name: "Handcrafted Gold Figaro Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain21.webp"
+    ],
+    description: "A beautifully designed handcrafted gold figaro chain crafted in pure 22K gold, weighing approximately 31 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-22",
+    name: "High-Polish Gold Singapore Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain22.webp"
+    ],
+    description: "A beautifully designed high-polish gold singapore chain crafted in pure 22K gold, weighing approximately 34 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-23",
+    name: "Sleek Gold Mariner Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain23.webp"
+    ],
+    description: "A beautifully designed sleek gold mariner chain crafted in pure 22K gold, weighing approximately 37 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-24",
+    name: "Premium Gold Snake Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain24.webp"
+    ],
+    description: "A beautifully designed premium gold snake chain crafted in pure 22K gold, weighing approximately 40 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-25",
+    name: "Heavy Gold Herringbone Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain25.webp"
+    ],
+    description: "A beautifully designed heavy gold herringbone chain crafted in pure 22K gold, weighing approximately 43 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-26",
+    name: "Lightweight Gold Bead/Ball Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain26.webp"
+    ],
+    description: "A beautifully designed lightweight gold bead/ball chain crafted in pure 22K gold, weighing approximately 46 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-27",
+    name: "Dainty Gold Franco Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain27.webp"
+    ],
+    description: "A beautifully designed dainty gold franco chain crafted in pure 22K gold, weighing approximately 9 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-28",
+    name: "Royal Gold Spiga Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain28.webp"
+    ],
+    description: "A beautifully designed royal gold spiga chain crafted in pure 22K gold, weighing approximately 12 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-29",
+    name: "Bespoke Gold Belcher Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain29.webp"
+    ],
+    description: "A beautifully designed bespoke gold belcher chain crafted in pure 22K gold, weighing approximately 15 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-30",
+    name: "Ornate Gold Rollo Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain30.webp"
+    ],
+    description: "A beautifully designed ornate gold rollo chain crafted in pure 22K gold, weighing approximately 18 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-31",
+    name: "Classic Gold Rope Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain31.webp"
+    ],
+    description: "A beautifully designed classic gold rope chain crafted in pure 22K gold, weighing approximately 21 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-32",
+    name: "Intricate Gold Box Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain32.webp"
+    ],
+    description: "A beautifully designed intricate gold box chain crafted in pure 22K gold, weighing approximately 24 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-34",
+    name: "Elegant Gold Wheat Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain34.webp"
+    ],
+    description: "A beautifully designed elegant gold wheat chain crafted in pure 22K gold, weighing approximately 30 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-35",
+    name: "Traditional Gold Cable Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain35.webp"
+    ],
+    description: "A beautifully designed traditional gold cable chain crafted in pure 22K gold, weighing approximately 33 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-36",
+    name: "Modern Gold Curb Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain36.webp"
+    ],
+    description: "A beautifully designed modern gold curb chain crafted in pure 22K gold, weighing approximately 36 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-37",
+    name: "Handcrafted Gold Figaro Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain37.webp"
+    ],
+    description: "A beautifully designed handcrafted gold figaro chain crafted in pure 22K gold, weighing approximately 39 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-38",
+    name: "High-Polish Gold Singapore Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain38.webp"
+    ],
+    description: "A beautifully designed high-polish gold singapore chain crafted in pure 22K gold, weighing approximately 42 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-39",
+    name: "Sleek Gold Mariner Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain39.webp"
+    ],
+    description: "A beautifully designed sleek gold mariner chain crafted in pure 22K gold, weighing approximately 45 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-40",
+    name: "Premium Gold Snake Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain40.webp"
+    ],
+    description: "A beautifully designed premium gold snake chain crafted in pure 22K gold, weighing approximately 8 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-41",
+    name: "Heavy Gold Herringbone Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain41.webp"
+    ],
+    description: "A beautifully designed heavy gold herringbone chain crafted in pure 22K gold, weighing approximately 11 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-42",
+    name: "Lightweight Gold Bead/Ball Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain42.webp"
+    ],
+    description: "A beautifully designed lightweight gold bead/ball chain crafted in pure 22K gold, weighing approximately 14 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-43",
+    name: "Dainty Gold Franco Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain43.webp"
+    ],
+    description: "A beautifully designed dainty gold franco chain crafted in pure 22K gold, weighing approximately 17 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-44",
+    name: "Royal Gold Spiga Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain44.webp"
+    ],
+    description: "A beautifully designed royal gold spiga chain crafted in pure 22K gold, weighing approximately 20 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-45",
+    name: "Bespoke Gold Belcher Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain45.webp"
+    ],
+    description: "A beautifully designed bespoke gold belcher chain crafted in pure 22K gold, weighing approximately 23 grams. Perfect for daily wear or special occasions."
+  },
+  {
+    id: "gold-chain-46",
+    name: "Ornate Gold Rollo Chain",
+    category: "Gold",
+    subcategory: "GOLD CHAIN",
+    type: "Chain",
+    images: [
+      "/images/products/gold/chains/chain46.webp"
+    ],
+    description: "A beautifully designed ornate gold rollo chain crafted in pure 22K gold, weighing approximately 26 grams. Perfect for daily wear or special occasions."
+  },
   ...generateSubcategoryItems('Gold', 'GOLD ANKLET', 'Anklet', 3),
-  ...generateSubcategoryItems('Gold', 'GOLD RING', 'Ring', 4),
+  // Real Gold Couple Rings
+  {
+    id: "gold-couple-ring-1",
+    name: "Eternal Love Gold Band 1",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing1.webp"
+    ],
+    description: "An elegant and finely crafted eternal love gold band 1 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-2",
+    name: "Promise Gold Couple Ring 2",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing2.webp"
+    ],
+    description: "An elegant and finely crafted promise gold couple ring 2 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-3",
+    name: "Infinity Gold Wedding Band 3",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing3.webp"
+    ],
+    description: "An elegant and finely crafted infinity gold wedding band 3 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-4",
+    name: "Classic Duo Gold Ring 4",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing4.webp"
+    ],
+    description: "An elegant and finely crafted classic duo gold ring 4 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-5",
+    name: "Two Hearts Gold Band 5",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing5.webp"
+    ],
+    description: "An elegant and finely crafted two hearts gold band 5 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-6",
+    name: "Divine Union Gold Ring 6",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing6.webp"
+    ],
+    description: "An elegant and finely crafted divine union gold ring 6 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-7",
+    name: "Devotion Gold Couple Ring 7",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing7.webp"
+    ],
+    description: "An elegant and finely crafted devotion gold couple ring 7 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-8",
+    name: "Unity Gold Wedding Band 8",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing8.webp"
+    ],
+    description: "An elegant and finely crafted unity gold wedding band 8 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-9",
+    name: "Destiny Gold Band 9",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing9.webp"
+    ],
+    description: "An elegant and finely crafted destiny gold band 9 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-10",
+    name: "Soulmate Gold Couple Ring 10",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing10.webp"
+    ],
+    description: "An elegant and finely crafted soulmate gold couple ring 10 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-11",
+    name: "True Love Gold Band 11",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing11.webp"
+    ],
+    description: "An elegant and finely crafted true love gold band 11 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-12",
+    name: "Everlasting Gold Ring 12",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing12.webp"
+    ],
+    description: "An elegant and finely crafted everlasting gold ring 12 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-13",
+    name: "Pure Romance Gold Band 13",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing13.webp"
+    ],
+    description: "An elegant and finely crafted pure romance gold band 13 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-14",
+    name: "Amour Gold Couple Ring 14",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing14.webp"
+    ],
+    description: "An elegant and finely crafted amour gold couple ring 14 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-15",
+    name: "Adore Gold Wedding Band 15",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing15.webp"
+    ],
+    description: "An elegant and finely crafted adore gold wedding band 15 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-16",
+    name: "Togetherness Gold Ring 16",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing16.webp"
+    ],
+    description: "An elegant and finely crafted togetherness gold ring 16 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-17",
+    name: "Bond Gold Couple Ring 17",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing17.webp"
+    ],
+    description: "An elegant and finely crafted bond gold couple ring 17 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-18",
+    name: "Tribute Gold Wedding Band 18",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing18.webp"
+    ],
+    description: "An elegant and finely crafted tribute gold wedding band 18 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-19",
+    name: "Majestic Duo Gold Ring 19",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing19.webp"
+    ],
+    description: "An elegant and finely crafted majestic duo gold ring 19 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-20",
+    name: "Heritage Gold Couple Ring 20",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing20.webp"
+    ],
+    description: "An elegant and finely crafted heritage gold couple ring 20 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-21",
+    name: "Gleaming Union Gold Band 21",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing21.webp"
+    ],
+    description: "An elegant and finely crafted gleaming union gold band 21 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-22",
+    name: "Sparkling Promise Gold Ring 22",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing22.webp"
+    ],
+    description: "An elegant and finely crafted sparkling promise gold ring 22 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-25",
+    name: "Affinity Gold Couple Ring 25",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing25.webp"
+    ],
+    description: "An elegant and finely crafted affinity gold couple ring 25 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-26",
+    name: "Harmony Gold Band 26",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing26.webp"
+    ],
+    description: "An elegant and finely crafted harmony gold band 26 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-27",
+    name: "Eternal Love Gold Band 27",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing27.webp"
+    ],
+    description: "An elegant and finely crafted eternal love gold band 27 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
+  {
+    id: "gold-couple-ring-28",
+    name: "Promise Gold Couple Ring 28",
+    category: "Gold",
+    subcategory: "GOLD RING",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/Couples_Rings/CoupleRing28.webp"
+    ],
+    description: "An elegant and finely crafted promise gold couple ring 28 in pure 22K gold, symbolizing a lifetime of love and commitment."
+  },
   ...generateSubcategoryItems('Gold', 'GOLD BRACELET', 'Bracelet', 3),
   ...generateSubcategoryItems('Gold', 'GOLD EARRINGS', 'Earrings', 2),
   ...generateSubcategoryItems('Gold', 'GOLD BANGLES', 'Bangles', 2),
 
   // SILVER
+  // Real Silver Couple Rings
+  {
+    id: "silver-couple-ring-1",
+    name: "Sterling Silver Promise Band 1",
+    category: "Silver",
+    subcategory: "Rings",
+    type: "Ring",
+    images: [
+      "/images/products/silver/Rings/SilverCoupleRing1.webp"
+    ],
+    description: "A gorgeous, high-polish sterling silver promise band 1 in fine sterling silver, perfect for celebrating shared milestones."
+  },
+  {
+    id: "silver-couple-ring-2",
+    name: "Classic Duo Silver Ring 2",
+    category: "Silver",
+    subcategory: "Rings",
+    type: "Ring",
+    images: [
+      "/images/products/silver/Rings/SilverCoupleRing2.webp"
+    ],
+    description: "A gorgeous, high-polish classic duo silver ring 2 in fine sterling silver, perfect for celebrating shared milestones."
+  },
+  {
+    id: "silver-couple-ring-3",
+    name: "True Love Silver Couple Band 3",
+    category: "Silver",
+    subcategory: "Rings",
+    type: "Ring",
+    images: [
+      "/images/products/silver/Rings/SilverCoupleRing3.webp"
+    ],
+    description: "A gorgeous, high-polish true love silver couple band 3 in fine sterling silver, perfect for celebrating shared milestones."
+  },
+  {
+    id: "silver-couple-ring-4",
+    name: "Eternal Union Silver Ring 4",
+    category: "Silver",
+    subcategory: "Rings",
+    type: "Ring",
+    images: [
+      "/images/products/silver/Rings/SilverCoupleRing4.webp"
+    ],
+    description: "A gorgeous, high-polish eternal union silver ring 4 in fine sterling silver, perfect for celebrating shared milestones."
+  },
   ...generateSubcategoryItems('Silver', 'Traditional', 'Traditional', 3),
   ...generateSubcategoryItems('Silver', 'Nagas', 'Nagas', 3),
   ...generateSubcategoryItems('Silver', 'Antique', 'Antique', 3),
