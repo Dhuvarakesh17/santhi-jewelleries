@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -68,6 +68,17 @@ const FloatingChatActions = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (isChatOpen) {
+      scrollToBottom();
+    }
+  }, [messages, isChatOpen]);
 
   const quickQuestions = useMemo(
     () => [
@@ -126,10 +137,11 @@ const FloatingChatActions = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-90 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+    <>
       {isChatOpen && (
-        <div className="w-[calc(100vw-2rem)] max-w-90 rounded-2xl border border-[#8BA2D4]/30 bg-white shadow-[0_16px_45px_rgba(0,0,0,0.22)] overflow-hidden">
-          <div className="bg-linear-to-r from-[#5C6B8E] to-[#8BA2D4] px-4 py-3 text-white">
+        <div className="fixed top-[130px] bottom-[160px] right-4 sm:right-6 z-[5100] flex flex-col justify-start items-end pointer-events-none">
+          <div className="w-[calc(100vw-2rem)] max-w-[360px] max-h-full pointer-events-auto flex flex-col rounded-sm border border-[#8BA2D4]/30 bg-white shadow-[0_16px_45px_rgba(0,0,0,0.22)] overflow-hidden">
+          <div className="bg-linear-to-r from-[#5C6B8E] to-[#8BA2D4] px-4 py-3 shrink-0 text-white">
             <p className="text-[11px] uppercase tracking-[0.18em] font-semibold">
               Santhi Assistant
             </p>
@@ -138,12 +150,12 @@ const FloatingChatActions = () => {
             </p>
           </div>
 
-          <div className="h-72 overflow-y-auto bg-[#F7FAFF] px-3 py-3 custom-scrollbar">
+          <div className="flex-1 min-h-[120px] max-h-72 overflow-y-auto bg-[#F7FAFF] px-3 py-3 custom-scrollbar">
             <div className="space-y-2.5">
               {messages.map((message) => (
                 <div
                   key={message.id}
-                  className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${
+                  className={`max-w-[88%] rounded-md px-3 py-2 text-sm leading-relaxed ${
                     message.sender === "user"
                       ? "ml-auto bg-[#6E83B7] text-white"
                       : "mr-auto bg-[#E8F1FF] text-[#334567]"
@@ -152,17 +164,18 @@ const FloatingChatActions = () => {
                   {message.text}
                 </div>
               ))}
+              <div ref={messagesEndRef} />
             </div>
           </div>
 
-          <div className="border-t border-[#8BA2D4]/25 bg-white p-3">
+          <div className="border-t border-[#8BA2D4]/25 bg-white p-3 shrink-0">
             <div className="mb-2 flex flex-wrap gap-2">
               {quickQuestions.map((question) => (
                 <button
                   key={question}
                   type="button"
                   onClick={() => pushMessage(question)}
-                  className="rounded-full border border-[#8BA2D4]/35 px-2.5 py-1 text-[11px] font-medium text-[#5C6B8E] transition hover:bg-[#6E83B7] hover:text-white"
+                  className="rounded-md border border-[#8BA2D4]/35 px-2.5 py-1 text-[11px] font-medium text-[#5C6B8E] transition hover:bg-[#6E83B7] hover:text-white"
                 >
                   {question}
                 </button>
@@ -175,25 +188,28 @@ const FloatingChatActions = () => {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 placeholder="Type your message..."
-                className="h-10 w-full rounded-full border border-[#8BA2D4]/35 px-4 text-sm outline-none transition focus:border-[#6E83B7]"
+                className="h-10 w-full rounded-md border border-[#8BA2D4]/35 px-4 text-sm outline-none transition focus:border-[#6E83B7]"
               />
               <button
                 type="submit"
                 aria-label="Send message"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#6E83B7] text-white transition hover:bg-[#5C6B8E]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#6E83B7] text-white transition hover:bg-[#5C6B8E]"
               >
                 <Send size={16} />
               </button>
             </form>
           </div>
+          </div>
         </div>
       )}
+
+      <div className="fixed bottom-4 right-4 z-[5100] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
 
       <button
         type="button"
         onClick={openWhatsApp}
         aria-label="Open WhatsApp"
-        className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_24px_rgba(37,211,102,0.45)] transition hover:scale-[1.04]"
+        className="inline-flex h-14 w-14 items-center justify-center rounded-md bg-[#25D366] text-white shadow-[0_12px_24px_rgba(37,211,102,0.45)] transition hover:scale-[1.04]"
       >
         <FaWhatsapp size={30} aria-hidden="true" />
       </button>
@@ -202,11 +218,12 @@ const FloatingChatActions = () => {
         type="button"
         onClick={() => setIsChatOpen((prev) => !prev)}
         aria-label={isChatOpen ? "Close chatbot" : "Open chatbot"}
-        className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#8BA2D4] text-white shadow-[0_12px_24px_rgba(139,162,212,0.5)] transition hover:scale-[1.04] hover:bg-[#5C6B8E]"
+        className="inline-flex h-14 w-14 items-center justify-center rounded-md bg-[#8BA2D4] text-white shadow-[0_12px_24px_rgba(139,162,212,0.5)] transition hover:scale-[1.04] hover:bg-[#5C6B8E]"
       >
         {isChatOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
     </div>
+    </>
   );
 };
 

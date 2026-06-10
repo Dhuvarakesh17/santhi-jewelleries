@@ -176,16 +176,16 @@ const HeroSlider = () => {
       </div>
 
       {/* Slider Controls */}
-      <div className="absolute z-20 flex gap-4 bottom-8 right-12">
+      <div className="absolute inset-y-0 left-0 right-0 z-20 flex items-center justify-between px-4 lg:px-8 pointer-events-none">
         <button
           onClick={prevSlide}
-          className="p-3 text-white transition-all border rounded-full border-white/20 hover:bg-white hover:text-black backdrop-blur-sm"
+          className="p-3 text-white transition-all border rounded-full pointer-events-auto border-white/20 hover:bg-white hover:text-black backdrop-blur-sm"
         >
           <ChevronLeft size={24} />
         </button>
         <button
           onClick={nextSlide}
-          className="p-3 text-white transition-all border rounded-full border-white/20 hover:bg-white hover:text-black backdrop-blur-sm"
+          className="p-3 text-white transition-all border rounded-full pointer-events-auto border-white/20 hover:bg-white hover:text-black backdrop-blur-sm"
         >
           <ChevronRight size={24} />
         </button>
