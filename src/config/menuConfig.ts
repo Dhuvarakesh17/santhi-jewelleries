@@ -128,6 +128,7 @@ export const MENU_DATA: MenuItem[] = [
       "Blue Sapphire",
       "Hessonite",
       "Cat’s Eye",
+      "Gem Stone Rings",
     ],
   },
   {

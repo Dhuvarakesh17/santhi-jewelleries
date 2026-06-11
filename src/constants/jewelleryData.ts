@@ -1493,7 +1493,436 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
   ...generateSubcategoryItems('Silver', 'Necklace Sets', 'Necklace Set', 2),
 
   // DIAMOND
-  ...generateSubcategoryItems('Diamond', 'Diamond Rings', 'Ring', 2),
+  // Real Diamond Rings
+  {
+    id: "diamond-ring-1",
+    name: "Solitaire Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing1.webp"
+    ],
+    description: "An exceptionally crafted solitaire diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-2",
+    name: "Halo Diamond Engagement Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing2.webp"
+    ],
+    description: "An exceptionally crafted halo diamond engagement ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-3",
+    name: "Vintage Eternity Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing3.webp"
+    ],
+    description: "An exceptionally crafted vintage eternity diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-4",
+    name: "Classic Princess Cut Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing4.webp"
+    ],
+    description: "An exceptionally crafted classic princess cut ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-5",
+    name: "Elegant Marquise Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing5.webp"
+    ],
+    description: "An exceptionally crafted elegant marquise diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-6",
+    name: "Royal Oval Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing6.webp"
+    ],
+    description: "An exceptionally crafted royal oval diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-7",
+    name: "Three-Stone Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing7.webp"
+    ],
+    description: "An exceptionally crafted three-stone diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-8",
+    name: "Sparkling Pavé Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing8.webp"
+    ],
+    description: "An exceptionally crafted sparkling pavé diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-9",
+    name: "Twisted Shank Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing9.webp"
+    ],
+    description: "An exceptionally crafted twisted shank diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-10",
+    name: "Floral Cluster Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing10.webp"
+    ],
+    description: "An exceptionally crafted floral cluster diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-11",
+    name: "Classic Cushion Cut Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing11.webp"
+    ],
+    description: "An exceptionally crafted classic cushion cut ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-12",
+    name: "Emerald Cut Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing12.webp"
+    ],
+    description: "An exceptionally crafted emerald cut diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-13",
+    name: "Infinity Twist Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing13.webp"
+    ],
+    description: "An exceptionally crafted infinity twist diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-14",
+    name: "V-Shaped Chevron Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing14.webp"
+    ],
+    description: "An exceptionally crafted v-shaped chevron diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-15",
+    name: "Double Halo Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing15.webp"
+    ],
+    description: "An exceptionally crafted double halo diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-16",
+    name: "Split Shank Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing16.webp"
+    ],
+    description: "An exceptionally crafted split shank diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-17",
+    name: "Teardrop Pear Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing17.webp"
+    ],
+    description: "An exceptionally crafted teardrop pear diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-18",
+    name: "Nature-Inspired Leaf Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing18.webp"
+    ],
+    description: "An exceptionally crafted nature-inspired leaf ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-19",
+    name: "Art Deco Geometric Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing19.webp"
+    ],
+    description: "An exceptionally crafted art deco geometric diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-20",
+    name: "Rose Gold Blossom Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing20.webp"
+    ],
+    description: "An exceptionally crafted rose gold blossom diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-21",
+    name: "Majestic Crown Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing21.webp"
+    ],
+    description: "An exceptionally crafted majestic crown diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-22",
+    name: "Delicate Beaded Band Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing22.webp"
+    ],
+    description: "An exceptionally crafted delicate beaded band diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-23",
+    name: "Tension Set Solitaire Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing23.webp"
+    ],
+    description: "An exceptionally crafted tension set solitaire ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-24",
+    name: "Braided Vine Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing24.webp"
+    ],
+    description: "An exceptionally crafted braided vine diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-25",
+    name: "Starlight Cluster Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing25.webp"
+    ],
+    description: "An exceptionally crafted starlight cluster diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-26",
+    name: "Modern Tension-Fit Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing26.webp"
+    ],
+    description: "An exceptionally crafted modern tension-fit ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-27",
+    name: "Royal Tiara Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing27.webp"
+    ],
+    description: "An exceptionally crafted royal tiara diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-28",
+    name: "Empress Marquise Diamond Band",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing28.webp"
+    ],
+    description: "An exceptionally crafted empress marquise diamond band featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-29",
+    name: "Luminous Half-Bezel Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing29.webp"
+    ],
+    description: "An exceptionally crafted luminous half-bezel diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-30",
+    name: "Scalloped Eternity Diamond Band",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing30.webp"
+    ],
+    description: "An exceptionally crafted scalloped eternity diamond band featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-31",
+    name: "Vintage Milgrain Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing31.webp"
+    ],
+    description: "An exceptionally crafted vintage milgrain diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-32",
+    name: "Crossed Path Diamond Band",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing32.webp"
+    ],
+    description: "An exceptionally crafted crossed path diamond band featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-33",
+    name: "Sunset Orange Accent Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing33.webp"
+    ],
+    description: "An exceptionally crafted sunset orange accent diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-34",
+    name: "Timeless Channel-Set Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing34.webp"
+    ],
+    description: "An exceptionally crafted timeless channel-set diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-35",
+    name: "Duet Pear & Round Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing35.webp"
+    ],
+    description: "An exceptionally crafted duet pear & round diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-36",
+    name: "Graceful Ribbon Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing36.webp"
+    ],
+    description: "An exceptionally crafted graceful ribbon diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-37",
+    name: "Sleek Knife-Edge Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing37.webp"
+    ],
+    description: "An exceptionally crafted sleek knife-edge diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-38",
+    name: "Intertwining Love Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing38.webp"
+    ],
+    description: "An exceptionally crafted intertwining love diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
+  {
+    id: "diamond-ring-39",
+    name: "Flawless Radiant Cut Diamond Ring",
+    category: "Diamond",
+    subcategory: "Diamond Rings",
+    type: "Ring",
+    images: [
+      "/images/products/diamond/Rings/DiamondRing39.webp"
+    ],
+    description: "An exceptionally crafted flawless radiant cut diamond ring featuring brilliant-cut diamonds of superior clarity and radiance, meticulously set to catch the light from every angle."
+  },
   ...generateSubcategoryItems('Diamond', 'Diamond Necklace', 'Necklace', 2),
   ...generateSubcategoryItems('Diamond', 'Diamond Earrings', 'Earrings', 1),
   ...generateSubcategoryItems('Diamond', 'Diamond Pendants', 'Pendant', 1),
@@ -1506,6 +1935,370 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
   ...generateSubcategoryItems('Platinum', 'Bracelets', 'Bracelet', 1),
 
   // ===== GEMS (Navaratna) =====
+  // --- Gem Stone Rings ---
+  {
+    id: "gem-stone-ring-1",
+    name: "African Blue Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/African blue sapphire.webp"
+    ],
+    description: "A majestic African blue sapphire set in a sophisticated ring shank, representing wisdom and royalty."
+  },
+  {
+    id: "gem-stone-ring-2",
+    name: "African Diamond Cluster Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/african diamonds ring.webp"
+    ],
+    description: "A stunning array of brilliant-cut African diamonds clusters, creating exceptional fire and sparkle."
+  },
+  {
+    id: "gem-stone-ring-3",
+    name: "Alexandrite Gemstone Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/alexandrite ring.webp"
+    ],
+    description: "A rare Alexandrite gemstone ring showing dramatic color shifts from green under daylight to reddish-purple under light."
+  },
+  {
+    id: "gem-stone-ring-4",
+    name: "Amethyst Gemstone Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/Amethyest ring.webp"
+    ],
+    description: "A beautiful purple Amethyst gemstone ring that exudes peace, balance, and serene luxury."
+  },
+  {
+    id: "gem-stone-ring-5",
+    name: "Aquamarine Gemstone Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/aquamarine ring.webp"
+    ],
+    description: "A light pastel blue Aquamarine gemstone ring that evokes the clarity of pure water and calming energy."
+  },
+  {
+    id: "gem-stone-ring-6",
+    name: "Australian Opal Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/australia-opal ring.webp"
+    ],
+    description: "A radiant Australian Opal ring displaying a mesmerizing play-of-color with vibrant flashes of rainbow light."
+  },
+  {
+    id: "gem-stone-ring-7",
+    name: "Neelam Blue Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/blue-sapphire-neelam ring .webp"
+    ],
+    description: "A powerful Neelam Blue Sapphire ring crafted with precision to bring protection, clarity, and prosperity."
+  },
+  {
+    id: "gem-stone-ring-8",
+    name: "Brazilian Emerald Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/brazil-emerald ring.webp"
+    ],
+    description: "A rich green Brazilian Emerald ring highlighting the classic charm and lush green hue of this precious gem."
+  },
+  {
+    id: "gem-stone-ring-9",
+    name: "Burma Blue Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/burma-blue-sapphire ring .webp"
+    ],
+    description: "An authentic Burma Blue Sapphire set in a handcrafted ring, celebrated for its royal blue color."
+  },
+  {
+    id: "gem-stone-ring-10",
+    name: "Burmese Ruby Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/burma-ruby ring.webp"
+    ],
+    description: "A rare Burmese Ruby gemstone ring of deep pigeon-blood red, symbolizing love, passion, and courage."
+  },
+  {
+    id: "gem-stone-ring-11",
+    name: "Burma Yellow Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/burma-yellow-sapphire ring.webp"
+    ],
+    description: "A stunning Burmese Yellow Sapphire ring radiating brilliant golden energy and good fortune."
+  },
+  {
+    id: "gem-stone-ring-12",
+    name: "Ceylon Blue Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/ceylon-blue-sapphire ring.webp"
+    ],
+    description: "A high-clarity Ceylon Blue Sapphire ring from Sri Lanka, displaying a spectacular cornflower blue shade."
+  },
+  {
+    id: "gem-stone-ring-13",
+    name: "Colombian Emerald Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/colombia emerald ring .webp"
+    ],
+    description: "A premium Colombian Emerald ring featuring the highly coveted vivid green hue with exceptional transparency."
+  },
+  {
+    id: "gem-stone-ring-14",
+    name: "Cultured Pearl Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/cultured-pearl ring.webp"
+    ],
+    description: "A luminous cultured freshwater Pearl ring styled in a classic halo design for timeless elegance."
+  },
+  {
+    id: "gem-stone-ring-15",
+    name: "Ceylon Yellow Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/cyelon-yellow ring.webp"
+    ],
+    description: "A bright and pure Ceylon Yellow Sapphire ring, prized for its excellent clarity and astrological benefits."
+  },
+  {
+    id: "gem-stone-ring-16",
+    name: "Emerald-Cut Gemstone Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/emerald-cut-gemstones ring.webp"
+    ],
+    description: "An architectural emerald-cut multi-gemstone ring, showcasing clean step-cut facets and brilliance."
+  },
+  {
+    id: "gem-stone-ring-17",
+    name: "Ethiopian Emerald Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/ethiopia-emerald ring.webp"
+    ],
+    description: "A lively green Ethiopian Emerald ring with subtle blue undertones, set in premium metal craftsmanship."
+  },
+  {
+    id: "gem-stone-ring-18",
+    name: "Fire Opal Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/fire-opal ring.webp"
+    ],
+    description: "A bright orange Fire Opal ring reflecting a warm golden-red play of color, full of natural passion."
+  },
+  {
+    id: "gem-stone-ring-19",
+    name: "Golden Yellow Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/golden-yellow-sapphire ring.webp"
+    ],
+    description: "A deep golden Yellow Sapphire ring that radiates majesty, confidence, and abundant luck."
+  },
+  {
+    id: "gem-stone-ring-20",
+    name: "Intense Yellow Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/intence-yellow-sapphire ring.webp"
+    ],
+    description: "An intensely saturated Yellow Sapphire ring capturing brilliant solar rays and outstanding lustre."
+  },
+  {
+    id: "gem-stone-ring-21",
+    name: "Italian Red Coral Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/italian-red-coral ring.webp"
+    ],
+    description: "An auspicious Italian Red Coral (Moonga) ring, set in a polished bezel to symbolize vital energy and strength."
+  },
+  {
+    id: "gem-stone-ring-22",
+    name: "Japanese Red Coral Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/japanese-red-coral ring.webp"
+    ],
+    description: "A high-quality Japanese Red Coral ring with a rich deep red oxblood finish, highly valued for its purity."
+  },
+  {
+    id: "gem-stone-ring-23",
+    name: "Lapis Lazuli Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/lapis ring.webp"
+    ],
+    description: "A deep celestial blue Lapis Lazuli ring flecked with golden pyrite inclusions, symbolizing truth and wisdom."
+  },
+  {
+    id: "gem-stone-ring-24",
+    name: "Lemon Topaz Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/lemon-topaz ring.webp"
+    ],
+    description: "A bright, refreshing Lemon Topaz gemstone ring that sparkles with a lively yellow-green brilliance."
+  },
+  {
+    id: "gem-stone-ring-25",
+    name: "London Blue Topaz Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/london-blue-topaz-stone-ring_2.webp"
+    ],
+    description: "A deep, dramatic London Blue Topaz ring featuring a rich, dark teal-blue tone and brilliant cut."
+  },
+  {
+    id: "gem-stone-ring-26",
+    name: "Madagascar Blue Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/madagascar-blue-sapphire ring.webp"
+    ],
+    description: "A gorgeous blue Sapphire ring sourced from Madagascar, exhibiting outstanding fire and brilliance."
+  },
+  {
+    id: "gem-stone-ring-27",
+    name: "Navaratna Stone Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/navarathna stone ring.webp"
+    ],
+    description: "A traditional Navaratna ring featuring nine sacred gemstones, representing harmony, protection, and planetary balance."
+  },
+  {
+    id: "gem-stone-ring-28",
+    name: "Classic Pearl Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/pearl ring.webp"
+    ],
+    description: "A timeless classic solitaire Pearl ring showcasing a perfectly round, high-lustre natural pearl."
+  },
+  {
+    id: "gem-stone-ring-29",
+    name: "Designer Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/Sapphire Ring Designs.webp"
+    ],
+    description: "A modern designer Blue Sapphire ring surrounded by a delicate pavé diamond halo."
+  },
+  {
+    id: "gem-stone-ring-30",
+    name: "Star Ruby Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/star-ruby ring.webp"
+    ],
+    description: "A rare Star Ruby ring showing a sharp six-rayed star asterism under direct light, symbolizing courage."
+  },
+  {
+    id: "gem-stone-ring-31",
+    name: "Classic Topaz Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/Topaz ring.webp"
+    ],
+    description: "A beautiful Sky Blue Topaz ring that reflects clear light, perfect for elegant daily wear."
+  },
+  {
+    id: "gem-stone-ring-32",
+    name: "White Sapphire Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/white-sapphire ring.webp"
+    ],
+    description: "A brilliant White Sapphire ring with diamond-like sparkle, offering superb clarity and white light dispersion."
+  },
+  {
+    id: "gem-stone-ring-33",
+    name: "Zircon Gemstone Ring",
+    category: "Gems",
+    subcategory: "Gem Stone Rings",
+    type: "Ring",
+    images: [
+      "/images/products/Gems/Gem Stone Rings/zircon stone ring.webp"
+    ],
+    description: "A high-dispersion Zircon ring that flashes with intense fire, presenting a beautiful ethical diamond alternative."
+  },
   // --- Ruby ---
   {
     id: "gem-ruby",
