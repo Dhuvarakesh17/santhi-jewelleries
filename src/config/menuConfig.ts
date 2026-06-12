@@ -29,6 +29,7 @@ export const MENU_DATA: MenuItem[] = [
           "GOLD CHAIN",
           "GOLD ANKLET",
           "GOLD RING",
+          "GOLD GEM STONE RINGS",
           "GOLD BRACELET",
           "GOLD EARRINGS",
           "GOLD BANGLES",

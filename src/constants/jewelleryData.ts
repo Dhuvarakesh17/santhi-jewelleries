@@ -1435,8 +1435,525 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     ],
     description: "An elegant and finely crafted promise gold couple ring 28 in pure 22K gold, symbolizing a lifetime of love and commitment."
   },
+  // Gold Gem Stone Rings
+  {
+    id: "gold-gem-stone-ring-1",
+    name: "Navaratna Classic Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring1.webp"
+    ],
+    description: "A magnificent 22K gold ring featuring the nine sacred Navaratna gemstones, representing cosmic harmony and prosperity."
+  },
+  {
+    id: "gold-gem-stone-ring-2",
+    name: "Ruby Floral Halo Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring2.webp"
+    ],
+    description: "An exquisite 22K gold ring set with a brilliant crimson ruby in a delicate floral pavé setting."
+  },
+  {
+    id: "gold-gem-stone-ring-3",
+    name: "Emerald Solitaire Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring3.webp"
+    ],
+    description: "A majestic 22K gold ring showcasing a deep forest-green emerald solitaire in a classic four-prong mount."
+  },
+  {
+    id: "gold-gem-stone-ring-4",
+    name: "Blue Sapphire Crown Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring4.webp"
+    ],
+    description: "A royal blue sapphire crown ring set in high-polish 22K gold, capturing timeless elegance."
+  },
+  {
+    id: "gold-gem-stone-ring-5",
+    name: "Traditional Red Coral Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring5.webp"
+    ],
+    description: "A traditional red coral gemstone ring in custom-crafted 22K gold, believed to bring energy and good fortune."
+  },
+  {
+    id: "gold-gem-stone-ring-6",
+    name: "Amethyst Cluster Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring6.webp"
+    ],
+    description: "A vibrant amethyst cluster gemstone ring in a hand-polished 22K gold setting."
+  },
+  {
+    id: "gold-gem-stone-ring-7",
+    name: "Pearl Solitaire Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring7.webp"
+    ],
+    description: "A serene and lustrous natural pearl solitaire ring set in a beautiful 22K gold halo mount."
+  },
+  {
+    id: "gold-gem-stone-ring-8",
+    name: "Citrine Cushion Cut Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring8.webp"
+    ],
+    description: "A golden citrine cushion-cut ring set in textured 22K gold, radiating warm solar energy."
+  },
+  {
+    id: "gold-gem-stone-ring-9",
+    name: "Topaz Statement Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring9.webp"
+    ],
+    description: "A statement light-blue topaz ring in rich 22K gold, designed to capture the light from every angle."
+  },
+  {
+    id: "gold-gem-stone-ring-10",
+    name: "Garnet Vintage Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring10.webp"
+    ],
+    description: "A vintage-inspired deep red garnet ring crafted in ornate 22K gold filigree work."
+  },
+  {
+    id: "gold-gem-stone-ring-11",
+    name: "Opal Fire Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring11.webp"
+    ],
+    description: "A stunning fire opal gemstone ring in 22K gold, displaying a beautiful play of colors."
+  },
+  {
+    id: "gold-gem-stone-ring-12",
+    name: "Zircon Sparkling Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring12.webp"
+    ],
+    description: "A sparkling white zircon ring in premium 22K gold, offering brilliant diamond-like fire."
+  },
+  {
+    id: "gold-gem-stone-ring-13",
+    name: "Aquamarine Ocean Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring13.webp"
+    ],
+    description: "A calming pastel blue aquamarine ring set in polished 22K gold, representing clarity and peace."
+  },
+  {
+    id: "gold-gem-stone-ring-14",
+    name: "Peridot Leaf Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring14.webp"
+    ],
+    description: "A refreshing olive-green peridot leaf-inspired ring in organic-style 22K gold."
+  },
+  {
+    id: "gold-gem-stone-ring-15",
+    name: "Tourmaline Modern Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring15.webp"
+    ],
+    description: "A modern multi-tone tourmaline ring set in sleek 22K gold bands."
+  },
+  {
+    id: "gold-gem-stone-ring-16",
+    name: "Jade Traditional Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring16.webp"
+    ],
+    description: "A classic green jade gemstone ring with polished 22K gold borders."
+  },
+  {
+    id: "gold-gem-stone-ring-17",
+    name: "Fancy Multi-Gemstone Gold Ring",
+    category: "Gold",
+    subcategory: "GOLD GEM STONE RINGS",
+    type: "Ring",
+    images: [
+      "/images/products/gold/Rings/ring17.webp"
+    ],
+    description: "A striking multi-gemstone statement ring in 22K gold, combining rubies, emeralds, and sapphires."
+  },
   ...generateSubcategoryItems('Gold', 'GOLD BRACELET', 'Bracelet', 3),
-  ...generateSubcategoryItems('Gold', 'GOLD EARRINGS', 'Earrings', 2),
+  {
+    id: "gold-earing-1",
+    name: "Traditional Nagas Jhumka 1",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing1.webp"
+    ],
+    description: "A majestic pair of 22K gold Nagas jhumkas showcasing exquisite craftsmanship and classic detailing."
+  },
+  {
+    id: "gold-earing-2",
+    name: "Classic Gold Studs 2",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing2.webp"
+    ],
+    description: "Simple, elegant 22K gold studs featuring a brilliant high-polish finish, perfect for daily wear."
+  },
+  {
+    id: "gold-earing-3",
+    name: "Floral Filigree Earrings 3",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing3.webp"
+    ],
+    description: "Delicate floral filigree earrings in 22K gold, combining traditional art with modern grace."
+  },
+  {
+    id: "gold-earing-4",
+    name: "Contemporary Gold Hoops 4",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing4.webp"
+    ],
+    description: "Chic contemporary gold hoop earrings in pure 22K gold, adding instant shine to any outfit."
+  },
+  {
+    id: "gold-earing-5",
+    name: "Royal Peacock Jhumkas 5",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing5.webp"
+    ],
+    description: "Stunning peacock-motif jhumkas in 22K gold, decorated with intricate feather details."
+  },
+  {
+    id: "gold-earing-6",
+    name: "Ornate Gold Chandbalis 6",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing6.webp"
+    ],
+    description: "Ornate gold chandbalis in 22K gold, displaying classic moon-shaped heritage patterns."
+  },
+  {
+    id: "gold-earing-7",
+    name: "Sleek Gold Drop Earrings 7",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing7.webp"
+    ],
+    description: "Sleek and long 22K gold drop earrings, offering a beautiful linear flow and elegant motion."
+  },
+  {
+    id: "gold-earing-8",
+    name: "Textured Gold Studs 8",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing8.webp"
+    ],
+    description: "Artistic textured gold studs in 22K gold, catching and scattering light beautifully."
+  },
+  {
+    id: "gold-earing-9",
+    name: "Vintage Gold Jhumkas 9",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing9.webp"
+    ],
+    description: "Vintage-inspired gold jhumkas featuring delicate hanging gold beads and fine engraving."
+  },
+  {
+    id: "gold-earing-10",
+    name: "Modern Threader Earrings 10",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing10.webp"
+    ],
+    description: "Sleek and modern 22K gold threader earrings for a minimal yet sophisticated look."
+  },
+  {
+    id: "gold-earing-11",
+    name: "Gold Bead Drop Earrings 11",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing11.webp"
+    ],
+    description: "Beautiful gold bead drop earrings crafted in premium 22K gold with a delicate dangle."
+  },
+  {
+    id: "gold-earing-12",
+    name: "Designer Gold Studs 12",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing12.webp"
+    ],
+    description: "Exquisite designer gold studs showcasing a modern starburst geometry in 22K gold."
+  },
+  {
+    id: "gold-earing-13",
+    name: "Geometric Gold Hoops 13",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing13.webp"
+    ],
+    description: "Stylish geometric gold hoops in high-polish 22K gold, designed for the modern woman."
+  },
+  {
+    id: "gold-earing-15",
+    name: "Gild Leaf Studs 15",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing15.webp"
+    ],
+    description: "Lush leaf-motif gold studs in 22K gold, representing nature's beauty and organic elegance."
+  },
+  {
+    id: "gold-earing-16",
+    name: "Antique Temple Jhumkas 16",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing16.webp"
+    ],
+    description: "Ornate antique temple jhumkas featuring traditional deity motifs and dangling gold beads."
+  },
+  {
+    id: "gold-earing-17",
+    name: "Delicate Gold Drops 17",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing17.webp"
+    ],
+    description: "Delicate 22K gold drops displaying detailed micro-granulation and high-polish shine."
+  },
+  {
+    id: "gold-earing-18",
+    name: "Crescent Gold Chandbalis 18",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing18.webp"
+    ],
+    description: "Beautiful crescent-shaped chandbalis in 22K gold, perfect for festive celebrations."
+  },
+  {
+    id: "gold-earing-19",
+    name: "Cluster Gold Studs 19",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing19.webp"
+    ],
+    description: "Sparkling cluster-motif gold studs in 22K gold, providing a full-lobed, rich appearance."
+  },
+  {
+    id: "gold-earing-20",
+    name: "Handcrafted Nagas Earrings 20",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing20.webp"
+    ],
+    description: "Masterfully handcrafted Nagas earrings in 22K gold, depicting rich heritage artistry."
+  },
+  {
+    id: "gold-earing-21",
+    name: "Dangling Pearl Gold Jhumkas 21",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing21.webp"
+    ],
+    description: "Regal gold jhumkas adorned with hanging freshwater pearls and intricate gold work."
+  },
+  {
+    id: "gold-earing-22",
+    name: "Polished Gold Loop Earrings 22",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing22.webp"
+    ],
+    description: "Bold and polished gold loop earrings in 22K gold, representing timeless simplicity."
+  },
+  {
+    id: "gold-earing-23",
+    name: "Double Drop Gold Studs 23",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing23.webp"
+    ],
+    description: "Sophisticated double drop gold studs in 22K gold, offering twice the elegance."
+  },
+  {
+    id: "gold-earing-24",
+    name: "Cascading Gold Earrings 24",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing24.webp"
+    ],
+    description: "Cascading gold earrings in 22K gold, catching the light with every move."
+  },
+  {
+    id: "gold-earing-25",
+    name: "Traditional Sui Dhaga 25",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing25.webp"
+    ],
+    description: "Traditional Sui Dhaga earrings in 22K gold, featuring a long delicate chain design."
+  },
+  {
+    id: "gold-earing-26",
+    name: "Abstract Gold Studs 26",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing26.webp"
+    ],
+    description: "Abstract designer gold studs in 22K gold, showcasing a unique contemporary pattern."
+  },
+  {
+    id: "gold-earing-27",
+    name: "Petal Design Gold Earrings 27",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing27.webp"
+    ],
+    description: "Graceful petal-designed gold earrings in 22K gold, bringing a soft floral touch."
+  },
+  {
+    id: "gold-earing-28",
+    name: "Premium Bridal Jhumkas 28",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing28.webp"
+    ],
+    description: "Grand premium bridal jhumkas in 22K gold, the ultimate statement piece for wedding wear."
+  },
+  {
+    id: "gold-earing-29",
+    name: "Embossed Gold Studs 29",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing29.webp"
+    ],
+    description: "Beautifully embossed gold studs in 22K gold, featuring a classic dome pattern."
+  },
+  {
+    id: "gold-earing-30",
+    name: "Elegant Hoop Earrings 30",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing30.webp"
+    ],
+    description: "Elegant lightweight hoop earrings in 22K gold, combining comfort and timeless style."
+  },
+  {
+    id: "gold-earing-31",
+    name: "Royal Heritage Jhumkas 31",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/earing31.webp"
+    ],
+    description: "Spectacular heritage jhumkas in 22K gold, showcasing royal South Indian design artistry."
+  },
   ...generateSubcategoryItems('Gold', 'GOLD BANGLES', 'Bangles', 2),
 
   // SILVER
