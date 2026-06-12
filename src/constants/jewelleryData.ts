@@ -1623,7 +1623,369 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     ],
     description: "A striking multi-gemstone statement ring in 22K gold, combining rubies, emeralds, and sapphires."
   },
-  ...generateSubcategoryItems('Gold', 'GOLD BRACELET', 'Bracelet', 3),
+  {
+    id: "gold-bracelet-1",
+    name: "Traditional Nagas Gold Bracelet 1",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet1.webp"
+    ],
+    description: "A majestic 22K gold Nagas bracelet featuring detailed handcarvings of traditional motifs and high-polish borders."
+  },
+  {
+    id: "gold-bracelet-2",
+    name: "Classic Solid Gold Kada 2",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet2.webp"
+    ],
+    description: "A heavy, solid 22K gold kada showing off a classic round design with a smooth internal comfort fit."
+  },
+  {
+    id: "gold-bracelet-3",
+    name: "Intricate Filigree Gold Bracelet 3",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet3.webp"
+    ],
+    description: "An intricate 22K gold filigree bracelet combining fine wirework lace and elegant polished endings."
+  },
+  {
+    id: "gold-bracelet-5",
+    name: "Royal Peacock Motif Gold Bracelet 5",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet5.webp"
+    ],
+    description: "A stunning peacock-motif gold bracelet detailed with textured gold feathers and ruby eyes."
+  },
+  {
+    id: "gold-bracelet-6",
+    name: "Ornate Antique Gold Bangle-Bracelet 6",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet6.webp"
+    ],
+    description: "An ornate antique-finish gold bracelet designed with traditional patterns for wedding elegance."
+  },
+  {
+    id: "gold-bracelet-7",
+    name: "Sleek Contemporary Gold Kada 7",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet7.webp"
+    ],
+    description: "A sleek contemporary kada in 22K gold with minimalist linear engravings and secure lock system."
+  },
+  {
+    id: "gold-bracelet-8",
+    name: "Textured Designer Gold Bracelet 8",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet8.webp"
+    ],
+    description: "A designer gold bracelet highlighting unique hand-carved textures and modern styling."
+  },
+  {
+    id: "gold-bracelet-9",
+    name: "Vintage Gold Link Bracelet 9",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet9.webp"
+    ],
+    description: "A timeless vintage gold link bracelet in 22K gold, offering smooth articulation and shine."
+  },
+  {
+    id: "gold-bracelet-10",
+    name: "Modern Adjustable Gold Kada 10",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet10.webp"
+    ],
+    description: "A modern adjustable 22K gold kada featuring stylish spherical terminal beads."
+  },
+  {
+    id: "gold-bracelet-11",
+    name: "Gold Bead Cascading Bracelet 11",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet11.webp"
+    ],
+    description: "A gorgeous gold bead cascading bracelet in pure 22K gold, catching light gracefully."
+  },
+  {
+    id: "gold-bracelet-12",
+    name: "Exquisite Floral Gold Kada 12",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet12.webp"
+    ],
+    description: "An exquisite floral-inspired kada in 22K gold, featuring blooming floral patterns."
+  },
+  {
+    id: "gold-bracelet-13",
+    name: "Geometric Charm Gold Bracelet 13",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet13.webp"
+    ],
+    description: "A chic geometric charm bracelet in 22K gold, perfect for everyday sophistication."
+  },
+  {
+    id: "gold-bracelet-14",
+    name: "Fancy Heart-Link Gold Bracelet 14",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet14.webp"
+    ],
+    description: "A romantic heart-link gold bracelet in pure 22K gold, symbolizing love and elegance."
+  },
+  {
+    id: "gold-bracelet-15",
+    name: "Gild Leaf Designer Bracelet 15",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet15.webp"
+    ],
+    description: "A delicate leaf-motif designer bracelet in 22K gold, bringing organic natural beauty."
+  },
+  {
+    id: "gold-bracelet-16",
+    name: "Antique Temple Laxmi Kada 16",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet16.webp"
+    ],
+    description: "A heavy antique temple kada depicting Goddess Lakshmi, crafted for grand occasions."
+  },
+  {
+    id: "gold-bracelet-17",
+    name: "Delicate Rope Chain Gold Bracelet 17",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet17.webp"
+    ],
+    description: "A beautiful rope-chain gold bracelet in pure 22K gold, offering durability and classic style."
+  },
+  {
+    id: "gold-bracelet-18",
+    name: "Crescent Charm Gold Kada 18",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet18.webp"
+    ],
+    description: "A modern crescent-charm kada featuring delicate textured gold spheres."
+  },
+  {
+    id: "gold-bracelet-19",
+    name: "Cluster Bead Gold Bracelet 19",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet19.webp"
+    ],
+    description: "A rich cluster-bead gold bracelet in 22K gold with a robust lock mechanism."
+  },
+  {
+    id: "gold-bracelet-20",
+    name: "Handcrafted Heritage Gold Bracelet 20",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet20.webp"
+    ],
+    description: "A masterfully handcrafted heritage gold bracelet, showcasing the peak of Indian goldsmithing."
+  },
+  {
+    id: "gold-bracelet-21",
+    name: "Dangling Pearl Gold Kada 21",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet21.webp"
+    ],
+    description: "A regal kada decorated with dangling freshwater pearls and fine gold wire filigree."
+  },
+  {
+    id: "gold-bracelet-22",
+    name: "Polished Sleek Gold Bracelet 22",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet22.webp"
+    ],
+    description: "A sleek, highly polished gold bracelet in 22K gold, representing timeless minimalism."
+  },
+  {
+    id: "gold-bracelet-23",
+    name: "Double Layer Gold Chain Bracelet 23",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet23.webp"
+    ],
+    description: "A delicate double-layer gold chain bracelet, offering a layered elegant look."
+  },
+  {
+    id: "gold-bracelet-24",
+    name: "Cascading Coin Gold Bracelet 24",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet24.webp"
+    ],
+    description: "A traditional coin gold bracelet (Kasumala style) featuring polished gold discs."
+  },
+  {
+    id: "gold-bracelet-25",
+    name: "Traditional Gold Vanki-Bracelet 25",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet25.webp"
+    ],
+    description: "A unique Vanki-style gold bracelet featuring traditional curved styling."
+  },
+  {
+    id: "gold-bracelet-26",
+    name: "Abstract Grid Gold Kada 26",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet26.webp"
+    ],
+    description: "A modern abstract grid-pattern kada in 22K gold, perfect for designer tastes."
+  },
+  {
+    id: "gold-bracelet-27",
+    name: "Petal Design Gold Bracelet 27",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet27.webp"
+    ],
+    description: "A graceful petal-designed gold bracelet, bringing soft floral elegance to your wrist."
+  },
+  {
+    id: "gold-bracelet-28",
+    name: "Premium Bridal Heavy Gold Kada 28",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet28.webp"
+    ],
+    description: "A grand premium bridal heavy kada featuring intricate Nagas patterns and gold bead fringes."
+  },
+  {
+    id: "gold-bracelet-29",
+    name: "Embossed Pattern Gold Bracelet 29",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet29.webp"
+    ],
+    description: "An embossed pattern gold bracelet in 22K gold, displaying deep textured engravings."
+  },
+  {
+    id: "gold-bracelet-30",
+    name: "Elegant Daily-Wear Gold Kada 30",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet30.webp"
+    ],
+    description: "An elegant lightweight daily-wear kada, combining modern comfort and shine."
+  },
+  {
+    id: "gold-bracelet-31",
+    name: "Royal Mughal Style Kada 31",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet31.webp"
+    ],
+    description: "A spectacular Mughal-inspired kada featuring ornate endpoints and royal craftsmanship."
+  },
+  {
+    id: "gold-bracelet-32",
+    name: "Intertwined Gold Band Bracelet 32",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet32.webp"
+    ],
+    description: "An intertwined gold band bracelet, representing union and eternal fashion."
+  },
+  {
+    id: "gold-bracelet-34",
+    name: "Glimmering Hexagonal Gold Kada 34",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet34.webp"
+    ],
+    description: "A glimmering hexagonal-profile kada in 22K gold with diamond-cut facets."
+  },
+  {
+    id: "gold-bracelet-35",
+    name: "Luxury Statement Gold Bracelet 35",
+    category: "Gold",
+    subcategory: "GOLD BRACELET",
+    type: "Bracelet",
+    images: [
+      "/images/products/gold/Bracelet/bracelet35.webp"
+    ],
+    description: "A luxury statement gold bracelet showcasing bold design, high weight, and majestic styling."
+  },
   {
     id: "gold-earing-1",
     name: "Traditional Nagas Jhumka 1",
