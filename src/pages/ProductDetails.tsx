@@ -201,7 +201,7 @@ Thank you.`;
     if (!product) return [];
     return product.images && product.images.length > 0 
       ? product.images 
-      : ["/images/placeholder.webp"];
+      : ["/images/placeholder.svg"];
   }, [product]);
 
   const handleWishlistToggle = () => {
@@ -214,7 +214,7 @@ Thank you.`;
         id: enrichedProduct.id,
         name: enrichedProduct.name,
         price: formatCurrency(enrichedProduct.price),
-        image: enrichedProduct.images[0] || "/images/placeholder.webp",
+        image: enrichedProduct.images[0] || "/images/placeholder.svg",
         category: enrichedProduct.category,
       });
     }
@@ -289,7 +289,7 @@ Thank you.`;
                       className="object-cover object-center w-full h-14 lg:h-16"
                       onError={(event) => {
                         (event.target as HTMLImageElement).src =
-                          "/images/placeholder.webp";
+                          "/images/placeholder.svg";
                       }}
                     />
                   </div>
@@ -302,12 +302,12 @@ Thank you.`;
             >
               <div className="luxury-frame__inner">
                 <img
-                  src={galleryImages[selectedImage] || enrichedProduct.images[0] || "/images/placeholder.webp"}
+                  src={galleryImages[selectedImage] || enrichedProduct.images[0] || "/images/placeholder.svg"}
                   alt={enrichedProduct.name}
                   className="product-main-image-zoom object-cover object-[50%_42%] w-full h-auto max-h-[600px]"
                   onError={(event) => {
                     (event.target as HTMLImageElement).src =
-                      "/images/placeholder.webp";
+                      "/images/placeholder.svg";
                   }}
                 />
               </div>
@@ -633,12 +633,12 @@ Thank you.`;
                 >
                   <div className="luxury-frame__inner">
                     <img
-                      src={item.images[0] || "/images/placeholder.webp"}
+                      src={item.images[0] || "/images/placeholder.svg"}
                       alt={item.name}
                       className="object-cover w-full transition-transform duration-300 sm:duration-500 h-40 sm:h-52 group-hover:scale-105"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src =
-                          "/images/placeholder.webp";
+                          "/images/placeholder.svg";
                       }}
                     />
                     <div className="p-2.5 sm:p-4 bg-white border-t border-stone-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">

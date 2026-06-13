@@ -376,9 +376,9 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     subcategory: "GOLD EARRINGS",
     type: "Earrings",
     images: [
-      "/images/products/gold-jhumka-front.webp",
-      "/images/products/gold-jhumka-left.webp",
-      "/images/products/gold-jhumka-right.webp"
+      "/images/products/gold/Earings/Jumkas/jumkas1.webp",
+      "/images/products/gold/Earings/Jumkas/jumkas2.webp",
+      "/images/products/gold/Earings/Jumkas/jumkas3.webp"
     ],
     description: "A unique and masterfully crafted earrings piece from our exclusive Gold collection."
   },

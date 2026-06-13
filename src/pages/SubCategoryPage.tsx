@@ -508,7 +508,7 @@ const SubCategoryPage = () => {
         id: item.id,
         name: item.name,
         price: formatCurrency(item.price),
-        image: item.images[0] || "/images/placeholder.webp",
+        image: item.images[0] || "/images/placeholder.svg",
         category: item.category,
       });
     }
@@ -998,12 +998,12 @@ const SubCategoryPage = () => {
                           >
                             <div className="luxury-frame__inner w-full h-full overflow-hidden rounded-[8px] sm:rounded-[12px] bg-white">
                               <img
-                                src={item.images[0] || "/images/placeholder.webp"}
+                                src={item.images[0] || "/images/placeholder.svg"}
                                 alt={item.name}
                                 className="object-cover w-full h-full transition-transform duration-300 sm:duration-700 lg:group-hover:scale-110"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src =
-                                    "https://via.placeholder.com/400x500?text=Jewellery+Showcase";
+                                    "/images/placeholder.svg";
                                 }}
                               />
                             </div>
