@@ -2316,7 +2316,272 @@ export const JEWELLERY_DATA: ShowcaseItem[] = [
     ],
     description: "Spectacular heritage jhumkas in 22K gold, showcasing royal South Indian design artistry."
   },
-  ...generateSubcategoryItems('Gold', 'GOLD BANGLES', 'Bangles', 2),
+  // Gold Jumkas (Earrings)
+  {
+    id: "gold-earing-jumka-1",
+    name: "Royal Heritage Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas1.webp"
+    ],
+    description: "A spectacular pair of 22K gold heritage jhumkas showcasing ornate craftsmanship and delicate dangling beads."
+  },
+  {
+    id: "gold-earing-jumka-2",
+    name: "Traditional Nakas Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas2.webp"
+    ],
+    description: "A traditional pair of Nagas jhumkas handcrafted in 22K gold, featuring detailed temple design patterns."
+  },
+  {
+    id: "gold-earing-jumka-3",
+    name: "Classic Bell-Shape Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas3.webp"
+    ],
+    description: "A classic bell-shaped pair of jhumkas in pure 22K gold, providing a timeless festive look."
+  },
+  {
+    id: "gold-earing-jumka-4",
+    name: "Peacock Filigree Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas4.webp"
+    ],
+    description: "Stunning peacock-motif filigree jhumkas in 22K gold, decorated with intricate wirework details."
+  },
+  {
+    id: "gold-earing-jumka-5",
+    name: "Antique Temple Laxmi Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas5.webp"
+    ],
+    description: "A grand pair of antique temple Laxmi jhumkas, perfect for weddings and sacred ceremonies."
+  },
+  {
+    id: "gold-earing-jumka-6",
+    name: "Sleek Double-Step Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas6.webp"
+    ],
+    description: "A unique double-step jhumka design in 22K gold, offering a layered dangling appearance."
+  },
+  {
+    id: "gold-earing-jumka-7",
+    name: "Ornate Floral Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas7.webp"
+    ],
+    description: "A beautiful floral-motif pair of jhumkas in 22K gold, combining soft patterns and rich texture."
+  },
+  {
+    id: "gold-earing-jumka-8",
+    name: "Teardrop Pearl Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas8.webp"
+    ],
+    description: "Elegant gold jhumkas adorned with hanging freshwater pearls and fine gold work."
+  },
+  {
+    id: "gold-earing-jumka-9",
+    name: "Vintage Gold Bead Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas9.webp"
+    ],
+    description: "A vintage-inspired pair of jhumkas featuring delicate hanging gold beads and detailed engravings."
+  },
+  {
+    id: "gold-earing-jumka-10",
+    name: "Modern Circular Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas10.webp"
+    ],
+    description: "A modern circular-top jhumka in 22K gold, bringing a contemporary twist to the classic shape."
+  },
+  {
+    id: "gold-earing-jumka-11",
+    name: "Cascading Gold Coin Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas11.webp"
+    ],
+    description: "A traditional coin-pattern (Kasumala style) jhumka with polished dangling gold coins."
+  },
+  {
+    id: "gold-earing-jumka-12",
+    name: "Designer Starburst Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas12.webp"
+    ],
+    description: "Exquisite designer jhumkas showcasing starburst patterns and high-polish gold dome endings."
+  },
+  {
+    id: "gold-earing-jumka-13",
+    name: "Glimmering Chandelier Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas13.webp"
+    ],
+    description: "A gorgeous pair of chandelier-style jhumkas, designed to catch light beautifully with every turn."
+  },
+  {
+    id: "gold-earing-jumka-14",
+    name: "Elegant Daily-Wear Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas14.webp"
+    ],
+    description: "Lightweight and elegant jhumkas in 22K gold, perfect for daily style and casual occasions."
+  },
+  {
+    id: "gold-earing-jumka-15",
+    name: "Imperial Statement Gold Jhumka",
+    category: "Gold",
+    subcategory: "GOLD EARRINGS",
+    type: "Earrings",
+    images: [
+      "/images/products/gold/Earings/Jumkas/jumkas15.webp"
+    ],
+    description: "A heavy imperial statement jhumka pair, showcasing the finest royal South Indian goldsmithing."
+  },
+  // Gold Bangles
+  {
+    id: "gold-bangle-1",
+    name: "Traditional Nagas Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle1.webp"
+    ],
+    description: "A majestic 22K gold Nagas bangle featuring detailed handcarvings of traditional temple motifs and fine rope borders."
+  },
+  {
+    id: "gold-bangle-2",
+    name: "Classic Polished Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle2.webp"
+    ],
+    description: "A classic highly polished 22K gold bangle, offering a brilliant shine and smooth comfortable fit."
+  },
+  {
+    id: "gold-bangle-3",
+    name: "Intricate Filigree Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle3.webp"
+    ],
+    description: "An intricate 22K gold filigree bangle combining fine gold wirework lace and elegant polished edges."
+  },
+  {
+    id: "gold-bangle-4",
+    name: "Royal Peacock Motif Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle4.webp"
+    ],
+    description: "A stunning peacock-motif gold bangle decorated with textured gold feathers and gorgeous details."
+  },
+  {
+    id: "gold-bangle-5",
+    name: "Ornate Antique Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle5.webp"
+    ],
+    description: "An ornate antique-finish gold bangle designed with traditional patterns for grand celebrations."
+  },
+  {
+    id: "gold-bangle-6",
+    name: "Sleek Contemporary Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle6.webp"
+    ],
+    description: "A sleek contemporary bangle in 22K gold with minimalist linear engravings and modern charm."
+  },
+  {
+    id: "gold-bangle-7",
+    name: "Textured Designer Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle7.webp"
+    ],
+    description: "A designer gold bangle highlighting unique hand-carved textures and modern artistic styling."
+  },
+  {
+    id: "gold-bangle-8",
+    name: "Vintage Floral Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle8.webp"
+    ],
+    description: "A timeless vintage-inspired floral bangle in 22K gold, offering smooth articulation and gorgeous shine."
+  },
+  {
+    id: "gold-bangle-9",
+    name: "Modern Lightweight Gold Bangle",
+    category: "Gold",
+    subcategory: "GOLD BANGLES",
+    type: "Bangles",
+    images: [
+      "/images/products/gold/Bangles/bangle9.webp"
+    ],
+    description: "An elegant lightweight daily-wear gold bangle, combining modern comfort with classic radiance."
+  },
 
   // SILVER
   // Real Silver Couple Rings
