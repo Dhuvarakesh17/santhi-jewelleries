@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MENU_DATA } from "../config/menuConfig";
 import { JEWELLERY_DATA } from "../constants/jewelleryData";
 import { useWishlist } from "../context/WishlistContext";
+import { buildProductPath } from "../utils/productPath";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -138,7 +139,7 @@ const Navbar = () => {
         pushResult(
           item.name,
           `${item.category} / ${item.subcategory}`,
-          `/category/${item.category}/${item.subcategory}`,
+          buildProductPath(item),
         );
       }
     });

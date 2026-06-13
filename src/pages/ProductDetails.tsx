@@ -136,54 +136,33 @@ Thank you.`;
   const relatedProducts = useMemo(() => {
     if (!product) return [];
 
-    // 1. Precise matches (Same Material & Same Type - e.g., Gold Ring)
-    const exactMatches = JEWELLERY_DATA.filter(
-      (item) =>
-        item.id !== product.id &&
-        item.category === product.category &&
-        item.subcategory === product.subcategory,
-    );
+    const isCoupleRing = (item: typeof JEWELLERY_DATA[0]) => {
+      const id = item.id.toLowerCase();
+      const name = item.name.toLowerCase();
+      const img = (item.images && item.images[0]) ? item.images[0].toLowerCase() : "";
+      return id.includes("couple") || name.includes("couple") || img.includes("couples_rings") || img.includes("couple");
+    };
 
-    let result = [];
+    const isJhumka = (item: typeof JEWELLERY_DATA[0]) => {
+      const id = item.id.toLowerCase();
+      const name = item.name.toLowerCase();
+      const img = (item.images && item.images[0]) ? item.images[0].toLowerCase() : "";
+      return id.includes("jumka") || name.includes("jhumka") || img.includes("jumkas");
+    };
 
-    if (exactMatches.length >= 4) {
-      result = exactMatches.slice(0, 4);
-    } else {
-      // 2. Cross-category matches (Same Type, Different Material - e.g., Silver Ring for a Gold Ring)
-      const typeMatches = JEWELLERY_DATA.filter(
-        (item) =>
-          item.id !== product.id &&
-          item.subcategory === product.subcategory &&
-          item.category !== product.category
-      );
+    const currentIsCouple = isCoupleRing(product);
+    const currentIsJhumka = isJhumka(product);
 
-      let combined = [...exactMatches, ...typeMatches];
-      if (combined.length >= 4) {
-        result = combined.slice(0, 4);
-      } else {
-        // 3. Fallback to same material (Same Material, Different Type - e.g., Gold Bangle for a Gold Ring)
-        const categoryMatches = JEWELLERY_DATA.filter(
-          (item) =>
-            item.id !== product.id &&
-            item.category === product.category &&
-            item.subcategory !== product.subcategory
-        );
+    const matches = JEWELLERY_DATA.filter((item) => {
+      if (item.id === product.id) return false;
+      if (item.category !== product.category) return false;
+      if (item.subcategory !== product.subcategory) return false;
+      if (isCoupleRing(item) !== currentIsCouple) return false;
+      if (isJhumka(item) !== currentIsJhumka) return false;
+      return true;
+    });
 
-        combined = [...combined, ...categoryMatches];
-        if (combined.length >= 4) {
-          result = combined.slice(0, 4);
-        } else {
-          // 4. Last fallback (Any remaining products)
-          const otherMatches = JEWELLERY_DATA.filter(
-            (item) =>
-              !combined.find(c => c.id === item.id) &&
-              item.id !== product.id
-          );
-
-          result = [...combined, ...otherMatches].slice(0, 4);
-        }
-      }
-    }
+    const result = matches.slice(0, 4);
 
     return result.map(item => {
       const hash = hashString(item.id + item.name);

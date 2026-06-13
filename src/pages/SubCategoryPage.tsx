@@ -264,21 +264,69 @@ const SubCategoryPage = () => {
       slug: string,
     ) => {
       const normalizedSlug = normalizeText(slug);
-      return (
-        normalizeText(item.subcategory) === normalizedSlug ||
-        normalizeText(item.type) === normalizedSlug ||
-        // Handle names that might include the category like "GOLD BANGLES" vs "Bangles"
-        normalizeText(item.subcategory).includes(normalizedSlug) ||
-        normalizedSlug.includes(normalizeText(item.type))
-      );
+      const subcat = normalizeText(item.subcategory);
+      const itemId = item.id.toLowerCase();
+      const itemName = item.name.toLowerCase();
+      const firstImage = (item.images && item.images[0]) ? item.images[0].toLowerCase() : "";
+
+      const isCoupleRing = itemId.includes("couple") || itemName.includes("couple") || firstImage.includes("couples_rings") || firstImage.includes("couple");
+      const isJhumka = itemId.includes("jumka") || itemName.includes("jhumka") || firstImage.includes("jumkas");
+
+      // Couple Rings
+      if (normalizedSlug === "couplerings" || normalizedSlug === "couplering") {
+        return isCoupleRing;
+      }
+
+      // Gold Jhumka
+      if (normalizedSlug === "goldjhumka" || normalizedSlug === "jhumka" || normalizedSlug === "jhumkas") {
+        return isJhumka;
+      }
+
+      // Gold Ring
+      if (normalizedSlug === "goldring" || normalizedSlug === "goldrings") {
+        return subcat === "goldring" && !isCoupleRing;
+      }
+
+      // Gold Earrings
+      if (normalizedSlug === "goldearrings" || normalizedSlug === "goldearring") {
+        return subcat === "goldearrings" && !isJhumka;
+      }
+
+      // Gold Necklace
+      if (normalizedSlug === "goldnecklace" || normalizedSlug === "goldnecklaces") {
+        return subcat === "goldnecklace";
+      }
+
+      // Gold Haram
+      if (normalizedSlug === "goldharam" || normalizedSlug === "goldharams") {
+        return subcat === "goldharam";
+      }
+
+      // Gold Bracelet
+      if (normalizedSlug === "goldbracelet" || normalizedSlug === "goldbracelets") {
+        return subcat === "goldbracelet";
+      }
+
+      // Gold Bangles
+      if (normalizedSlug === "goldbangles" || normalizedSlug === "goldbangle") {
+        return subcat === "goldbangles";
+      }
+
+      // Gold Chain
+      if (normalizedSlug === "goldchain" || normalizedSlug === "goldchains") {
+        return subcat === "goldchain";
+      }
+
+      // General exact match
+      return subcat === normalizedSlug;
     };
 
     const targetItems = sub
       ? categoryItems.filter((item) => subCategoryMatch(item, sub))
       : categoryItems;
 
-    // Default to main category if no specific subcategory matches found (prevents empty screen)
-    const finalItems = targetItems.length > 0 ? targetItems : categoryItems;
+    // Do not fall back to all category items if subcategory match is requested but empty
+    const finalItems = sub ? targetItems : categoryItems;
 
     return finalItems.map((item, index): EnrichedItem => {
       const hash = hashString(item.id + item.name);
