@@ -62,21 +62,31 @@ const ProductDetails = () => {
     if (!enrichedProduct) return;
 
     const whatsappNumber = "919443211809";
+    
+    const productUrl = window.location.href;
+    const imageUrl = new URL(enrichedProduct.images[0] || "/images/placeholder.svg", window.location.origin).href;
+
     const template = `Hello Santhi Jewellers,
 
-I am interested in this jewellery product and would like more information.
+I am interested in purchasing this jewellery.
 
-Product Details:
-• Product Name: ${enrichedProduct.name}
-• Category: ${enrichedProduct.category}
+Product Name:
+${enrichedProduct.name}
 
-I would like to know:
-• Product availability
+Category:
+${enrichedProduct.category}
+
+Product Image:
+${imageUrl}
+
+Product Link:
+${productUrl}
+
+Please share:
 • Current price
-• Weight and specifications
-• Customization options (if available)
-
-Please share the complete details.
+• Availability
+• Weight
+• Customization options
 
 Thank you.`;
 
