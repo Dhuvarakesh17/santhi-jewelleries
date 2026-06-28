@@ -11,7 +11,6 @@ import {
   X,
 } from "lucide-react";
 import { JEWELLERY_DATA } from "../constants/jewelleryData";
-import { useWishlist } from "../context/WishlistContext";
 import { buildProductPath } from "../utils/productPath";
 
 type EnrichedItem = {
@@ -217,8 +216,6 @@ const getAnimationClassByCategory = (category: string) => {
 const SubCategoryPage = () => {
   const { type, sub } = useParams();
   const navigate = useNavigate();
-  const { addToWishlist, removeFromWishlist, isInWishlist, openWishlist } =
-    useWishlist();
   const [sortBy, setSortBy] = useState("best-selling");
   const [currentPage, setCurrentPage] = useState(1);
   const [availability, setAvailability] = useState<string[]>([]);
@@ -498,22 +495,6 @@ const SubCategoryPage = () => {
     setPriceRange([minPrice, maxPrice]);
     setSortBy("best-selling");
     setCurrentPage(1);
-  };
-
-  const handleWishlistClick = (item: EnrichedItem) => {
-    if (isInWishlist(item.id)) {
-      removeFromWishlist(item.id);
-    } else {
-      addToWishlist({
-        id: item.id,
-        name: item.name,
-        price: formatCurrency(item.price),
-        image: item.images[0] || "/images/placeholder.svg",
-        category: item.category,
-      });
-    }
-
-    openWishlist();
   };
 
   const handleCardClick = (item: EnrichedItem) => {
@@ -1020,30 +1001,6 @@ const SubCategoryPage = () => {
                                 </div>
                               </div>
                             )}
-
-                            <button
-                              type="button"
-                              onClick={(event) => {
-                                event.stopPropagation();
-                                handleWishlistClick(item);
-                              }}
-                              className="absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-9 sm:h-9 rounded-[10px] bg-transparent flex items-center justify-center shadow-sm hover:shadow-md transition-all z-10 touch-manipulation"
-                              aria-label={
-                                isInWishlist(item.id)
-                                  ? "Remove from wishlist"
-                                  : "Add to wishlist"
-                              }
-                            >
-                              <div
-                                className={`transition-all duration-300 sm:duration-500 flex items-center justify-center rounded-[10px] w-full h-full ${isInWishlist(item.id) ? "bg-[#480607] shadow-[0_4px_12px_rgba(72,6,7,0.3)] scale-110" : "bg-white/90 border border-stone-200 group-hover:border-[#480607]/50 hover:bg-[#480607] group/icon"}`}
-                              >
-                                <Heart
-                                  size={14}
-                                  strokeWidth={2.5}
-                                  className={`transition-colors duration-300 sm:w-4 sm:h-4 ${isInWishlist(item.id) ? "text-white fill-white" : "text-[#480607] group-hover/icon:text-white"}`}
-                                />
-                              </div>
-                            </button>
                           </motion.div>
                           <div className="pt-2.5 sm:pt-3 space-y-1.5 sm:space-y-2 text-center px-1 sm:px-0">
                             <h3

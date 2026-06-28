@@ -1,8 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ChevronDown, Gem, Heart, Pin, Scale, Share2 } from "lucide-react";
+import { ChevronDown, Gem, Pin, Scale, Share2 } from "lucide-react";
 import { JEWELLERY_DATA } from "../constants/jewelleryData";
-import { useWishlist } from "../context/WishlistContext";
 import { buildProductPath } from "../utils/productPath";
 
 const categoryBasePrice: Record<string, number> = {
@@ -51,8 +50,6 @@ const accordionHeadingClass =
 
 const ProductDetails = () => {
   const { type, sub, id } = useParams();
-  const { addToWishlist, removeFromWishlist, isInWishlist, openWishlist } =
-    useWishlist();
   const [selectedImage, setSelectedImage] = useState(0);
   const [openPanels, setOpenPanels] = useState({
     productDetails: false,
@@ -60,52 +57,26 @@ const ProductDetails = () => {
     shippingInfo: false,
     askQuestion: false,
   });
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleWhatsAppSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const { name, email, phone, message } = formData;
-
-    // Validation
-    if (!name.trim() || !phone.trim() || !message.trim()) {
-      alert("Please fill in all required fields (Name, Phone, and Message).");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email && !emailRegex.test(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
+  const handleBuyNow = () => {
+    if (!enrichedProduct) return;
 
     const whatsappNumber = "919443211809";
     const template = `Hello Santhi Jewellers,
 
-I’m interested in your jewellery collection and would like more details.
+I am interested in this jewellery product and would like more information.
 
-Here are my details:
+Product Details:
+• Product Name: ${enrichedProduct.name}
+• Category: ${enrichedProduct.category}
 
-Name: ${name}
-Email: ${email || "Not provided"}
-Phone: ${phone}
+I would like to know:
+• Product availability
+• Current price
+• Weight and specifications
+• Customization options (if available)
 
-Message:
-${message}
-
-Kindly assist me with more information about this product.
+Please share the complete details.
 
 Thank you.`;
 
@@ -204,23 +175,7 @@ Thank you.`;
       : ["/images/placeholder.svg"];
   }, [product]);
 
-  const handleWishlistToggle = () => {
-    if (!enrichedProduct) return;
 
-    if (isInWishlist(enrichedProduct.id)) {
-      removeFromWishlist(enrichedProduct.id);
-    } else {
-      addToWishlist({
-        id: enrichedProduct.id,
-        name: enrichedProduct.name,
-        price: formatCurrency(enrichedProduct.price),
-        image: enrichedProduct.images[0] || "/images/placeholder.svg",
-        category: enrichedProduct.category,
-      });
-    }
-
-    openWishlist();
-  };
 
   if (!enrichedProduct) {
     return (
@@ -321,30 +276,6 @@ Thank you.`;
                   {enrichedProduct.name}
                 </h1>
 
-                <button
-                  type="button"
-                  onClick={handleWishlistToggle}
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-maroon/20 text-maroon shadow-md hover:shadow-lg hover:border-maroon/50 hover:bg-maroon/[0.02] transition-all group shrink-0 mt-1"
-                  aria-label={
-                    isInWishlist(enrichedProduct.id)
-                      ? "Remove from Wishlist"
-                      : "Add to Wishlist"
-                  }
-                  title={
-                    isInWishlist(enrichedProduct.id)
-                      ? "Remove from Wishlist"
-                      : "Add to Wishlist"
-                  }
-                >
-                  <Heart
-                    size={24}
-                    className={`transition-all duration-300 ${
-                      isInWishlist(enrichedProduct.id)
-                        ? "fill-maroon scale-110"
-                        : "group-hover:scale-110 text-maroon/40 group-hover:text-maroon"
-                    }`}
-                  />
-                </button>
               </div>
 
               <div className="mt-2 border-b border-stone-200 pb-8">
@@ -604,16 +535,13 @@ Thank you.`;
               </section>
 
               <div className="pt-8 flex justify-center">
-                <Link
-                  to={`/category/${enrichedProduct.category}/${enrichedProduct.subcategory}`}
-                  className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-maroon/20 text-maroon font-bold text-[11px] tracking-[0.3em] uppercase hover:bg-maroon hover:text-white transition-all shadow-sm hover:shadow-maroon/20 group"
+                <button
+                  type="button"
+                  onClick={handleBuyNow}
+                  className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-[#65000b] text-white font-bold text-[14px] uppercase tracking-[0.2em] shadow-lg transition-all duration-300 hover:text-[#D4AF37] hover:shadow-[#D4AF37]/30 hover:-translate-y-1"
                 >
-                  <ChevronDown
-                    className="rotate-90 group-hover:-translate-x-1 transition-transform"
-                    size={16}
-                  />
-                  Continue Shopping
-                </Link>
+                  Buy Now
+                </button>
               </div>
             </div>
           </div>

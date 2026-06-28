@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GoldRateProvider } from "./context/GoldRateContext";
-import { WishlistProvider, useWishlist } from "./context/WishlistContext";
 import Navbar from "./components/Navbar";
 import TopBar from "./components/TopBar";
 import GoldRateTicker from "./components/GoldRateTicker";
 import Footer from "./components/Footer";
-import WishlistDrawer from "./components/WishlistDrawer";
 import Home from "./pages/Home";
 import SubCategoryPage from "./pages/SubCategoryPage";
 import GoldCustomized from "./pages/GoldCustomized";
@@ -15,8 +13,6 @@ import FloatingChatActions from "./components/FloatingChatActions";
 import ProductDetails from "./pages/ProductDetails";
 
 const AppLayout = () => {
-  const { isWishlistOpen, closeWishlist } = useWishlist();
-
   return (
     <Router>
       <ScrollToTop />
@@ -42,7 +38,6 @@ const AppLayout = () => {
         <Footer />
       </div>
       <FloatingChatActions />
-      <WishlistDrawer isOpen={isWishlistOpen} onClose={closeWishlist} />
     </Router>
   );
 };
@@ -51,9 +46,7 @@ function App() {
   console.log("Jewellery Showcase Rendering...");
   return (
     <GoldRateProvider>
-      <WishlistProvider>
-        <AppLayout />
-      </WishlistProvider>
+      <AppLayout />
     </GoldRateProvider>
   );
 }
