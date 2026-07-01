@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const TopBar: React.FC = () => {
     const messages = [
-        "Contact : 94432 11809",
+        "Contact : 99944 42177",
         "Shipping across India......"
     ];
     const [currentIndex, setCurrentIndex] = useState(0);

@@ -10,7 +10,7 @@ interface ChatMessage {
   text: string;
 }
 
-const phoneNumber = "919443211809";
+const phoneNumber = "919994442177";
 const defaultWhatsAppMessage =
   "Hi Santhi Jewellers, I would like to know more details.";
 
@@ -50,7 +50,7 @@ const getBotReply = (message: string) => {
     query.includes("address") ||
     query.includes("store")
   ) {
-    return "Our head office is in Karaikudi, Tamil Nadu. You can also call us at +91 94432 11809.";
+    return "Our head office is in Karaikudi, Tamil Nadu. You can also call us at +91 99944 42177.";
   }
 
   if (
@@ -58,7 +58,7 @@ const getBotReply = (message: string) => {
     query.includes("phone") ||
     query.includes("call")
   ) {
-    return "You can reach us at +91 94432 11809 or tap the WhatsApp button for a quick response.";
+    return "You can reach us at +91 99944 42177 or tap the WhatsApp button for a quick response.";
   }
 
   return "Thanks for your message. Please share more details, or use WhatsApp for a faster response from our team.";

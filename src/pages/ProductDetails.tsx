@@ -61,7 +61,7 @@ const ProductDetails = () => {
   const handleBuyNow = () => {
     if (!enrichedProduct) return;
 
-    const whatsappNumber = "919443211809";
+    const whatsappNumber = "919994442177";
     
     const productUrl = window.location.href;
     const imageUrl = new URL(enrichedProduct.images[0] || "/images/placeholder.svg", window.location.origin).href;
